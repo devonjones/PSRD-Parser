@@ -15,9 +15,9 @@ def parse_title_line(tag, book):
 	if m:
 		name = m.group(1).strip()
 		types = m.group(2).split(", ")
-		return {'name': name, 'source': book, 'feat_types': types}
+		return {'name': name, 'source': book, 'feat_types': types, 'type': 'feat'}
 	else:
-		return {'name': text.strip(), 'source': book}
+		return {'name': text.strip(), 'source': book, 'type': 'feat'}
 
 def parse_feat_descriptions(div, book):
 	feats = []

@@ -8,23 +8,23 @@ def store_section(parent, context, details, name=None):
 		section = {'source': parent['source'], 'type': 'section'}
 		if name:
 			section['name'] = construct_stripped_line(name)
-		if has_table(details):
-			section['sections'] = []
-			for detail in details:
-				if is_table(detail):
-					if detail.name == 'div':
-						detail = detail.findAll(text=False)[0]
-					section['sections'].append(parse_table(detail, context))
-				else:
-					store_section(section, context, detail)
-		else:
-			text = construct_line(details)
-			if text:
-				section['text'] =  text
-			else:
-				# no text, this is a false section
-				return
-		sections = parent.setdefault('sections', [])
-		sections.append(section)
+		set_section_text(section, context, details)
+		if section.has_key('text') or section.has_key('sections'):
+			sections = parent.setdefault('sections', [])
+			sections.append(section)
 
+def set_section_text(section, context, details):
+	if has_table(details):
+		section['sections'] = []
+		for detail in details:
+			if is_table(detail):
+				if detail.name == 'div':
+					detail = detail.findAll(text=False)[0]
+				section['sections'].append(parse_table(detail, context))
+			else:
+				store_section(section, context, detail)
+	else:
+		text = construct_line(details)
+		if text:
+			section['text'] =  text
 

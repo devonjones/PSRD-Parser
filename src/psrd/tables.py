@@ -108,19 +108,6 @@ def parse_tables(tags, context):
 					tables.append(parse_table(table, context))
 	return tables
 
-def create_table_filename(output, book, table):
-	title = char_replace(book) + "/tables/" + char_replace(table['name'])
-	return os.path.abspath(output + "/" + title + ".json")
-
-def write_tables(output, book):
-	for table in Tables().tables:
-		table['source'] = book
-		filename = create_table_filename(output, book, table)
-		fp = open(filename, 'w')
-		json.dump(table, fp, indent=4)
-		fp.close()
-	Tables().reset()
-
 def has_table(details):
 	for detail in details:
 		if hasattr(detail, 'name'):

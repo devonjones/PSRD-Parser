@@ -5,7 +5,8 @@ from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, construct_stripped_line, get_subtitle
-from psrd.tables import parse_tables, parse_table, write_tables, print_tables
+from psrd.tables import parse_tables, parse_table
+from psrd.sections import set_section_text
 
 def parse_function(field):
 	functions = {
@@ -77,7 +78,8 @@ def parse_section(section, rows, context):
 						bold = False
 				if (bold and data.name == 'b') or not bold:
 					if not field:
-						section['text'] = construct_stripped_line(subrows)
+						set_section_text(section, context, subrows)
+						#section['text'] = construct_stripped_line(subrows)
 					elif subsection:
 						newc = list(context)
 						newc.append(subsection['name'])
@@ -85,14 +87,14 @@ def parse_section(section, rows, context):
 						s.append(parse_section(subsection, subrows, newc))
 					text = row.findAll(text=True)
 					field = text[0].strip()
-					subsection = {'name': field}
+					subsection = {'name': field, 'type': 'section', 'source': section['source']}
 					subrows = ["<p>" + construct_stripped_line(row.contents[1:]) + "</p>"]
 					filter_ability_type(subsection, text) 
 				else:
 					subrows.append(row)
-			elif row.name == 'table':
-				table = parse_table(row, context)
-				subrows.append(unicode(table))
+			#elif row.name == 'table':
+			#	table = parse_table(row, context)
+			#	subrows.append(table)
 			else:
 				subrows.append(row)
 		else:
@@ -106,9 +108,10 @@ def parse_section(section, rows, context):
 		s.append(parse_section(subsection, subrows, newc))
 	return section
 
-def parse_core_class_body(div):
-	core_class = {}
+def parse_core_class_body(div, book):
+	core_class = {'source': book, 'type': 'class', 'class_type': 'core'}
 	rows = []
+	superrows = []
 	field = None
 	subfield = None
 	special_h2 = False
@@ -122,7 +125,7 @@ def parse_core_class_body(div):
 					core_class['name'] = ''.join(tag.findAll(text=True)).strip()
 				elif tag.name == 'h2' and ''.join(tag.findAll(text=True)).strip() == 'Class Features':
 					field = 'Class Features'
-					section = {'name': field}
+					section = {'name': field, 'source': book, 'type': 'section'}
 					header = False
 				elif tag.name == 'h2' and ''.join(tag.findAll(text=True)).strip() == 'Class Skills':
 					parse_function(field)(core_class, rows)
@@ -158,29 +161,40 @@ def parse_core_class_body(div):
 						special_h2 = True
 					elif text in ['Familiars']:
 						special_h2 = False
+						s = section.setdefault('sections', [])
+						s.append(parse_section(subsection, rows, ["Classes", core_class['name'], section['name'], subsection['name']]))
+						rows = superrows
 					if special_h2:
 						if not subfield:
 							sections = core_class.setdefault('sections', [])
 							sections.append(parse_section(section, rows, ["Classes", core_class['name'], section['name']]))
 							field = text
-							section = {'name': field}
+							section = {'name': field, 'source': book, 'type': 'section'}
 							rows = []
 						else:
-							s = section.setdefault('sections', [])
-							s.append(parse_section(subsection, rows, ["Classes", core_class['name'], section['name'], subsection['name']]))
+							if subfield == field:
+								superrows = rows
+							else:
+								s = section.setdefault('sections', [])
+								s.append(parse_section(subsection, rows, ["Classes", core_class['name'], section['name'], subsection['name']]))
 							rows = []
 						subfield = text
-						subsection = {'name': text}
+						subsection = {'name': text, 'source': book, 'type': 'section'}
 					else:
 						sections = core_class.setdefault('sections', [])
 						sections.append(parse_section(section, rows, ["Classes", core_class['name'], section['name']]))
 						rows = []
 						field = text
-						section = {'name': field}
+						section = {'name': field, 'source': book, 'type': 'section'}
 				else:
 					rows.append(tag)
+	if special_h2:
+		s = section.setdefault('sections', [])
+		s.append(parse_section(subsection, rows, ["Classes", core_class['name'], section['name'], subsection['name']]))
+		rows = superrows
 	sections = core_class.setdefault('sections', [])
 	sections.append(parse_section(section, rows, ["Classes", core_class['name'], section['name']]))
+	print "%s: %s" %(core_class['source'], core_class['name'])
 	return core_class
 
 
@@ -192,13 +206,11 @@ def parse_core_classes(filename, output, book):
 		divs = soup.findAll('div')
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':
-				core_class = parse_core_class_body(div)
-				core_class['source'] = book
+				core_class = parse_core_class_body(div, book)
 				filename = create_core_class_filename(output, book, core_class)
 				fp = open(filename, 'w')
 				json.dump(core_class, fp, indent=4)
 				fp.close()
-				write_tables(output, book)
 	finally:
 		fp.close()
 

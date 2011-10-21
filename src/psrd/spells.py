@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import get_subtitle, construct_stripped_line
-from psrd.tables import parse_table, write_tables
+from psrd.tables import parse_table
 
 def parse_function(field):
 	functions = {

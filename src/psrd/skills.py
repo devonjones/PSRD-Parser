@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, get_subtitle
-from psrd.tables import parse_tables, write_tables
+from psrd.tables import parse_tables
 from psrd.sections import store_section
 
 def parse_skill(book, name, attr, armor_check, trained, lines):

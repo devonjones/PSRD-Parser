@@ -10,8 +10,6 @@ def makedirs(output, book, localdir):
 	bookdir = os.path.abspath(output + "/" + char_replace(book) + "/")
 	if not os.path.exists(bookdir):
 		os.makedirs(bookdir)
-	if not os.path.exists(bookdir + "/tables/"):
-		os.makedirs(bookdir + "/tables/")
 	if not os.path.exists(bookdir + "/rules/"):
 		os.makedirs(bookdir + "/rules/")
 	if not os.path.exists(bookdir + "/" + localdir + "/"):

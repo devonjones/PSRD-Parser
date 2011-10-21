@@ -1,0 +1,8 @@
+prd/advanced/advancedFeats.html:
+  line 360, column 37: , in the tag
+
+prd/ultimateCombat/ultimateCombatFeats.html
+  line 1626, column 26: - instead of =
+
+prf/ultimateMagic/ultimateMagicFeats.html
+  the body has a div immediatly inside it unlike all other feats pages

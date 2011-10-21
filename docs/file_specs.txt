@@ -1,0 +1,203 @@
+section:
+{
+  'name': <name of the section, STRING>,
+  'source': <name of source book, STRING>,
+  'type': 'section',
+  'description': <description of section, STRING OPTIONAL>,
+  'text': <text of section, HTML OPTIONAL>,
+  'sections': [ <OPTIONAL>
+    <SECTION>,
+    ..
+  ],
+
+}
+
+table:
+{
+  'name': <name of the feat, STRING>,
+  'source': <name of source book, STRING>,
+  'type': 'table',
+  'description': <description of feat, STRING OPTIONAL>,
+  'text': <text of feat, HTML OPTIONAL>,
+  'sections': [ <OPTIONAL>
+    <SECTION>,
+    ..
+  ],
+
+  'context' [
+    <STRING>,
+    ...
+  ]
+}
+
+ability:
+{
+  'name': <name of the feat, STRING>,
+  'source': <name of source book, STRING>,
+  'type': 'ability',
+  'description': <description of feat, STRING OPTIONAL>,
+  'text': <text of feat, HTML OPTIONAL>,
+  'sections': [ <OPTIONAL>
+    <SECTION>,
+    ..
+  ],
+
+  'ability_type': <Extraordinary, Supernatural.... STRING>,
+}
+
+races:
+{
+  'name': <name of the race, STRING>,
+  'source': <name of source book, STRING>,
+  'type': 'race',
+  'description': <description of race, STRING OPTIONAL>,
+  'text': <text of race, HTML OPTIONAL>,
+  'sections': [ <OPTIONAL>
+    <SECTION>,
+    ..
+  ],
+
+  'attributes': {
+    'description': <text about attributes STRING>,
+    'modifiers': [
+      {
+        'name': <attibute name, STRING>,
+        'modifier': <attribute modifier, INTEGER>
+      }
+    ]
+  }
+  'traits': [
+    {
+      'name': <name of section, STRING>,
+      'text': <text of section, HTML>,
+      ..
+    }
+  ]
+}
+
+core_classes:
+{
+  'name': <name of the class, STRING>,
+  'source': <name of source book, STRING>,
+  'type': 'class',
+  'description': <description of class, STRING OPTIONAL>,
+  'text': <text of class, HTML OPTIONAL>,
+  'sections': [ <OPTIONAL>
+    <SECTION>,
+    ..
+  ],
+
+  'skill_ranks_per_level': <text of skill rans STRING>,
+  'role': <text describing the barbarian's role STRING>,
+  'hit_die': <1dn STRING>,
+  'class_skills': [
+    {
+      'name': <name of skill STRING>,
+      'attribute': <attribute of skill STRING>
+    },
+    ...
+  ],
+  'alignment': <alignment STRING>
+}
+
+skills:
+{
+  'name': <name of the skill, STRING>,
+  'source': <name of source book, STRING>,
+  'type': 'skill',
+  'description': <description of skill, STRING OPTIONAL>,
+  'text': <text of skill, HTML OPTIONAL>,
+  'sections': [ <OPTIONAL>
+    <SECTION>,
+    ..
+  ],
+
+  'attribute': <abbreviated attribute of skill, STRING>,
+  'armor_check_penalty': <does skill suffer from aromor check penalty? BOOLEAN>,
+  'trained_only': <does skill suffer from aromor check penalty? BOOLEAN>,
+}
+
+feats:
+{
+  'name': <name of the feat, STRING>,
+  'source': <name of source book, STRING>,
+  'type': 'feat',
+  'description': <description of feat, STRING OPTIONAL>,
+  'text': <text of feat, HTML OPTIONAL>,
+  'sections': [ <OPTIONAL>
+    <SECTION>,
+    ..
+  ],
+
+  'feat_types': [
+    <feat type STRING>,
+    ...
+  ]
+}
+
+spell_lists:
+{
+  'name': <name of the spell list, STRING>,
+  'source': <name of source book, STRING>,
+  'type': 'spell_list',
+  'description': <description of spell list, STRING OPTIONAL>,
+  'text': <text of spell list, HTML OPTIONAL>,
+  'sections': [ <OPTIONAL>
+    <SECTION>,
+    ..
+  ],
+
+  'class': <name of class, STRING>,
+  'level': <level of list, INT>,
+  'spells': [
+    {
+      "name": <spell name, STRING>,
+      "description": <description of spell, STRING>,
+      "descriptor": <descriptor of spell, STRING, OPTIONAL>,
+      "school": <school of spell, STRING, OPTIONAL>,
+      "material": [<special materials needed, generally M or F, STRING, OPTIONAL>], <OPTIONAL>
+    }
+    ..
+  ]
+}
+
+spells:
+{
+  'name': <name of the spell, STRING>,
+  'source': <name of source book, STRING>,
+  'type': 'spell',
+  'description': <description of spell, STRING OPTIONAL>,
+  'text': <text of spell, HTML OPTIONAL>,
+  'sections': [ <OPTIONAL>
+    <SECTION>,
+    ..
+  ],
+
+  'levels': {
+    'class': <name of class STRING>,
+    'level': <level of spell for class, INTEGER>
+  }
+  'components': [
+    {
+      'type': <V, S, M, Df, F STRING>,
+      'text': <description of component if available STRING, OPTIONAL>
+    }
+  ],
+  'school': <name of the spell's school, STRING>,
+  'subschool': <name of the spell's subschool, STRING, OPTIONAL>,
+  'descriptor': <name of the spell's subschool, STRING, OPTIONAL>,
+  'casting_time': <casting time, STRING>,
+  'preparation_time': <preparation time, STRING, OPTIONAL>,
+  'range': <range, STRING>,
+  'duration': <duration, STRING>,
+  'saving_throw': <saving throw, STRING>,
+  'spell_resistance': <spell resistance, STRING>,
+  'effects': [
+    {
+      'name': <name of effect type (Area, Target, Etc) STRING>,
+      'text': <text of effect STRING>,
+    }
+  ],
+  'parent': <If spell is an extension of another spell, list it's name here Ex: Summon Monster II STRING>
+}
+

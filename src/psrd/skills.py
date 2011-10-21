@@ -9,7 +9,7 @@ from psrd.tables import parse_tables, write_tables
 from psrd.sections import store_section
 
 def parse_skill(book, name, attr, armor_check, trained, lines):
-	skill = {'name': name, 'source': book, 'attribute': attr, 'armor_check_penalty': armor_check, 'trained_only': trained}
+	skill = {'name': name, 'source': book, 'type': 'skill', 'attribute': attr, 'armor_check_penalty': armor_check, 'trained_only': trained}
 	field_name = 'description'
 	details = []
 	for tag in lines:
@@ -25,6 +25,7 @@ def parse_skill(book, name, attr, armor_check, trained, lines):
 		else:
 			details.append(tag)
 	store_section(skill, ['Skills', skill['name'], field_name], details, field_name)
+	print "%s: %s" %(skill['source'], skill['name'])
 	return skill
 
 def parse_attr_line(tag):

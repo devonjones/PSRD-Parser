@@ -9,8 +9,7 @@ def parse_simple_rules(rules, subject):
 		return None
 	for field in rules:
 		retarr.append(unicode(field))
-	section = {'name': subject, 'text': ''.join(retarr).strip()}
-	return {'sections': [section,], 'subject': subject}
+	return {'name': subject, 'type': 'section', 'text': u''.join(retarr).strip()}
 
 def create_rules_filename(output, book, filename):
 	title = char_replace(book) + "/rules/" + filename
@@ -23,7 +22,7 @@ def write_rules(output, rules, book, filename):
 	json.dump(rules, fp, indent=4)
 	fp.close()
 
-def subsection_b_rules_parse(section, tags):
+def subsection_b_rules_parse(book, section, tags):
 	subsection = None
 	lines = []
 	for tag in tags:
@@ -38,7 +37,7 @@ def subsection_b_rules_parse(section, tags):
 					subs = section.setdefault('subsections', [])
 					subsection['text'] = construct_line(lines)
 					subs.append(subsection)
-				subsection = {'name': get_subtitle(tag)}
+				subsection = {'name': get_subtitle(tag), 'source': book, 'type': 'section'}
 				text = "<p>" + construct_line(tag.contents[1:], strip_end_colon=False) + "</p>"
 				lines = [text]
 			else:
@@ -53,7 +52,7 @@ def subsection_b_rules_parse(section, tags):
 		subs.append(subsection)
 	return section
 
-def subsection_h2_rules_parse(section, tags):
+def subsection_h2_rules_parse(book, section, tags):
 	subsections = []
 	subsection = None
 	lines = []
@@ -65,8 +64,8 @@ def subsection_h2_rules_parse(section, tags):
 					section['text'] = description
 			else:
 				subs = section.setdefault('subsections', [])
-				subs.append(subsection_b_rules_parse(subsection, lines))
-			subsection = {'name': get_subtitle(tag)}
+				subs.append(subsection_b_rules_parse(book, subsection, lines))
+			subsection = {'name': get_subtitle(tag), 'source': book, 'type': 'section'}
 			lines = []
 		else:
 			lines.append(tag)
@@ -76,5 +75,5 @@ def subsection_h2_rules_parse(section, tags):
 			section['text'] = description
 	else:
 		subs = section.setdefault('subsections', [])
-		subs.append(subsection_b_rules_parse(subsection, lines))
+		subs.append(subsection_b_rules_parse(book, subsection, lines))
 	return section

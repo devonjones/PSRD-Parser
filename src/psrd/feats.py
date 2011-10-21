@@ -8,17 +8,17 @@ from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, get_subtitle, store_section
 from psrd.tables import parse_tables, write_tables, print_tables
 
-def parse_title_line(tag):
+def parse_title_line(tag, book):
 	text = get_subtitle(tag)
 	m = re.search('(.*)\((.*)\)', text)
 	if m:
 		name = m.group(1).strip()
 		types = m.group(2).split(", ")
-		return {'name': name, 'types': types}
+		return {'name': name, 'source': book, 'feat_types': types}
 	else:
-		return {'name': text.strip()}
+		return {'name': text.strip(), 'source': book}
 
-def parse_feat_descriptions(div):
+def parse_feat_descriptions(div, book):
 	feats = []
 	feat = None
 	field_name = None
@@ -31,8 +31,9 @@ def parse_feat_descriptions(div):
 					if feat:
 						store_section(feat, field_name, details)
 						parse_tables(details, ('Feats', feat['name'], field_name))
+						print "%s: %s" %(feat['source'], feat['name'])
 						feats.append(feat)
-					feat = parse_title_line(tag)
+					feat = parse_title_line(tag, book)
 					field_name = None
 					details = []
 				elif hasattr(data, 'name') and data.name == 'b':
@@ -47,10 +48,11 @@ def parse_feat_descriptions(div):
 				details.append(tag)
 	store_section(feat, field_name, details)
 	parse_tables(details, ['Feats', feat['name'], field_name])
+	print "%s: %s" %(feat['source'], feat['name'])
 	feats.append(feat)
 	return feats
 
-def parse_body(div):
+def parse_body(div, book):
 	sections = []
 	feats = None
 	section = None
@@ -62,7 +64,7 @@ def parse_body(div):
 		if unicode(tag).strip() != '':
 			if hasattr(tag, 'name') and tag.name == 'h1':
 				if section:
-					sections.append(subsection_h2_rules_parse(section, lines))
+					sections.append(subsection_h2_rules_parse(book, section, lines))
 					parse_tables(lines, ["Feats", section['name']])
 				lines = []
 				section = {'name': get_subtitle(tag)}
@@ -71,12 +73,12 @@ def parse_body(div):
 			else:
 				name = section['name']
 				if name.find('Feat Descriptions') > -1 or name.find('Monster Feats')> -1:
-					feats = parse_feat_descriptions(tag)
+					feats = parse_feat_descriptions(tag, book)
 				elif hasattr(tag, 'name') and tag.name == 'div':
 					for line in tag.contents:
 						if unicode(line).strip() != '':
 							lines.append(line)
-	sections.append(subsection_h2_rules_parse(section, lines))
+	sections.append(subsection_h2_rules_parse(book, section, lines))
 	parse_tables(lines, ["Feats", section['name']])
 	rules = {'subject': 'Feats', 'sections': sections}
 	return rules, feats
@@ -89,9 +91,8 @@ def parse_feats(filename, output, book):
 		divs = soup.findAll('div')
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':
-				rules, feats = parse_body(div)
+				rules, feats = parse_body(div, book)
 				for feat in feats:
-					feat['source'] = book
 					filename = create_feat_filename(output, book, feat)
 					fp = open(filename, 'w')
 					json.dump(feat, fp, indent=4)

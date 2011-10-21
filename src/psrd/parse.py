@@ -2,7 +2,7 @@ def store_section(parent, name, details):
 	if not name:
 		name = 'description'
 	if name == 'description':
-		parent[name] = construct_line(details)
+		parent[name] = construct_stripped_line(details)
 	else:
 		name = construct_stripped_line(name)
 		sections = parent.setdefault('sections', [])

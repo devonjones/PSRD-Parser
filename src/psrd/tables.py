@@ -109,7 +109,7 @@ def parse_tables(tags, context):
 	return tables
 
 def create_table_filename(output, book, table):
-	title = char_replace(book) + "/tables/" + char_replace(table['title'])
+	title = char_replace(book) + "/tables/" + char_replace(table['name'])
 	return os.path.abspath(output + "/" + title + ".json")
 
 def write_tables(output, book):

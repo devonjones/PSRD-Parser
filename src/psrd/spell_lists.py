@@ -6,7 +6,7 @@ from psrd.rules import parse_simple_rules, write_rules
 from psrd.files import char_replace
 from psrd.parse import construct_stripped_line
 
-def parse_spell_list(casting_class, level, rows):
+def parse_spell_list(book, casting_class, level, rows):
 	spells = []
 	school = None
 	descriptor = None
@@ -26,7 +26,7 @@ def parse_spell_list(casting_class, level, rows):
 					if ''.join(sup.findAll(text=True)).strip() != '':
 						material = ''.join(sup.findAll(text=True)).strip()
 			desc = construct_stripped_line(row.contents[start:])
-			spell = {'name': name, 'short_description': desc}
+			spell = {'name': name, 'description': desc}
 			if material:
 				spell['material'] = list(material)
 			if school:
@@ -38,12 +38,13 @@ def parse_spell_list(casting_class, level, rows):
 			descriptor = row.contents[0].renderContents()
 		elif row.name == 'h3':
 			school = row.renderContents()
-	spell_list = {'class': casting_class.strip(), 'spells': spells, 'description': level.renderContents().strip()}
+	spell_list = {'source': book, 'class': casting_class.strip(), 'type': 'spell_list', 'spells': spells, 'description': level.renderContents().strip()}
+	print "%s: %s" %(spell_list['source'], spell_list['description'])
 	m = re.search('(\d)', spell_list['description'])
 	spell_list['level'] = int(m.group(0))
 	return spell_list
 
-def parse_body(div):
+def parse_body(div, book):
 	if len(div.contents) <= 2:
 		div = div.contents[0]
 	rules = []
@@ -73,12 +74,12 @@ def parse_body(div):
 			if not unicode(tag).strip() == '':
 				if hasattr(tag, 'name') and tag.name == 'h1':
 					if casting_class:
-						spell_lists.append(parse_spell_list(casting_class, level, rows))
+						spell_lists.append(parse_spell_list(book, casting_class, level, rows))
 						rows = []
 					casting_class = tag.renderContents().replace(" Spells", '')
 				elif hasattr(tag, 'name') and tag.name == 'h2':
 					if level:
-						spell_lists.append(parse_spell_list(casting_class, level, rows))
+						spell_lists.append(parse_spell_list(book, casting_class, level, rows))
 						rows = []
 					level = tag
 				elif hasattr(tag, 'name') and tag.name == 'h3':
@@ -87,7 +88,7 @@ def parse_body(div):
 					rows.append(tag)
 				else:
 					raise Exception("Unexpected line type: %s" % tag)
-	spell_lists.append(parse_spell_list(casting_class, level, rows))
+	spell_lists.append(parse_spell_list(book, casting_class, level, rows))
 	rules = parse_simple_rules(rules, "Spell Lists")
 	return rules, spell_lists
 
@@ -98,9 +99,8 @@ def parse_spell_lists(filename, output, book):
 		divs = soup.findAll('div')
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':
-				rules, spell_lists = parse_body(div)
+				rules, spell_lists = parse_body(div, book)
 				for spell_list in spell_lists:
-					spell_list['source'] = book
 					filename = create_spell_list_filename(output, book, spell_list)
 					fp = open(filename, 'w')
 					json.dump(spell_list, fp, indent=4)

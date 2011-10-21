@@ -4,7 +4,7 @@ import json
 from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, construct_stripped_line, get_subtitle, store_section
+from psrd.parse import construct_line, construct_stripped_line, get_subtitle
 from psrd.tables import parse_tables, parse_table, write_tables, print_tables
 
 def parse_function(field):

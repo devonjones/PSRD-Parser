@@ -121,3 +121,18 @@ def write_tables(output, book):
 		fp.close()
 	Tables().reset()
 
+def has_table(details):
+	for detail in details:
+		if hasattr(detail, 'name'):
+			if is_table(detail):
+				return True
+	return False
+
+def is_table(detail):
+	if hasattr(detail, 'name'):
+		if detail.name == 'table':
+			return True
+		elif detail.name == 'div' and detail.findAll(text=False)[0].name == 'table':
+			return True
+	return False
+	

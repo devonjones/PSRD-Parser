@@ -4,19 +4,19 @@ import json
 from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, get_subtitle, store_section
+from psrd.parse import construct_line, get_subtitle
 from psrd.tables import parse_tables, write_tables
+from psrd.sections import store_section
 
-def parse_skill(name, attr, armor_check, trained, lines):
-	skill = {'name': name, 'attribute': attr, 'armor_check_penalty': armor_check, 'trained_only': trained}
-	field_name = None
+def parse_skill(book, name, attr, armor_check, trained, lines):
+	skill = {'name': name, 'source': book, 'attribute': attr, 'armor_check_penalty': armor_check, 'trained_only': trained}
+	field_name = 'description'
 	details = []
 	for tag in lines:
 		if len(tag.contents) > 0:
 			data = tag.contents[0]
 			if hasattr(data, 'name') and data.name == 'b':
-				store_section(skill, field_name, details)
-				parse_tables(details, ["Skills", skill['name'], field_name])
+				store_section(skill, ['Skills', skill['name'], field_name], details, field_name)
 				field_name = construct_line([data.renderContents()])
 				text = "<p>" + construct_line(tag.contents[1:]) + "</p>"
 				details = [text]
@@ -24,8 +24,7 @@ def parse_skill(name, attr, armor_check, trained, lines):
 				details.append(tag)
 		else:
 			details.append(tag)
-	store_section(skill, field_name, details)
-	parse_tables(details, ["Skills", skill['name'], field_name])
+	store_section(skill, ['Skills', skill['name'], field_name], details, field_name)
 	return skill
 
 def parse_attr_line(tag):
@@ -44,7 +43,7 @@ def parse_attr_line(tag):
 		trained = True
 	return attr, armor_check, trained
 
-def parse_body(div):
+def parse_body(div, book):
 	name = None
 	attr = None
 	armor_check = False
@@ -65,7 +64,7 @@ def parse_body(div):
 					raise Exception("Skill has more then one attribute line")
 			else:
 				lines.append(tag)
-	return parse_skill(name, attr, armor_check, trained, lines)
+	return parse_skill(book, name, attr, armor_check, trained, lines)
 
 def parse_skills(filename, output, book):
 	WarningReporting().book = book
@@ -75,13 +74,11 @@ def parse_skills(filename, output, book):
 		divs = soup.findAll('div')
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':
-				skill = parse_body(div)
-				skill['source'] = book
+				skill = parse_body(div, book)
 				filename = create_skill_filename(output, book, skill)
 				fp = open(filename, 'w')
 				json.dump(skill, fp, indent=4)
 				fp.close()
-		write_tables(output, book)
 	finally:
 		fp.close()
 

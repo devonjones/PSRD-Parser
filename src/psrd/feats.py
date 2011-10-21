@@ -5,8 +5,9 @@ from BeautifulSoup import BeautifulSoup
 from psrd.rules import subsection_h2_rules_parse, write_rules
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, get_subtitle, store_section
+from psrd.parse import construct_line, get_subtitle
 from psrd.tables import parse_tables, write_tables, print_tables
+from psrd.sections import store_section
 
 def parse_title_line(tag, book):
 	text = get_subtitle(tag)
@@ -21,7 +22,7 @@ def parse_title_line(tag, book):
 def parse_feat_descriptions(div, book):
 	feats = []
 	feat = None
-	field_name = None
+	field_name = 'description'
 	details = []
 	for tag in div.contents:
 		if unicode(tag).strip() != '':
@@ -29,16 +30,14 @@ def parse_feat_descriptions(div, book):
 				data = tag.contents[0]
 				if hasattr(tag, 'name') and tag.name == 'h2':
 					if feat:
-						store_section(feat, field_name, details)
-						parse_tables(details, ('Feats', feat['name'], field_name))
+						store_section(feat, ['Feats', feat['name'], field_name], details, field_name)
 						print "%s: %s" %(feat['source'], feat['name'])
 						feats.append(feat)
 					feat = parse_title_line(tag, book)
-					field_name = None
+					field_name = 'description'
 					details = []
 				elif hasattr(data, 'name') and data.name == 'b':
-					store_section(feat, field_name, details)
-					parse_tables(details, ['Feats', feat['name'], field_name])
+					store_section(feat, ['Feats', feat['name'], field_name], details, field_name)
 					field_name = construct_line([data.renderContents()])
 					text = "<p>" + construct_line(tag.contents[1:], strip_end_colon=False) + "</p>"
 					details = [text]
@@ -46,8 +45,7 @@ def parse_feat_descriptions(div, book):
 					details.append(tag)
 			else:
 				details.append(tag)
-	store_section(feat, field_name, details)
-	parse_tables(details, ['Feats', feat['name'], field_name])
+	store_section(feat, ['Feats', feat['name'], field_name], details, field_name)
 	print "%s: %s" %(feat['source'], feat['name'])
 	feats.append(feat)
 	return feats
@@ -99,7 +97,6 @@ def parse_feats(filename, output, book):
 					fp.close()
 				if rules:
 					write_rules(output, rules, book, "feats")
-		write_tables(output, book)
 	finally:
 		fp.close()
 

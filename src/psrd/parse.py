@@ -1,14 +1,3 @@
-def store_section(parent, name, details):
-	if not name:
-		name = 'description'
-	if name == 'description':
-		parent[name] = construct_stripped_line(details)
-	else:
-		name = construct_stripped_line(name)
-		sections = parent.setdefault('sections', [])
-		section = {'name': name, 'text': construct_line(details)}
-		sections.append(section)
-
 def construct_stripped_line(contents, strip_start_colon=True, strip_end_colon=True):
 	if len(contents) == 0:
 		return None

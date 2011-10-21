@@ -5,7 +5,8 @@ from BeautifulSoup import BeautifulSoup
 from psrd.rules import parse_simple_rules, write_rules
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, get_subtitle, store_section
+from psrd.parse import construct_line, get_subtitle
+from psrd.sections import store_section
 
 def parse_function(field):
 	functions = {
@@ -30,7 +31,7 @@ def warning_closure(function, warning):
 
 def description_closure(field):
 	def fxn(race, contents):
-		store_section(race, field, contents)
+		store_section(race, ["Races", race['name'], field], contents, field)
 	return fxn
 
 def parse_attributes(race, contents):
@@ -60,8 +61,8 @@ def parse_trait(race, contents):
 	traits = race.setdefault('traits', [])
 	traits.append({'name': name, 'text': description})
 
-def parse_race(race, rows):
-	race = {'name': race}
+def parse_race(race, book, rows):
+	race = {'name': race, 'source': book}
 	WarningReporting().context = race['name']
 	field_name = None
 	buffer = []
@@ -92,7 +93,7 @@ def parse_race(race, rows):
 						buffer.append(content)
 	return race
 
-def parse_body(div):
+def parse_body(div, book):
 	rules = []
 	races = []
 	race = None
@@ -101,7 +102,7 @@ def parse_body(div):
 		if unicode(tag).strip() != '':
 			if hasattr(tag, 'name') and tag.name == 'h1':
 				if race:
-					races.append(parse_race(race, rows))
+					races.append(parse_race(race, book, rows))
 					rows = []
 				race = tag.renderContents()
 			else:
@@ -109,7 +110,7 @@ def parse_body(div):
 					rows.append(tag)
 				else:
 					rules.append(tag)
-	races.append(parse_race(race, rows))
+	races.append(parse_race(race, book, rows))
 	rules = parse_simple_rules(rules, "Races")
 	return rules, races
 
@@ -121,9 +122,8 @@ def parse_races(filename, output, book):
 		divs = soup.findAll('div')
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':
-				rules, races = parse_body(div)
+				rules, races = parse_body(div, book)
 				for race in races:
-					race['source'] = book
 					filename = create_race_filename(output, book, race)
 					fp = open(filename, 'w')
 					json.dump(race, fp, indent=4)

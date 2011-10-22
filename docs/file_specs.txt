@@ -55,23 +55,6 @@ races:
   'sections': [ <OPTIONAL>
     <SECTION>,
     ..
-  ],
-
-  'attributes': {
-    'description': <text about attributes STRING>,
-    'modifiers': [
-      {
-        'name': <attibute name, STRING>,
-        'modifier': <attribute modifier, INTEGER>
-      }
-    ]
-  }
-  'traits': [
-    {
-      'name': <name of section, STRING>,
-      'text': <text of section, HTML>,
-      ..
-    }
   ]
 }
 
@@ -80,6 +63,7 @@ core_classes:
   'name': <name of the class, STRING>,
   'source': <name of source book, STRING>,
   'type': 'class',
+  'class_type': <'core'|'base'|'prestige', STRING>,
   'description': <description of class, STRING OPTIONAL>,
   'text': <text of class, HTML OPTIONAL>,
   'sections': [ <OPTIONAL>

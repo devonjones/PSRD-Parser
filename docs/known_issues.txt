@@ -1,0 +1,4 @@
+= Known Issues =
+* feats can have subsections: see leadership
+* tables remain unparsed
+* tables in subsections in feats are presently lost

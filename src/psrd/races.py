@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.rules import parse_simple_rules, write_rules
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, get_subtitle
+from psrd.parse import construct_line, construct_stripped_line, get_subtitle
 from psrd.sections import store_section
 
 def parse_function(field):
@@ -31,38 +31,43 @@ def warning_closure(function, warning):
 
 def description_closure(field):
 	def fxn(race, contents):
-		store_section(race, ["Races", race['name'], field], contents, field)
+		desc = get_description_section(race)
+		store_section(desc, ["Races", race['name'], 'Description', field], contents, field)
 	return fxn
 
+def get_description_section(race):
+	if race.has_key('sections'):
+		return race['sections'][0]
+	else:
+		sections = race.setdefault('sections', [])
+		section = {'name': 'Description', 'source': race['source'], 'type': 'section'}
+		sections.append(section)
+		return section
+
+
 def parse_attributes(race, contents):
-	attributes = {'modifiers': []}
-	tags = [content for content in contents.contents]
-	attrs = tags.pop(0)
-	attributes['description'] = construct_line(tags)
-	num = None
-	attr = None
-	for tag in attrs.contents:
-		if hasattr(tag, 'name') and tag.name == 'a':
-			attr = tag.renderContents()
-			attributes['modifiers'].append({'name': attr, 'modifier': num})
-		else:
-			m = re.search('\+(\d+)', tag)
-			if m:
-				num = int(m.group(1))
-			m = re.search('&ndash;(\d+)', tag)
-			if m:
-				num = -1 * int(m.group(1))
-	race['attributes'] = attributes
+	traits = race['sections'][1]
+	name = 'Attributes'
+	text = construct_stripped_line(contents)
+	chunks = text.split(":")
+	desc = chunks.pop(0).strip()
+	desc = desc.replace('&ndash;', '-')
+	text = ':'.join(chunks).strip()
+	sections = traits.setdefault('sections', [])
+	section = {'name' : name, 'source': race['source'], 'type': 'section', 'description': desc, 'text': text}
+	sections.append(section)
 
 def parse_trait(race, contents):
+	traits = race['sections'][1]
 	tags = [content for content in contents.contents]
 	name = get_subtitle(tags.pop(0))
-	description = construct_line(tags)
-	traits = race.setdefault('traits', [])
-	traits.append({'name': name, 'text': description})
+	text = construct_line(tags)
+	sections = traits.setdefault('sections', [])
+	section = {'name' : name, 'source': race['source'], 'type': 'section', 'text': text}
+	sections.append(section)
 
 def parse_race(race, book, rows):
-	race = {'name': race, 'source': book}
+	race = {'name': race, 'source': book, 'type': 'race'}
 	WarningReporting().context = race['name']
 	field_name = None
 	buffer = []
@@ -78,6 +83,10 @@ def parse_race(race, book, rows):
 		else:
 			if hasattr(tag, 'name') and tag.name == 'h2':
 				traits = True
+				field_name = ''.join(tag.findAll(text=True)).strip()
+				sections = race.setdefault('sections', [])
+				section = {'name' : field_name, 'source': race['source'], 'type': 'section'}
+				sections.append(section)
 			elif hasattr(tag.contents[0], 'name') and tag.contents[0].name == 'b':
 				if not field_name:
 					field_name = 'description'
@@ -91,6 +100,10 @@ def parse_race(race, book, rows):
 				for content in tag.contents:
 					if unicode(content) != '':
 						buffer.append(content)
+	desc = get_description_section(race)
+	desc['text'] = desc['description']
+	del desc['description']
+	print "%s: %s" %(race['source'], race['name'])
 	return race
 
 def parse_body(div, book):

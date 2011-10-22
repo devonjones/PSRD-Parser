@@ -50,16 +50,16 @@ def clean_class_skill(skill):
 def filter_ability_type(section, texts):
 	for text in texts[0:3]:
 		if text.strip().endswith('(Sp)'):
-			section['type'] = 'Ability'
+			section['type'] = 'ability'
 			section['ability_type'] = 'Special'
 		elif text.strip().endswith('(Su)'):
-			section['type'] = 'Ability'
+			section['type'] = 'ability'
 			section['ability_type'] = 'Supernatural'
 		elif text.strip().endswith('(Ex)'):
-			section['type'] = 'Ability'
+			section['type'] = 'ability'
 			section['ability_type'] = 'Extraordinary'
 		elif text.strip().endswith('(Ex or Sp)'):
-			section['type'] = 'Ability'
+			section['type'] = 'ability'
 			section['ability_type'] = 'Extraordinary or Special'
 
 def parse_section(section, rows, context):

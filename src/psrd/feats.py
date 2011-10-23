@@ -2,7 +2,7 @@ import os
 import re
 import json
 from BeautifulSoup import BeautifulSoup
-from psrd.rules import subsection_h2_rules_parse, write_rules
+from psrd.rules import write_rules
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, get_subtitle
@@ -50,11 +50,68 @@ def parse_feat_descriptions(div, book):
 	feats.append(feat)
 	return feats
 
+def subsection_b_rules_parse(book, section, tags):
+	subsection = None
+	lines = []
+	for tag in tags:
+		if len(tag.contents) > 0:
+			data = tag.contents[0]
+			if hasattr(data, 'name') and data.name == 'b' and not (tag.has_key('align') and tag['align'] == 'center'):
+				if not subsection:
+					description = construct_line(lines)
+					if description:
+						section['text'] = description
+				else:
+					subs = section.setdefault('sections', [])
+					subsection['text'] = construct_line(lines)
+					subs.append(subsection)
+				subsection = {'name': get_subtitle(tag), 'source': book, 'type': 'section'}
+				text = "<p>" + construct_line(tag.contents[1:], strip_end_colon=False) + "</p>"
+				lines = [text]
+			else:
+				lines.append(tag)
+	if not subsection:
+		description = construct_line(lines)
+		if description:
+			section['text'] = description
+	else:
+		subs = section.setdefault('sections', [])
+		subsection['text'] = construct_line(lines)
+		subs.append(subsection)
+	return section
+
+def subsection_h2_rules_parse(book, rules, section, tags, context):
+	subsections = []
+	subsection = None
+	lines = []
+	for tag in tags:
+		if hasattr(tag, 'name') and tag.name == 'h2':
+			if not subsection:
+				description = construct_line(lines)
+				if description:
+					section['text'] = description
+			else:
+				subs = section.setdefault('sections', [])
+				subs.append(subsection_b_rules_parse(book, subsection, lines))
+			subsection = {'name': get_subtitle(tag), 'source': book, 'type': 'section'}
+			lines = []
+		else:
+			lines.append(tag)
+	if not subsection:
+		description = construct_line(lines)
+		if description:
+			section['text'] = description
+	else:
+		subs = section.setdefault('sections', [])
+		subs.append(subsection_b_rules_parse(book, subsection, lines))
+	rules['sections'].append(section)
+
 def parse_body(div, book):
 	sections = []
 	feats = None
 	section = None
 	lines = []
+	rules = {'name': 'Feats', 'type': 'section', 'source': book, 'sections': []}
 	tags = [tag for tag in div.contents if unicode(tag).strip() != '']
 	if tags[0].name == 'div':
 		div = tags[0]
@@ -62,23 +119,23 @@ def parse_body(div, book):
 		if unicode(tag).strip() != '':
 			if hasattr(tag, 'name') and tag.name == 'h1':
 				if section:
-					sections.append(subsection_h2_rules_parse(book, section, lines))
-					parse_tables(lines, ["Feats", section['name']])
+					if section['name'] == 'Feats':
+						rules['text'] = construct_line(lines)
+					else:
+						subsection_h2_rules_parse(book, rules, section, lines, ["Feats", section['name']])
 				lines = []
-				section = {'name': get_subtitle(tag)}
+				section = {'name': get_subtitle(tag), 'type': 'section', 'source': book}
 			elif (hasattr(tag, 'name') and tag.name != 'div') or not hasattr(tag, 'name'):
 				lines.append(tag)
 			else:
 				name = section['name']
-				if name.find('Feat Descriptions') > -1 or name.find('Monster Feats')> -1:
+				if section['type'] == 'table' or name.find('Feat Descriptions') > -1 or name.find('Monster Feats')> -1:
 					feats = parse_feat_descriptions(tag, book)
 				elif hasattr(tag, 'name') and tag.name == 'div':
 					for line in tag.contents:
 						if unicode(line).strip() != '':
 							lines.append(line)
-	sections.append(subsection_h2_rules_parse(book, section, lines))
-	parse_tables(lines, ["Feats", section['name']])
-	rules = {'subject': 'Feats', 'sections': sections}
+	subsection_h2_rules_parse(book, rules, section, lines, ["Feats", section['name']])
 	return rules, feats
 
 def parse_feats(filename, output, book):

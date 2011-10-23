@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, construct_stripped_line, get_subtitle
-from psrd.tables import parse_tables, parse_table
+from psrd.tables import parse_table
 from psrd.sections import set_section_text
 
 def parse_function(field):
@@ -92,9 +92,6 @@ def parse_section(section, rows, context):
 					filter_ability_type(subsection, text) 
 				else:
 					subrows.append(row)
-			#elif row.name == 'table':
-			#	table = parse_table(row, context)
-			#	subrows.append(table)
 			else:
 				subrows.append(row)
 		else:
@@ -142,13 +139,13 @@ def parse_core_class_body(div, book):
 						parse_function(field)(core_class, rows)
 						field = None
 						rows = []
-					level_table = parse_table(tag, ["Classes"])
+					level_table = parse_table(tag, ["Classes"], book)
 					sections = core_class.setdefault('sections', [])
 					sections.append(level_table)
 					parse_level_table(core_class, level_table)
 				elif tag.name == 'div' and tag.findAll(text=False)[0].name == 'table':
 					table = tag.findAll(text=False)[0]
-					spell_table = parse_table(table, ["Classes"])
+					spell_table = parse_table(table, ["Classes"], book)
 					sections = core_class.setdefault('sections', [])
 					sections.append(spell_table)
 					parse_spell_table(core_class, spell_table)

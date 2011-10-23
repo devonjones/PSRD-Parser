@@ -87,26 +87,14 @@ def create_title(context):
 			retstr = retstr + " [%s]" % c
 		return retstr + end
 
-def parse_table(tag, context):
+def parse_table(tag, context, book):
 	ncontext = [cxt for cxt in context if cxt]
 	if hasattr(tag, 'name') and tag.name == 'table':
 		table_context = get_full_context(tag, ncontext)
 		title = create_title(table_context)
-		tb = {'name': title, 'context': table_context, 'text': unicode(tag), 'type': 'table'}
+		tb = {'name': title, 'context': table_context, 'text': unicode(tag), 'type': 'table', 'source': book}
 		Tables().append(tb)
 		return tb
-
-def parse_tables(tags, context):
-	tables = []
-	for tag in tags:
-		if hasattr(tag, 'name') and tag.name == 'table':
-			tables.append(parse_table(tag, context))
-		else:
-			if hasattr(tag, 'name'):
-				alltables = tag.findAll('table')
-				for table in alltables:
-					tables.append(parse_table(table, context))
-	return tables
 
 def has_table(details):
 	for detail in details:

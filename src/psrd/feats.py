@@ -6,7 +6,7 @@ from psrd.rules import write_rules
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, get_subtitle
-from psrd.tables import parse_tables
+from psrd.tables import parse_table
 from psrd.sections import store_section
 
 def parse_title_line(tag, book):
@@ -85,6 +85,7 @@ def subsection_h2_rules_parse(book, rules, section, tags, context):
 	subsection = None
 	lines = []
 	for tag in tags:
+		print tag.name
 		if hasattr(tag, 'name') and tag.name == 'h2':
 			if not subsection:
 				description = construct_line(lines)

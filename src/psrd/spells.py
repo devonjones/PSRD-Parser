@@ -167,12 +167,10 @@ def handle_text(spell, spell_text):
 def create_section(spell, section):
 	sections = spell.setdefault('sections', [])
 	if len(section) == 1 and section[0].name == 'table':
-		table = parse_table(section[0], ["Spells", spell['name']])
-		table['source'] = spell['source']
+		table = parse_table(section[0], ["Spells", spell['name']], spell['source'])
 		sections.append(table)
 	elif len(section) == 1 and len(section[0].contents) == 1 and hasattr(section[0].contents[0], 'name') and section[0].contents[0].name == 'table':
-		table = parse_table(section[0].contents[0], ["Spells", spell['name']])
-		table['source'] = spell['source']
+		table = parse_table(section[0].contents[0], ["Spells", spell['name']], spell['source'])
 		sections.append(table)
 	else:
 		newsec = {'source': spell['source'], 'type': 'text'}

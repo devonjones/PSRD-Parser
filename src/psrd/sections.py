@@ -20,7 +20,7 @@ def set_section_text(section, context, details):
 			if is_table(detail):
 				if detail.name == 'div':
 					detail = detail.findAll(text=False)[0]
-				section['sections'].append(parse_table(detail, context))
+				section['sections'].append(parse_table(detail, context, section['source']))
 			else:
 				store_section(section, context, detail)
 	else:

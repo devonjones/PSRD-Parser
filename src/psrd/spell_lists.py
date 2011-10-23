@@ -89,7 +89,7 @@ def parse_body(div, book):
 				else:
 					raise Exception("Unexpected line type: %s" % tag)
 	spell_lists.append(parse_spell_list(book, casting_class, level, rows))
-	rules = parse_simple_rules(rules, "Spell Lists")
+	rules = parse_simple_rules(book, rules, "Spell Lists")
 	return rules, spell_lists
 
 def parse_spell_lists(filename, output, book):

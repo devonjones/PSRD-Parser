@@ -2,14 +2,15 @@ import os
 import json
 from psrd.files import char_replace
 from psrd.parse import construct_line, get_subtitle
+from psrd.sections import set_section_text
 
-def parse_simple_rules(rules, subject):
+def parse_simple_rules(book, details, name):
 	retarr = []
-	if len(rules) == 0:
+	if len(details) == 0:
 		return None
-	for field in rules:
-		retarr.append(unicode(field))
-	return {'name': subject, 'type': 'section', 'text': u''.join(retarr).strip()}
+	section = {'name': name, 'type': 'section', 'source': book}
+	set_section_text(section, [name], details)
+	return section
 
 def create_rules_filename(output, book, filename):
 	title = char_replace(book) + "/rules/" + filename

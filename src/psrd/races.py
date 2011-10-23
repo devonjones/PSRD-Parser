@@ -124,7 +124,7 @@ def parse_body(div, book):
 				else:
 					rules.append(tag)
 	races.append(parse_race(race, book, rows))
-	rules = parse_simple_rules(rules, "Races")
+	rules = parse_simple_rules(book, rules, "Races")
 	return rules, races
 
 def parse_races(filename, output, book):

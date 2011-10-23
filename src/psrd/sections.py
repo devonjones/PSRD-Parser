@@ -64,7 +64,8 @@ def handle_section(section, context, details, tag_name):
 	title = None
 	lines = []
 	for detail in details:
-		if has_first_child(detail, tag_name):
+		tag = {}
+		if has_first_child(detail, tag_name) and not (detail.has_key('align') and detail['align'] == 'center'):
 			_handle_section_storage(section, context, lines, title)
 			title = get_first_child_text(detail, tag_name).strip()
 			if title.endswith(':'):
@@ -98,6 +99,9 @@ def has_section(test_fxn, details):
 def subtag_closure(subtag):
 	def is_subtag(detail):
 		if has_first_child(detail, subtag):
+			if subtag == 'b':
+				if (detail.has_key('align') and detail['align'] == 'center'):
+					return False
 			if subtag in ('b', 'i'):
 				if get_first_child_text(detail, subtag).strip().endswith(':'):
 					return True

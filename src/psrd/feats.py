@@ -6,7 +6,7 @@ from psrd.rules import write_rules
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, get_subtitle, has_name
-from psrd.tables import parse_table
+from psrd.tables import parse_table, is_table
 from psrd.sections import store_section, set_section_text
 
 def parse_title_line(tag, book):
@@ -54,45 +54,21 @@ def parse_feat_descriptions(div, book):
 	feats.append(feat)
 	return feats
 
-def subsection_b_rules_parse(book, rule, section, tags, context):
-	subsection = None
+def subsection_h2_rules_parse(book, rule, section, tags, context):
 	lines = []
-	for tag in tags:
-		if has_name(tag, 'table'):
-			rule['sections'].append(parse_table(tag, context[:-1], book))
-		elif len(tag.contents) > 0:
-			data = tag.contents[0]
-			if has_name(data, 'b') and not (tag.has_key('align') and tag['align'] == 'center'):
-				if not subsection:
-					description = construct_line(lines)
-					if description:
-						section['text'] = description
-				else:
-					subs = section.setdefault('sections', [])
-					subsection['text'] = construct_line(lines)
-					subs.append(subsection)
-				subsection = {'name': get_subtitle(tag), 'source': book, 'type': 'section'}
-				subsection['name'] = subsection['name'].replace(':', '')
-				text = "<p>" + construct_line(tag.contents[1:], strip_end_colon=False) + "</p>"
-				lines = [text]
+	if section['name'] == 'Feat Descriptions':
+		table = None
+		for tag in tags:
+			if is_table(tag):
+				table = parse_table(tag, context[:-1], book)
 			else:
 				lines.append(tag)
-	if not subsection:
-		description = construct_line(lines)
-		if description:
-			section['text'] = description
-	else:
-		subs = section.setdefault('sections', [])
-		subsection['text'] = construct_line(lines)
-		subs.append(subsection)
-	rule['sections'].append(section)
-
-def subsection_h2_rules_parse(book, rule, section, tags, context):
-	if section['name'] == 'Feat Descriptions':
-		return subsection_b_rules_parse(book, rule, section, tags, context)
+		store_section(rule, context, lines, section['name'])
+		if table:
+			rule['sections'].append(table)
+		return
 	subsections = []
 	subsection = None
-	lines = []
 	for tag in tags:
 		if has_name(tag, 'h2'):
 			if not subsection:
@@ -104,10 +80,10 @@ def subsection_h2_rules_parse(book, rule, section, tags, context):
 				nc = []
 				nc.extend(context)
 				nc.append(subsection['name'])
-				subsection_b_rules_parse(book, section, subsection, lines, nc)
+				store_section(section, nc, lines, subsection['name'])
 			subsection = {'name': get_subtitle(tag), 'source': book, 'type': 'section'}
 			lines = []
-		elif has_name(tag, 'table'):
+		elif is_table(tag):
 			rule['sections'].append(parse_table(tag, context[:-1], book))
 		else:
 			lines.append(tag)
@@ -120,7 +96,7 @@ def subsection_h2_rules_parse(book, rule, section, tags, context):
 		nc = []
 		nc.extend(context)
 		nc.append(subsection['name'])
-		subsection_b_rules_parse(book, section, subsection, lines, nc)
+		store_section(section, nc, lines, subsection['name'])
 	if section.has_key('text') or section.has_key('sections'):
 		rule['sections'].append(section)
 

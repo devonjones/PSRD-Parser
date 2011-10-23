@@ -39,3 +39,23 @@ def get_subtitle(tag):
 	else:
 		return get_subtitle(tag.contents[0]).strip()
 
+def has_name(tag, name):
+	if hasattr(tag, 'name') and tag.name == name:
+		return True
+	return False
+
+def has_first_child(tag, name):
+	if has_name(tag, name):
+		return True
+	elif hasattr(tag, 'name') and len(tag.contents) > 0:
+		if has_name(tag.contents[0], name):
+			return True
+	return False
+
+def get_first_child_text(tag, name):
+	if has_name(tag, name):
+		return ''.join(tag.findAll(text=True))
+	elif hasattr(tag, 'name') and len(tag.contents) > 0:
+		if has_name(tag.contents[0], name):
+			return ''.join(tag.contents[0].findAll(text=True))
+	

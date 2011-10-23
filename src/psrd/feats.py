@@ -96,6 +96,8 @@ def subsection_h2_rules_parse(book, rules, section, tags, context):
 				subs.append(subsection_b_rules_parse(book, subsection, lines))
 			subsection = {'name': get_subtitle(tag), 'source': book, 'type': 'section'}
 			lines = []
+		elif hasattr(tag, 'name') and tag.name == 'table':
+			rules['sections'].append(parse_table(tag, context[:-1], book))
 		else:
 			lines.append(tag)
 	if not subsection:
@@ -105,7 +107,8 @@ def subsection_h2_rules_parse(book, rules, section, tags, context):
 	else:
 		subs = section.setdefault('sections', [])
 		subs.append(subsection_b_rules_parse(book, subsection, lines))
-	rules['sections'].append(section)
+	if section.has_key('text') or section.has_key('sections'):
+		rules['sections'].append(section)
 
 def parse_body(div, book):
 	sections = []

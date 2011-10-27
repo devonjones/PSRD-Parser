@@ -1,3 +1,4 @@
+import re
 from psrd.tables import has_table, is_table, parse_table
 from psrd.parse import construct_stripped_line, construct_line, has_name, has_first_child, get_first_child_text
 from BeautifulSoup import BeautifulSoup
@@ -109,4 +110,62 @@ def subtag_closure(subtag):
 					return True
 		return False
 	return is_subtag 
+
+def filter_sections(section):
+	if section:
+		if section.has_key('sections'):
+			for s in section['sections']:
+				filter_sections(s)
+		if section['type'] == 'section':
+			section_filter_ability_type(section)
+		section_filter_abbrev(section)
+
+def section_filter_ability_type(section):
+	abilities = {
+		'Ex': 'Extraordinary',
+		'Sp': 'Special',
+		'Su': 'Supernatural',
+		'Ex or Sp': 'Extraordinary or Special',
+		'Ex and Sp': 'Extraordinary and Special',
+		'Ex or Su': 'Extraordinary or Supernatural',
+		'Ex and Su': 'Extraordinary and Supernatural',
+		'Su or Sp': 'Supernatural or Special',
+		'Su and Sp': 'Supernatural and Special',
+	}
+	if section.has_key('name'):
+		m = re.search('\((.*)\)', section['name'])
+		if m:
+			if m.group(1) in abilities.keys():
+				section['type'] = 'ability'
+				section['ability_type'] = abilities[m.group(1)]
+				section['name'] = re.sub('\(.*\)', '', section['name']).strip()
+				return
+	if section.has_key('text'):
+		tag = BeautifulSoup(section['text'])
+		text = ''.join(tag.findAll(text=True))
+		m = re.search('\((.*?)\):?\s?', text)
+		if m:
+			if m.group(1) in abilities.keys():
+				section['type'] = 'ability'
+				section['ability_type'] = abilities[m.group(1)]
+				sec = "(%s)" % m.group(1)
+				for t in [sec + ": ", sec + ":", sec]:
+					r = tag.find(text=re.compile("\(%s\):?\s?" % m.group(1)))
+					if r:
+						nt = re.sub("\(%s\):?\s?" % m.group(1), "", unicode(r))
+						r.replaceWith(nt)
+						section['text'] = unicode(tag)
+						return
+
+def section_filter_abbrev(section):
+	if section.has_key('name') and section['type'] != 'table':
+		m = re.search('\s*\((.*)\)', section['name'])
+		if m:
+			section['abbrev'] = m.group(1)
+			section['name'] = re.sub('\s*\(%s\)' % m.group(1), '', section['name']).strip()
+
+def href_filter(soup):
+	hrefs = soup.findAll('a')
+	for href in hrefs:
+		href.replaceWith(href.renderContents())
 

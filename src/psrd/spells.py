@@ -6,6 +6,7 @@ from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import get_subtitle, construct_stripped_line
 from psrd.tables import parse_table
+from psrd.sections import filter_sections
 
 def parse_function(field):
 	functions = {
@@ -184,6 +185,7 @@ def create_spell(title, book, attributes, spell_text):
 		parse_subline(spell, get_subtitle(attribute.contents[0]), attribute.contents[1:])
 	handle_text(spell, spell_text)
 	print "%s: %s" %(spell['source'], spell['name'])
+	filter_sections(spell)
 	return spell
 
 def parse_body(div, book):

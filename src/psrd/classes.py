@@ -6,7 +6,7 @@ from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, construct_stripped_line, get_subtitle
 from psrd.tables import parse_table
-from psrd.sections import set_section_text
+from psrd.sections import set_section_text, filter_sections
 
 def parse_function(field):
 	functions = {
@@ -47,21 +47,6 @@ def clean_class_skill(skill):
 	m = re.search('([ a-zA-Z]*) \(([a-zA-Z]*)\)', skill)
 	return {'name': m.group(1), 'attribute': m.group(2)}
 
-def filter_ability_type(section, texts):
-	for text in texts[0:3]:
-		if text.strip().endswith('(Sp)'):
-			section['type'] = 'ability'
-			section['ability_type'] = 'Special'
-		elif text.strip().endswith('(Su)'):
-			section['type'] = 'ability'
-			section['ability_type'] = 'Supernatural'
-		elif text.strip().endswith('(Ex)'):
-			section['type'] = 'ability'
-			section['ability_type'] = 'Extraordinary'
-		elif text.strip().endswith('(Ex or Sp)'):
-			section['type'] = 'ability'
-			section['ability_type'] = 'Extraordinary or Special'
-
 def parse_section(section, rows, context):
 	field = None
 	bold = None
@@ -85,11 +70,11 @@ def parse_section(section, rows, context):
 						newc.append(subsection['name'])
 						s = section.setdefault('sections', [])
 						s.append(parse_section(subsection, subrows, newc))
-					text = row.findAll(text=True)
-					field = text[0].strip()
+					#text = row.findAll(text=True)
+					#field = text[0].strip()
+					field = ''.join(row.contents[0].findAll(text=True))
 					subsection = {'name': field, 'type': 'section', 'source': section['source']}
 					subrows = ["<p>" + construct_stripped_line(row.contents[1:]) + "</p>"]
-					filter_ability_type(subsection, text) 
 				else:
 					subrows.append(row)
 			else:
@@ -192,6 +177,7 @@ def parse_core_class_body(div, book):
 	sections = core_class.setdefault('sections', [])
 	sections.append(parse_section(section, rows, ["Classes", core_class['name'], section['name']]))
 	print "%s: %s" %(core_class['source'], core_class['name'])
+	filter_sections(core_class)
 	return core_class
 
 

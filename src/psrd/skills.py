@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, get_subtitle
-from psrd.sections import store_section
+from psrd.sections import store_section, filter_sections, href_filter
 
 def parse_skill(book, name, attr, armor_check, trained, lines):
 	skill = {'name': name, 'source': book, 'type': 'skill', 'attribute': attr, 'armor_check_penalty': armor_check, 'trained_only': trained}
@@ -25,6 +25,7 @@ def parse_skill(book, name, attr, armor_check, trained, lines):
 			details.append(tag)
 	store_section(skill, ['Skills', skill['name'], field_name], details, field_name)
 	print "%s: %s" %(skill['source'], skill['name'])
+	filter_sections(skill)
 	return skill
 
 def parse_attr_line(tag):

@@ -3,11 +3,14 @@ def create_section_table():
 	sql = '\n'.join([
 		"CREATE TABLE sections (",
 		"  section_id INTEGER PRIMARY KEY,",
-		"  name TEXT NOT NULL,",
+		"  type TEXT NOT NULL",
 		"  lft INTEGER NOT NULL,",
 		"  rgt INTEGER NOT NULL,",
-		"  section_type TEXT NOT NULL",
-		"  section_text TEXT"
+		"  name TEXT,",
+		"  abbrev TEXT,",
+		"  source TEXT NOT NULL,",
+		"  description TEXT",
+		"  body TEXT"
 		")"])
 
 def create_tags_table():
@@ -20,9 +23,9 @@ def create_tags_table():
 def section_insert_top():
 	sql = '\n'.join([
 		"INSERT INTO sections",
-		" (name, lft, rgt)",
+		" (type, lft, rgt, name, source)",
 		" VALUES",
-		" ('PSRD', 1, 2, 'section')")]
+		" ('section', 1, 2, 'PFSRD', 'PFSRD')")]
 
 def _build_section_type(sqla, values, section_type):
 	if section_type:

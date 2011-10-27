@@ -7,7 +7,7 @@ from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, get_subtitle, has_name
 from psrd.tables import parse_table, is_table
-from psrd.sections import store_section, set_section_text
+from psrd.sections import store_section, set_section_text, filter_sections, href_filter
 
 def parse_title_line(tag, book):
 	text = get_subtitle(tag)
@@ -32,6 +32,7 @@ def parse_feat_descriptions(div, book):
 					if feat:
 						set_section_text(feat, ['Feats', feat['name'], field_name], details)
 						print "%s: %s" %(feat['source'], feat['name'])
+						filter_sections(feat)
 						feats.append(feat)
 					feat = parse_title_line(tag, book)
 					field_name = 'description'
@@ -51,6 +52,7 @@ def parse_feat_descriptions(div, book):
 				details.append(tag)
 	set_section_text(feat, ['Feats', feat['name'], field_name], details)
 	print "%s: %s" %(feat['source'], feat['name'])
+	filter_sections(feat)
 	feats.append(feat)
 	return feats
 
@@ -130,6 +132,7 @@ def parse_body(div, book):
 						if unicode(line).strip() != '':
 							lines.append(line)
 	subsection_h2_rules_parse(book, rules, section, lines, ["Feats", section['name']])
+	filter_sections(rules)
 	return rules, feats
 
 def parse_feats(filename, output, book):
@@ -137,6 +140,7 @@ def parse_feats(filename, output, book):
 	fp = open(filename)
 	try:
 		soup = BeautifulSoup(fp)
+		href_filter(soup)
 		divs = soup.findAll('div')
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':

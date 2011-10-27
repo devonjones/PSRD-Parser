@@ -1,6 +1,7 @@
 section:
 {
   'name': <name of the section, STRING>,
+  'abbrev': <abbreviated name of the section, STRING>,
   'source': <name of source book, STRING>,
   'type': 'section',
   'description': <description of section, STRING OPTIONAL>,
@@ -14,7 +15,8 @@ section:
 
 table:
 {
-  'name': <name of the feat, STRING>,
+  'name': <name of the table, STRING>,
+  'abbrev': <abbreviated name of the table, STRING>,
   'source': <name of source book, STRING>,
   'type': 'table',
   'description': <description of feat, STRING OPTIONAL>,
@@ -33,6 +35,7 @@ table:
 ability:
 {
   'name': <name of the feat, STRING>,
+  'abbrev': <abbreviated name of the ability, STRING>,
   'source': <name of source book, STRING>,
   'type': 'ability',
   'description': <description of feat, STRING OPTIONAL>,
@@ -48,6 +51,7 @@ ability:
 races:
 {
   'name': <name of the race, STRING>,
+  'abbrev': <abbreviated name of the race, STRING>,
   'source': <name of source book, STRING>,
   'type': 'race',
   'description': <description of race, STRING OPTIONAL>,
@@ -61,6 +65,7 @@ races:
 core_classes:
 {
   'name': <name of the class, STRING>,
+  'abbrev': <abbreviated name of the class, STRING>,
   'source': <name of source book, STRING>,
   'type': 'class',
   'class_type': <'core'|'base'|'prestige', STRING>,
@@ -87,6 +92,7 @@ core_classes:
 skills:
 {
   'name': <name of the skill, STRING>,
+  'abbrev': <abbreviated name of the skill, STRING>,
   'source': <name of source book, STRING>,
   'type': 'skill',
   'description': <description of skill, STRING OPTIONAL>,
@@ -104,6 +110,7 @@ skills:
 feats:
 {
   'name': <name of the feat, STRING>,
+  'abbrev': <abbreviated name of the feat, STRING>,
   'source': <name of source book, STRING>,
   'type': 'feat',
   'description': <description of feat, STRING OPTIONAL>,
@@ -122,6 +129,7 @@ feats:
 spell_lists:
 {
   'name': <name of the spell list, STRING>,
+  'abbrev': <abbreviated name of the spell list, STRING>,
   'source': <name of source book, STRING>,
   'type': 'spell_list',
   'description': <description of spell list, STRING OPTIONAL>,
@@ -148,6 +156,7 @@ spell_lists:
 spells:
 {
   'name': <name of the spell, STRING>,
+  'abbrev': <abbreviated name of the spell, STRING>,
   'source': <name of source book, STRING>,
   'type': 'spell',
   'description': <description of spell, STRING OPTIONAL>,

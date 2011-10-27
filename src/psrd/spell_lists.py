@@ -4,7 +4,8 @@ import json
 from BeautifulSoup import BeautifulSoup
 from psrd.rules import parse_simple_rules, write_rules
 from psrd.files import char_replace
-from psrd.parse import construct_stripped_line
+from psrd.parse import construct_stripped_line, has_name
+from psrd.sections import filter_sections, href_filter
 
 def parse_spell_list(book, casting_class, level, rows):
 	spells = []
@@ -12,8 +13,10 @@ def parse_spell_list(book, casting_class, level, rows):
 	descriptor = None
 	for row in rows:
 		material = None
-		if row.name == 'p' and hasattr(row.contents[0].contents[0], 'name'):
-			name = row.contents[0].contents[0].renderContents().strip()
+		if row.name == 'p' and has_name(row.contents[0], 'b') and len(row.contents) == 1:
+			descriptor = row.contents[0].renderContents()
+		elif row.name == 'p' and hasattr(row.contents[0], 'name'):
+			name = row.contents[0].renderContents().strip()
 			start = 1
 			for i in range(1, len(row.contents)):
 				tag = row.contents[i]
@@ -22,7 +25,7 @@ def parse_spell_list(book, casting_class, level, rows):
 					break
 			if start > 1:
 				sup = row.contents[start - 1]
-				if hasattr(sup, 'name') and sup.name == 'sup':
+				if has_name(sup, 'sup'):
 					if ''.join(sup.findAll(text=True)).strip() != '':
 						material = ''.join(sup.findAll(text=True)).strip()
 			desc = construct_stripped_line(row.contents[start:])
@@ -34,14 +37,13 @@ def parse_spell_list(book, casting_class, level, rows):
 			if descriptor:
 				spell['descriptor'] = descriptor
 			spells.append(spell)
-		elif row.name == 'p' and not hasattr(row.contents[0].contents[0], 'name'):
-			descriptor = row.contents[0].renderContents()
 		elif row.name == 'h3':
 			school = row.renderContents()
 	spell_list = {'source': book, 'class': casting_class.strip(), 'type': 'spell_list', 'spells': spells, 'description': level.renderContents().strip()}
 	print "%s: %s" %(spell_list['source'], spell_list['description'])
 	m = re.search('(\d)', spell_list['description'])
 	spell_list['level'] = int(m.group(0))
+	filter_sections(spell_list)
 	return spell_list
 
 def parse_body(div, book):
@@ -55,47 +57,48 @@ def parse_body(div, book):
 	spell_section = False
 	for tag in div.contents:
 		if not spell_section:
-			if hasattr(tag, 'name') and tag.name == 'h1' and tag.string.endswith(' Spells'):
+			if has_name(tag, 'h1') and tag.string.endswith(' Spells'):
 				spell_section = True
 			else:
 				save = True
 				if unicode(tag).strip() == '':
 					save = False
-				if hasattr(tag, 'name') and tag.name == 'p' and len(tag.contents) == 1:
+				if has_name(tag, 'p') and len(tag.contents) == 1:
 					subtag = tag.contents[0]
-					if hasattr(subtag, 'name') and subtag.name == 'a':
-						if re.match(r'#[a-z\-/]*-spells', subtag['href']):
-							save = False
+					if not hasattr(subtag, 'name'):
+						save = False
 				if hasattr(tag, 'name') and tag.name == 'h1' and tag.renderContents().lower() == 'spells by class':
 					save = False
 				if save:
 					rules.append(tag)
 		if spell_section:
 			if not unicode(tag).strip() == '':
-				if hasattr(tag, 'name') and tag.name == 'h1':
+				if has_name(tag, 'h1'):
 					if casting_class:
 						spell_lists.append(parse_spell_list(book, casting_class, level, rows))
 						rows = []
 					casting_class = tag.renderContents().replace(" Spells", '')
-				elif hasattr(tag, 'name') and tag.name == 'h2':
+				elif has_name(tag, 'h2'):
 					if level:
 						spell_lists.append(parse_spell_list(book, casting_class, level, rows))
 						rows = []
 					level = tag
-				elif hasattr(tag, 'name') and tag.name == 'h3':
+				elif has_name(tag, 'h3'):
 					rows.append(tag)
-				elif hasattr(tag, 'name') and tag.name == 'p':
+				elif has_name(tag, 'p'):
 					rows.append(tag)
 				else:
 					raise Exception("Unexpected line type: %s" % tag)
 	spell_lists.append(parse_spell_list(book, casting_class, level, rows))
 	rules = parse_simple_rules(book, rules, "Spell Lists")
+	filter_sections(rules)
 	return rules, spell_lists
 
 def parse_spell_lists(filename, output, book):
 	fp = open(filename)
 	try:
 		soup = BeautifulSoup(fp)
+		href_filter(soup)
 		divs = soup.findAll('div')
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':

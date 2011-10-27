@@ -1,4 +1,6 @@
 = Known Issues =
-* feats can have subsections: see leadership
 * tables remain unparsed
-* tables in subsections in feats are presently lost
+* spell lists sometimes contain a spurious list of classes (Ultimate Magic/Combat)
+* spells still need href_filter
+* skills still need href_filter
+* classes still need href_filter

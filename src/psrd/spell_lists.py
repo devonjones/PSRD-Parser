@@ -64,13 +64,14 @@ def parse_body(div, book):
 				if unicode(tag).strip() == '':
 					save = False
 				if has_name(tag, 'p') and len(tag.contents) == 1:
-					subtag = tag.contents[0]
-					if not hasattr(subtag, 'name'):
+					subtag = tag.renderContents()
+					if subtag.endswith("Spells") or len(subtag.split(' ')) <= 2:
 						save = False
 				if hasattr(tag, 'name') and tag.name == 'h1' and tag.renderContents().lower() == 'spells by class':
 					save = False
 				if save:
-					rules.append(tag)
+					if not has_name(tag, 'h1'):
+						rules.append(tag)
 		if spell_section:
 			if not unicode(tag).strip() == '':
 				if has_name(tag, 'h1'):

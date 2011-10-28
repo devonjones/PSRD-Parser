@@ -158,9 +158,10 @@ def section_filter_ability_type(section):
 						return
 
 def section_filter_abbrev(section):
-	if section.has_key('name') and section['type'] != 'table':
-		m = re.search('\s*\((.*)\)', section['name'])
-		if m:
-			section['abbrev'] = m.group(1)
-			section['name'] = re.sub('\s*\(%s\)' % m.group(1), '', section['name']).strip()
+	if section['type'] != 'spell':
+		if section.has_key('name') and section['type'] != 'table':
+			m = re.search('\s*\((.*)\)', section['name'])
+			if m:
+				section['abbrev'] = m.group(1)
+				section['name'] = re.sub('\s*\(%s\)' % m.group(1), '', section['name']).strip()
 

@@ -4,7 +4,7 @@ import json
 from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, construct_stripped_line, get_subtitle
+from psrd.parse import construct_line, construct_stripped_line, get_subtitle, href_filter
 from psrd.tables import parse_table
 from psrd.sections import set_section_text, filter_sections
 
@@ -186,6 +186,7 @@ def parse_core_classes(filename, output, book):
 	fp = open(filename)
 	try:
 		soup = BeautifulSoup(fp)
+		href_filter(soup)
 		divs = soup.findAll('div')
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':

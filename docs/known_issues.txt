@@ -1,6 +1,4 @@
 = Known Issues =
 * tables remain unparsed
 * spell lists sometimes contain a spurious list of classes (Ultimate Magic/Combat)
-* spells still need href_filter
-* skills still need href_filter
-* classes still need href_filter
+* h1 at the end of ultimage magic/ultimate combat spell lists is screwy

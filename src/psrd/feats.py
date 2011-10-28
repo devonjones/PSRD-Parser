@@ -5,9 +5,9 @@ from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, get_subtitle, has_name
+from psrd.parse import construct_line, get_subtitle, has_name, href_filter
 from psrd.tables import parse_table, is_table
-from psrd.sections import store_section, set_section_text, filter_sections, href_filter
+from psrd.sections import store_section, set_section_text, filter_sections
 
 def parse_title_line(tag, book):
 	text = get_subtitle(tag)

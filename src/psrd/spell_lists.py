@@ -4,8 +4,8 @@ import json
 from BeautifulSoup import BeautifulSoup
 from psrd.rules import parse_simple_rules, write_rules
 from psrd.files import char_replace
-from psrd.parse import construct_stripped_line, has_name
-from psrd.sections import filter_sections, href_filter
+from psrd.parse import construct_stripped_line, has_name, href_filter
+from psrd.sections import filter_sections
 
 def parse_spell_list(book, casting_class, level, rows):
 	spells = []

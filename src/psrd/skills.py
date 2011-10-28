@@ -4,8 +4,8 @@ import json
 from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, get_subtitle
-from psrd.sections import store_section, filter_sections, href_filter
+from psrd.parse import construct_line, has_name, get_subtitle, href_filter
+from psrd.sections import store_section, filter_sections
 
 def parse_skill(book, name, attr, armor_check, trained, lines):
 	skill = {'name': name, 'source': book, 'type': 'skill', 'attribute': attr, 'armor_check_penalty': armor_check, 'trained_only': trained}
@@ -14,7 +14,7 @@ def parse_skill(book, name, attr, armor_check, trained, lines):
 	for tag in lines:
 		if len(tag.contents) > 0:
 			data = tag.contents[0]
-			if hasattr(data, 'name') and data.name == 'b':
+			if has_name(data, 'b'):
 				store_section(skill, ['Skills', skill['name'], field_name], details, field_name)
 				field_name = construct_line([data.renderContents()])
 				text = "<p>" + construct_line(tag.contents[1:]) + "</p>"
@@ -29,19 +29,19 @@ def parse_skill(book, name, attr, armor_check, trained, lines):
 	return skill
 
 def parse_attr_line(tag):
+	attr = None
 	armor_check = False
 	trained = False
-	if len(tag.contents) > 1:
-		attr = tag.contents[1].renderContents()
-		modifiers = tag.contents[2].strip().lower()
-	else:
-		WarningReporting().report("does not link to gettingStarted for attribute")
-		modifiers = tag.contents[0]
-		attr = modifiers[1:4]
-	if modifiers.find('armor check penalty') > -1:
-		armor_check = True
-	if modifiers.find('trained only') > -1:
-		trained = True
+	text = ''.join(tag.findAll(text=True))
+	m = re.search('\((.*)\)', text)
+	if m:
+		parts = m.group(1).split("; ")
+		attr = parts.pop(0)
+		for part in parts:
+			if part.lower() == 'armor check penalty':
+				armor_check = True
+			if part.lower() == 'trained only':
+				trained = True
 	return attr, armor_check, trained
 
 def parse_body(div, book):
@@ -52,13 +52,13 @@ def parse_body(div, book):
 	lines = []
 	for tag in div.contents:
 		if not str(tag).strip() == '':
-			if hasattr(tag, 'name') and tag.name == 'h1':
+			if has_name(tag, 'h1'):
 				if not name:
 					name = tag.renderContents()
 					WarningReporting().context = name
 				else:
 					raise Exception("Skill has more then one name")
-			elif hasattr(tag, 'name') and tag.name == 'h2':
+			elif has_name(tag, 'h2'):
 				if not attr:
 					attr, armor_check, trained = parse_attr_line(tag)
 				else:
@@ -72,6 +72,7 @@ def parse_skills(filename, output, book):
 	fp = open(filename)
 	try:
 		soup = BeautifulSoup(fp)
+		href_filter(soup)
 		divs = soup.findAll('div')
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':

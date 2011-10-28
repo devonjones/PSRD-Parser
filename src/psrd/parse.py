@@ -58,4 +58,9 @@ def get_first_child_text(tag, name):
 	elif hasattr(tag, 'name') and len(tag.contents) > 0:
 		if has_name(tag.contents[0], name):
 			return ''.join(tag.contents[0].findAll(text=True))
-	
+
+def href_filter(soup):
+	hrefs = soup.findAll('a')
+	for href in hrefs:
+		href.replaceWith(href.renderContents())
+

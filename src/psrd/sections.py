@@ -164,8 +164,3 @@ def section_filter_abbrev(section):
 			section['abbrev'] = m.group(1)
 			section['name'] = re.sub('\s*\(%s\)' % m.group(1), '', section['name']).strip()
 
-def href_filter(soup):
-	hrefs = soup.findAll('a')
-	for href in hrefs:
-		href.replaceWith(href.renderContents())
-

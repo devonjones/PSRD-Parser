@@ -139,7 +139,7 @@ def subtag_closure(subtag):
 			if subtag in ('b', 'i'):
 				if get_first_child_text(detail, subtag).strip().endswith(':'):
 					return True
-				elif unicode(detail.contents[1]).strip().startswith(':'):
+				elif len(detail.contents) > 1 and unicode(detail.contents[1]).strip().startswith(':'):
 					return True
 			if subtag in ('h1', 'h2', 'h3'):
 				if has_name(detail, subtag):
@@ -149,7 +149,7 @@ def subtag_closure(subtag):
 
 def filter_sections(section, ability=True):
 	if section:
-		#section_filter_deanonymize(section)
+		section_filter_deanonymize(section)
 		if section.has_key('sections'):
 			for s in section['sections']:
 				if section.has_key('name') and section['name'] == 'Common Terms':

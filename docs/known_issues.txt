@@ -1,4 +1,2 @@
 = Known Issues =
 * tables remain unparsed
-* spell lists sometimes contain a spurious list of classes (Ultimate Magic/Combat)
-* h1 at the end of ultimage magic/ultimate combat spell lists is screwy

@@ -1,8 +1,9 @@
 import re
+import sys
 from psrd.tables import has_table, is_table, parse_table
 from psrd.parse import construct_stripped_line, construct_line, has_name, has_first_child, get_first_child_text
 from BeautifulSoup import BeautifulSoup
-
+from BeautifulSoup import BeautifulStoneSoup
 
 def store_section(parent, context, details, name=None):
 	if name == 'description':
@@ -44,7 +45,9 @@ def set_section_text(section, context, details):
 def at_lowest(details):
 	text = construct_line(details)
 	soup = BeautifulSoup(text)
-	if has_section(subtag_closure('h2'), soup.contents):
+	if has_section(subtag_closure('h1'), soup.contents):
+		return False
+	elif has_section(subtag_closure('h2'), soup.contents):
 		return False
 	elif has_section(subtag_closure('b'), soup.contents):
 		return False
@@ -52,26 +55,56 @@ def at_lowest(details):
 
 def check_for_breakouts(section, context, text):
 	soup = BeautifulSoup(text)
-	if has_section(subtag_closure('h2'), soup.contents):
-		print "H2"
-	elif has_section(subtag_closure('b'), soup.contents):
+	if has_section(subtag_closure('h1'), soup.contents):
+		handle_titled_section(section, context, soup.contents, "h1")
+	elif has_section(subtag_closure('h2'), soup.contents):
+		handle_titled_section(section, context, soup.contents, "h2")
+	elif has_section(subtag_closure('b'), soup.contents) or has_section(subtag_closure('h3'), soup.contents):
 		handle_section(section, context, soup.contents, "b")
 	elif has_section(subtag_closure('i'), soup.contents):
 		handle_section(section, context, soup.contents, "i")
 	else:
 		section['text'] =  text
 
+def handle_titled_section(section, context, details, tag_name):
+	title = None
+	lines = []
+	for detail in details:
+		if has_name(detail, tag_name):
+			if title:
+				_handle_section_storage(section, context, lines, title)
+			else:
+				if len(lines) > 0:
+					set_section_text(section, context, lines)
+			title = ''.join(detail.findAll(text=True))
+			lines = []
+		else:
+			if not has_name(detail, 'br'):
+				lines.append(detail)
+	_handle_section_storage(section, context, lines, title)
+
 def handle_section(section, context, details, tag_name):
 	title = None
 	lines = []
 	for detail in details:
-		tag = {}
 		if has_first_child(detail, tag_name) and not (detail.has_key('align') and detail['align'] == 'center'):
-			_handle_section_storage(section, context, lines, title)
+			if title:
+				_handle_section_storage(section, context, lines, title)
+			else:
+				if len(lines) > 0:
+					set_section_text(section, context, lines)
 			title = get_first_child_text(detail, tag_name).strip()
 			if title.endswith(':'):
 				title = title[:-1]
 			lines = ["<" + detail.name + ">" + construct_line(detail.contents[1:]) + "</" + detail.name + ">"]
+		elif tag_name == 'b' and has_name(detail, 'h3'):
+			if title:
+				_handle_section_storage(section, context, lines, title)
+			else:
+				if len(lines) > 0:
+					set_section_text(section, context, lines)
+			title = ''.join(detail.findAll(text=True))
+			lines = []
 		else:
 			if not has_name(detail, 'br'):
 				lines.append(detail)
@@ -108,17 +141,26 @@ def subtag_closure(subtag):
 					return True
 				elif unicode(detail.contents[1]).strip().startswith(':'):
 					return True
+			if subtag in ('h1', 'h2', 'h3'):
+				if has_name(detail, subtag):
+					return True
 		return False
 	return is_subtag 
 
-def filter_sections(section):
+def filter_sections(section, ability=True):
 	if section:
+		#section_filter_deanonymize(section)
 		if section.has_key('sections'):
 			for s in section['sections']:
-				filter_sections(s)
-		if section['type'] == 'section':
+				if section.has_key('name') and section['name'] == 'Common Terms':
+					ability = False
+				else:
+					ability = True
+				filter_sections(s, ability)
+		if section['type'] == 'section' and ability:
 			section_filter_ability_type(section)
 		section_filter_abbrev(section)
+		section_filter_entities(section)
 
 def section_filter_ability_type(section):
 	abilities = {
@@ -157,11 +199,44 @@ def section_filter_ability_type(section):
 						section['text'] = unicode(tag)
 						return
 
+def section_filter_deanonymize(section):
+	if section.get('text') == None and section.get('description') == None:
+		sections = section.get('sections', [])
+		if len(sections) >= 1 and sections[0].get('name', '') == '' and sections[0]['type'] == 'section':
+			s = sections.pop(0)
+			if s.has_key('text'):
+				section['text'] = s['text']
+			if s.has_key('description'):
+				section['description'] = s['description']
+			if s.has_key('sections'):
+				while len(s['sections']) > 0:
+					ns = s['sections'].pop()
+					section['sections'].insert(0, ns)
+
 def section_filter_abbrev(section):
 	if section['type'] != 'spell':
 		if section.has_key('name') and section['type'] != 'table':
 			m = re.search('\s*\((.*)\)', section['name'])
 			if m:
-				section['abbrev'] = m.group(1)
-				section['name'] = re.sub('\s*\(%s\)' % m.group(1), '', section['name']).strip()
+				name = re.sub('\s*\(%s\)' % m.group(1), '', section['name']).strip()
+				if name != '':
+					section['abbrev'] = m.group(1)
+					section['name'] = re.sub('\s*\(%s\)' % m.group(1), '', section['name']).strip()
+
+def section_filter_entities(section):
+	if section.get('name') != None:
+		section['name'] = BeautifulStoneSoup(section['name'], convertEntities=BeautifulStoneSoup.HTML_ENTITIES).contents[0]
+	if section.get('description') != None:
+		section['description'] = BeautifulStoneSoup(section['description'], convertEntities=BeautifulStoneSoup.HTML_ENTITIES).contents[0]
+
+
+def print_struct(section, level=0):
+	sys.stderr.write(''.join(["-" for i in range(0, level)]))
+	if section.has_key('name'):
+		print section['name']
+	else:
+		print "<Anonymous>"
+	if section.has_key('sections'):
+		for s in section['sections']:
+			print_struct(s, level + 2)
 

@@ -8,6 +8,8 @@ def construct_stripped_line(contents, strip_start_colon=True, strip_end_colon=Tr
 		else:
 			output.append(content)
 	line = ''.join(output).strip()
+	if len(line) == 0:
+		return None
 	if line[0] == ':' and strip_start_colon:
 		line = line[1:]
 	if line.endswith(':') and strip_end_colon:
@@ -21,6 +23,8 @@ def construct_line(contents, strip_start_colon=True, strip_end_colon=True):
 	for content in contents:
 		output.append(unicode(content))
 	line = ''.join(output).strip()
+	if len(line) == 0:
+		return None
 	if line[0] == ':' and strip_start_colon:
 		line = line[1:]
 	if line.endswith(':') and strip_end_colon:

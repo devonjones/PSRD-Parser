@@ -4,7 +4,8 @@ from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.warnings import WarningReporting
 from psrd.parse import construct_line, get_subtitle, href_filter, has_name
-from psrd.sections import store_section, set_section_text, filter_sections, print_struct
+from psrd.sections import store_section, set_section_text, filter_sections
+from psrd.universal import print_struct
 
 def parse_simple_rules(book, details, name):
 	retarr = []

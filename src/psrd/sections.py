@@ -230,13 +230,88 @@ def section_filter_entities(section):
 		section['description'] = BeautifulStoneSoup(section['description'], convertEntities=BeautifulStoneSoup.HTML_ENTITIES).contents[0]
 
 
-def print_struct(section, level=0):
-	sys.stderr.write(''.join(["-" for i in range(0, level)]))
-	if section.has_key('name'):
-		print section['name']
-	else:
-		print "<Anonymous>"
+
+def is_anonymous_section(section):
+	if section['type'] == 'section':
+		if not section.has_key('name'):
+			return True
+	return False
+
+def has_subsections(section):
+	if section.has_key('section'):
+		if len(section['sections']) > 0:
+			return True
+	return False
+
+def ability_pass(section):
+	section_filter_ability_type(section)
 	if section.has_key('sections'):
 		for s in section['sections']:
-			print_struct(s, level + 2)
+			ability_pass(s)
+	return section
 
+def entity_pass(section):
+	for item in section.get('sections', []):
+		entity_pass(item)
+	if section.get('name') != None:
+		section['name'] = BeautifulStoneSoup(section['name'], convertEntities=BeautifulStoneSoup.HTML_ENTITIES).contents[0]
+		section['name'] = section['name'].replace(u'\u2013', '-')
+		if section['name'].endswith(":"):
+			section['name'] = section['name'][:-1]
+	if section.get('description') != None:
+		section['description'] = BeautifulStoneSoup(section['description'], convertEntities=BeautifulStoneSoup.HTML_ENTITIES).contents[0]
+		section['description'] = section['description'].replace(u'\u2013', '-')
+	return section
+
+def find_section(section, name=None, section_type=None):
+	if __test_name(name, section) and __test_type(section_type, section):
+		return section
+
+	for s in section.get('sections', []):
+		if section.__class__ == dict:
+			retval = find_section(s, name, section_type)
+			if retval:
+				return retval
+
+def find_all_sections(section, name=None, section_type=None):
+	if __test_name(name, section) and __test_type(section_type, section):
+		return [section]
+	retlist = []
+	for s in section.get('sections', []):
+		if section.__class__ == dict:
+			retval = find_all_sections(s, name, section_type)
+			retlist.extend(retval)
+	return retlist
+
+def add_section(top, section):
+	sections = top.setdefault('sections', [])
+	sections.append(section)
+
+def remove_section(section, rem):
+	if section.__class__ == dict:
+		for s in section.get('sections', []):
+			if s == rem:
+				section['sections'].remove(rem)
+				if len(section['sections']) == 0:
+					del section['sections']
+				return
+			else:
+				remove_section(s, rem)
+
+def __test_name(name, section):
+	if hasattr(name, 'match'):
+		m = name.match(section.get('name', '').strip())
+		if not name.match(section.get('name', '').strip()):
+			return False
+	elif name:
+		if not section.get('name') == name:
+			return False
+	return True
+
+def __test_type(section_type, section):
+	if section_type:
+		if not section.has_key('type'):
+			return False
+		if section['type'] != section_type:
+			return False
+	return True

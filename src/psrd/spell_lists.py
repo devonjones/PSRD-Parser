@@ -1,118 +1,127 @@
 import os
-import re
 import json
+import re
 from BeautifulSoup import BeautifulSoup
-from psrd.rules import parse_simple_rules, write_rules
+from psrd.rules import write_rules
 from psrd.files import char_replace
-from psrd.parse import construct_stripped_line, has_name, href_filter
-from psrd.sections import filter_sections
+from psrd.universal import parse_universal, print_struct
+from psrd.sections import ability_pass, is_anonymous_section, has_subsections, entity_pass
 
-def parse_spell_list(book, casting_class, level, rows):
+def core_structure_pass(section, filename):
+	section['name'] = 'Spell Lists'
+	sections = []
+	spell_lists = []
+	for s in section['sections']:
+		if s['name'].endswith('Spells'):
+			spell_lists.append(s)
+		elif s['name'] != 'Spells by Class':
+			sections.append(s)
+	section['sections'] = sections
+	return section, spell_lists
+
+def advanced_structure_pass(section, filename):
+	sections = []
+	spell_lists = []
+	top = section['sections'].pop(0)
+	top['name'] = "Spell Lists"
+	for s in section['sections']:
+		if s['name'].endswith('Spells'):
+			spell_lists.append(s)
+	return top, spell_lists
+
+def ultimate_magic_structure_pass(section, filename):
+	section['sections'].pop(0)
+	return None, section['sections']
+
+def spell_list_structure_pass(section, filename):
+	spell_lists = []
+	if filename in ('spellLists.html'):
+		section, spell_lists = core_structure_pass(section, filename)
+	elif filename in ('advancedSpellLists.html', 'ultimateCombatSpellLists.html'):
+		section, spell_lists = advanced_structure_pass(section, filename)
+	elif filename in ('ultimateMagicSpellLists.html'):
+		section, spell_lists = ultimate_magic_structure_pass(section, filename)
+	else:
+		del section['sections']
+		print section
+	return section, spell_lists
+
+def spell_list_name_pass(spell_lists):
+	retlists = []
+	for casting_class in spell_lists:
+		clname = casting_class['name']
+		clname = clname.replace('Spells', '').strip()
+		for sl in casting_class['sections']:
+			sl['type'] = 'spell_list'
+			sl['class'] = clname
+			m = re.search('(\d)', sl['name'])
+			sl['level'] = int(m.group(0))
+			retlists.append(sl)
+	return retlists
+
+def spell_pass(spell_list):
 	spells = []
 	school = None
 	descriptor = None
-	for row in rows:
-		material = None
-		if row.name == 'p' and has_name(row.contents[0], 'b') and len(row.contents) == 1:
-			descriptor = row.contents[0].renderContents()
-		elif row.name == 'p' and hasattr(row.contents[0], 'name'):
-			name = row.contents[0].renderContents().strip()
-			start = 1
-			for i in range(1, len(row.contents)):
-				tag = row.contents[i]
-				if unicode(tag).find(':') == 0:
-					start = i
-					break
-			if start > 1:
-				sup = row.contents[start - 1]
-				if has_name(sup, 'sup'):
-					if ''.join(sup.findAll(text=True)).strip() != '':
-						material = ''.join(sup.findAll(text=True)).strip()
-			desc = construct_stripped_line(row.contents[start:])
-			spell = {'name': name, 'description': desc}
-			if material:
-				spell['material'] = list(material)
-			if school:
-				spell['school'] = school
-			if descriptor:
-				spell['descriptor'] = descriptor
-			spells.append(spell)
-		elif row.name == 'h3':
-			school = row.renderContents()
-	spell_list = {'source': book, 'class': casting_class.strip(), 'type': 'spell_list', 'spells': spells, 'description': level.renderContents().strip()}
-	print "%s: %s" %(spell_list['source'], spell_list['description'])
-	m = re.search('(\d)', spell_list['description'])
-	spell_list['level'] = int(m.group(0))
-	filter_sections(spell_list)
+	school_type = True
+	if spell_list['class'] in ['Elementalist Wizard']:
+		school_type = False
+	for s in spell_list['sections']:
+		if s.has_key('sections'):
+			if school_type:
+				school = s['name']
+			else:
+				descriptor = s['name']
+			for ss in s['sections']:
+				soup = BeautifulSoup(ss['text'])
+				spells.append(create_spell(ss['name'], soup, school, descriptor))
+		else:
+			soup = BeautifulSoup(s['text'])
+			if ''.join(soup.findAll(text=True)) == '':
+				if school_type:
+					school = s['name']
+				else:
+					descriptor = s['name']
+			else:
+				spells.append(create_spell(s['name'], soup, school, descriptor))
+	spell_list['spells'] = spells
+	del spell_list['sections']
 	return spell_list
 
-def parse_body(div, book):
-	if len(div.contents) <= 2:
-		div = div.contents[0]
-	rules = []
-	casting_class = None
-	level = None
-	rows = []
-	spell_lists = []
-	spell_section = False
-	for tag in div.contents:
-		if not spell_section:
-			if has_name(tag, 'h1') and tag.string.endswith(' Spells'):
-				spell_section = True
-			else:
-				save = True
-				if unicode(tag).strip() == '':
-					save = False
-				if has_name(tag, 'p') and len(tag.contents) == 1:
-					subtag = tag.renderContents()
-					if subtag.endswith("Spells") or len(subtag.split(' ')) <= 2:
-						save = False
-				if hasattr(tag, 'name') and tag.name == 'h1' and tag.renderContents().lower() == 'spells by class':
-					save = False
-				if save:
-					if not has_name(tag, 'h1'):
-						rules.append(tag)
-		if spell_section:
-			if not unicode(tag).strip() == '':
-				if has_name(tag, 'h1'):
-					if casting_class:
-						spell_lists.append(parse_spell_list(book, casting_class, level, rows))
-						rows = []
-					casting_class = tag.renderContents().replace(" Spells", '')
-				elif has_name(tag, 'h2'):
-					if level:
-						spell_lists.append(parse_spell_list(book, casting_class, level, rows))
-						rows = []
-					level = tag
-				elif has_name(tag, 'h3'):
-					rows.append(tag)
-				elif has_name(tag, 'p'):
-					rows.append(tag)
-				else:
-					raise Exception("Unexpected line type: %s" % tag)
-	spell_lists.append(parse_spell_list(book, casting_class, level, rows))
-	rules = parse_simple_rules(book, rules, "Spell Lists")
-	filter_sections(rules)
-	return rules, spell_lists
+def create_spell(name, soup, school=None, descriptor=None):
+	if name.endswith(":"):
+		name = name[:-1]
+	comps = ""
+	if soup.find('sup'):
+		sup = soup.find('sup')
+		comps = sup.renderContents()
+		sup.replaceWith('')
+	desc = ''.join(soup.findAll(text=True))
+	if desc.startswith(":"):
+		desc = desc[1:].strip()
+	spell = {'name': name, 'description': desc}
+	if len(comps) > 0:
+		spell['material'] = list(comps)
+	if school:
+		spell['school'] = school
+	if descriptor:
+		spell['descriptor'] = descriptor
+	return spell
 
 def parse_spell_lists(filename, output, book):
-	fp = open(filename)
-	try:
-		soup = BeautifulSoup(fp)
-		href_filter(soup)
-		divs = soup.findAll('div')
-		for div in divs:
-			if div.has_key('id') and div['id'] == 'body':
-				rules, spell_lists = parse_body(div, book)
-				for spell_list in spell_lists:
-					filename = create_spell_list_filename(output, book, spell_list)
-					fp = open(filename, 'w')
-					json.dump(spell_list, fp, indent=4)
-					fp.close()
-				if rules:
-					write_rules(output, rules, book, "spell_lists")
-	finally:
+	struct = parse_universal(filename, output, book)
+	entity_pass(struct)
+	rules, spell_lists = spell_list_structure_pass(struct, os.path.basename(filename))
+	spell_lists = spell_list_name_pass(spell_lists)
+	for spell_list in spell_lists:
+		sl = spell_pass(spell_list)
+		print "%s: %s" %(sl['source'], sl['name'])
+		filename = create_spell_list_filename(output, book, sl)
+		fp = open(filename, 'w')
+		json.dump(sl, fp, indent=4)
 		fp.close()
+	if rules:
+		write_rules(output, rules, book, "spell_lists")
 
 def create_spell_list_filename(output, book, spell_list):
 	title = char_replace(book) + "/spell_lists/" + char_replace(spell_list['class']) + "-" + unicode(spell_list['level'])

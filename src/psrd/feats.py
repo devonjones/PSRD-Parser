@@ -1,159 +1,90 @@
 import os
-import re
 import json
+import re
 from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
-from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, get_subtitle, has_name, href_filter
-from psrd.tables import parse_table, is_table
-from psrd.sections import store_section, set_section_text, filter_sections
+from psrd.universal import parse_universal
+from psrd.sections import ability_pass, is_anonymous_section, has_subsections, entity_pass
 
-def parse_title_line(tag, book):
-	text = get_subtitle(tag)
-	m = re.search('(.*)\((.*)\)', text)
-	if m:
-		name = m.group(1).strip()
-		types = m.group(2).split(", ")
-		return {'name': name, 'source': book, 'feat_types': types, 'type': 'feat', 'sections': []}
-	else:
-		return {'name': text.strip(), 'source': book, 'type': 'feat', 'sections': []}
+def adjust_core_pass(struct, filename):
+	first = 3
+	second = 6
+	if filename in ('advancedFeats.html', 'ultimateMagicFeats.html'):
+		first = 2
+	fdesc = struct['sections'][first]
+	special = fdesc['sections'][second - 2]
+	table = special['sections'][0]
+	del special['sections']
+	fdesc['sections'].insert(second - 1, table)
+	feats = fdesc['sections'][second:]
+	del fdesc['sections'][second:]
+	sections = struct['sections']
+	struct = sections.pop(0)
+	struct['sections'] = sections
+	return struct, feats
 
-def parse_feat_descriptions(div, book):
+def adjust_ultimate_combat_pass(struct):
+	first = 3
+	second = 6
+	table = struct['sections'][2]['sections'][0]
+	fdesc = struct['sections'][first]
+	fdesc['sections'].insert(second - 1, table)
+	del struct['sections'][2]
+	feats = fdesc['sections'][second:]
+	del fdesc['sections'][second:]
+	sections = struct['sections']
+	struct = sections.pop(0)
+	struct['sections'] = sections
+	return struct, feats
+
+def adjust_feat_structure_pass(struct, filename):
 	feats = []
-	feat = None
-	field_name = 'description'
-	details = []
-	for tag in div.contents:
-		if unicode(tag).strip() != '':
-			if len(tag.contents) > 0:
-				data = tag.contents[0]
-				if has_name(tag, 'h2'):
-					if feat:
-						set_section_text(feat, ['Feats', feat['name'], field_name], details)
-						print "%s: %s" %(feat['source'], feat['name'])
-						filter_sections(feat)
-						feats.append(feat)
-					feat = parse_title_line(tag, book)
-					field_name = 'description'
-					details = []
-				elif has_name(tag, 'table') and field_name == 'description':
-					feat['sections'].append(parse_table(tag, ['Feats', feat['name']], book))
-				elif has_name(data, 'b'):
-					if field_name == 'description':
-						store_section(feat, ['Feats', feat['name'], field_name], details, field_name)
-						details = [tag]
-					else:
-						details.append(tag)
-					field_name = None
-				else:
-					details.append(tag)
-			else:
-				details.append(tag)
-	set_section_text(feat, ['Feats', feat['name'], field_name], details)
-	print "%s: %s" %(feat['source'], feat['name'])
-	filter_sections(feat)
-	feats.append(feat)
-	return feats
+	if filename in ('feats.html', 'advancedFeats.html', 'ultimateMagicFeats.html'):
+		struct, feats = adjust_core_pass(struct, filename)
+	elif filename in ('monsterFeats.html'):
+		feats = struct['sections']
+		del struct['sections']
+	elif filename in ('ultimateCombatFeats.html'):
+		struct, feats = adjust_ultimate_combat_pass(struct)
+	return struct, feats
 
-def subsection_h2_rules_parse(book, rule, section, tags, context):
-	lines = []
-	if section['name'] == 'Feat Descriptions':
-		table = None
-		for tag in tags:
-			if is_table(tag):
-				table = parse_table(tag, context[:-1], book)
-			else:
-				lines.append(tag)
-		store_section(rule, context, lines, section['name'])
-		if table:
-			rule['sections'].append(table)
-		return
-	subsections = []
-	subsection = None
-	for tag in tags:
-		if has_name(tag, 'h2'):
-			if not subsection:
-				description = construct_line(lines)
-				if description:
-					section['text'] = description
-			else:
-				section.setdefault('sections', [])
-				nc = []
-				nc.extend(context)
-				nc.append(subsection['name'])
-				store_section(section, nc, lines, subsection['name'])
-			subsection = {'name': get_subtitle(tag), 'source': book, 'type': 'section'}
-			lines = []
-		elif is_table(tag):
-			rule['sections'].append(parse_table(tag, context[:-1], book))
-		else:
-			lines.append(tag)
-	if not subsection:
-		description = construct_line(lines)
-		if description:
-			section['text'] = description
-	else:
-		section.setdefault('sections', [])
-		nc = []
-		nc.extend(context)
-		nc.append(subsection['name'])
-		store_section(section, nc, lines, subsection['name'])
-	if section.has_key('text') or section.has_key('sections'):
-		rule['sections'].append(section)
-
-def parse_body(div, book):
-	sections = []
-	feats = None
-	section = None
-	lines = []
-	rules = {'name': 'Feats', 'type': 'section', 'source': book, 'sections': []}
-	tags = [tag for tag in div.contents if unicode(tag).strip() != '']
-	if tags[0].name == 'div':
-		div = tags[0]
-	for tag in div.contents:
-		if unicode(tag).strip() != '':
-			if has_name(tag, 'h1'):
-				if section:
-					if section['name'] == 'Feats':
-						rules['text'] = construct_line(lines)
-					else:
-						subsection_h2_rules_parse(book, rules, section, lines, ["Feats", section['name']])
-				lines = []
-				section = {'name': get_subtitle(tag), 'type': 'section', 'source': book}
-			elif (hasattr(tag, 'name') and tag.name != 'div') or not hasattr(tag, 'name'):
-				lines.append(tag)
-			else:
-				name = section['name']
-				if section['type'] == 'table' or name.find('Feat Descriptions') > -1 or name.find('Monster Feats')> -1:
-					feats = parse_feat_descriptions(tag, book)
-				elif has_name(tag, 'div'):
-					for line in tag.contents:
-						if unicode(line).strip() != '':
-							lines.append(line)
-	subsection_h2_rules_parse(book, rules, section, lines, ["Feats", section['name']])
-	filter_sections(rules)
-	return rules, feats
+def feat_pass(feat):
+	feat['type'] = 'feat'
+	name = feat['name']
+	m = re.search('(.*)\s*\((.*)\)', name)
+	if m:
+		newname = m.group(1).strip()
+		types = m.group(2).split(", ")
+		feat['name'] = newname
+		feat['feat_types'] = types
+	if not feat.has_key('text') and not feat.has_key('description'):
+		for section in feat['sections']:
+			if is_anonymous_section(section) and not has_subsections(section):
+				feat['text'] = section['text']
+				feat['sections'].remove(section)
+	if feat.has_key('text') and not feat.has_key('description'):
+		soup = BeautifulSoup(feat['text'])
+		feat['description'] = ''.join(soup.findAll(text=True))
+		del feat['text']
 
 def parse_feats(filename, output, book):
-	WarningReporting().book = book
-	fp = open(filename)
-	try:
-		soup = BeautifulSoup(fp)
-		href_filter(soup)
-		divs = soup.findAll('div')
-		for div in divs:
-			if div.has_key('id') and div['id'] == 'body':
-				rules, feats = parse_body(div, book)
-				for feat in feats:
-					filename = create_feat_filename(output, book, feat)
-					fp = open(filename, 'w')
-					json.dump(feat, fp, indent=4)
-					fp.close()
-				if rules:
-					write_rules(output, rules, book, "feats")
-	finally:
+	struct = parse_universal(filename, output, book)
+	struct = entity_pass(struct)
+	rules, feats = adjust_feat_structure_pass(struct, os.path.basename(filename))
+
+	for feat in feats:
+		feat_pass(feat)
+		ability_pass(feat)
+
+	for feat in feats:
+		print "%s: %s" %(feat['source'], feat['name'])
+		filename = create_feat_filename(output, book, feat)
+		fp = open(filename, 'w')
+		json.dump(feat, fp, indent=4)
 		fp.close()
+	if rules:
+		write_rules(output, rules, book, "feats")
 
 def create_feat_filename(output, book, feat):
 	title = char_replace(book) + "/feats/" + char_replace(feat['name'])

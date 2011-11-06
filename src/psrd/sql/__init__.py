@@ -13,6 +13,14 @@ def create_section_table():
 		"  body TEXT"
 		")"])
 
+def create_feat_type_table():
+	sql = '\n'.join([
+		"CREATE TABLE sections (",
+		"  feat_type_id INTEGER PRIMARY KEY,",
+		"  section_id INTEGER NOT NULL",
+		"  feat_type TEXT"
+		")"])
+
 def create_tags_table():
 	sql = '\n'.join([
 		"CREATE TABLE tags (",

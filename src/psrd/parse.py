@@ -68,3 +68,7 @@ def href_filter(soup):
 	for href in hrefs:
 		href.replaceWith(href.renderContents())
 
+def br_filter(soup):
+	brs = soup.findAll('br')
+	for br in brs:
+		br.extract()

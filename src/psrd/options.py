@@ -1,7 +1,9 @@
 import sys
 import os
+import json
 from optparse import OptionParser
 from psrd.files import makedirs
+from psrd.sql import get_db_connection
 
 def exec_main(parser, function, localdir):
 	(options, args) = parser.parse_args()
@@ -32,10 +34,28 @@ def exec_main(parser, function, localdir):
 		else:
 			function(arg, options.output, options.book)
 
+def exec_load_main(parser, function):
+	(options, args) = parser.parse_args()
+	title = False
+	if not options.db:
+		sys.stderr.write("-d/--db required")
+		sys.exit(1)
+	for arg in args:
+		fp = open(arg, 'r')
+		struct = json.load(fp)
+		fp.close()
+		conn = get_db_connection(options.db)
+		function(options.db, conn, arg, struct)
+
 def option_parser(usage, title=False):
 	parser = OptionParser(usage=usage)
 	parser.add_option("-b", "--book", dest="book", help="Book races are from (required)")
 	parser.add_option("-o", "--output", dest="output", help="Output data directory.  Should be top level directory of psrd data. (required)")
 	if title:
 		parser.add_option("-t", "--title", dest="title", help="Title of section. (required)")
+	return parser
+
+def load_option_parser(usage):
+	parser = OptionParser(usage=usage)
+	parser.add_option("-d", "--db", dest="db", help="Sqlite DB to load into (required)")
 	return parser

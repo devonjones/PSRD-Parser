@@ -1,9 +1,9 @@
 import re
 import sys
-from psrd.tables import has_table, is_table, parse_table
-from psrd.parse import construct_stripped_line, construct_line, has_name, has_first_child, get_first_child_text
 from BeautifulSoup import BeautifulSoup
 from BeautifulSoup import BeautifulStoneSoup
+from psrd.tables import has_table, is_table, parse_table
+from psrd.parse import construct_stripped_line, construct_line, has_name, has_first_child, get_first_child_text
 
 def store_section(parent, context, details, name=None):
 	if name == 'description':

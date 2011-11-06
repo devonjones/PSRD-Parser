@@ -4,8 +4,11 @@ import re
 from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
-from psrd.universal import parse_universal
+from psrd.universal import parse_universal, print_struct
 from psrd.sections import ability_pass, is_anonymous_section, has_subsections, entity_pass
+from psrd.sql import find_section, fetch_top, append_child_section
+from psrd.sql.sections import insert_section
+from psrd.sql.feats import insert_feat_type
 
 def adjust_core_pass(struct, filename):
 	first = 3
@@ -89,3 +92,25 @@ def parse_feats(filename, output, book):
 def create_feat_filename(output, book, feat):
 	title = char_replace(book) + "/feats/" + char_replace(feat['name'])
 	return os.path.abspath(output + "/" + title + ".json")
+
+def load_feat(db, conn, filename, feat):
+	curs = conn.cursor()
+	try:
+		top = fetch_top(curs)
+		find_section(curs, feat['name'], feat['type'], feat['source'])
+		sec = curs.fetchone()
+		if sec:
+			#raise Exception("Feat already exists: %s : %s" % (feat['source'], feat['name']))
+			pass
+		else:
+			section_id = insert_section(curs, top['section_id'], feat)
+			if feat.has_key('feat_types'):
+				for feat_type in feat['feat_types']:
+					insert_feat_type(curs, section_id, feat_type)
+			else:
+				insert_feat_type(curs, section_id, 'General')
+		conn.commit()
+	finally:
+		curs.close()
+	print_struct(feat)
+

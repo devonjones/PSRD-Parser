@@ -1,53 +1,51 @@
 import os
+import re
 import json
-from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
-from psrd.warnings import WarningReporting
-from psrd.parse import construct_line, get_subtitle, href_filter, has_name
-from psrd.sections import store_section, set_section_text, filter_sections
-from psrd.universal import print_struct
+from psrd.stat_block import stat_block_pass
+from psrd.universal import parse_universal, print_struct
+from psrd.sections import ability_pass, entity_pass, find_section
 
-def parse_simple_rules(book, details, name):
-	retarr = []
-	if len(details) == 0:
-		return None
-	section = {'name': name, 'type': 'section', 'source': book}
-	set_section_text(section, [name], details)
-	return section
+def structure_pass(rules, basename):
+	if basename == 'glossary.html':
+		c = find_section(rules, name="Conditions", section_type='section')
+		for cond in c['sections']:
+			cond['subtype'] = 'condition'
+	return rules
 
-def create_title_section(title, book):
-	return {'name': title, 'source': book, 'sections': [], 'type': 'section'}
+def title_pass(rules, book, title):
+	if not rules.has_key('name'):
+		rules['name'] = title
+		return rules
+	elif title == rules['name']:
+		return rules
+	else:
+		return {'type': 'section', 'source': book, 'name': title, 'sections': [rules]}
 
-def parse_body(div, book, title):
-	top = create_title_section(title, book)
-	store_section(top, [title], div.contents)
-	filter_sections(top)
-	if len(top['sections']) == 1 and top['sections'][0].has_key('name') and top['name'] == top['sections'][0]['name']:
-		return top['sections'][0]
-	return top
+def abbrev_pass(rules):
+	m = re.search('\s*\((.*)\)', rules.get('name', ''))
+	if m:
+		name = re.sub('\s*\(%s\)' % m.group(1), '', rules['name']).strip()
+		if name != '':
+			rules['abbrev'] = m.group(1)
+			rules['name'] = re.sub('\s*\(%s\)' % m.group(1), '', rules['name']).strip()
+	for s in rules.get('sections', []):
+		abbrev_pass(s)
+	return rules
 
 def parse_rules(filename, output, book, title):
-	WarningReporting().book = book
-	fp = open(filename)
-	try:
-		soup = BeautifulSoup(fp)
-		href_filter(soup)
-		divs = soup.findAll('div')
-		for div in divs:
-			if div.has_key('id') and div['id'] == 'body':
-				if len(div.findAll('div')) > 0:
-					text = ""
-					for tag in div.contents:
-						if has_name(tag, 'div'):
-							text += tag.renderContents()
-						elif hasattr(tag, 'name'):
-							text += str(tag)
-					div = BeautifulSoup(text)
-				rules = parse_body(div, book, title)
-				print_struct(rules)
-				write_rules(output, rules, book, char_replace(title))
-	finally:
-		fp.close()
+	basename = os.path.basename(filename)
+	rules = parse_universal(filename, output, book)
+	rules = stat_block_pass(rules, book)
+	if not basename == 'glossary.html':
+		rules = ability_pass(rules)
+	rules = entity_pass(rules)
+	rules = title_pass(rules, book, title)
+	rules = structure_pass(rules, basename)
+	rules = abbrev_pass(rules)
+	print_struct(rules)
+	print "%s: %s" %(rules['source'], rules['name'])
+	write_rules(output, rules, book, title)
 
 def write_rules(output, rules, book, filename):
 	filename = create_rules_filename(output, book, filename)
@@ -56,5 +54,5 @@ def write_rules(output, rules, book, filename):
 	fp.close()
 
 def create_rules_filename(output, book, filename):
-	title = char_replace(book) + "/rules/" + filename
+	title = char_replace(book) + "/rules/" + char_replace(filename)
 	return os.path.abspath(output + "/" + title + ".json")

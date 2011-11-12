@@ -1,8 +1,7 @@
 import sys
 import re
 from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup, Tag, NavigableString
-from psrd.parse import href_filter, br_filter, has_name
-from psrd.tables2 import is_table, parse_table
+from psrd.tables import is_table, parse_table
 
 class Heading():
 	def __init__(self, level, name):
@@ -31,6 +30,24 @@ class StatBlockSection(StatBlockHeading):
 	def __repr__(self):
 		return "<StatBlockSection %s %s>" % (self.name, self.keys)
 
+def has_name(tag, name):
+	if hasattr(tag, 'name') and tag.name == name:
+		return True
+	return False
+
+def href_filter(soup):
+	hrefs = soup.findAll('a')
+	for href in hrefs:
+		body = BeautifulSoup(href.renderContents().strip())
+		if len(body.contents) == 1:
+			href.replaceWith(body.contents[0])
+		else:
+			href.replaceWith(body.renderContents())
+
+def br_filter(soup):
+	brs = soup.findAll('br')
+	for br in brs:
+		br.extract()
 def get_text(detail):
 	return ''.join(detail.findAll(text=True))
 
@@ -50,12 +67,12 @@ def table_pass(details, book):
 			retdetails.append(detail)
 	return retdetails
 
-def title_pass(details):
+def title_pass(details, max_title):
 	retdetails = []
 	for detail in details:
-		if has_name(detail, 'h1'):
+		if has_name(detail, 'h1') and max_title >= 1:
 			retdetails.append(Heading(1, get_text(detail)))
-		elif has_name(detail, 'h2'):
+		elif has_name(detail, 'h2') and max_title >= 2:
 			retdetails.append(Heading(2, get_text(detail)))
 		else:
 			retdetails.append(detail)
@@ -83,22 +100,22 @@ def title_collapse_pass(details, level, add_statblocks=True):
 			curr = detail
 	return retdetails
 
-def subtitle_pass(details):
+def subtitle_pass(details, max_title):
 	retdetails = []
 	for detail in details:
 		if hasattr(detail, 'name'):
 			if issubclass(detail.__class__, Heading):
-				detail.details = subtitle_pass(detail.details)
+				detail.details = subtitle_pass(detail.details, max_title)
 				retdetails.append(detail)
-			elif has_name(detail, 'h3'):
+			elif has_name(detail, 'h3') and max_title >= 3:
 				retdetails.append(Heading(3, get_text(detail)))
 			elif len(detail.contents) > 0:
 				subdetail = detail.contents[0]
-				if has_name(subdetail, 'b'):
+				if has_name(subdetail, 'b') and max_title >= 2:
 					if not detail.get('align', '') == 'center':
 						retdetails.append(Heading(4, get_text(subdetail)))
 						subdetail.replaceWith('')
-				elif has_name(subdetail, 'i'):
+				elif has_name(subdetail, 'i') and max_title >= 5:
 					retdetails.append(Heading(5, get_text(subdetail)))
 					subdetail.replaceWith('')
 				retdetails.append(detail)
@@ -288,28 +305,34 @@ def section_text_pass(struct, book):
 		del struct['sections']
 	return struct
 
-def parse_body(div, book, title=False):
+def parse_body(div, book, title=False, max_title=5):
 	lines = noop_pass(div.contents)
-	lines = title_pass(lines)
+	lines = title_pass(lines, max_title)
 	lines = table_pass(lines, book)
 	lines = stat_block_pass(lines)
 	lines = stat_block_collapse_pass(lines)
-	lines = subtitle_pass(lines)
-	lines = title_collapse_pass(lines, 5, add_statblocks=False)
-	lines = title_collapse_pass(lines, 4, add_statblocks=False)
-	lines = title_collapse_pass(lines, 3, add_statblocks=False)
-	lines = title_collapse_pass(lines, 2)
-	lines = title_collapse_pass(lines, 1)
+	lines = subtitle_pass(lines, max_title)
+	if max_title >= 5:
+		lines = title_collapse_pass(lines, 5, add_statblocks=False)
+	if max_title >= 4:
+		lines = title_collapse_pass(lines, 4, add_statblocks=False)
+	if max_title >= 3:
+		lines = title_collapse_pass(lines, 3, add_statblocks=False)
+	if max_title >= 2:
+		lines = title_collapse_pass(lines, 2)
+	if max_title >= 1:
+		lines = title_collapse_pass(lines, 1)
 	colon_pass(lines)
 	top = lines[0]
 	if len(lines) > 1:
 		top = create_title_section(book, title)
 		top['sections'] = lines
 	top = section_pass(top, book)
-	top = section_text_pass(top, book)
+	if top.__class__ == dict:
+		top = section_text_pass(top, book)
 	return top
 
-def parse_universal(filename, output, book, title=False):
+def parse_universal(filename, output, book, title=False, max_title=5):
 	fp = open(filename)
 	try:
 		soup = BeautifulSoup(fp)
@@ -319,7 +342,7 @@ def parse_universal(filename, output, book, title=False):
 		for div in divs:
 			if div.has_key('id') and div['id'] == 'body':
 				div = __derender_divs(div)
-				return parse_body(div, book, title)
+				return parse_body(div, book, title, max_title)
 	finally:
 		fp.close()
 

@@ -5,20 +5,22 @@ from psrd.universal import parse_universal
 from psrd.sections import entity_pass
 
 def race_pass(race):
-	race['type'] = 'race'
+	race['subtype'] = 'race'
 
-def attribute_pass(race):
+def racial_trait_pass(race):
 	traits = race['sections'][-1]
 	attributes = traits['sections'][0]
 	attributes['description'] = attributes['name']
 	attributes['name'] = 'Attributes'
+	for trait in traits['sections']:
+		trait['subtype'] = 'racial_trait'
 
 def parse_races(filename, output, book):
 	struct = parse_universal(filename, output, book)
 	struct = entity_pass(struct)
 	for race in struct['sections']:
 		race_pass(race)
-		attribute_pass(race)
+		racial_trait_pass(race)
 
 	for race in struct['sections']:
 		print "%s: %s" %(race['source'], race['name'])

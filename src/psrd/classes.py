@@ -63,6 +63,7 @@ def domain_pass(struct):
 		domains = find_all_sections(struct, name=re.compile('^.*Domain$'), section_type='section')
 		for domain in domains:
 			remove_section(struct, domain)
+			domain['subtype'] = 'cleric_domain'
 			add_section(d, domain)
 	return struct
 
@@ -77,6 +78,7 @@ def bloodline_pass(struct):
 			elif s == section:
 				collect = True
 		for bloodline in bloodlines:
+			bloodline['subtype'] = 'sorcerer_bloodline'
 			remove_section(struct, bloodline)
 			add_section(s, bloodline)
 	return struct
@@ -94,13 +96,36 @@ def arcane_school_pass(struct):
 			elif s == section:
 				collect = True
 		for school in schools:
+			school['subtype'] = 'arcane_school'
 			remove_section(struct, school)
 			add_section(s, school)
 	return struct
-	
+
+def mark_subtype_pass(struct, name, section_type, subtype):
+	s = find_section(struct, name=name, section_type=section_type)
+	if s:
+		for section in s['sections']:
+			section['subtype'] = subtype
+	return struct
+
 def core_class_pass(struct):
-	struct['type'] = 'class'
 	struct['class_type'] = 'core'
+	return struct
+	
+def npc_class_pass(struct):
+	struct['class_type'] = 'npc'
+	return struct
+	
+def base_class_pass(struct):
+	struct['class_type'] = 'base'
+	return struct
+	
+def prestige_class_pass(struct):
+	struct['class_type'] = 'prestige'
+	return struct
+	
+def class_pass(struct):
+	struct['type'] = 'class'
 	align = find_section(struct, name="Alignment", section_type='section')
 	if align:
 		remove_section(struct, align)
@@ -116,23 +141,83 @@ def core_class_pass(struct):
 		struct['hit_dice'] = hit
 	return struct
 
-def parse_core_classes(filename, output, book):
+def anon_pass(cl):
+	if not cl.has_key('name'):
+		sections = cl['sections']
+		top = sections.pop(0)
+		top['sections'].extend(sections)
+		return top
+	return cl
+
+def parse_class(cl, book):
+	cl = stat_block_pass(cl, book)
+	cl = class_pass(cl)
+	cl = domain_pass(cl)
+	cl = bloodline_pass(cl)
+	cl = arcane_school_pass(cl)
+	cl = ability_pass(cl)
+	cl = mark_subtype_pass(cl, "Discovery", "ability", "alchemist_discovery")
+	cl = mark_subtype_pass(cl, "Rage Powers", "ability", "barbarian_rage_power")
+	cl = mark_subtype_pass(cl, "Bardic Performance", "section", "bardic_performance")
+	cl = mark_subtype_pass(cl, "Deeds", "section", "gunslinger_deed")
+	cl = mark_subtype_pass(cl, "Magus Arcana", "section", "magus_arcana")
+	cl = mark_subtype_pass(cl, "Ninja Tricks", "section", "ninja_trick")
+	cl = mark_subtype_pass(cl, "Oracle's Curse", "section", "oracle_curse")
+	cl = mark_subtype_pass(cl, "Mysteries", "section", "oracle_mystery")
+	cl = mark_subtype_pass(cl, "Rogue Talents", "section", "rogue_talent")
+	cl = mark_subtype_pass(cl, "1-Point Evolutions", "section", "summoner_evolution_1")
+	cl = mark_subtype_pass(cl, "2-Point Evolutions", "section", "summoner_evolution_2")
+	cl = mark_subtype_pass(cl, "3-Point Evolutions", "section", "summoner_evolution_3")
+	cl = mark_subtype_pass(cl, "4-Point Evolutions", "section", "summoner_evolution_4")
+	cl = mark_subtype_pass(cl, "Cavalier Orders", "section", "warrior_order")
+	cl = mark_subtype_pass(cl, "Samurai Orders", "section", "warrior_order")
+	cl = mark_subtype_pass(cl, "Hex", "section", "witch_hex")
+	cl = mark_subtype_pass(cl, "Major Hex", "section", "witch_major_hex")
+	cl = mark_subtype_pass(cl, "Grand Hex", "section", "witch_grand_hex")
+	cl = mark_subtype_pass(cl, "Patron Spells", "section", "witch_patron")
+	cl = entity_pass(cl)
+	return cl
+
+def first_pass(filename, output, book):
 	struct = parse_universal(filename, output, book)
+	return struct
+
+def parse_core_classes(filename, output, book):
+	struct = first_pass(filename, output, book)
 	struct = structural_pass(struct, os.path.basename(filename))
-	struct = stat_block_pass(struct, book)
-	core_class = core_class_pass(struct)
-	core_class = domain_pass(core_class)
-	core_class = bloodline_pass(core_class)
-	core_class = arcane_school_pass(core_class)
-	core_class = ability_pass(core_class)
-	core_class = entity_pass(core_class)
-	print "%s: %s" %(core_class['source'], core_class['name'])
-	filename = create_core_class_filename(output, book, core_class)
+	core_class = parse_class(struct, book)
+	core_class = core_class_pass(core_class)
+	write_class(filename, output, book, core_class)
+
+def parse_npc_classes(filename, output, book):
+	struct = first_pass(filename, output, book)
+	for n_class in struct['sections']:
+		n_class = parse_class(n_class, book)
+		n_class = npc_class_pass(n_class)
+		write_class(filename, output, book, n_class)
+
+def parse_base_classes(filename, output, book):
+	struct = first_pass(filename, output, book)
+	struct = anon_pass(struct)
+	b_class = parse_class(struct, book)
+	b_class = base_class_pass(b_class)
+	write_class(filename, output, book, b_class)
+
+def parse_prestige_classes(filename, output, book):
+	struct = first_pass(filename, output, book)
+	struct = anon_pass(struct)
+	p_class = parse_class(struct, book)
+	p_class = prestige_class_pass(p_class)
+	write_class(filename, output, book, p_class)
+
+def write_class(filename, output, book, cl):
+	print "%s: %s" %(cl['source'], cl['name'])
+	filename = create_class_filename(output, book, cl)
 	fp = open(filename, 'w')
-	json.dump(core_class, fp, indent=4)
+	json.dump(cl, fp, indent=4)
 	fp.close()
 
-
-def create_core_class_filename(output, book, core_class):
-	title = char_replace(book) + "/core_classes/" + char_replace(core_class['name'])
+def create_class_filename(output, book, cl):
+	title = char_replace(book) + "/classes/" + char_replace(cl['name'])
 	return os.path.abspath(output + "/" + title + ".json")
+

@@ -1,10 +1,16 @@
-def create_feat_type_table(curs):
+def create_feat_types_table(curs):
 	sql = '\n'.join([
 		"CREATE TABLE feat_types (",
 		"  feat_type_id INTEGER PRIMARY KEY,",
 		"  section_id INTEGER NOT NULL,",
 		"  feat_type TEXT"
 		")"])
+	curs.execute(sql)
+
+def create_feat_types_index(curs):
+	sql = '\n'.join([
+		"CREATE INDEX feat_types_section_id",
+		" ON feat_types (section_id)"])
 	curs.execute(sql)
 
 def insert_feat_type(curs, section_id, feat_type):
@@ -19,7 +25,7 @@ def insert_feat_type(curs, section_id, feat_type):
 def delete_feat_type(curs, section_id, feat_type=None):
 	values = [section_id]
 	sqla = [
-		"DELETE FROM section_types",
+		"DELETE FROM feat_types",
 		" WHERE section_id = ?"]
 	if feat_type:
 		sqla.append("  AND feat_type = ?")

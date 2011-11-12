@@ -24,6 +24,7 @@ def parse_attr_line(text):
 
 def skill_pass(skill):
 	t = skill['sections'][0]
+	skill['type'] = 'skill'
 	skill['sections'] = t['sections']
 	soup = BeautifulSoup(t['text'])
 	skill['description'] = ''.join(soup.findAll(text=True))

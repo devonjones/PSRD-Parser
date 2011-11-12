@@ -1,6 +1,8 @@
 import os
 import sqlite3
-from psrd.sql.feats import create_feat_type_table
+from psrd.sql.abilities import create_ability_types_table, create_ability_types_index
+from psrd.sql.feats import create_feat_types_table, create_feat_types_index
+from psrd.sql.skills import create_skill_attributes_table, create_skill_attributes_index
 
 def check_db_version(curs):
 	sql = ''.join([
@@ -34,8 +36,14 @@ def create_db_v_2(conn, curs, ver):
 	if ver >= 2:
 		return ver
 	ver = 2
-	create_section_table(curs)
-	create_feat_type_table(curs)
+	create_sections_table(curs)
+	create_sections_index(curs)
+	create_feat_types_table(curs)
+	create_feat_types_index(curs)
+	create_skill_attributes_table(curs)
+	create_skill_attributes_index(curs)
+	create_ability_types_table(curs)
+	create_ability_types_index(curs)
 	section_insert_top(curs)
 	set_version(curs, ver)
 	conn.commit()
@@ -58,11 +66,12 @@ def get_db_connection(db):
 	conn.row_factory = dict_factory
 	return conn
 
-def create_section_table(curs):
+def create_sections_table(curs):
 	sql = '\n'.join([
 		"CREATE TABLE sections (",
 		"  section_id INTEGER PRIMARY KEY,",
 		"  type TEXT NOT NULL,",
+		"  subtype TEXT,",
 		"  lft INTEGER NOT NULL,",
 		"  rgt INTEGER NOT NULL,",
 		"  name TEXT,",
@@ -71,6 +80,32 @@ def create_section_table(curs):
 		"  description TEXT,",
 		"  body TEXT"
 		")"])
+	curs.execute(sql)
+
+def create_sections_index(curs):
+	sql = '\n'.join([
+		"CREATE INDEX sections_type",
+		" ON sections (type)"])
+	curs.execute(sql)
+	sql = '\n'.join([
+		"CREATE INDEX sections_subtype",
+		" ON sections (subtype)"])
+	curs.execute(sql)
+	sql = '\n'.join([
+		"CREATE INDEX sections_lft",
+		" ON sections (lft)"])
+	curs.execute(sql)
+	sql = '\n'.join([
+		"CREATE INDEX sections_rgt",
+		" ON sections (rgt)"])
+	curs.execute(sql)
+	sql = '\n'.join([
+		"CREATE INDEX sections_name",
+		" ON sections (name)"])
+	curs.execute(sql)
+	sql = '\n'.join([
+		"CREATE INDEX sections_source",
+		" ON sections (source)"])
 	curs.execute(sql)
 
 def create_tags_table(curs):
@@ -101,7 +136,7 @@ def _build_section_type(sqla, values, section_type):
 
 def fetch_top(curs):
 	sql = '\n'.join([
-		"SELECT section_id, lft, rgt, type, name, abbrev, source, description, body",
+		"SELECT section_id, lft, rgt, type, subtype, name, abbrev, source, description, body",
 		" FROM sections",
 		" WHERE lft = 1"])
 	curs.execute(sql)
@@ -110,16 +145,16 @@ def fetch_top(curs):
 def fetch_section(curs, section_id):
 	values = [section_id]
 	sql = '\n'.join([
-		"SELECT section_id, lft, rgt, type, name, abbrev, source, description, body",
+		"SELECT section_id, lft, rgt, type, subtype, name, abbrev, source, description, body",
 		" FROM sections",
 		" WHERE section_id = ?"])
 	curs.execute(sql, values)
 
-def find_section(curs, name=None, section_type=None, source=None):
+def find_section(curs, name=None, section_type=None, subtype=None, source=None):
 	values = []
 	where = " WHERE"
 	sqla = [
-		"SELECT section_id, lft, rgt, type, name, abbrev, source, description, body",
+		"SELECT section_id, lft, rgt, type, subtype, name, abbrev, source, description, body",
 		" FROM sections"]
 	if name:
 		sqla.append(where + " name = ?")
@@ -129,6 +164,10 @@ def find_section(curs, name=None, section_type=None, source=None):
 		sqla.append(where + " type = ?")
 		where = "  AND"
 		values.append(section_type)
+	if subtype:
+		sqla.append(where + " subtype = ?")
+		where = "  AND"
+		values.append(subtype)
 	if source:
 		sqla.append(where + " source = ?")
 		values.append(source)
@@ -138,7 +177,7 @@ def find_section(curs, name=None, section_type=None, source=None):
 def fetch_section_subtree(curs, parent_id, section_type=None):
 	values = [parent_id]
 	sqla = [
-		"SELECT node.section_id, node.lft, node.rgt, node.type, node.name, node.abbrev, node.source, node.description, node.body",
+		"SELECT node.section_id, node.lft, node.rgt, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body",
 		" FROM sections AS node, sections AS parent",
 		" WHERE node.lft BETWEEN parent.lft AND parent.rgt",
 		"  AND parent.section_id = ?"]
@@ -149,7 +188,7 @@ def fetch_section_subtree(curs, parent_id, section_type=None):
 
 def fetch_section_leaves(curs, parent_id):
 	sql = '\n'.join([
-		"SELECT node.section_id, node.lft, node.rgt, node.type, node.name, node.abbrev, node.source, node.description, node.body",
+		"SELECT node.section_id, node.lft, node.rgt, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body",
 		" FROM sections AS node, sections AS parent",
 		" WHERE node.lft BETWEEN parent.lft AND parent.rgt",
 		"  AND parent.section_id = ?",
@@ -160,7 +199,7 @@ def fetch_section_leaves(curs, parent_id):
 def fetch_section_path(curs, section_id):
 	values = [section_id]
 	sql = '\n'.join([
-		"SELECT parent.section_id, parent.lft, parent.rgt, parent.type, parent.name, parent.abbrev, parent.source, parent.description, parent.body",
+		"SELECT parent.section_id, parent.lft, parent.rgt, parent.type, parent.subtype, parent.name, parent.abbrev, parent.source, parent.description, parent.body",
 		" FROM sections AS node, sections AS parent",
 		" WHERE node.lft BETWEEN parent.lft AND parent.rgt",
 		"  AND node.section_id = ?",
@@ -170,7 +209,7 @@ def fetch_section_path(curs, section_id):
 def fetch_section_full_tree_depth(curs, section_type=None):
 	values = []
 	sqla = [
-		"SELECT node.section_id, node.lft, node.rgt, node.type, node.name, node.abbrev, node.source, node.description, node.body,",
+		"SELECT node.section_id, node.lft, node.rgt, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body,",
 		"  (COUNT(parent.name) - 1) AS depth",
 		" FROM sections AS node, sections AS parent",
 		" WHERE node.lft BETWEEN parent.lft AND parent.rgt"]
@@ -184,7 +223,7 @@ def fetch_section_tree_depth_indented(curs, parent_id, section_type=None):
 	parent = fetch_section(parent_id)
 	values = [parent['lft'], parent['rgt']]
 	sqla = [
-		"SELECT node.section_id, node.lft, node.rgt, node.type, SUBSTR('                              ', 0, COUNT(parent.name)) || node.name,"
+		"SELECT node.section_id, node.lft, node.rgt, node.type, node.subtype, SUBSTR('                              ', 0, COUNT(parent.name)) || node.name,"
 		"   node.abbrev, node.source, node.description, node.body, (COUNT(parent.name) - 1) AS depth",
 		" FROM sections AS node, sections AS parent",
 		" WHERE node.lft BETWEEN parent.lft AND parent.rgt",
@@ -199,7 +238,7 @@ def fetch_section_tree_depth_indented(curs, parent_id, section_type=None):
 def fetch_section_tree_depth(curs, parent_id, section_type=None, depth=None):
 	values = [parent_id]
 	sqla = [
-		"SELECT node.section_id, node.lft, node.rgt, node.type, node.name, node.abbrev, node.source, node.description, node.body,",
+		"SELECT node.section_id, node.lft, node.rgt, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body,",
 		"  (COUNT(parent.name) - (sub_tree.depth + 1)) AS depth",
 		" FROM sections AS node, sections AS parent, sections AS sub_parent, (",
 		"   SELECT node.name, (COUNT(parent.name) - 1) AS depth",
@@ -224,27 +263,27 @@ def fetch_section_tree_depth(curs, parent_id, section_type=None, depth=None):
 def fetch_immediate_subordinantes(curs, parent_id, section_type=None):
 	return fetch_section_tree_depth(curs, parent_id, section_type, 1)
 
-def insert_section_left(curs, section_id, section_type, name, abbrev, source, description, text):
+def insert_section_left(curs, section_id, section_type, subtype, name, abbrev, source, description, text):
 	fetch_section(curs, section_id)
 	section = curs.fetchone()
-	return insert_child_section(curs, section['lft'] - 1, section_type, name, abbrev, source, description, text)
+	return insert_child_section(curs, section['lft'] - 1, section_type, subtype, name, abbrev, source, description, text)
 
-def insert_section_right(curs, section_id, section_type, name, abbrev, source, description, text):
+def insert_section_right(curs, section_id, section_type, subtype, name, abbrev, source, description, text):
 	fetch_section(curs, section_id)
 	section = curs.fetchone()
-	return insert_child_section(curs, section['rgt'], section_type, name, abbrev, source, description, text)
+	return insert_child_section(curs, section['rgt'], section_type, subtype, name, abbrev, source, description, text)
 
-def append_child_section(curs, parent_id, section_type, name, abbrev, source, description, text):
+def append_child_section(curs, parent_id, section_type, subtype, name, abbrev, source, description, text):
 	fetch_section(curs, parent_id)
 	parent = curs.fetchone()
-	return insert_child_section(curs, parent['rgt'] - 1, section_type, name, abbrev, source, description, text)
+	return insert_child_section(curs, parent['rgt'] - 1, section_type, subtype, name, abbrev, source, description, text)
 
-def prepend_child_section(curs, parent_id, section_type, name, abbrev, source, description, text):
+def prepend_child_section(curs, parent_id, section_type, subtype, name, abbrev, source, description, text):
 	fetch_section(curs, parent_id)
 	parent = curs.fetchone()
-	return insert_child_section(curs, parent['lft'], section_type, name, abbrev, source, description, text)
+	return insert_child_section(curs, parent['lft'], section_type, subtype, name, abbrev, source, description, text)
 
-def insert_child_section(curs, update_above, section_type, name, abbrev, source, description, text):
+def insert_child_section(curs, update_above, section_type, subtype, name, abbrev, source, description, text):
 	values = [update_above]
 	sql = '\n'.join([
 		"UPDATE nested_category",
@@ -254,12 +293,12 @@ def insert_child_section(curs, update_above, section_type, name, abbrev, source,
 		"UPDATE nested_category",
 		" SET lft = lft + 2"
 		" WHERE lft > ?"])
-	values = [update_above, update_above, section_type, name, abbrev, source, description, text]
+	values = [update_above, update_above, section_type, subtype, name, abbrev, source, description, text]
 	sql = '\n'.join([
 		"INSERT INTO sections",
-		" (lft, rgt, type, name, abbrev, source, description, body)",
+		" (lft, rgt, type, subtype, name, abbrev, source, description, body)",
 		" VALUES",
-		"(? + 1, ? + 2, ?, ?, ?, ?, ?, ?)"])
+		"(? + 1, ? + 2, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 	return curs.lastrowid
 

@@ -1,13 +1,28 @@
 from psrd.universal import print_struct
-from psrd.sql import find_section, fetch_top, append_child_section
+from psrd.sql import find_section, fetch_top, append_child_section, fetch_section
 from psrd.sql.abilities import insert_ability_type
 from psrd.sql.feats import insert_feat_type
 from psrd.sql.skills import insert_skill_attribute
 
-def load_document(db, conn, filename, struct):
+def fetch_parent(curs, parent_name):
+	if not parent_name:
+		return fetch_top(curs)
+	else:
+		find_section(curs, name=parent_name, section_type='list')
+		parent = curs.fetchone()
+		if parent:
+			return parent
+		else:
+			top = fetch_top(curs)
+			section_id = append_child_section(curs, top['section_id'], 'list', None, parent_name, None, 'PFSRD', None, None)
+			fetch_section(curs, section_id)
+			return curs.fetchone()
+		
+
+def load_document(db, conn, filename, struct, parent):
 	curs = conn.cursor()
 	try:
-		top = fetch_top(curs)
+		top = fetch_parent(curs, parent)
 		#find_section(curs, struct.get('name'), struct['type'], struct['source'])
 		#sec = curs.fetchone()
 		section_id = insert_section(curs, top['section_id'], struct)

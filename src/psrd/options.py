@@ -45,7 +45,7 @@ def exec_load_main(parser, function):
 		struct = json.load(fp)
 		fp.close()
 		conn = get_db_connection(options.db)
-		function(options.db, conn, arg, struct)
+		function(options.db, conn, arg, struct, options.parent)
 
 def option_parser(usage, title=False):
 	parser = OptionParser(usage=usage)
@@ -58,4 +58,5 @@ def option_parser(usage, title=False):
 def load_option_parser(usage):
 	parser = OptionParser(usage=usage)
 	parser.add_option("-d", "--db", dest="db", help="Sqlite DB to load into (required)")
+	parser.add_option("-p", "--parent", dest="parent", help="Parent object to load under (default: psrd)")
 	return parser

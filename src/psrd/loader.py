@@ -1,7 +1,8 @@
 import json
 from psrd.sql import get_db_connection
 from psrd.universal import print_struct
-from psrd.sql import find_section, fetch_top, append_child_section, fetch_section
+from psrd.sections import cap_words
+from psrd.sql import find_section, fetch_top, append_child_section, fetch_section, update_section
 from psrd.sql.abilities import insert_ability_type
 from psrd.sql.feats import insert_feat_type
 from psrd.sql.skills import insert_skill_attribute
@@ -83,10 +84,8 @@ def insert_spell_records(curs, section_id, spell):
 			raise ProcessLastException(spell['parent'])
 		spell = merge_spells(orig, spell)
 	insert_spell_detail(curs, section_id, spell.get('school'), spell.get('subschool'), spell.get('casting_time'), spell.get('preparation_time'), spell.get('range'), spell.get('duration'), spell.get('saving_throw'), spell.get('spell_resistance'), spell.get('as_spell_id'))
-	for level in spell.get('levels', []):
-		magic_type = 'arcane'
-		if level['class'] in ['cleric', 'druid', 'parladin', 'ranger', 'oracle', 'inquisitor']:
-			magic_type = 'divine'
+	for level in spell.get('level', []):
+		magic_type = find_magic_type(level['class'])
 		insert_spell_list(curs, section_id, level['level'], level['class'], magic_type)
 	for component in spell.get('components', []):
 		insert_spell_component(curs, section_id, component['type'], component.get('text'), 0)
@@ -94,4 +93,105 @@ def insert_spell_records(curs, section_id, spell):
 		insert_spell_descriptor(curs, section_id, descriptor)
 	for effect in spell.get('effects', []):
 		insert_spell_effect(curs, section_id, effect['name'], effect['text'])
-	
+
+def find_magic_type(class_name):
+	magic_type = 'arcane'
+	if class_name.lower() in ['cleric', 'druid', 'parladin', 'ranger', 'oracle', 'inquisitor']:
+		magic_type = 'divine'
+	return magic_type
+
+def load_spell_list_documents(db, args, parent):
+	conn = get_db_connection(db)
+	last = []
+	for arg in args:
+		fp = open(arg, 'r')
+		struct = json.load(fp)
+		fp.close()
+		try:
+			load_spell_list_document(db, conn, arg, struct, parent)
+		except ProcessLastException, pe:
+			conn.rollback()
+			last.append((struct, arg))
+	for struct, arg in last:
+		load_document(db, conn, arg, struct, parent)
+
+def load_spell_list_document(db, conn, filename, struct, parent):
+	curs = conn.cursor()
+	try:
+		section_id = add_spell_list(curs, struct)
+		conn.commit()
+	finally:
+		curs.close()
+	print_struct(struct)
+
+def add_spell_list(curs, struct):
+	if not struct['type'] == 'spell_list':
+		raise Exception("This should only be run on spell list files")
+	if struct['class'] in ("Sorcerer/wizard", "Sorcerer/Wizard"):
+		struct['class'] = "Sorcerer"
+		add_spell_list(curs, struct)
+		struct['class'] = "Wizard"
+		add_spell_list(curs, struct)
+		return
+	struct = fix_spell_list(struct)
+	level = struct['level']
+	class_name = cap_words(struct['class'])
+	for sp in struct['spells']:
+		name = cap_words(sp['name']).strip()
+		find_section(curs, name=name, section_type='spell')
+		spell = curs.fetchone()
+		if not spell:
+			raise Exception("Cannot find spell %s" % sp['name'])
+		fetch_spell_lists(curs, spell['section_id'], class_name=class_name)
+		if not curs.fetchone():
+			magic_type = find_magic_type(class_name.lower())
+			insert_spell_list(curs, spell['section_id'], level, class_name, magic_type)
+		update_section(curs, spell['section_id'], description=sp['description'])
+
+def fix_spell_list(struct):
+	spells = struct['spells']
+	newspells = []
+	for spell in spells:
+		if spell['name'].find("Chaos/Evil/Good/Law") > -1:
+			name = spell['name'].replace("Chaos/Evil/Good/Law", "")
+			newspells.append({'name': name + "Chaos", "description": spell['description']})
+			newspells.append({'name': name + "Evil", "description": spell['description']})
+			newspells.append({'name': name + "Good", "description": spell['description']})
+			newspells.append({'name': name + "Law", "description": spell['description']})
+		elif spell['name'].find("Chaos/Evil") > -1:
+			name = spell['name'].replace("Chaos/Evil", "")
+			newspells.append({'name': name + "Chaos", "description": spell['description']})
+			newspells.append({'name': name + "Evil", "description": spell['description']})
+		elif spell['name'].find("Good/Law") > -1:
+			name = spell['name'].replace("Good/Law", "")
+			newspells.append({'name': name + "Good", "description": spell['description']})
+			newspells.append({'name': name + "Law", "description": spell['description']})
+		elif spell['name'] == "Thunderous Drums":
+			newspells.append({'name': "Thundering Drums", "description": spell['description']})
+		elif spell['name'] == "PlanarBinding, Lesser":
+			newspells.append({'name': "Planar Binding, Lesser", "description": spell['description']})
+		elif spell['name'] == "PlanarBinding, Greater":
+			newspells.append({'name': "Planar Binding, Greater", "description": spell['description']})
+		elif spell['name'] == "Lend Greater Judgment":
+			newspells.append({'name': "Lend Judgment, Greater", "description": spell['description']})
+		#elif spell['name'] == "Ghoul Touch":
+		#	newspells.append({'name': "Ghoul touch", "description": spell['description']})
+		#elif spell['name'] == "Vampiric Touch":
+		#	newspells.append({'name': "Vampiric touch", "description": spell['description']})
+		#elif spell['name'] == "Protection From Energy":
+		#	newspells.append({'name': "Protection from Energy", "description": spell['description']})
+		#elif spell['name'] == "Marks of Forbiddance":
+		#	newspells.append({'name': "Marks Of Forbiddance", "description": spell['description']})
+		#elif spell['name'] == "Silk to Steel":
+		#	newspells.append({'name': "Silk To Steel", "description": spell['description']})
+		#elif spell['name'] == "Ride the Waves":
+		#	newspells.append({'name': "Ride The Waves", "description": spell['description']})
+		#elif spell['name'] == "Transmute Blood to Acid":
+		#	newspells.append({'name': "Transmute Blood To Acid", "description": spell['description']})
+		elif spell['name'] in ("Vermin Shape II", "Interrogation, Greater", "Lightning Rod"): # This is really fucked up, get ot it later.
+			pass
+		else:
+			newspells.append(spell)
+	struct['spells'] = newspells
+	return struct
+

@@ -320,6 +320,21 @@ def insert_child_section(curs, update_above, parent_id, section_type, subtype, n
 	curs.execute(sql, values)
 	return curs.lastrowid
 
+def update_section(curs, section_id, description=None):
+	values = []
+	sqla = ["UPDATE sections"]
+	sep = " SET"
+	if description:
+		sqla.append(sep)
+		sqla.append(" description = ?")
+		sep = ", "
+		values.append(description)
+	sqla.append(" WHERE section_id = ?")
+	values.append(section_id)
+	sql = '\n'.join(sqla)
+	curs.execute(sql, values)
+	return curs.lastrowid
+
 def delete_node_with_children(curs, section_id):
 	section = fetch_section(section_id)
 	width = section['rgt'] - section['lft'] + 1

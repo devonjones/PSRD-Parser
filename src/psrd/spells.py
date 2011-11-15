@@ -1,7 +1,7 @@
 import os
 import json
 from psrd.universal import parse_universal, print_struct
-from psrd.sections import ability_pass, entity_pass
+from psrd.sections import ability_pass, entity_pass, cap_words
 from psrd.rules import write_rules
 from psrd.stat_block import stat_block_pass
 from psrd.files import char_replace
@@ -42,6 +42,11 @@ def parent_pass_out_of_file(spell):
 	if spell['name'].find(",") > -1:
 		parts = spell['name'].split(",")
 		spell['parent'] = parts[0].strip()
+
+def cap_pass(spell):
+	spell['name'] = cap_words(spell['name'])
+	for level in spell['level']:
+		level['class'] = cap_words(level['class'])
 
 def misc_fix_pass(spell):
 	if spell['name'] == 'Shadowbard':
@@ -134,10 +139,12 @@ def parse_spell(filename, output, book):
 			parent_pass_in_file(struct)
 			for spell in struct['sections']:
 				misc_fix_pass(spell)
+				cap_pass(spell)
 				write_spell(output, book, spell)
 	else:
 		parent_pass_out_of_file(struct)
 		misc_fix_pass(struct)
+		cap_pass(struct)
 		write_spell(output, book, struct)
 
 def write_spell(output, book, spell):

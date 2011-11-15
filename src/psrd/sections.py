@@ -123,3 +123,11 @@ def __test_type(section_type, section):
 		if section['type'] != section_type:
 			return False
 	return True
+
+def cap_words(st):
+	parts = st.split(" ")
+	fps = []
+	for part in parts:
+		word = part[0].upper() + part[1:]
+		fps.append(word)
+	return ' '.join(fps)

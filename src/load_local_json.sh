@@ -7,5 +7,9 @@
 ./json_loader.py -d ../local/psrd.db -p "Spells" ../local/advanced_players_guide/spells/*.json
 ./json_loader.py -d ../local/psrd.db -p "Spells" ../local/ultimate_magic/spells/*.json
 ./json_loader.py -d ../local/psrd.db -p "Spells" ../local/ultimate_combat/spells/*.json
+./spell_list_loader.py -d ../local/psrd.db ../local/core_rulebook/spell_lists/*.json
+./spell_list_loader.py -d ../local/psrd.db ../local/advanced_players_guide/spell_lists/*.json
+./spell_list_loader.py -d ../local/psrd.db ../local/ultimate_magic/spell_lists/*.json
+./spell_list_loader.py -d ../local/psrd.db ../local/ultimate_combat/spell_lists/*.json
 ./json_loader.py -d ../local/psrd.db -p "Rules" ../local/*/rules/*.json
 

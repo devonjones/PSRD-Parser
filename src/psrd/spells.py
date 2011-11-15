@@ -33,15 +33,15 @@ def parent_pass_in_file(struct):
 	parent = struct['sections'][0]
 	for spell in struct['sections']:
 		if spell != parent:
-			spell['parent'] = parent['name']
+			spell['parent'] = cap_words(parent['name'])
 		if spell['name'].find(",") > -1:
 			parts = spell['name'].split(",")
-			spell['parent'] = parts[0].strip()
+			spell['parent'] = cap_words(parts[0].strip())
 
 def parent_pass_out_of_file(spell):
 	if spell['name'].find(",") > -1:
 		parts = spell['name'].split(",")
-		spell['parent'] = parts[0].strip()
+		spell['parent'] = cap_words(parts[0].strip())
 
 def cap_pass(spell):
 	spell['name'] = cap_words(spell['name'])
@@ -96,7 +96,7 @@ def misc_fix_pass(spell):
 	elif spell['name'] == "Create Demiplane, Lesser":
 		del spell['parent']
 	elif spell['name'] == "Dance of a Thousand Cuts":
-		spell['parent'] = "Dance of a Hundred Cuts"
+		spell['parent'] = "Dance Of A Hundred Cuts"
 	elif spell['name'] == "Disguise Other":
 		spell['parent'] = "Disguise Self"
 	elif spell['name'] in ("Ice Crystal Teleport", "Interplanetary Teleport"):
@@ -110,7 +110,7 @@ def misc_fix_pass(spell):
 	elif spell['name'] == "Raise Animal Companion":
 		spell['parent'] = "Raise Dead"
 	elif spell['name'] == "Ray of Sickening":
-		spell['parent'] = "Ray of Exhaustion"
+		spell['parent'] = "Ray Of Exhaustion"
 	elif spell['name'] == "Restore Eidolon":
 		spell['parent'] = "Restoration"
 	elif spell['name'] == "Restore Eidolon, Lesser":
@@ -124,7 +124,7 @@ def misc_fix_pass(spell):
 	elif spell['name'] == "Summon Minor Monster":
 		spell['parent'] = "Summon Monster I"
 	elif spell['name'] in ("Symbol of Healing", "Symbol of Mirroring", "Symbol of Revelation", "Symbol of Scrying", "Symbol of Strife", "Symbol of Vulnerability"):
-		spell['parent'] = "Symbol of Death"
+		spell['parent'] = "Symbol Of Death"
 	elif spell['name'] == "Unholy Ice":
 		spell['parent'] = "Holy Ice"
 

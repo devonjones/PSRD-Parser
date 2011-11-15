@@ -137,7 +137,7 @@ def add_spell_list(curs, struct):
 	level = struct['level']
 	class_name = cap_words(struct['class'])
 	for sp in struct['spells']:
-		name = cap_words(sp['name']).strip()
+		name = cap_words(sp['name'].strip())
 		find_section(curs, name=name, section_type='spell')
 		spell = curs.fetchone()
 		if not spell:
@@ -174,20 +174,6 @@ def fix_spell_list(struct):
 			newspells.append({'name': "Planar Binding, Greater", "description": spell['description']})
 		elif spell['name'] == "Lend Greater Judgment":
 			newspells.append({'name': "Lend Judgment, Greater", "description": spell['description']})
-		#elif spell['name'] == "Ghoul Touch":
-		#	newspells.append({'name': "Ghoul touch", "description": spell['description']})
-		#elif spell['name'] == "Vampiric Touch":
-		#	newspells.append({'name': "Vampiric touch", "description": spell['description']})
-		#elif spell['name'] == "Protection From Energy":
-		#	newspells.append({'name': "Protection from Energy", "description": spell['description']})
-		#elif spell['name'] == "Marks of Forbiddance":
-		#	newspells.append({'name': "Marks Of Forbiddance", "description": spell['description']})
-		#elif spell['name'] == "Silk to Steel":
-		#	newspells.append({'name': "Silk To Steel", "description": spell['description']})
-		#elif spell['name'] == "Ride the Waves":
-		#	newspells.append({'name': "Ride The Waves", "description": spell['description']})
-		#elif spell['name'] == "Transmute Blood to Acid":
-		#	newspells.append({'name': "Transmute Blood To Acid", "description": spell['description']})
 		elif spell['name'] in ("Vermin Shape II", "Interrogation, Greater", "Lightning Rod"): # This is really fucked up, get ot it later.
 			pass
 		else:

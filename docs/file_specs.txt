@@ -94,7 +94,7 @@ spells:
   {see section}
   'type': 'spell'
 
-  'levels': {
+  'level': {
     'class': <name of class STRING>,
     'level': <level of spell for class, INTEGER>
   }

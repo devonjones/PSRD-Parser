@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
 from psrd.universal import parse_universal
-from psrd.sections import ability_pass, is_anonymous_section, has_subsections, entity_pass
+from psrd.sections import ability_pass, is_anonymous_section, has_subsections, entity_pass, find_section
 
 def adjust_core_pass(struct, filename):
 	first = 3
@@ -36,6 +36,8 @@ def adjust_ultimate_combat_pass(struct):
 	sections = struct['sections']
 	struct = sections.pop(0)
 	struct['sections'] = sections
+	p = find_section(struct, name="Prerequisites", section_type='section')
+	p['name'] = 'Prerequisite'
 	return struct, feats
 
 def adjust_feat_structure_pass(struct, filename):
@@ -68,6 +70,10 @@ def feat_pass(feat):
 		feat['description'] = ''.join(soup.findAll(text=True))
 		del feat['text']
 
+def monster_feat_pass(feat):
+	types = feat.setdefault('feat_types', [])
+	types.append("Monster")
+
 def parse_feats(filename, output, book):
 	struct = parse_universal(filename, output, book)
 	struct = entity_pass(struct)
@@ -76,6 +82,8 @@ def parse_feats(filename, output, book):
 	for feat in feats:
 		feat_pass(feat)
 		ability_pass(feat)
+		if rules['name'] == 'Monster Feats':
+			monster_feat_pass(feat)
 
 	for feat in feats:
 		print "%s: %s" %(feat['source'], feat['name'])

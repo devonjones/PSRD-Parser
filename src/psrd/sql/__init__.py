@@ -3,6 +3,7 @@ import sqlite3
 from psrd.sql.abilities import create_ability_types_table, create_ability_types_index
 from psrd.sql.feats import create_feat_types_table, create_feat_types_index
 from psrd.sql.skills import create_skill_attributes_table, create_skill_attributes_index
+from psrd.sql.spells import create_spell_details_table, create_spell_details_index, create_spell_lists_table, create_spell_lists_index, create_spell_descriptors_table, create_spell_descriptors_index, create_spell_components_table, create_spell_components_index, create_spell_effects_table, create_spell_effects_index
 
 def check_db_version(curs):
 	sql = ''.join([
@@ -44,6 +45,16 @@ def create_db_v_2(conn, curs, ver):
 	create_skill_attributes_index(curs)
 	create_ability_types_table(curs)
 	create_ability_types_index(curs)
+	create_spell_details_table(curs)
+	create_spell_details_index(curs)
+	create_spell_lists_table(curs)
+	create_spell_lists_index(curs)
+	create_spell_descriptors_table(curs)
+	create_spell_descriptors_index(curs)
+	create_spell_components_table(curs)
+	create_spell_components_index(curs)
+	create_spell_effects_table(curs)
+	create_spell_effects_index(curs)
 	section_insert_top(curs)
 	set_version(curs, ver)
 	conn.commit()

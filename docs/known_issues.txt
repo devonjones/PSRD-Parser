@@ -6,3 +6,144 @@
 
 = new codebase =
 * feats sometimes have an empty description.
+
+= Rule structure =
+* Getting Started
+  * Playing The Game
+  * Common Terms
+  * Generating a Character
+  * Ability Scores
+* Classes
+  * Classes
+  * #Prestige Classes
+  * Character Advancement
+* Feats
+  * # [Alternate] Feats (Advanced Player's Guide)
+  * # [Alternate] Feats (Ultimate Magic)
+  * # [Alternate] Feats (Ultimate Combat)
+  * Prerequisites
+  * Types of Feats
+    % # [Alternate] Types of Feats (Advanced Player's Guide)
+    % # [Alternate] Types of Feats (Ultimate Magic)
+    % # [Alternate] Types of Feats (Ultimate Combat)
+    % Combat Feats
+      % # [Alternate] Combat Feats (Advanced Player's Guide)
+      % # [Alternate] Combat Feats (Ultimate Magic)
+      % # [Alternate] Combat Feats (Ultimate Combat)
+    % Critical Feats
+      % # [Alternate] Critical Feats (Ultimate Magic)
+      % # [Alternate] Critical Feats (Ultimate Combat)
+    % Grit Feats (Ultimate Combat)
+    % Item Creation Feats
+    % Metamagic Feats
+      % # [Alternate] Metamagic Feats (Advanced Player's Guide)
+      % # [Alternate] Metamagic Feats (Ultimate Magic)
+      % # [Alternate] Metamagic Feats (Ultimate Combat)
+    % # Monster Feats (Bestiary)
+    % # Performance Feats (Ultimate Combat)
+    % # Style Feats (Ultimate Combat)
+    % # Teamwork Feats (Advanced Player's Guide)
+      % # [Alternate] Teamwork Feats (Ultimate Magic)
+  * Feat Descriptions
+    % # [Alternate] Feat Descriptions (Advanced Player's Guide)
+    % # [Alternate] Feat Descriptions (Ultimate Magic)
+    % # [Alternate] Feat Descriptions (Ultimate Combat)
+    % Feat Name
+      % # [Alternate] Feat Name (Advanced Player's Guide)
+      % # [Alternate] Feat Name (Ultimate Magic)
+      % # [Alternate] Feat Name (Ultimate Combat)
+    % Prerequisite
+      % # [Alternate] Prerequisite (Advanced Player's Guide)
+      % # [Alternate] Prerequisite (Ultimate Magic)
+      % # [Alternate] Prerequisites (Ultimate Combat)
+    % Benefit
+      % # [Alternate] Benefit (Advanced Player's Guide)
+      % # [Alternate] Benefit (Ultimate Magic)
+      % # [Alternate] Benefit (Ultimate Combat)
+    % Normal
+      % # [Alternate] Normal (Advanced Player's Guide)
+      % # [Alternate] Normal (Ultimate Magic)
+    % Special
+      % # [Alternate] Special (Advanced Player's Guide)
+      % # [Alternate] Special (Ultimate Magic)
+    % Feats [table]
+      % # [Alternate] Feats [table] (Advanced Player's Guide)
+      % # [Alternate] Feats [table] (Ultimate Magic)
+      % # [Alternate] Feats [table] (Ultimate Combat)
+* Using Skills
+  * Skills
+  * Acquiring Skills
+  * #Skill Descriptions
+* Equipment
+  * Wealth and money
+  * Weapons
+  * Armor
+  * Special Materials
+  * Goods and Services
+* Additional Rules
+  * Alignment
+  * Vital Statistics
+  * Movement
+  * Exploration
+* Combat
+  * How Combat Works
+  * Combat Statistics
+  * Actions In Combat
+  * Injury and Death
+  * Movement, Position And Distance
+  * Big And Little Creatures In Combat
+  * Combat Modifiers
+  * Special Attacks
+  * Special Initiative Actions
+* Magic
+  * Casting Spells
+  * Spell Descriptions
+    % ^ Spell Names
+	  % # Greater Spell Name
+	  % # Lesser Spell Name
+	  % # Mass Spell Name
+  * Arcane Spells
+  * Divine Spells
+  * Special Abilities
+  * # Spell Lists
+    % # [Alternate] Spell Lists (Advanced Player's Guide)
+    % # [Alternate] Spell Lists (Ultimate Combat)
+    % # Full Spell Lists (Advanced Player's Guide)
+    % Order of Presentation
+      % # [Alternate] Order of Presentation (Advanced Player's Guide)
+      % # [Alternate] Order of Presentation (Ultimate Combat)
+    % Hit Dice
+      % # [Alternate] Hit Dice (Advanced Player's Guide)
+      % # [Alternate] Hit Dice (Ultimate Combat)
+    % Caster Level
+      % # [Alternate] Caster Level (Advanced Player's Guide)
+      % # [Alternate] Caster Level (Ultimate Combat)
+    % Creatures and Characters
+      % # [Alternate] Creatures and Characters (Advanced Player's Guide)
+      % # [Alternate] Creatures and Characters (Ultimate Combat)
+    % # Communal Spells (Ultimate Combat)
+* Gamemastering
+  * Designing Encounters
+  * Cost of Living
+  * Beyond 20th Level
+  * #Creating NPCs
+* Environment
+  * Dungeons
+  * Traps
+  * Sample Traps
+  * Wilderness
+  * Urban Adventures
+  * Weather
+  * The Planes
+  * Environmental Rules
+* Magic Items
+  * Magic Items and Detect Magic
+  * Using Items
+  * Magic Items on the Body
+  * Saving Throws Against Magic Item Powers
+  * Damaging Magiv Items
+  * Purchasing Magic Items
+  * Magic Item Descriptions
+* Glossary
+  * Special Abilities
+  * Conditions

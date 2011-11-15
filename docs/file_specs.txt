@@ -106,7 +106,9 @@ spells:
   ],
   'school': <name of the spell's school, STRING>,
   'subschool': <name of the spell's subschool, STRING, OPTIONAL>,
-  'descriptor': <name of the spell's subschool, STRING, OPTIONAL>,
+  'descriptor': [
+    <name of the spell's descriptor, STRING, OPTIONAL>,
+  ],
   'casting_time': <casting time, STRING>,
   'preparation_time': <preparation time, STRING, OPTIONAL>,
   'range': <range, STRING>,

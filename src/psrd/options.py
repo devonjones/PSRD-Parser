@@ -3,7 +3,6 @@ import os
 import json
 from optparse import OptionParser
 from psrd.files import makedirs
-from psrd.sql import get_db_connection
 
 def exec_main(parser, function, localdir):
 	(options, args) = parser.parse_args()
@@ -40,12 +39,7 @@ def exec_load_main(parser, function):
 	if not options.db:
 		sys.stderr.write("-d/--db required")
 		sys.exit(1)
-	for arg in args:
-		fp = open(arg, 'r')
-		struct = json.load(fp)
-		fp.close()
-		conn = get_db_connection(options.db)
-		function(options.db, conn, arg, struct, options.parent)
+	function(options.db, args, options.parent)
 
 def option_parser(usage, title=False):
 	parser = OptionParser(usage=usage)

@@ -4,7 +4,7 @@ from psrd.universal import print_struct
 from psrd.sections import cap_words
 from psrd.sql import find_section, fetch_top, append_child_section, fetch_section, update_section
 from psrd.sql.abilities import insert_ability_type
-from psrd.sql.feats import insert_feat_type
+from psrd.sql.feats import insert_feat_type, insert_feat_type_description
 from psrd.sql.skills import insert_skill_attribute
 from psrd.sql.spells import insert_spell_detail, insert_spell_list, fetch_spell_lists, insert_spell_descriptor, insert_spell_component, fetch_spell_components, insert_spell_effect, fetch_complete_spell, merge_spells
 
@@ -67,8 +67,11 @@ def insert_subrecords(curs, section, section_id):
 		if section.has_key('feat_types'):
 			for feat_type in section['feat_types']:
 				insert_feat_type(curs, section_id, feat_type)
+			desc = "(" + ", ".join(section['feat_types']) + ")"
+			insert_feat_type_description(curs, section_id, desc)
 		else:
 			insert_feat_type(curs, section_id, 'General')
+			insert_feat_type_description(curs, section_id, "(General)")
 	elif section['type'] == 'skill':
 		insert_skill_attribute(curs, section_id, attribute=section['attribute'], armor_check_penalty=section.get('armor_check_penalty'), trained_only=section.get('trained_only'))
 	elif section['type'] == 'ability':

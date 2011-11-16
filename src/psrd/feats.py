@@ -51,6 +51,20 @@ def adjust_feat_structure_pass(struct, filename):
 		struct, feats = adjust_ultimate_combat_pass(struct)
 	return struct, feats
 
+def section_naming_pass(feat):
+	p = find_section(feat, name="Prerequisite", section_type='section')
+	if p != None:
+		p['name'] = 'Prerequisites'
+	b = find_section(feat, name="Benefit", section_type='section')
+	if b != None:
+		b['name'] = 'Benefits'
+	p = find_section(feat, name="Prerequisites", section_type='section')
+	if p != None:
+		soup = BeautifulSoup(p['text'])
+		p['description'] = ''.join(soup.findAll(text=True))
+		del p['text']
+	return feat
+		
 def feat_pass(feat):
 	feat['type'] = 'feat'
 	name = feat['name']
@@ -82,6 +96,7 @@ def parse_feats(filename, output, book):
 	for feat in feats:
 		feat_pass(feat)
 		ability_pass(feat)
+		section_naming_pass(feat)
 		if rules['name'] == 'Monster Feats':
 			monster_feat_pass(feat)
 

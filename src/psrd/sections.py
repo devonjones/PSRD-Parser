@@ -129,5 +129,23 @@ def cap_words(st):
 	fps = []
 	for part in parts:
 		word = part[0].upper() + part[1:]
+		word = _handle_parens(word)
+		word = _handle_slash(word)
 		fps.append(word)
 	return ' '.join(fps)
+
+def _handle_parens(st):
+	if st.find("(") > -1:
+		p = st.find("(")
+		return st[0:p + 1] + st[p + 1].upper() + st[p+2:]
+	return st
+
+def _handle_slash(st):
+	if st.find("/"):
+		parts = st.split("/")
+		fps = []
+		for part in parts:
+			word = part[0].upper() + part[1:]
+			fps.append(word)
+		return '/'.join(fps)
+	return st

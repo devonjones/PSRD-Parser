@@ -9,6 +9,8 @@ def create_spell_details_table(curs):
 		"  section_id INTEGER NO NULL,",
 		"  school TEXT NOT NULL,",
 		"  subschool TEXT,",
+		"  descriptor_text TEXT,",
+		"  level_text TEXT,",
 		"  casting_time TEXT,",
 		"  preparation_time TEXT,",
 		"  range TEXT,",
@@ -29,13 +31,28 @@ def create_spell_details_index(curs):
 		" ON spell_details (school)"])
 	curs.execute(sql)
 
-def insert_spell_detail(curs, section_id, school, subschool, casting_time, preparation_time, spell_range, duration, saving_throw, spell_resistance, as_spell_id):
-	values = [section_id, school, subschool, casting_time, preparation_time, spell_range, duration, saving_throw, spell_resistance, as_spell_id]
+def insert_spell_detail(curs, section_id, school, subschool, descriptor_text, level_text, casting_time, preparation_time, spell_range, duration, saving_throw, spell_resistance, as_spell_id):
+	values = [section_id, school, subschool, descriptor_text, level_text, casting_time, preparation_time, spell_range, duration, saving_throw, spell_resistance, as_spell_id]
 	sql = '\n'.join([
 		"INSERT INTO spell_details",
-		" (section_id, school, subschool, casting_time, preparation_time, range, duration, saving_throw, spell_resistance, as_spell_id)",
+		" (section_id, school, subschool, descriptor_text, level_text, casting_time, preparation_time, range, duration, saving_throw, spell_resistance, as_spell_id)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
+	curs.execute(sql, values)
+
+def update_spell_detail(curs, section_id, **kwargs):
+	values = []
+	sqla = [
+		"UPDATE spell_details",
+		" SET"]
+	comma = " "
+	for key in kwargs.keys():
+		sqla.append(comma + key + " = ?")
+		values.append(kwargs[key])
+		comma = ", "
+	sqla.append(" WHERE section_id = ?")
+	values.append(section_id)
+	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
 
 def delete_spell_detail(curs, section_id):
@@ -111,6 +128,7 @@ def fetch_spell_lists(curs, section_id, class_name=None):
 	if class_name:
 		sqla.append("  AND class = ?")
 		values.append(class_name)
+	sqla.append(" ORDER BY class")
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
 

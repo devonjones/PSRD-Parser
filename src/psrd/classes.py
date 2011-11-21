@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
 from psrd.universal import parse_universal, print_struct, StatBlockHeading, StatBlockSection
-from psrd.sections import ability_pass, entity_pass, find_section, find_all_sections, add_section, remove_section
+from psrd.sections import ability_pass, entity_pass, find_section, find_all_sections, add_section, remove_section, cap_words
 from psrd.stat_block import stat_block_pass
 
 def druid_animal_companion_fix(section):
@@ -149,6 +149,41 @@ def anon_pass(cl):
 		return top
 	return cl
 
+def spell_list_pass(cl):
+	field_dict = {
+		"Alchemist": "Alchemist Formulae",
+		"Inquisitor": "Inquisitor Spells",
+		"Witch": "Witch Spells",
+		"Summoner": "Summoner Spells",
+		"Magus": "Magus Spell List"
+	}
+	if cl['name'] in field_dict.keys():
+		name = field_dict[cl['name']]
+		sl = find_section(cl, name=name, section_type='section')
+		sections = sl['sections']
+		for section in sections:
+			section['type'] = 'spell_list'
+			section['class'] = cl['name']
+			m = re.search('(\d)', section['name'])
+			section['level'] = int(m.group(0))
+			soup = BeautifulSoup(section['text'])
+			text = ''.join(soup.findAll(text=True))
+			text = text.replace('&mdash;', '')
+			text = text.replace('*', '')
+			text = text.replace('.', '')
+			del section['text']
+			spells = []
+			section['spells'] = spells
+			for spell_name in text.split(", "):
+				spell_name = spell_name.strip()
+				spell_name = cap_words(spell_name)
+				spell_name = spell_name.replace(" (Mass)", ", Mass")
+				spell_name = spell_name.replace(" (Greater)", ", Greater")
+				spell_name = spell_name.replace(" (Lesser)", ", Lesser")
+				spell_name = spell_name.replace("Topoison", "To Poison")
+				spells.append({"name": spell_name})
+	return cl
+
 def parse_class(cl, book):
 	cl = stat_block_pass(cl, book)
 	cl = class_pass(cl)
@@ -175,6 +210,7 @@ def parse_class(cl, book):
 	cl = mark_subtype_pass(cl, "Major Hex", "section", "witch_major_hex")
 	cl = mark_subtype_pass(cl, "Grand Hex", "section", "witch_grand_hex")
 	cl = mark_subtype_pass(cl, "Patron Spells", "section", "witch_patron")
+	cl = spell_list_pass(cl)
 	cl = entity_pass(cl)
 	return cl
 

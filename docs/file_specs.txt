@@ -33,20 +33,10 @@ core_classes:
 {
   {see section}
   'type': 'class'
+  'subtype': <'core'|'base'|'prestige', STRING>,
 
-  'class_type': <'core'|'base'|'prestige', STRING>,
   'hit_die': <1dn STRING>,
   'alignment': <alignment STRING>
-
-  'skill_ranks_per_level': <text of skill rans STRING>,
-  'role': <text describing the class's role STRING>,
-  'class_skills': [
-    {
-      'name': <name of skill STRING>,
-      'attribute': <attribute of skill STRING>
-    },
-    ...
-  ],
 }
 
 skills:

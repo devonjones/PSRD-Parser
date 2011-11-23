@@ -4,6 +4,7 @@ from psrd.universal import print_struct
 from psrd.sections import cap_words
 from psrd.sql import find_section, fetch_top, append_child_section, fetch_section, update_section
 from psrd.sql.abilities import insert_ability_type
+from psrd.sql.classes import insert_class_detail
 from psrd.sql.feats import insert_feat_type, insert_feat_type_description
 from psrd.sql.skills import insert_skill_attribute
 from psrd.sql.spells import insert_spell_detail, update_spell_detail, insert_spell_list, fetch_spell_lists, insert_spell_descriptor, insert_spell_component, fetch_spell_components, insert_spell_effect, fetch_complete_spell, merge_spells
@@ -82,6 +83,8 @@ def insert_subrecords(curs, section, section_id):
 			insert_ability_type(curs, section_id, ability_type)
 	elif section['type'] == 'spell':
 		insert_spell_records(curs, section_id, section)
+	elif section['type'] == 'class':
+		insert_class_detail(curs, section_id, section.get('alignment'), section.get('hit_die'))
 
 def insert_spell_records(curs, section_id, spell):
 	if spell.has_key('parent'):

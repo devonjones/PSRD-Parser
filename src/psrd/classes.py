@@ -109,19 +109,19 @@ def mark_subtype_pass(struct, name, section_type, subtype):
 	return struct
 
 def core_class_pass(struct):
-	struct['class_type'] = 'core'
+	struct['subtype'] = 'core'
 	return struct
 	
 def npc_class_pass(struct):
-	struct['class_type'] = 'npc'
+	struct['subtype'] = 'npc'
 	return struct
 	
 def base_class_pass(struct):
-	struct['class_type'] = 'base'
+	struct['subtype'] = 'base'
 	return struct
 	
 def prestige_class_pass(struct):
-	struct['class_type'] = 'prestige'
+	struct['subtype'] = 'prestige'
 	return struct
 	
 def class_pass(struct):

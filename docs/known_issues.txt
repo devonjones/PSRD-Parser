@@ -144,6 +144,20 @@
   * Damaging Magiv Items
   * Purchasing Magic Items
   * Magic Item Descriptions
+  * # Armor
+  * # Weapons
+  * # Potions
+  * # Rings
+  * # Rods
+  * # Scrolls
+  * # Staves
+  * # Wands
+  * # Wonderous Items
+  * # Intelligent Items
+  * # Cursed Items
+  * # Specific Cursed Items
+  * # Artifacts
+  * # Magic Item Creation
 * Glossary
   * Special Abilities
   * Conditions

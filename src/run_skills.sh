@@ -1,3 +1,3 @@
 #!/bin/bash
-./skill_parse.py -o ../data/ -b "Core Rulebook" ~/Unison/data/websites/Pathfinder\ psrd/paizo.com/pathfinderRPG/prd/skills/*.html
+./skill_parse.py -o ../data/ -b "Core Rulebook" ../web/paizo.com/pathfinderRPG/prd/skills/*.html
 

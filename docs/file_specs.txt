@@ -145,3 +145,17 @@ afflicition:
   'onset'
 }
 
+item:
+{
+  {see section}
+  'type': 'item'
+  'subtype': 'armor|'
+
+  'aura':
+  'cl':
+  'price':
+  'weight':
+  'requirements':
+  'cost'
+}
+

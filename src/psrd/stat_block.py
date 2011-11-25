@@ -242,6 +242,47 @@ def parse_affliction(sb, book):
 		affliction_parse_function(key)(affliction, value)
 	return affliction 
 
+def is_item(sb, book):
+	fields = dict(sb.keys)
+	if fields.has_key('Aura'):
+		if fields.has_key('Slot'):
+			return True
+	return False
+
+def parse_item_slot(item, value):
+	item['subtype'] = value
+	item['slot'] = value
+
+def item_parse_function(field):
+	functions = {
+		'aura': default_closure('aura'),
+		'cl': default_closure('cl'),
+		'slot': parse_item_slot,
+		'price': default_closure('price'),
+		'weight': default_closure('weight'),
+		'requirements': default_closure('requirements'),
+		'cost': default_closure('cost'),
+	}
+	return functions[field.lower()]
+
+def parse_item(sb, book):
+	item = {'type': 'item', 'source': book, 'name': sb.name.strip()}
+	text = []
+	for key, value in sb.keys:
+		item_parse_function(key)(item, value)
+	for detail in sb.details:
+		if detail.__class__ == StatBlockSection and detail.name == "Construction":
+			for key, value in detail.keys:
+				item_parse_function(key)(item, value)
+		elif detail.__class__ == StatBlockSection:
+			sections = item.setdefault('sections', [])
+			sections.append(parse_section(detail, book))
+		else:
+			text.append(detail)
+	if len(text) > 0:
+		item['text'] = ''.join(text)
+	return item 
+
 def is_section(sb, book):
 	if len(sb.keys) == 0:
 		return True
@@ -296,6 +337,8 @@ def parse_stat_block(sb, book):
 		return parse_trap(sb, book)
 	elif is_affliction(sb):
 		return parse_affliction(sb, book)
+	elif is_item(sb, book):
+		return parse_item(sb, book)
 	elif is_section(sb, book):
 		return parse_section(sb, book)
 	else:

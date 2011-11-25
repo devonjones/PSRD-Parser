@@ -154,6 +154,8 @@ def parse_school(spell, value):
 
 def parse_level(spell, value):
 	value = colon_filter(value)
+	if value.find(";"):
+		value = value.replace(";", ",")
 	levels = value.split(', ')
 	finallevels = []
 	for level in levels:

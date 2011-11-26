@@ -1,4 +1,4 @@
-section:
+* section:
 {
   'name': <name of the section, STRING>,
   'abbrev': <abbreviated name of the section, STRING>,
@@ -21,7 +21,7 @@ table:
 
 }
 
-ability:
+* ability:
 {
   {see section}
   'type': 'ability'
@@ -29,7 +29,7 @@ ability:
   'ability_types': <Extraordinary, Supernatural.... STRING>,
 }
 
-core_classes:
+* core_classes:
 {
   {see section}
   'type': 'class'
@@ -39,7 +39,7 @@ core_classes:
   'alignment': <alignment STRING>
 }
 
-skills:
+* skills:
 {
   {see section}
   'type': 'skill'
@@ -49,7 +49,7 @@ skills:
   'trained_only': <does skill suffer from aromor check penalty? BOOLEAN>,
 }
 
-feats:
+* feats:
 {
   {see section}
   'type': 'feat'
@@ -60,7 +60,7 @@ feats:
   ]
 }
 
-spell_lists:
+* spell_lists:
 {
   {see section}
   'type': 'spell_list'
@@ -79,7 +79,7 @@ spell_lists:
   ]
 }
 
-spells:
+* spells:
 {
   {see section}
   'type': 'spell'

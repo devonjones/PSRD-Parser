@@ -172,10 +172,12 @@ def parse_level(spell, value):
 			finallevels.append({'class': c, 'level': l})
 	spell['level'] = finallevels
 
-def is_trap(sb):
+def is_trap(sb, book):
 	fields = dict(sb.keys)
 	if fields.has_key('Disable Device'):
 		# It's a trap!!!
+		return True
+	if book == 'Ultimate Magic' and sb.name.find('Trap') > -1:
 		return True
 	return False
 
@@ -203,31 +205,43 @@ def parse_trap(sb, book):
 	trap = parse_section(sb, book)
 	for key, value in sb.keys:
 		trap_parse_function(key)(trap, value)
-	names = trap['name'].split('CR')
 	trap['type'] = 'trap'
-	trap['name'] = names.pop(0).strip()
-	trap['cr'] = int(names.pop(0).strip())
+	if 'CR' in trap['name']:
+		names = trap['name'].split('CR')
+		trap['name'] = names.pop(0).strip()
+		trap['cr'] = int(names.pop(0).strip())
 	return trap
 
 def is_affliction(sb):
 	fields = dict(sb.keys)
 	if fields.has_key('Type'):
-		if fields.has_key('Cure') or fields.has_key('Frequency') or fields.has_key('Effect'):
+		if fields.has_key('Cure') or fields.has_key('Frequency') or fields.has_key('Effect') or fields.has_key('Onset'):
+			return True
+		if fields.has_key('Addiction'):
 			return True
 	return False
 
 def affliction_parse_function(field):
 	functions = {
 		'type': parse_affliction_type,
+		'addiction': parse_addiction,
+		'price': default_closure('price'),
+		'damage': default_closure('damage'),
 		'save': default_closure('save'),
 		'frequency': default_closure('frequency'),
 		'effect': default_closure('effect'),
+		'effects': default_closure('effect'),
 		'cure': default_closure('cure'),
 		'onset': default_closure('onset'),
 		'initial effect': default_closure('initial_effect'),
 		'secondary effect': default_closure('secondary_effect'),
 	}
 	return functions[field.lower()]
+
+def parse_addiction(affliction, value):
+	affliction['contracted'] = affliction['subtype']
+	affliction['subtype'] = 'addiction'
+	affliction['addiction'] = value
 
 def parse_affliction_type(affliction, value):
 	values = value.split(", ")
@@ -245,7 +259,7 @@ def parse_affliction(sb, book):
 def is_item(sb, book):
 	fields = dict(sb.keys)
 	if fields.has_key('Aura'):
-		if fields.has_key('Slot'):
+		if fields.has_key('Slot') or fields.has_key('CL'):
 			return True
 	return False
 
@@ -296,8 +310,7 @@ def parse_section(sb, book):
 	ns = None
 	for detail in sb.details:
 		if detail.__class__ == StatBlockSection:
-			print detail
-			raise Exception("Foo")
+			sections.append(parse_stat_block(detail, book))
 		elif detail.__class__ == StatBlockHeading:
 			sections.append(parse_stat_block(sb, book))
 		elif detail.__class__ == dict:
@@ -333,7 +346,7 @@ def parse_stat_block(sb, book):
 		return parse_animal_companion(sb, book)
 	elif is_spell(sb):
 		return parse_spell(sb, book)
-	elif is_trap(sb):
+	elif is_trap(sb, book):
 		return parse_trap(sb, book)
 	elif is_affliction(sb):
 		return parse_affliction(sb, book)

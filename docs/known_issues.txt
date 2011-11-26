@@ -4,8 +4,9 @@
 * need to implement a stat block parser to extract things like diseases, curses, poisons, etc
 * Druid Animal Choices are gone
 
-= new codebase =
-* feats sometimes have an empty description.
+= Unparsed =
+* NPC Gallery entries
+* Words of Power directory
 
 = Rule structure =
 * Getting Started

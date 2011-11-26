@@ -212,7 +212,10 @@ def stat_block_key_inner_parse(sb, detail, key, text):
 				store_key(sb, key, text)
 				text = []
 			elif len(text) > 0:
-				raise Exception("value with no key")
+				if len(sb.keys) == 0:
+					store_key(sb, 'descriptor', text)
+				else:
+					raise Exception("value with no key")
 			key = ''.join(element.findAll(text=True))
 		else:
 			if hasattr(element, 'name'):

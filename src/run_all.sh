@@ -2,6 +2,8 @@
 mkdir -p ../data
 rm -rf ../data/*
 
+cp -r ../structure/* ../data
+
 ./run_classes.sh
 ./run_feats.sh
 ./run_races.sh

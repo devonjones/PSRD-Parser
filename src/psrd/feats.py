@@ -90,7 +90,7 @@ def monster_feat_pass(feat):
 
 def parse_feats(filename, output, book):
 	struct = parse_universal(filename, output, book)
-	struct = entity_pass(struct)
+	#struct = entity_pass(struct)
 	rules, feats = adjust_feat_structure_pass(struct, os.path.basename(filename))
 
 	for feat in feats:

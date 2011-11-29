@@ -110,7 +110,7 @@ def create_spell(name, soup, school=None, descriptor=None):
 
 def parse_spell_lists(filename, output, book):
 	struct = parse_universal(filename, output, book)
-	entity_pass(struct)
+	#entity_pass(struct)
 	rules, spell_lists = spell_list_structure_pass(struct, os.path.basename(filename))
 	spell_lists = spell_list_name_pass(spell_lists)
 	for spell_list in spell_lists:

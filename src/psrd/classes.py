@@ -211,7 +211,7 @@ def parse_class(cl, book):
 	cl = mark_subtype_pass(cl, "Grand Hex", "section", "witch_grand_hex")
 	cl = mark_subtype_pass(cl, "Patron Spells", "section", "witch_patron")
 	cl = spell_list_pass(cl)
-	cl = entity_pass(cl)
+	#cl = entity_pass(cl)
 	return cl
 
 def first_pass(filename, output, book):
@@ -225,8 +225,28 @@ def parse_core_classes(filename, output, book):
 	core_class = core_class_pass(core_class)
 	write_class(filename, output, book, core_class)
 
+def npc_structure_pass(struct):
+	if not struct.has_key('name'):
+		struct['name'] = 'Adept'
+		new = []
+		old = [struct]
+		do_old = False
+		for section in struct['sections']:
+			if do_old:
+				old.append(section)
+			else:
+				if section['name'] == 'Aristocrat':
+					do_old = True
+					old.append(section)
+				else:
+					new.append(section)
+		struct['sections'] = new
+		return {'sections': old}
+	return struct
+
 def parse_npc_classes(filename, output, book):
 	struct = first_pass(filename, output, book)
+	struct = npc_structure_pass(struct)
 	for n_class in struct['sections']:
 		n_class = parse_class(n_class, book)
 		n_class = npc_class_pass(n_class)

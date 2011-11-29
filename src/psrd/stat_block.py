@@ -1,5 +1,5 @@
 import re
-from psrd.universal import StatBlockHeading, StatBlockSection, Heading
+from psrd.universal import StatBlockHeading, StatBlockSection, Heading, filter_name
 
 def colon_filter(value):
 	if value.startswith(":"):
@@ -33,13 +33,13 @@ def animal_companion_parse_function(field):
 	return functions[field.lower()]
 
 def parse_animal_companion(sb, book):
-	ac = {'type': 'animal_companion', 'source': book, 'name': sb.name.strip(), 'sections': []}
+	ac = {'type': 'animal_companion', 'source': book, 'name': filter_name(sb.name.strip()), 'sections': []}
 	text = []
 	for key, value in sb.keys:
 		animal_companion_parse_function(key)(ac, value)
 	for detail in sb.details:
 		if detail.__class__ == StatBlockSection and detail.name.endswith('th-Level Advancement'):
-			advancement = {'level': detail.name, 'source': book, 'type': 'animal_companion', 'name': ac['name']}
+			advancement = {'level': detail.name, 'source': book, 'type': 'animal_companion', 'name': filter_name(ac['name'])}
 			for key, value in detail.keys:
 				animal_companion_parse_function(key)(advancement, value)
 			ac['sections'].append(advancement)
@@ -101,7 +101,7 @@ def effect_closure(field):
 	def fxn(spell, value):
 		value = colon_filter(value)
 		effect = spell.setdefault('effects', [])
-		effect.append({'name': field, 'text': value})
+		effect.append({'name': filter_name(field), 'text': value})
 	return fxn
 
 def parse_casting_time(spell, value):
@@ -208,7 +208,7 @@ def parse_trap(sb, book):
 	trap['type'] = 'trap'
 	if 'CR' in trap['name']:
 		names = trap['name'].split('CR')
-		trap['name'] = names.pop(0).strip()
+		trap['name'] = filter_name(names.pop(0).strip())
 		trap['cr'] = int(names.pop(0).strip())
 	return trap
 
@@ -280,7 +280,7 @@ def item_parse_function(field):
 	return functions[field.lower()]
 
 def parse_item(sb, book):
-	item = {'type': 'item', 'source': book, 'name': sb.name.strip()}
+	item = {'type': 'item', 'source': book, 'name': filter_name(sb.name.strip())}
 	text = []
 	for key, value in sb.keys:
 		item_parse_function(key)(item, value)
@@ -303,7 +303,7 @@ def is_section(sb, book):
 	return False
 
 def parse_section(sb, book):
-	section = {'type': 'section', 'source': book, 'name': sb.name.strip()}
+	section = {'type': 'section', 'source': book, 'name': filter_name(sb.name.strip())}
 	text = []
 	sections = []
 	sectiontext = []
@@ -323,7 +323,7 @@ def parse_section(sb, book):
 			if len(sectiontext) > 0:
 				ns['text'] = ''.join(sectiontext)
 				sectiontext = []
-			ns = {'type': 'section', 'source': book, 'name': detail.name}
+			ns = {'type': 'section', 'source': book, 'name': filter_name(detail.name)}
 			sections.append(ns)
 		else:
 			if len(sections) == 0:

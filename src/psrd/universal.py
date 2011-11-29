@@ -38,7 +38,7 @@ def has_name(tag, name):
 def href_filter(soup):
 	hrefs = soup.findAll('a')
 	for href in hrefs:
-		body = BeautifulSoup(href.renderContents().strip())
+		body = BeautifulSoup(href.renderContents())
 		if len(body.contents) == 1:
 			href.replaceWith(body.contents[0])
 		else:
@@ -247,7 +247,7 @@ def stat_block_preparse(sb):
 def create_title_section(book, title):
 	top = {'source': book, 'sections': [], 'type': 'section'}
 	if title:
-		top['name'] = title
+		top['name'] = filter_name(title)
 	return top
 
 def section_pass(struct, book):
@@ -260,10 +260,16 @@ def section_pass(struct, book):
 		for d in struct.details:
 			proclist.append(section_pass(d, book))
 		oldstruct = struct
-		struct = {'name': oldstruct.name, 'type': 'section', 'source': book, }
+		struct = {'name': filter_name(oldstruct.name), 'type': 'section', 'source': book, }
 		if len(proclist) > 0:
 			struct['sections'] = proclist
 	return struct
+
+def filter_name(name):
+	name = name.strip()
+	if name[-1] == ':':
+		name = name[0:-1]
+	return name.strip()
 
 # Adds text to sections
 def section_text_pass(struct, book):

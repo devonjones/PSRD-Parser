@@ -171,27 +171,16 @@ def fetch_section(curs, section_id):
 		" WHERE section_id = ?"])
 	curs.execute(sql, values)
 
-def find_section(curs, name=None, section_type=None, subtype=None, source=None):
+def find_section(curs, **kwargs):
 	values = []
-	where = " WHERE"
+	where = " WHERE "
 	sqla = [
 		"SELECT section_id, lft, rgt, type, subtype, name, abbrev, source, description, body",
 		" FROM sections"]
-	if name:
-		sqla.append(where + " name = ?")
-		where = "  AND"
-		values.append(name)
-	if section_type:
-		sqla.append(where + " type = ?")
-		where = "  AND"
-		values.append(section_type)
-	if subtype:
-		sqla.append(where + " subtype = ?")
-		where = "  AND"
-		values.append(subtype)
-	if source:
-		sqla.append(where + " source = ?")
-		values.append(source)
+	for key in kwargs.keys():
+		sqla.append(where + key + " = ?")
+		values.append(kwargs[key])
+		where = "  AND "
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
 

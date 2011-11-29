@@ -35,7 +35,7 @@ def skill_pass(skill):
 
 def parse_skills(filename, output, book):
 	skill = parse_universal(filename, output, book)
-	skill = entity_pass(skill)
+	#skill = entity_pass(skill)
 	skill_pass(skill)
 	print "%s: %s" %(skill['source'], skill['name'])
 	filename = create_skill_filename(output, book, skill)

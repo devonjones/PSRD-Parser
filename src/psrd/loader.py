@@ -1,4 +1,5 @@
 import json
+import os
 from psrd.sql import get_db_connection
 from psrd.universal import print_struct
 from psrd.sections import cap_words
@@ -20,7 +21,7 @@ def fetch_parent(curs, parent_name):
 	if not parent_name:
 		return fetch_top(curs)
 	else:
-		find_section(curs, name=parent_name, section_type='list')
+		find_section(curs, name=parent_name, type='list')
 		parent = curs.fetchone()
 		if parent:
 			return parent
@@ -154,7 +155,7 @@ def add_spell_list(curs, struct):
 	class_name = cap_words(struct['class'])
 	for sp in struct['spells']:
 		name = cap_words(sp['name'].strip())
-		find_section(curs, name=name, section_type='spell')
+		find_section(curs, name=name, type='spell')
 		spell = curs.fetchone()
 		if not spell:
 			raise Exception("Cannot find spell %s" % name)
@@ -201,24 +202,12 @@ def fix_spell_list(struct):
 			newspells.append(_rename_spell("Ethereal Jaunt", spell))
 		elif spell['name'] == "Thunderous Drums":
 			newspells.append(_rename_spell("Thundering Drums", spell))
-		elif spell['name'].lower() == "planarbinding, lesser":
-			newspells.append(_rename_spell("Planar Binding, Lesser", spell))
-		elif spell['name'].lower() == "planarbinding, greater":
-			newspells.append(_rename_spell("Planar Binding, Greater", spell))
+		#elif spell['name'].lower() == "planarbinding, lesser":
+		#	newspells.append(_rename_spell("Planar Binding, Lesser", spell))
+		#elif spell['name'].lower() == "planarbinding, greater":
+		#	newspells.append(_rename_spell("Planar Binding, Greater", spell))
 		elif spell['name'] == "Lend Greater Judgment":
 			newspells.append(_rename_spell("Lend Judgment, Greater", spell))
-		elif spell['name'] == "Corruptionresistance":
-			newspells.append(_rename_spell("Corruption Resistance", spell))
-		elif spell['name'] == "Cat'sgrace, Mass":
-			newspells.append(_rename_spell("Cat's Grace, Mass", spell))
-		elif spell['name'] == "Fox'scunning, Mass":
-			newspells.append(_rename_spell("Fox's Cunning, Mass", spell))
-		elif spell['name'] == "Unwillingshield":
-			newspells.append(_rename_spell("Unwilling Shield", spell))
-		elif spell['name'] == "Banishseeming":
-			newspells.append(_rename_spell("Banish Seeming", spell))
-		elif spell['name'] == "Sharedwrath":
-			newspells.append(_rename_spell("Shared Wrath", spell))
 		elif spell['name'] == "Greater Magic Weapon":
 			newspells.append(_rename_spell("Magic Weapon, Greater", spell))
 		elif spell['name'] in ("Vermin Shape II", "Interrogation, Greater", "Lightning Rod"): # This is really fucked up, get ot it later.
@@ -232,3 +221,45 @@ def _rename_spell(name, spell):
 	newspell = spell.copy()
 	newspell['name'] = name
 	return newspell
+
+def process_structure_node(curs, filename, parent, struct):
+	section = None
+	if struct.has_key('file'):
+		jsonfile = os.path.dirname(filename) + "/" + struct['file']
+		fp = open(jsonfile, 'r')
+		data = json.load(fp)
+		fp.close()
+		section_id = insert_section(curs, parent['section_id'], data)
+		fetch_section(curs, section_id)
+		section = curs.fetchone()
+	else:
+		find_section(curs, name=struct['name'], parent_id=parent['section_id'])
+		section = curs.fetchone()
+		if not section:
+			section_id = append_child_section(curs, parent['section_id'], 'list', None, struct['name'], None, 'PFSRD', None, None)
+			fetch_section(curs, section_id)
+			section = curs.fetchone()
+	for child in struct.get('children', []):
+		process_structure_node(curs, filename, section, child)
+	
+def load_rule_structure_document(db, conn, filename, struct):
+	curs = conn.cursor()
+	try:
+		find_section(curs, name=struct['name'])
+		parent = curs.fetchone()
+		if struct.has_key('file'):
+			print struct['file']
+		for child in struct['children']:
+			process_structure_node(curs, filename, parent, child) 
+		conn.commit()
+	finally:
+		curs.close()
+	print_struct(struct)
+
+def load_rule_structure_documents(db, args, parent):
+	conn = get_db_connection(db)
+	for arg in args:
+		fp = open(arg, 'r')
+		struct = json.load(fp)
+		fp.close()
+		load_rule_structure_document(db, conn, arg, struct)

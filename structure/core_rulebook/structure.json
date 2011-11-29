@@ -1,0 +1,74 @@
+{
+  "name": "PFSRD",
+  "children": [
+    {
+      "name": "Rules: Core Rulebook",
+      "children": [
+        {"name": "Getting Started", "file": "rules/getting_started.json"},
+        {
+          "name": "Classes",
+          "file": "rules/classes.json",
+          "children": [
+            {"name": "Prestige Classes", "file": "rules/prestige_classes.json"}
+          ]
+        },
+        {
+          "name": "Using Skills",
+          "file": "rules/using_skills.json",
+          "children": [
+            {"name": "Skill Descriptions", "file": "rules/skill_descriptions.json"}
+          ]
+        },
+        {"name": "Feats", "file": "rules/feats.json"},
+        {"name": "Equipment", "file": "rules/equipment.json"},
+        {"name": "Additional Rules", "file": "rules/additional_rules.json"},
+        {"name": "Combat", "file": "rules/combat.json"},
+        {"name": "Magic", "file": "rules/magic.json"},
+        {
+          "name": "Spells",
+          "children": [
+          {
+            "name": "Spell Names",
+            "children": [
+                {"name": "", "file": "rules/greater_spell_name.json"},
+                {"name": "", "file": "rules/lesser_spell_name.json"},
+                {"name": "", "file": "rules/mass_spell_name.json"}
+              ]
+            },
+            {"name": "", "file": "rules/spell_lists.json"}
+          ]
+        },
+        {
+          "name": "Gamemastering",
+          "file": "rules/gamemastering.json",
+          "children": [
+            {"name": "Creating NPCs", "file": "rules/creating_npcs.json"}
+          ]
+        },
+        {"name": "Environment", "file": "rules/environment.json"},
+        {
+          "name": "Magic Items",
+          "file": "rules/magic_items.json",
+          "children": [
+            {"name": "Armor", "file": "rules/armor.json"},
+            {"name": "Weapons", "file": "rules/weapons.json"},
+            {"name": "Potions", "file": "rules/potions.json"},
+            {"name": "Rings", "file": "rules/rings.json"},
+            {"name": "Rods", "file": "rules/rods.json"},
+            {"name": "Scrolls", "file": "rules/scrolls.json"},
+            {"name": "Staves", "file": "rules/staves.json"},
+            {"name": "Wands", "file": "rules/wands.json"},
+            {"name": "Wonderous Items", "file": "rules/wonderous_items.json"},
+            {"name": "Intelligent Items", "file": "rules/intelligent_items.json"},
+            {"name": "Cursed Items", "file": "rules/cursed_items.json"},
+            {"name": "Specific Cursed Items", "file": "rules/specific_cursed_items.json"},
+            {"name": "Artifacts", "file": "rules/artifacts.json"},
+            {"name": "Magic Item Creation", "file": "rules/magic_item_creation.json"}
+          ]
+        },
+        {"name": "Glossary", "file": "rules/glossary.json"}
+      ]
+    }
+  ]
+}
+

@@ -2,8 +2,8 @@ import os
 import re
 import json
 from psrd.files import char_replace
-from psrd.stat_block import stat_block_pass
-from psrd.universal import parse_universal, print_struct
+from psrd.stat_block import stat_block_pass, parse_section
+from psrd.universal import parse_universal, print_struct, StatBlockHeading
 from psrd.sections import ability_pass, entity_pass, find_section
 
 def structure_pass(rules, basename):
@@ -11,6 +11,14 @@ def structure_pass(rules, basename):
 		c = find_section(rules, name="Conditions", section_type='section')
 		for cond in c['sections']:
 			cond['subtype'] = 'condition'
+	elif basename == 'rods.html':
+		newsections = []
+		for section in rules['sections']:
+			if section.__class__ == StatBlockHeading:
+				newsections.append(parse_section(section, rules['source']))
+			else:
+				newsections.append(section)
+		rules['sections'] = newsections
 	return rules
 
 def title_pass(rules, book, title):
@@ -37,11 +45,11 @@ def parse_rules(filename, output, book, title):
 	basename = os.path.basename(filename)
 	rules = parse_universal(filename, output, book)
 	rules = stat_block_pass(rules, book)
+	rules = structure_pass(rules, basename)
 	if not basename == 'glossary.html':
 		rules = ability_pass(rules)
-	rules = entity_pass(rules)
+	#rules = entity_pass(rules)
 	rules = title_pass(rules, book, title)
-	rules = structure_pass(rules, basename)
 	rules = abbrev_pass(rules)
 	print_struct(rules)
 	print "%s: %s" %(rules['source'], rules['name'])

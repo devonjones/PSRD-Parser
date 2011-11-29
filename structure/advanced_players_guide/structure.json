@@ -1,0 +1,51 @@
+{
+  "name": "PFSRD",
+  "children": [
+    {
+      "name": "Rules: Advanced Player's Guide",
+      "children": [
+        {"name": "Races", "file": "rules/races.json"},
+        {"name": "Base Classes", "file": "rules/base_classes.json"},
+        {
+          "name": "Core Classes",
+          "file": "rules/core_classes.json",
+          "children": [
+            {"name": "Barbarian", "file": "rules/barbarian.json"},
+            {"name": "Bard", "file": "rules/bard.json"},
+            {"name": "Cleric", "file": "rules/cleric.json"},
+            {"name": "Druid", "file": "rules/druid.json"},
+            {"name": "Fighter", "file": "rules/fighter.json"},
+            {"name": "Monk", "file": "rules/monk.json"},
+            {"name": "Paladin", "file": "rules/paladin.json"},
+            {"name": "Ranger", "file": "rules/ranger.json"},
+            {"name": "Rogue", "file": "rules/rogue.json"},
+            {"name": "Sorcerer", "file": "rules/sorcerer.json"},
+            {"name": "Wizard", "file": "rules/wizard.json"}
+          ]
+        },
+        {"name": "Prestige Classes", "file": "rules/prestige_classes.json"},
+        {"name": "Gear", "file": "rules/gear.json"},
+        {"name": "Feats", "file": "rules/feats.json"},
+        {"name": "Equipment", "file": "rules/equipment.json"},
+        {
+          "name": "Magic Items",
+          "file": "rules/magic_items.json",
+          "children": [
+            {"name": "Armor", "file": "rules/armor.json"},
+            {"name": "Weapons", "file": "rules/weapons.json"},
+            {"name": "Rings", "file": "rules/rings.json"},
+            {"name": "Rods", "file": "rules/rods.json"},
+            {"name": "Staves", "file": "rules/staves.json"},
+            {"name": "Wonderous Items", "file": "rules/wonderous_items.json"},
+            {"name": "Cursed Items", "file": "rules/cursed_items.json"},
+            {"name": "Minor Artifacts", "file": "rules/minor_artifacts.json"},
+            {"name": "Major Artifacts", "file": "rules/major_artifacts.json"}
+          ]
+        },
+        {"name": "Spell Lists", "file": "rules/spell_lists.json"},
+        {"name": "New Rules", "file": "rules/new_rules.json"}
+      ]
+    }
+  ]
+}
+

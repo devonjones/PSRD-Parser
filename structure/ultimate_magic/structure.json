@@ -1,0 +1,44 @@
+{
+  "name": "PFSRD",
+  "children": [
+    {
+      "name": "Rules: Ultimate Magic",
+      "children": [
+        {
+          "name": "Spellcasting Class Options",
+          "file": "rules/spellcasting_class_options.json",
+          "children": [
+            {"name": "Bard", "file": "rules/bard.json"},
+            {"name": "Cleric", "file": "rules/cleric.json"},
+            {"name": "Druid", "file": "rules/druid.json"},
+            {"name": "Inquisitor", "file": "rules/inquisitor.json"},
+            {"name": "Magus", "file": "rules/magus.json"},
+            {"name": "Monk", "file": "rules/monk.json"},
+            {"name": "Oracle", "file": "rules/oracle.json"},
+            {"name": "Paladin", "file": "rules/paladin.json"},
+            {"name": "Ranger", "file": "rules/ranger.json"},
+            {"name": "Sorcerer", "file": "rules/sorcerer.json"},
+            {"name": "Summoner", "file": "rules/summoner.json"},
+            {"name": "Witch", "file": "rules/witch.json"}
+            {"name": "Wizard", "file": "rules/wizard.json"}
+          ]
+        },
+        {
+          "name": "Mastering Magic",
+          "file": "rules/mastering_magic.json",
+          "children": [
+            {"name": "Spellblights", "file": "rules/spellblights.json"},
+            {"name": "Spell Duels", "file": "rules/spell_duels.json"},
+            {"name": "Binding Outsiders", "file": "rules/binding_outsiders.json"},
+            {"name": "Designing Spells", "file": "rules/designing_spells.json"}
+          ]
+        },
+        {"name": "Feats", "file": "rules/feats.json"},
+        {"name": "Words of Power", "file": "rules/words_of_power.json"},
+        {"name": "Spell Lists", "file": "rules/spell_lists.json"},
+        {"name": "Updates", "file": "rules/updates.json"}
+      ]
+    }
+  ]
+}
+

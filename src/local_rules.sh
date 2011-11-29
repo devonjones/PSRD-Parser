@@ -112,6 +112,12 @@
 ./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Performance Combat"          ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/combat/performanceCombat.html
 ./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Siege Engines"               ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/combat/siegeEngines.html
 #./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Vehicles"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/ultimateCombatVehicles.html
+./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Variant Rules"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/introduction.html
+./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Armor as Damage Reduction"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/armorAsDamageReduction.html
+./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Called Shots"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/calledShots.html
+./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Piecemeal Armor"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/piecemealArmor.html
+./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Wounds and Vigor"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/woundsAndVigor.html
+
 
 # Game Mastery Guide
 ./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Chases"                ../web/paizo.com/pathfinderRPG/prd/mastery/chases.html

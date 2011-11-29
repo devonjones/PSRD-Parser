@@ -1,0 +1,57 @@
+{
+  "name": "PFSRD",
+  "children": [
+    {
+      "name": "Rules: Ultimate Combat",
+      "children": [
+        {
+          "name": "Class Archtypes",
+          "file": "rules/class_archtypes.json",
+          "children": [
+            {"name": "Alchemist", "file": "rules/alchemist.json"},
+            {"name": "Barbarian", "file": "rules/barbarian.json"},
+            {"name": "Bard", "file": "rules/bard.json"},
+            {"name": "Cavalier", "file": "rules/cavalier.json"},
+            {"name": "Cleric", "file": "rules/cleric.json"},
+            {"name": "Druid", "file": "rules/druid.json"},
+            {"name": "Fighter", "file": "rules/fighter.json"},
+            {"name": "Gunslinger", "file": "rules/gunslinger.json"},
+            {"name": "Inquisitor", "file": "rules/inquisitor.json"},
+            {"name": "Magus", "file": "rules/magus.json"},
+            {"name": "Monk", "file": "rules/monk.json"},
+            {"name": "Paladin", "file": "rules/paladin.json"},
+            {"name": "Ranger", "file": "rules/ranger.json"},
+            {"name": "Rogue", "file": "rules/rogue.json"},
+            {"name": "Wizard", "file": "rules/wizard.json"}
+          ]
+        },
+        {"name": "Feats", "file": "rules/feats.json"},
+        {
+          "name": "Mastering Combat",
+          "file": "rules/mastering_magic.json",
+          "children": [
+            {"name": "Eastern Armor and Weapons", "file": "rules/eastern_armor_and_weapons.json"},
+            {"name": "Firearms", "file": "rules/firearms.json"},
+            {"name": "Gladiator Weapons", "file": "rules/gladiator_weapons.json"},
+            {"name": "Primitive Armor and Weapons", "file": "rules/primitive_armor_and_weapons.json"},
+            {"name": "Duels", "file": "rules/duels.json"},
+            {"name": "Performance Combat", "file": "rules/performance_combat.json"},
+            {"name": "Siege Engines", "file": "rules/siege_engines.json"}
+          ]
+        },
+        {
+          "name": "Variant Rules",
+          "file": "rules/variant_rules.json",
+          "children": [
+            {"name": "Armor as Damage Reduction", "file": "rules/armor_as_damage_reduction.json"},
+            {"name": "Called Shots", "file": "rules/called_shots.json"},
+            {"name": "Piecemeal Armor", "file": "rules/piecemeal_armor.json"},
+            {"name": "Wounds and Vigor", "file": "rules/wounds_and_vigor.json"}
+          ]
+        },
+        {"name": "Spell Lists", "file": "rules/spell_lists.json"}
+      ]
+    }
+  ]
+}
+

@@ -8,8 +8,8 @@
         {"name": "Base Classes", "file": "rules/base_classes.json"},
         {
           "name": "Core Classes",
-          "file": "rules/core_classes.json",
           "children": [
+            {"name": "Core Classes", "file": "rules/core_classes.json"},
             {"name": "Barbarian", "file": "rules/barbarian.json"},
             {"name": "Bard", "file": "rules/bard.json"},
             {"name": "Cleric", "file": "rules/cleric.json"},
@@ -28,8 +28,8 @@
         {"name": "Feats", "file": "rules/feats.json"},
         {
           "name": "Magic Items",
-          "file": "rules/magic_items.json",
           "children": [
+            {"name": "Magic Items", "file": "rules/magic_items.json"},
             {"name": "Armor", "file": "rules/armor.json"},
             {"name": "Weapons", "file": "rules/weapons.json"},
             {"name": "Rings", "file": "rules/rings.json"},

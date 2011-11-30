@@ -6,8 +6,8 @@
       "children": [
         {
           "name": "Spellcasting Class Options",
-          "file": "rules/spellcasting_class_options.json",
           "children": [
+            {"name": "Spellcasting Class Options", "file": "rules/spellcasting_class_options.json"},
             {"name": "Bard", "file": "rules/bard.json"},
             {"name": "Cleric", "file": "rules/cleric.json"},
             {"name": "Druid", "file": "rules/druid.json"},
@@ -25,8 +25,8 @@
         },
         {
           "name": "Mastering Magic",
-          "file": "rules/mastering_magic.json",
           "children": [
+            {"name": "Mastering Magic", "file": "rules/mastering_magic.json"},
             {"name": "Spellblights", "file": "rules/spellblights.json"},
             {"name": "Spell Duels", "file": "rules/spell_duels.json"},
             {"name": "Binding Outsiders", "file": "rules/binding_outsiders.json"},

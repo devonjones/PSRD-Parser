@@ -48,8 +48,8 @@
         {"name": "Environment", "file": "rules/environment.json"},
         {
           "name": "Magic Items",
-          "file": "rules/magic_items.json",
           "children": [
+            {"name": "Magic Items", "file": "rules/magic_items.json"},
             {"name": "Armor", "file": "rules/armor.json"},
             {"name": "Weapons", "file": "rules/weapons.json"},
             {"name": "Potions", "file": "rules/potions.json"},

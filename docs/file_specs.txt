@@ -159,3 +159,146 @@ item:
   'cost'
 }
 
+Alchemist:
+"Discovery", "ability", "alchemist_discovery"
+
+Barbarian:
+"barbarian_rage_power"
+
+Bard:
+"bardic_performance"
+
+Cavalier:
+"warrior_order"
+
+Cleric:
+"cleric_domain"
+"cleric_subdomain"
+
+Gunslinger:
+"gunslinger_deed"
+
+Magus:
+"magus_arcana"
+
+Ninja:
+"ninja_trick"
+
+Oracle:
+"oracle_curse"
+"oracle_mystery"
+
+Ranger:
+"ranger_combat_style"
+
+Rogue:
+"rogue_talent"
+
+Samurai:
+"warrior_order"
+
+Sorcerer:
+"sorcerer_bloodline"
+
+Summoner:
+"summoner_evolution_1"
+"summoner_evolution_2"
+"summoner_evolution_3"
+"summoner_evolution_4"
+
+Witch:
+"witch_hex"
+"witch_major_hex"
+"witch_grand_hex"
+"witch_patron"
+
+Wizard:
+"arcane_school"
+"focused_arcane_school"
+"elemental_arcane_school"
+
+Races:
+"racial_trait"
+
+= Types =
+ability **
+ability|barbarian_rage_power
+ability|bardic_performance
+ability|gunslinger_deed
+ability|magus_arcana
+ability|ninja_trick
+ability|rogue_talent
+ability|summoner_evolution_1
+ability|summoner_evolution_2
+ability|summoner_evolution_3
+ability|summoner_evolution_4
+ability|witch_grand_hex
+ability|witch_hex
+ability|witch_major_hex
+
+affliction
+affliction|addiction
+affliction|curse
+affliction|disease
+affliction|infestation
+affliction|insanity
+affliction|poison
+
+animal_companion
+
+class **
+class|base
+class|core
+class|npc
+class|prestige
+
+feat **
+
+item
+item|&mdash;
+item|armor
+item|arms
+item|belt
+item|body
+item|chest
+item|eyes
+item|feet
+item|hands
+item|head
+item|headband
+item|neck
+item|neck (brooch) or armor (unfolded)
+item|neck (does not take up slot)
+item|none
+item|none (see below)
+item|none; Price 10,000 gp; Weight 1 lb.
+item|ring
+item|shield
+item|shoulders
+item|wrist
+item|wrists
+
+list **
+
+section **
+section|alchemist_discovery
+section|arcane_school
+section|cleric_domain
+section|condition
+section|ninja_trick
+section|oracle_mystery
+section|race
+section|racial_trait
+section|rogue_talent
+section|sorcerer_bloodline
+section|warrior_order
+section|witch_patron
+
+skill **
+
+spell **
+
+table **
+
+trap
+

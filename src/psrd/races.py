@@ -13,7 +13,8 @@ def racial_trait_pass(race):
 	attributes['description'] = attributes['name']
 	attributes['name'] = 'Attributes'
 	for trait in traits['sections']:
-		trait['subtype'] = 'racial_trait'
+		trait['type'] = 'racial_trait'
+		trait['subtype'] = race['name'].lower()
 
 def parse_races(filename, output, book):
 	struct = parse_universal(filename, output, book)

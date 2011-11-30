@@ -149,6 +149,23 @@ def anon_pass(cl):
 		return top
 	return cl
 
+def ranger_pass(cl):
+	if cl['name'] == 'Ranger':
+		cs = find_section(cl, name='Combat Style Feat', section_type='ability')
+		sectionlist = cs.setdefault('sections', [])
+		soup = BeautifulSoup(cs['text'])
+		cs['text'] = unicode(soup.contents[0])
+		archery = {'type': 'section', 'subtype': 'ranger_combat_style', 'source': cl['source']}
+		twc = archery.copy()
+		archery['name'] = 'Archery'
+		archery['text'] = unicode(soup.contents[1])
+		sectionlist.append(archery)
+		twc['name'] = 'Two-Weapon'
+		twc['text'] = unicode(soup.contents[2])
+		sectionlist.append(twc)
+		sectionlist.append({'type': 'section', 'source': cl['source'], 'text': unicode(soup.contents[3])})
+	return cl
+
 def spell_list_pass(cl):
 	field_dict = {
 		"Alchemist": "Alchemist Formulae",
@@ -191,6 +208,7 @@ def parse_class(cl, book):
 	cl = bloodline_pass(cl)
 	cl = arcane_school_pass(cl)
 	cl = ability_pass(cl)
+	cl = ranger_pass(cl)
 	cl = mark_subtype_pass(cl, "Discovery", "ability", "alchemist_discovery")
 	cl = mark_subtype_pass(cl, "Rage Powers", "ability", "barbarian_rage_power")
 	cl = mark_subtype_pass(cl, "Bardic Performance", "section", "bardic_performance")
@@ -200,6 +218,7 @@ def parse_class(cl, book):
 	cl = mark_subtype_pass(cl, "Oracle's Curse", "section", "oracle_curse")
 	cl = mark_subtype_pass(cl, "Mysteries", "section", "oracle_mystery")
 	cl = mark_subtype_pass(cl, "Rogue Talents", "section", "rogue_talent")
+	cl = mark_subtype_pass(cl, "Advanced Talents", "section", "rogue_advanced_talent")
 	cl = mark_subtype_pass(cl, "1-Point Evolutions", "section", "summoner_evolution_1")
 	cl = mark_subtype_pass(cl, "2-Point Evolutions", "section", "summoner_evolution_2")
 	cl = mark_subtype_pass(cl, "3-Point Evolutions", "section", "summoner_evolution_3")

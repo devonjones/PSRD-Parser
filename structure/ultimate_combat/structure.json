@@ -5,9 +5,9 @@
       "name": "Rules: Ultimate Combat",
       "children": [
         {
-          "name": "Class Archtypes",
-          "file": "rules/class_archetypes.json",
+          "name": "Class Archetypes",
           "children": [
+            {"name": "Class Archetypes", "file": "rules/class_archetypes.json"},
             {"name": "Alchemist", "file": "rules/alchemist.json"},
             {"name": "Barbarian", "file": "rules/barbarian.json"},
             {"name": "Bard", "file": "rules/bard.json"},
@@ -28,8 +28,8 @@
         {"name": "Feats", "file": "rules/feats.json"},
         {
           "name": "Mastering Combat",
-          "file": "rules/mastering_combat.json",
           "children": [
+            {"name": "Mastering Combat", "file": "rules/mastering_combat.json"},
             {"name": "Eastern Armor and Weapons", "file": "rules/eastern_armor_and_weapons.json"},
             {"name": "Firearms", "file": "rules/firearms.json"},
             {"name": "Gladiator Weapons", "file": "rules/gladiator_weapons.json"},
@@ -41,8 +41,8 @@
         },
         {
           "name": "Variant Rules",
-          "file": "rules/variant_rules.json",
           "children": [
+            {"name": "Variant Rules", "file": "rules/variant_rules.json"},
             {"name": "Armor as Damage Reduction", "file": "rules/armor_as_damage_reduction.json"},
             {"name": "Called Shots", "file": "rules/called_shots.json"},
             {"name": "Piecemeal Armor", "file": "rules/piecemeal_armor.json"},

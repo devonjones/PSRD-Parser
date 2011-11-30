@@ -6,7 +6,7 @@
       "children": [
         {
           "name": "Class Archtypes",
-          "file": "rules/class_archtypes.json",
+          "file": "rules/class_archetypes.json",
           "children": [
             {"name": "Alchemist", "file": "rules/alchemist.json"},
             {"name": "Barbarian", "file": "rules/barbarian.json"},
@@ -28,7 +28,7 @@
         {"name": "Feats", "file": "rules/feats.json"},
         {
           "name": "Mastering Combat",
-          "file": "rules/mastering_magic.json",
+          "file": "rules/mastering_combat.json",
           "children": [
             {"name": "Eastern Armor and Weapons", "file": "rules/eastern_armor_and_weapons.json"},
             {"name": "Firearms", "file": "rules/firearms.json"},

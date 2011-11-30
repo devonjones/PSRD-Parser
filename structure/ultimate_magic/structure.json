@@ -19,7 +19,7 @@
             {"name": "Ranger", "file": "rules/ranger.json"},
             {"name": "Sorcerer", "file": "rules/sorcerer.json"},
             {"name": "Summoner", "file": "rules/summoner.json"},
-            {"name": "Witch", "file": "rules/witch.json"}
+            {"name": "Witch", "file": "rules/witch.json"},
             {"name": "Wizard", "file": "rules/wizard.json"}
           ]
         },
@@ -35,7 +35,6 @@
         },
         {"name": "Feats", "file": "rules/feats.json"},
         {"name": "Words of Power", "file": "rules/words_of_power.json"},
-        {"name": "Spell Lists", "file": "rules/spell_lists.json"},
         {"name": "Updates", "file": "rules/updates.json"}
       ]
     }

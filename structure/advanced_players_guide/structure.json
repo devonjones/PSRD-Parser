@@ -26,7 +26,6 @@
         {"name": "Prestige Classes", "file": "rules/prestige_classes.json"},
         {"name": "Gear", "file": "rules/gear.json"},
         {"name": "Feats", "file": "rules/feats.json"},
-        {"name": "Equipment", "file": "rules/equipment.json"},
         {
           "name": "Magic Items",
           "file": "rules/magic_items.json",

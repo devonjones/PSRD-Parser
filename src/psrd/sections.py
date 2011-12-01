@@ -5,14 +5,14 @@ from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
 def section_filter_ability_type(section):
 	abilities = {
 		'Ex': ['Extraordinary'],
-		'Sp': ['Special'],
+		'Sp': ['Spell-Like'],
 		'Su': ['Supernatural'],
-		'Ex or Sp': ['Extraordinary', 'Special'],
-		'Ex and Sp': ['Extraordinary', 'Special'],
+		'Ex or Sp': ['Extraordinary', 'Spell-Like'],
+		'Ex and Sp': ['Extraordinary', 'Spell-Like'],
 		'Ex or Su': ['Extraordinary', 'Supernatural'],
 		'Ex and Su': ['Extraordinary', 'Supernatural'],
-		'Su or Sp': ['Supernatural', 'Special'],
-		'Su and Sp': ['Supernatural', 'Special'],
+		'Su or Sp': ['Supernatural', 'Spell-Like'],
+		'Su and Sp': ['Supernatural', 'Spell-Like'],
 	}
 	if section.has_key('name'):
 		m = re.search('\((.*)\)', section['name'])

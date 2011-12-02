@@ -139,8 +139,9 @@ def title_pass(rules, book, title):
 		return {'type': 'section', 'source': book, 'name': title, 'sections': [rules]}
 
 def abbrev_pass(rules):
-	m = re.search('\s*\((.*)\)', rules.get('name', ''))
+	m = re.search('\s*\((.*?)\)', rules.get('name', ''))
 	if m:
+		print m.group(1)
 		name = re.sub('\s*\(%s\)' % m.group(1), '', rules['name']).strip()
 		if name != '':
 			rules['abbrev'] = m.group(1)
@@ -158,7 +159,7 @@ def parse_rules(filename, output, book, title):
 		rules = ability_pass(rules)
 	#rules = entity_pass(rules)
 	rules = title_pass(rules, book, title)
-	if not basename in ['ranger.html']:
+	if not basename in ['ranger.html', 'universalMonsterRules.html']:
 		rules = abbrev_pass(rules)
 	print_struct(rules)
 	print "%s: %s" %(rules['source'], rules['name'])

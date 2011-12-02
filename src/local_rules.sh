@@ -30,6 +30,23 @@
 ./rules_parse.py -o ../local/ -b "Core Rulebook" -t "Weapons"               ../web/paizo.com/pathfinderRPG/prd/magicItems/weapons.html
 ./rules_parse.py -o ../local/ -b "Core Rulebook" -t "Wonderous Items"       ../web/paizo.com/pathfinderRPG/prd/magicItems/wondrousItems.html
 
+# Bestiary
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Introduction"            ../web/paizo.com/pathfinderRPG/prd/monsters/introduction.html
+#./rules_parse.py -o ../local/ -b "Bestiary" -t "Creature Types"          ../web/paizo.com/pathfinderRPG/prd/monsters/creatureTypes.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Monster Advancement"     ../web/paizo.com/pathfinderRPG/prd/monsters/monsterAdvancement.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Monster Cohorts"         ../web/paizo.com/pathfinderRPG/prd/monsters/monsterCohorts.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Monster Creation"        ../web/paizo.com/pathfinderRPG/prd/monsters/monsterCreation.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Monster Roles"           ../web/paizo.com/pathfinderRPG/prd/monsters/monsterRoles.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Monster As PCs"          ../web/paizo.com/pathfinderRPG/prd/monsters/monstersAsPCs.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/monsters/encounterTables.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Encounter Tables"        ../web/paizo.com/pathfinderRPG/prd/monsters/universalMonsterRules.html
+
+# Bestiary 2
+./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Monster Advancement"     ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterAdvancement.html
+./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/universalMonsterRules.html
+#./rules_parse.py -o ../local/ -b "Bestiary" -t "Creature Types"            ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/creatureTypes.html
+./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Monster Cohorts"         ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterCohorts.html
+
 # Advanced Player's Guide
 ./rules_parse.py -o ../local/ -b "Advanced Player's Guide" -t "Races"            ../web/paizo.com/pathfinderRPG/prd/advanced/advancedRaces.html
 ./rules_parse.py -o ../local/ -b "Advanced Player's Guide" -t "Base Classes"     ../web/paizo.com/pathfinderRPG/prd/advanced/advancedBaseClasses.html

@@ -24,7 +24,7 @@ def animal_companion_parse_function(field):
 	functions = {
 		'ac': default_closure('ac'),
 		'attack': default_closure('attack'),
-		'ability scores': default_closure('ability_score'),
+		'ability scores': default_closure('ability_scores'),
 		'special qualities': default_closure('special_qualities'),
 		'special attacks': default_closure('special_attacks'),
 		'size': default_closure('size'),
@@ -264,8 +264,12 @@ def is_item(sb, book):
 	return False
 
 def parse_item_slot(item, value):
-	item['subtype'] = value
 	item['slot'] = value
+	if value in ['armor', 'arms', 'belt', 'body', 'chest', 'eyes', 'feet', 'hands', 'head', 'headband', 'neck', 'ring', 'shield', 'shoulders', 'wrist', 'wrists']:
+		if value == 'wrists':
+			item['subtype'] = 'wrist'
+		else:
+			item['subtype'] = value
 
 def item_parse_function(field):
 	functions = {

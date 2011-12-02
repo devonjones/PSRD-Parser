@@ -1,10 +1,15 @@
 import json
+import sys
 import os
 from psrd.sql import get_db_connection
 from psrd.universal import print_struct
 from psrd.sections import cap_words
 from psrd.sql import find_section, fetch_top, append_child_section, fetch_section, update_section
 from psrd.sql.abilities import insert_ability_type
+from psrd.sql.afflictions import insert_affliction_detail
+from psrd.sql.creatures import insert_creature_detail
+from psrd.sql.traps import insert_trap_detail
+from psrd.sql.items import insert_item_detail
 from psrd.sql.classes import insert_class_detail
 from psrd.sql.feats import insert_feat_type, insert_feat_type_description
 from psrd.sql.skills import insert_skill_attribute
@@ -67,25 +72,65 @@ def insert_section(curs, parent_id, section):
 			insert_section(curs, sec_id, s)
 		return sec_id
 
+def _feat_insert(curs, section, section_id):
+	if section.has_key('feat_types'):
+		for feat_type in section['feat_types']:
+			insert_feat_type(curs, section_id, feat_type)
+		desc = "(" + ", ".join(section['feat_types']) + ")"
+		insert_feat_type_description(curs, section_id, desc)
+	else:
+		insert_feat_type(curs, section_id, 'General')
+		insert_feat_type_description(curs, section_id, "(General)")
+
+def _skill_insert(curs, section, section_id):
+	insert_skill_attribute(curs, section_id, attribute=section['attribute'], armor_check_penalty=section.get('armor_check_penalty'), trained_only=section.get('trained_only'))
+
+def _ability_insert(curs, section, section_id):
+	for ability_type in section['ability_types']:
+		insert_ability_type(curs, section_id, ability_type)
+
+def _spell_insert(curs, section, section_id):
+	insert_spell_records(curs, section_id, section)
+
+def _class_insert(curs, section, section_id):
+	insert_class_detail(curs, section_id, section.get('alignment'), section.get('hit_die'))
+
+def _affliction_insert(curs, section, section_id):
+	insert_affliction_detail(curs, **section)
+
+def _creature_insert(curs, section, section_id):
+	insert_creature_detail(curs, **section)
+
+def _trap_insert(curs, section, section_id):
+	insert_trap_detail(curs, **section)
+
+def _item_insert(curs, section, section_id):
+	insert_item_detail(curs, **section)
+
+def _noop(curs, section, section_id):
+	pass
+
 def insert_subrecords(curs, section, section_id):
-	if section['type'] == 'feat':
-		if section.has_key('feat_types'):
-			for feat_type in section['feat_types']:
-				insert_feat_type(curs, section_id, feat_type)
-			desc = "(" + ", ".join(section['feat_types']) + ")"
-			insert_feat_type_description(curs, section_id, desc)
-		else:
-			insert_feat_type(curs, section_id, 'General')
-			insert_feat_type_description(curs, section_id, "(General)")
-	elif section['type'] == 'skill':
-		insert_skill_attribute(curs, section_id, attribute=section['attribute'], armor_check_penalty=section.get('armor_check_penalty'), trained_only=section.get('trained_only'))
-	elif section['type'] == 'ability':
-		for ability_type in section['ability_types']:
-			insert_ability_type(curs, section_id, ability_type)
-	elif section['type'] == 'spell':
-		insert_spell_records(curs, section_id, section)
-	elif section['type'] == 'class':
-		insert_class_detail(curs, section_id, section.get('alignment'), section.get('hit_die'))
+	fxns = {
+		"affliction": _affliction_insert,
+		"feat": _feat_insert,
+		"skill": _skill_insert,
+		"ability": _ability_insert,
+		"spell": _spell_insert,
+		"class": _class_insert,
+		"animal_companion": _creature_insert,
+		"trap": _trap_insert,
+		"item": _item_insert,
+		"table": _noop,
+		"racial_trait": _noop,
+		"section": _noop,
+		"class_archetype": _noop,
+	}
+	if section['type'] in fxns:
+		section['section_id'] = section_id
+		fxns[section['type']](curs, section, section_id)
+	else:
+		sys.stderr.write("%s has no section type handler\n" % section['type'])
 
 def insert_spell_records(curs, section_id, spell):
 	if spell.has_key('parent'):

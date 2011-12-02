@@ -129,7 +129,7 @@ animal_companion:
   'level'
 }
 
-afflicition:
+affliction:
 {
   {see section}
   'type': 'affliction'
@@ -145,6 +145,21 @@ afflicition:
   'onset'
 }
 
+trap:
+{
+  {see section}
+  'type': 'affliction'
+  'subtype': 'poison|disease|curse'
+
+  'trap_type'
+  'perception'
+  'disable_device'
+  'duration'
+  'effect'
+  'trigger'
+  'reset'
+}
+
 item:
 {
   {see section}
@@ -157,10 +172,11 @@ item:
   'weight':
   'requirements':
   'cost'
+  'slot'
 }
 
 Alchemist:
-"Discovery", "ability", "alchemist_discovery"
+"alchemist_discovery"
 
 Barbarian:
 "barbarian_rage_power"

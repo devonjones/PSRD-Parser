@@ -379,7 +379,7 @@ def print_struct(top, level=0):
 	sys.stderr.write(''.join(["-" for i in range(0, level)]))
 	if top.__class__ == dict:
 		if top.has_key('name'):
-			print "# " + top['name']
+			print "# " + top['name'].encode('ascii', 'ignore')
 		else:
 			print "# <Anonymous>"
 		if top.has_key('sections'):

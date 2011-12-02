@@ -104,7 +104,7 @@ def arcane_school_pass(struct):
 def mark_subtype_pass(struct, name, section_type, subtype):
 	s = find_section(struct, name=name, section_type=section_type)
 	if s:
-		for section in s['sections']:
+		for section in s.get('sections', []):
 			section['subtype'] = subtype
 	return struct
 

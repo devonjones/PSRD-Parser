@@ -345,6 +345,28 @@ def parse_section(sb, book):
 		section['sections'] = sections
 	return section
 
+def is_creature_type(sb, book):
+	if len(sb.keys) == 2:
+		fields = dict(sb.keys)
+		if fields.has_key('Traits') and fields.has_key('descriptor'):
+			return True
+	return False
+
+def parse_creature_type(sb, book):
+	section = {'type': 'section', 'subtype': 'creature_type', 'source': book, 'name': filter_name(sb.name.strip())}
+	fields = dict(sb.keys)
+	section['text'] = _list_text(fields['descriptor'])
+	traits =  {'type': 'section', 'source': book, 'name': 'Traits'}
+	traits['text'] = _list_text(fields['Traits'])
+	section['sections'] = [traits]
+	return section
+
+def _list_text(text):
+	num = text.find(u'\u2022')
+	newtext = text[0:num] + "<ul><li>" + text[num + 1:]
+	newtext = newtext.replace(u'\u2022', "</li><li>") + "</li></ul>"
+	return newtext
+
 def parse_stat_block(sb, book):
 	if is_animal_companion(sb):
 		return parse_animal_companion(sb, book)
@@ -356,6 +378,8 @@ def parse_stat_block(sb, book):
 		return parse_affliction(sb, book)
 	elif is_item(sb, book):
 		return parse_item(sb, book)
+	elif is_creature_type(sb, book):
+		return parse_creature_type(sb, book)
 	elif is_section(sb, book):
 		return parse_section(sb, book)
 	else:

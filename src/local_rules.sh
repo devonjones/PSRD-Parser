@@ -32,7 +32,7 @@
 
 # Bestiary
 ./rules_parse.py -o ../local/ -b "Bestiary" -t "Introduction"            ../web/paizo.com/pathfinderRPG/prd/monsters/introduction.html
-#./rules_parse.py -o ../local/ -b "Bestiary" -t "Creature Types"          ../web/paizo.com/pathfinderRPG/prd/monsters/creatureTypes.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Creature Types"          ../web/paizo.com/pathfinderRPG/prd/monsters/creatureTypes.html
 ./rules_parse.py -o ../local/ -b "Bestiary" -t "Monster Advancement"     ../web/paizo.com/pathfinderRPG/prd/monsters/monsterAdvancement.html
 ./rules_parse.py -o ../local/ -b "Bestiary" -t "Monster Cohorts"         ../web/paizo.com/pathfinderRPG/prd/monsters/monsterCohorts.html
 ./rules_parse.py -o ../local/ -b "Bestiary" -t "Monster Creation"        ../web/paizo.com/pathfinderRPG/prd/monsters/monsterCreation.html
@@ -44,7 +44,7 @@
 # Bestiary 2
 ./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Monster Advancement"     ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterAdvancement.html
 ./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/universalMonsterRules.html
-#./rules_parse.py -o ../local/ -b "Bestiary" -t "Creature Types"            ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/creatureTypes.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Creature Types"            ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/creatureTypes.html
 ./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Monster Cohorts"         ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterCohorts.html
 
 # Advanced Player's Guide

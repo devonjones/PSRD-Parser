@@ -7,6 +7,7 @@ from psrd.sections import cap_words
 from psrd.sql import find_section, fetch_top, append_child_section, fetch_section, update_section
 from psrd.sql.abilities import insert_ability_type
 from psrd.sql.afflictions import insert_affliction_detail
+from psrd.sql.animal_companions import insert_animal_companion_detail
 from psrd.sql.creatures import insert_creature_detail
 from psrd.sql.traps import insert_trap_detail
 from psrd.sql.items import insert_item_detail
@@ -98,6 +99,9 @@ def _class_insert(curs, section, section_id):
 def _affliction_insert(curs, section, section_id):
 	insert_affliction_detail(curs, **section)
 
+def _animal_companion_insert(curs, section, section_id):
+	insert_animal_companion_detail(curs, **section)
+
 def _creature_insert(curs, section, section_id):
 	insert_creature_detail(curs, **section)
 
@@ -118,7 +122,8 @@ def insert_subrecords(curs, section, section_id):
 		"ability": _ability_insert,
 		"spell": _spell_insert,
 		"class": _class_insert,
-		"animal_companion": _creature_insert,
+		"animal_companion": _animal_companion_insert,
+		"creature": _creature_insert,
 		"trap": _trap_insert,
 		"item": _item_insert,
 		"table": _noop,

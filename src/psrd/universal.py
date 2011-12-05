@@ -175,12 +175,22 @@ def stat_block_key_first_pass(sb):
 		if has_name(detail, 'p') and detail.get('class', "").find('stat-block-1') > -1 and top:
 			started = True
 			key, text = stat_block_key_inner_parse(sb, detail, key, text)
+		elif has_name(detail, 'p') and detail.get('class', "").find('stat-block-1') > -1 and top:
+			ikey, value = sb.keys.pop()
+			value = value + unicode(detail)
+			sb.store_key(sb, ikey, value)
+		elif has_name(detail, 'p') and detail.get('class', "").find('stat-block-xp') > -1 and top:
+			xp = unicode(detail)
+			xp = xp.replace('XP', '').strip()
+			store_key(sb, 'XP', xp)
 		else:
 			if started:
 				top = False
 			retdetails.append(detail)
 	sb.details = retdetails
 	if started:
+		if not key:
+			key = 'descriptor'
 		store_key(sb, key, text)
 	else:
 		stat_block_key_second_pass(sb)
@@ -212,10 +222,7 @@ def stat_block_key_inner_parse(sb, detail, key, text):
 				store_key(sb, key, text)
 				text = []
 			elif len(text) > 0:
-				if len(sb.keys) == 0:
-					store_key(sb, 'descriptor', text)
-				else:
-					raise Exception("value with no key")
+				store_key(sb, 'descriptor', text)
 			key = ''.join(element.findAll(text=True))
 		else:
 			if hasattr(element, 'name'):
@@ -376,7 +383,7 @@ def __has_div(div):
 def print_struct(top, level=0):
 	if not top:
 		return
-	sys.stderr.write(''.join(["-" for i in range(0, level)]))
+	sys.stdout.write(''.join(["-" for i in range(0, level)]))
 	if top.__class__ == dict:
 		if top.has_key('name'):
 			print "# " + top['name'].encode('ascii', 'ignore')

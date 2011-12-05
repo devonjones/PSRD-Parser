@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.stat_block import stat_block_pass, parse_section
 from psrd.universal import parse_universal, print_struct, StatBlockHeading
-from psrd.sections import ability_pass, entity_pass, find_section, remove_section
+from psrd.sections import ability_pass, entity_pass, find_section, find_all_sections, remove_section
 
 def mark_subtype_pass(struct, name, subtype):
 	s = find_section(struct, name=name)
@@ -101,6 +101,13 @@ def ap_archetype_pass(rules):
 	rules['sections'] = newsections
 	return rules
 
+def familiar_pass(rules, basename):
+	if basename in ['familiar.html', 'newFamiliars.html']:
+		creatures = find_all_sections(rules, section_type='creature')
+		for creature in creatures:
+			creature['subtype'] = 'familiar'
+	return rules
+
 def ultimate_combat_structure_pass(rules, basename):
 	if basename == 'classArchetypes.html':
 		topsections = []
@@ -125,6 +132,8 @@ def structure_pass(rules, basename, book):
 		return core_rulebook_structure_pass(rules, basename)
 	elif book == "Advanced Player's Guide":
 		return advanced_players_guide_structure_pass(rules, basename)
+	#elif book == 'Ultimate Magic':
+	#	return ultimate_magic_structure_pass(rules, basename)
 	elif book == 'Ultimate Combat':
 		return ultimate_combat_structure_pass(rules, basename)
 	return rules
@@ -155,11 +164,12 @@ def parse_rules(filename, output, book, title):
 	rules = parse_universal(filename, output, book)
 	rules = stat_block_pass(rules, book)
 	rules = structure_pass(rules, basename, book)
+	rules = familiar_pass(rules, basename)
 	if not basename in ['glossary.html']:
 		rules = ability_pass(rules)
 	#rules = entity_pass(rules)
 	rules = title_pass(rules, book, title)
-	if not basename in ['ranger.html', 'universalMonsterRules.html']:
+	if not basename in ['ranger.html', 'universalMonsterRules.html', 'buildingAndModifyingConstructs.html', 'spellbooks.html']:
 		rules = abbrev_pass(rules)
 	print_struct(rules)
 	print "%s: %s" %(rules['source'], rules['name'])

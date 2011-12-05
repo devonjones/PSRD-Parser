@@ -18,6 +18,8 @@ def is_animal_companion(sb):
 		for detail in sb.details:
 			if detail.__class__ == StatBlockSection and detail.name.endswith('th-Level Advancement'):
 				return True
+		if fields.has_key('Ability Scores'):
+			return True
 	return False
 
 def animal_companion_parse_function(field):
@@ -258,8 +260,8 @@ def parse_affliction(sb, book):
 
 def is_item(sb, book):
 	fields = dict(sb.keys)
-	if fields.has_key('Aura'):
-		if fields.has_key('Slot') or fields.has_key('CL'):
+	if fields.has_key('Aura') or fields.has_key('Price') or fields.has_key('Cost'):
+		if fields.has_key('Slot') or fields.has_key('CL') or fields.has_key('Requirements'):
 			return True
 	return False
 
@@ -277,8 +279,10 @@ def item_parse_function(field):
 		'cl': default_closure('cl'),
 		'slot': parse_item_slot,
 		'price': default_closure('price'),
+		'skill': default_closure('skill'),
 		'weight': default_closure('weight'),
 		'requirements': default_closure('requirements'),
+		'cr increase': default_closure('cr_increase'),
 		'cost': default_closure('cost'),
 	}
 	return functions[field.lower()]
@@ -296,10 +300,26 @@ def parse_item(sb, book):
 			sections = item.setdefault('sections', [])
 			sections.append(parse_section(detail, book))
 		else:
-			text.append(detail)
+			text.append(unicode(detail))
 	if len(text) > 0:
 		item['text'] = ''.join(text)
 	return item 
+
+def is_spellbook(sb, book):
+	fields = dict(sb.keys)
+	if book == 'Ultimate Magic':
+		if fields.has_key('Value') or sb.name == 'Preparation Ritual':
+			return True
+	return False
+
+def parse_spellbook(sb, book):
+	section = parse_section(sb, book)
+	for key in sb.keys:
+		newsec = {'type': 'section', 'source': book, 'name': key[0], 'text': key[1]}
+		sections = section.setdefault('sections', [])
+		sections.insert(1, newsec)
+	section['subtype'] = 'spellbook'
+	return section
 
 def is_section(sb, book):
 	if len(sb.keys) == 0:
@@ -345,6 +365,155 @@ def parse_section(sb, book):
 		section['sections'] = sections
 	return section
 
+def is_creature(sb):
+	fields = dict(sb.keys)
+	if fields.has_key('Senses'):
+		for detail in sb.details:
+			if detail.__class__ == StatBlockSection and detail.name.lower().strip() in ['ecology', 'statistics']:
+				return True
+	return False
+
+def parse_creature(sb, book):
+	names = sb.name.split('CR')
+	creature = {'type': 'creature', 'source': book, 'name': filter_name(names[0])}
+	creature['cr'] = names[1].strip()
+	sections = []
+	text = []
+	for key, value in sb.keys:
+		creature_parse_function(key)(creature, value)
+	for detail in sb.details:
+		if detail.__class__ == StatBlockSection and detail.name.lower() in ['defense', 'offense', 'statistics', 'ecology']:
+			for key, value in detail.keys:
+				creature_parse_function(key)(creature, value)
+			for subd in detail.details:
+				newsec = {'type': 'section', 'source': book, 'text': unicode(subd)}
+				sections.append(newsec)
+		elif detail.__class__ == StatBlockSection and detail.name.lower() in ['special abilities']:
+			special_abilities = {'type': 'section', 'subtype': 'special_abilities', 'source': book, 'name': 'Special Abilities', 'sections': []}
+			for key in detail.keys:
+				newsec = {'type': 'section', 'source': book, 'name': key[0], 'text': key[1]}
+				special_abilities['sections'].append(newsec)
+			sections.append(special_abilities)
+			for subd in detail.details:
+				newsec = {'type': 'section', 'source': book, 'text': unicode(subd)}
+				sections.append(newsec)
+		else:
+			text.append(unicode(detail))
+	if len(text) > 0:
+		creature['text'] = ''.join(text)
+	if len(sections) > 0:
+		creature['sections'] = sections
+	return creature
+
+def creature_parse_function(field):
+	functions = {
+		'xp': default_closure('xp'),
+		'init': default_closure('init'),
+		'senses': default_closure('senses'),
+		'perception': perception_fix,
+		'aura': default_closure('aura'),
+
+		'ac': default_closure('ac'),
+		'hp': default_closure('hp'),
+		'fort': default_closure('fortitude'),
+		'ref': default_closure('reflex'),
+		'will': default_closure('will'),
+		'defensive abilities': default_closure('defensive_abilities'),
+		'defensive ability': default_closure('defensive_abilities'),
+		'dr': default_closure('dr'),
+		'immune': default_closure('immune'),
+		'vulnerability': default_closure('vulnerability'),
+		'resist': default_closure('resist'),
+		'sr': default_closure('sr'),
+		'weaknesses': default_closure('weaknesses'),
+		'sq': default_closure('special_qualities'),
+		'special qualities': default_closure('special_qualities'),
+
+		'speed': default_closure('speed'),
+		'melee': default_closure('melee'),
+		'ranged': default_closure('ranged'),
+		'special attacks': default_closure('special_attacks'),
+		'special attack': default_closure('special_attacks'),
+		'attacks': default_closure('special_attacks'),
+		'spell-like abilities': default_closure('spell_like_abilities'),
+		'spell-lilke abilities': default_closure('spell_like_abilities'),
+		'spells prepared': default_closure('spells_prepared'),
+		'cleric spells prepared': default_closure('spells_prepared'),
+		'spells known': default_closure('spells_known'),
+		'sorcerer spells known': default_closure('spells_known'),
+
+		'str': default_closure('strength'),
+		'dex': default_closure('dexterity'),
+		'con': default_closure('constitution'),
+		'int': default_closure('intelligence'),
+		'wis': default_closure('wisdom'),
+		'cha': default_closure('charisma'),
+		'base atk': default_closure('base_attack'),
+		'atk': default_closure('base_attack'),
+		'cmb': default_closure('cmb'),
+		'cmd': default_closure('cmd'),
+		'feats': default_closure('feats'),
+		'skills': default_closure('skills'),
+		'racial modifiers': default_closure('racial_modifiers'),
+		'racial modifier': default_closure('racial_modifiers'),
+		'languages': default_closure('languages'),
+		'language': default_closure('languages'),
+		'gear': default_closure('gear'),
+
+		'space': default_closure('space'),
+		'reach': default_closure('reach'),
+
+		'environment': default_closure('environment'),
+		'environment any': parse_broken_environment,
+		'organization': default_closure('organization'),
+		'treasure': default_closure('treasure'),
+		'base': noop,
+		'special': noop,
+		'descriptor': parse_descriptor
+	}
+	if field.lower().startswith('xp'):
+		return xp_closure('field')
+	return functions[field.lower()]
+
+def parse_broken_environment(sb, value):
+	sb['environment'] = 'any'
+
+def xp_closure(field):
+	def fxn(sb, value):
+		values = field.split(' ')
+		values.pop(0)
+		sb['xp'] = ' '.join(values).strip()
+	return fxn
+
+def noop(creature, value):
+	print value
+
+def perception_fix(sb, value):
+	sb['senses'] = sb['senses'] + "; Perception " + value
+
+def parse_descriptor(creature, value):
+	descsplit = value.split("(")
+	if len(descsplit) > 1:
+		value = descsplit.pop(0)
+		subtype = ''.join(descsplit)
+		subtype.replace(')', '')
+		creature['creature_subtype'] = subtype
+	values = value.split()
+	if len(values) >= 3:
+		creature['alignment'] = values.pop(0)
+		if values[0] == 'or':
+			alignment = creature['alignment']
+			alignment = alignment + " " + values.pop(0)
+			alignment = alignment + " " + values.pop(0)
+			creature['alignment'] = alignment
+		creature['size'] = values.pop(0)
+		creature['creature_type'] = values.pop(0)
+	if len(values) > 0:
+		if values[0] in ['beast', 'humanoid']:
+			creature['creature_type'] = creature['creature_type'] + " " + values.pop(0)
+	if len(values) > 0:
+		raise Exception('well fuck: %s' %(values))
+
 def is_creature_type(sb, book):
 	if len(sb.keys) == 2:
 		fields = dict(sb.keys)
@@ -370,6 +539,8 @@ def _list_text(text):
 def parse_stat_block(sb, book):
 	if is_animal_companion(sb):
 		return parse_animal_companion(sb, book)
+	if is_creature(sb):
+		return parse_creature(sb, book)
 	elif is_spell(sb):
 		return parse_spell(sb, book)
 	elif is_trap(sb, book):
@@ -380,6 +551,8 @@ def parse_stat_block(sb, book):
 		return parse_item(sb, book)
 	elif is_creature_type(sb, book):
 		return parse_creature_type(sb, book)
+	elif is_spellbook(sb, book):
+		return parse_spellbook(sb, book)
 	elif is_section(sb, book):
 		return parse_section(sb, book)
 	else:

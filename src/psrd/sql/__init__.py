@@ -4,6 +4,7 @@ from psrd.sql.abilities import create_ability_types_table, create_ability_types_
 from psrd.sql.afflictions import create_affliction_details_table, create_affliction_details_index
 from psrd.sql.classes import create_class_details_table, create_class_details_index
 from psrd.sql.creatures import create_creature_details_table, create_creature_details_index
+from psrd.sql.animal_companions import create_animal_companion_details_table, create_animal_companion_details_index
 from psrd.sql.traps import create_trap_details_table, create_trap_details_index
 from psrd.sql.items import create_item_details_table, create_item_details_index
 from psrd.sql.feats import create_feat_types_table, create_feat_types_index, create_feat_type_descriptions_table, create_feat_type_descriptions_index
@@ -56,6 +57,8 @@ def create_db_v_2(conn, curs, ver):
 	create_ability_types_index(curs)
 	create_affliction_details_table(curs)
 	create_affliction_details_index(curs)
+	create_animal_companion_details_table(curs)
+	create_animal_companion_details_index(curs)
 	create_creature_details_table(curs)
 	create_creature_details_index(curs)
 	create_trap_details_table(curs)

@@ -22,13 +22,15 @@ def parse_races(filename, output, book):
 	for race in struct['sections']:
 		race_pass(race)
 		racial_trait_pass(race)
-
 	for race in struct['sections']:
-		print "%s: %s" %(race['source'], race['name'])
-		filename = create_race_filename(output, book, race)
-		fp = open(filename, 'w')
-		json.dump(race, fp, indent=4)
-		fp.close()
+		write_race(output, book, race)
+
+def write_race(output, book, race):
+	print "%s: %s" %(race['source'], race['name'])
+	filename = create_race_filename(output, book, race)
+	fp = open(filename, 'w')
+	json.dump(race, fp, indent=4)
+	fp.close()
 
 def create_race_filename(output, book, race):
 	title = char_replace(book) + "/races/" + char_replace(race['name'])

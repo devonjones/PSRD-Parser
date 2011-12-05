@@ -173,6 +173,55 @@ item:
   'requirements':
   'cost'
   'slot'
+  'skill'
+}
+
+creature:
+{
+  {see section}
+  'type': 'item'
+  'subtype': 'armor|'
+
+  'xp'
+  'alignment'
+  'size'
+  'creature_type'
+  'creature subtype'
+  'init'
+  'senses'
+
+  'ac'
+  'hp'
+  'fortitude'
+  'reflex'
+  'will'
+  'defensive_abilities'
+  'immune'
+
+  'speed'
+  'melee'
+  'space'
+  'reach'
+  'special_attacks'
+
+  'strength'
+  'dexterity'
+  'constitution'
+  'intelligence'
+  'wisdom'
+  'charisma'
+  'base_attack'
+  'cmb'
+  'cmd'
+  'feats'
+  'skills'
+  'racial_modifiers'
+  'special_qualities'
+
+
+  'environment'
+  'organization'
+  'treasure'
 }
 
 Alchemist:

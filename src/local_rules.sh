@@ -40,6 +40,7 @@
 ./rules_parse.py -o ../local/ -b "Bestiary" -t "Monster As PCs"          ../web/paizo.com/pathfinderRPG/prd/monsters/monstersAsPCs.html
 ./rules_parse.py -o ../local/ -b "Bestiary" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/monsters/encounterTables.html
 ./rules_parse.py -o ../local/ -b "Bestiary" -t "Encounter Tables"        ../web/paizo.com/pathfinderRPG/prd/monsters/universalMonsterRules.html
+./rules_parse.py -o ../local/ -b "Bestiary" -t "Familiar"               ../web/paizo.com/pathfinderRPG/prd/monsters/familiar.html
 
 # Bestiary 2
 ./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Monster Advancement"     ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterAdvancement.html
@@ -98,9 +99,9 @@
 ./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "Spellblights"                      ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellblights.html
 ./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "Spell Duels"                       ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellDuels.html
 ./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "Binding Outsiders"                 ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/bindingOutsiders.html
-#./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "Building and Modifying Constructs" ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/buildingAndModifyingConstructs.html
-#./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "New Familiars"                     ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/newFamiliars.html
-#./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "Spellbooks"                        ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellbooks.html
+./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "Building and Modifying Constructs" ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/buildingAndModifyingConstructs.html
+./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "New Familiars"                     ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/newFamiliars.html
+./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "Spellbooks"                        ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellbooks.html
 ./rules_parse.py -o ../local/ -b "Ultimate Magic" -t "Designing Spells"                  ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/designingSpells.html
 
 # Ultimate Combat

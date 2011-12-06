@@ -129,7 +129,7 @@
 ./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Duels"                       ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/combat/duels.html
 ./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Performance Combat"          ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/combat/performanceCombat.html
 ./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Siege Engines"               ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/combat/siegeEngines.html
-#./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Vehicles"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/ultimateCombatVehicles.html
+./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Vehicles"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/ultimateCombatVehicles.html
 ./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Variant Rules"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/introduction.html
 ./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Armor as Damage Reduction"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/armorAsDamageReduction.html
 ./rules_parse.py -o ../local/ -b "Ultimate Combat" -t "Called Shots"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/calledShots.html

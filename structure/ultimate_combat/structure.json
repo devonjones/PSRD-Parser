@@ -39,6 +39,7 @@
             {"name": "Siege Engines", "file": "rules/siege_engines.json"}
           ]
         },
+        {"name": "Vehicles", "file": "rules/vehicles.json"},
         {
           "name": "Variant Rules",
           "children": [

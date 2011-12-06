@@ -1,3 +1,5 @@
+from psrd.sql.utils import test_args
+
 #################
 # Spell Details #
 #################
@@ -31,8 +33,24 @@ def create_spell_details_index(curs):
 		" ON spell_details (school)"])
 	curs.execute(sql)
 
-def insert_spell_detail(curs, section_id, school, subschool, descriptor_text, level_text, casting_time, preparation_time, spell_range, duration, saving_throw, spell_resistance, as_spell_id):
-	values = [section_id, school, subschool, descriptor_text, level_text, casting_time, preparation_time, spell_range, duration, saving_throw, spell_resistance, as_spell_id]
+def insert_spell_detail(curs, section_id, school=None, subschool=None, descriptor_text=None, level_text=None,
+		casting_time=None, preparation_time=None, range=None, duration=None, saving_throw=None,
+		spell_resistance=None, as_spell_id=None, **kwargs):
+	values = [section_id, school, subschool, descriptor_text, level_text, casting_time, preparation_time, range, duration, saving_throw, spell_resistance, as_spell_id]
+	testa = kwargs.copy()
+	if testa.has_key('spell_detail_id'):
+		del testa['spell_detail_id']
+	if testa.has_key('level'):
+		del testa['level']
+	if testa.has_key('levels'):
+		del testa['levels']
+	if testa.has_key('descriptor'):
+		del testa['descriptor']
+	if testa.has_key('components'):
+		del testa['components']
+	if testa.has_key('effects'):
+		del testa['effects']
+	test_args(testa)
 	sql = '\n'.join([
 		"INSERT INTO spell_details",
 		" (section_id, school, subschool, descriptor_text, level_text, casting_time, preparation_time, range, duration, saving_throw, spell_resistance, as_spell_id)",

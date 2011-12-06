@@ -313,6 +313,13 @@ def is_spellbook(sb, book):
 	return False
 
 def parse_spellbook(sb, book):
+	newdetails = []
+	for detail in sb.details:
+		if hasattr(detail, 'level') and detail.level == 5:
+			newdetails.append(detail.name)
+		else:
+			newdetails.append(detail)
+	sb.details = newdetails
 	section = parse_section(sb, book)
 	for key in sb.keys:
 		newsec = {'type': 'section', 'source': book, 'name': key[0], 'text': key[1]}
@@ -364,6 +371,58 @@ def parse_section(sb, book):
 	if len(sections) > 0:
 		section['sections'] = sections
 	return section
+
+def is_vehicle(sb, book):
+	fields = dict(sb.keys)
+	if fields.has_key('Squares'):
+		if fields.has_key('Cost'):
+			return True
+	return False
+
+def parse_vehicle(sb, book):
+	vehicle = {'type': 'vehicle', 'source': book, 'name': filter_name(sb.name.strip())}
+	text = []
+	for key, value in sb.keys:
+		vehicle_parse_function(key)(vehicle, value)
+	for detail in sb.details:
+		for key, value in detail.keys:
+			vehicle_parse_function(key)(vehicle, value)
+	return vehicle
+	
+def parse_vehicle_descriptor(vehicle, value):
+	values = value.split(' ')
+	vehicle['size'] = values.pop(0)
+	vehicle['vehicle_type'] = values.pop(0)
+	if len(values) > 1:
+		values.pop(0)
+		raise Exception("Unexpected values still in vehicle descriptor: %s" % values)
+
+def vehicle_parse_function(field):
+	functions = {
+		'descriptor': parse_vehicle_descriptor,
+		'squares': default_closure('squares'),
+		'cost': default_closure('squares'),
+		'ac': default_closure('ac'),
+		'hardness': default_closure('hardness'),
+		'hp': default_closure('hp'),
+		'base save': default_closure('base_save'),
+		'maximum speed': default_closure('maximum_speed'),
+		'acceleration': default_closure('acceleration'),
+		'cmb': default_closure('cmb'),
+		'cmd': default_closure('cmd'),
+		'ramming damage': default_closure('ramming_damage'),
+		'propulsion': default_closure('propulsion'),
+		'driving check': default_closure('driving_check'),
+		'forward facing': default_closure('forward_facing'),
+		'driving device': default_closure('driving_device'),
+		'driving space': default_closure('driving_space'),
+		'decks': default_closure('decks'),
+		'deck': default_closure('decks'),
+		'weapons': default_closure('weapons'),
+		'crew': default_closure('crew'),
+		'passengers': default_closure('passengers'),
+	}
+	return functions[field.lower()]
 
 def is_creature(sb):
 	fields = dict(sb.keys)
@@ -469,7 +528,7 @@ def creature_parse_function(field):
 		'treasure': default_closure('treasure'),
 		'base': noop,
 		'special': noop,
-		'descriptor': parse_descriptor
+		'descriptor': parse_creature_descriptor
 	}
 	if field.lower().startswith('xp'):
 		return xp_closure('field')
@@ -491,7 +550,7 @@ def noop(creature, value):
 def perception_fix(sb, value):
 	sb['senses'] = sb['senses'] + "; Perception " + value
 
-def parse_descriptor(creature, value):
+def parse_creature_descriptor(creature, value):
 	descsplit = value.split("(")
 	if len(descsplit) > 1:
 		value = descsplit.pop(0)
@@ -553,6 +612,8 @@ def parse_stat_block(sb, book):
 		return parse_creature_type(sb, book)
 	elif is_spellbook(sb, book):
 		return parse_spellbook(sb, book)
+	elif is_vehicle(sb, book):
+		return parse_vehicle(sb, book)
 	elif is_section(sb, book):
 		return parse_section(sb, book)
 	else:

@@ -1,3 +1,5 @@
+from psrd.sql.utils import test_args
+
 def create_animal_companion_details_table(curs):
 	sql = '\n'.join([
 		"CREATE TABLE animal_companion_details (",
@@ -22,6 +24,7 @@ def create_animal_companion_details_index(curs):
 
 def insert_animal_companion_detail(curs, section_id, ac=None, attack=None, ability_scores=None, special_qualities=None, special_attacks=None, size=None, speed=None, level=None, **kwargs):
 	values = [section_id, ac, attack, ability_scores, special_qualities, special_attacks, size, speed, level]
+	test_args(kwargs)
 	sql = '\n'.join([
 		"INSERT INTO animal_companion_details",
 		" (section_id, ac, attack, ability_scores, special_qualities, special_attacks, size, speed, level)",

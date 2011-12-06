@@ -8,6 +8,7 @@ from psrd.sql import find_section, fetch_top, append_child_section, fetch_sectio
 from psrd.sql.abilities import insert_ability_type
 from psrd.sql.afflictions import insert_affliction_detail
 from psrd.sql.animal_companions import insert_animal_companion_detail
+from psrd.sql.vehicles import insert_vehicle_detail
 from psrd.sql.creatures import insert_creature_detail
 from psrd.sql.traps import insert_trap_detail
 from psrd.sql.items import insert_item_detail
@@ -102,6 +103,9 @@ def _affliction_insert(curs, section, section_id):
 def _animal_companion_insert(curs, section, section_id):
 	insert_animal_companion_detail(curs, **section)
 
+def _vehicle_insert(curs, section, section_id):
+	insert_vehicle_detail(curs, **section)
+
 def _creature_insert(curs, section, section_id):
 	insert_creature_detail(curs, **section)
 
@@ -123,6 +127,7 @@ def insert_subrecords(curs, section, section_id):
 		"spell": _spell_insert,
 		"class": _class_insert,
 		"animal_companion": _animal_companion_insert,
+		"vehicle": _vehicle_insert,
 		"creature": _creature_insert,
 		"trap": _trap_insert,
 		"item": _item_insert,
@@ -146,11 +151,14 @@ def insert_spell_records(curs, section_id, spell):
 	descriptor_text = ', '.join(spell.get('descriptor', []))
 	if descriptor_text == "":
 		descriptor_text = None
+	else:
+		spell['descriptor_text'] = descriptor_text
 	level_list = []
 	for level in spell.get('level', []):
 		level_list.append(level['class'] + ": " + str(level['level']))
 	level_text = "; ".join(level_list)
-	insert_spell_detail(curs, section_id, spell.get('school'), spell.get('subschool'), descriptor_text, level_text, spell.get('casting_time'), spell.get('preparation_time'), spell.get('range'), spell.get('duration'), spell.get('saving_throw'), spell.get('spell_resistance'), spell.get('as_spell_id'))
+	spell['level_text'] = level_text
+	insert_spell_detail(curs, **spell)
 	for descriptor in spell.get('descriptor', []):
 		insert_spell_descriptor(curs, section_id, descriptor)
 	for level in spell.get('level', []):

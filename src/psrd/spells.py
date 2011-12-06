@@ -64,7 +64,7 @@ def misc_fix_pass(spell):
 	elif spell['name'] == "Evolution Surge, Lesser":
 		del spell['parent']
 	elif spell['name'] == "Flare Burst":
-		spell['paremt'] = "Flare"
+		spell['parent'] = "Flare"
 	elif spell['name'] == "Geas, Lesser":
 		del spell['parent']
 	elif spell['name'] in ("Rejuvenate Eidolon", "Rejuvenate Eidolon, Greater"):
@@ -72,7 +72,7 @@ def misc_fix_pass(spell):
 	elif spell['name'] == "Rejuvenate Eidolon, Lesser":
 		del spell['parent']
 	elif spell['name'] == "Shared Wrath":
-		spell['paremt'] = "Wrath"
+		spell['parent'] = "Wrath"
 	elif spell['name'] == "Tireless Pursuers":
 		spell['parent'] = "Tireless Pursuit"
 	elif spell['name'] in ("Crushing Hand", "Forceful Hand", "Grasping Hand"):

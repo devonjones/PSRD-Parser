@@ -5,6 +5,7 @@
       "name": "Rules: Game Mastery Guide",
       "children": [
         {"name": "Planar Adventures", "file": "rules/planar_adventures.json"},
+        {"name": "Settlements", "file": "rules/settlements.json"},
         {"name": "Fast Play Ship Combat", "file": "rules/fast_play_ship_combat.json"},
         {"name": "Chases", "file": "rules/chases.json"},
         {"name": "Disasters", "file": "rules/disasters.json"},

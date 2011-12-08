@@ -11,3 +11,4 @@ cp -r ../structure/* ../local
 ./local_skills.sh
 ./local_spell_lists.sh
 ./local_spells.sh
+./local_creatures.sh

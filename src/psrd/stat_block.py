@@ -9,6 +9,7 @@ def colon_filter(value):
 def default_closure(field):
 	def fxn(sb, value):
 		value = colon_filter(value)
+		value = value.replace('&ndash;', '-')
 		sb[field] = value
 	return fxn
 
@@ -305,6 +306,62 @@ def parse_item(sb, book):
 		item['text'] = ''.join(text)
 	return item 
 
+def is_settlement(sb, book):
+	fields = dict(sb.keys)
+	if fields.has_key('Corruption'):
+		if fields.has_key('Crime'):
+			return True
+	return False
+
+def parse_settlement(sb, book):
+	settlement = {'type': 'settlement', 'source': book, 'name': filter_name(sb.name.strip())}
+	text = []
+	for key, value in sb.keys:
+		settlement_parse_function(key)(settlement, value)
+	for detail in sb.details:
+		for key, value in detail.keys:
+			settlement_parse_function(key)(settlement, value)
+		if len(detail.details) > 0:
+			sections = settlement.setdefault('sections', [])
+			sec = parse_section(detail, book)
+			if sec['name'] == 'DEMOGRAPHICS':
+				sec['name'] = 'Notable NPCs'
+			sections.append(sec)
+	return settlement
+
+def parse_settlement_descriptor(settlement, value):
+	values = value.split(' ')
+	settlement['alignment'] = values.pop(0)
+	settlement['settlement_type'] = values.pop()
+	if len(values) > 0:
+		settlement['size'] = values.pop(0)
+	if len(values) > 0:
+		raise Exception("Unexpected values still in settlement descriptor: %s" % values)
+
+def settlement_parse_function(field):
+	functions = {
+		'descriptor': parse_settlement_descriptor,
+		'corruption': default_closure('corruption'),
+		'crime': default_closure('crime'),
+		'economy': default_closure('economy'),
+		'law': default_closure('law'),
+		'lore': default_closure('lore'),
+		'society': default_closure('society'),
+		'qualities': default_closure('qualities'),
+		'danger': default_closure('danger'),
+		'disadvantages': default_closure('disadvantages'),
+		'government': default_closure('government'),
+		'population': default_closure('population'),
+		'notable npcs': noop,
+		'base value': default_closure('base_value'),
+		'purchase limit': default_closure('purchase_limit'),
+		'spellcasting': default_closure('spellcasting'),
+		'minor items': default_closure('minor_items'),
+		'medium items': default_closure('medium_items'),
+		'major items': default_closure('major_items'),
+	}
+	return functions[field.lower()]
+
 def is_spellbook(sb, book):
 	fields = dict(sb.keys)
 	if book == 'Ultimate Magic':
@@ -595,6 +652,12 @@ def _list_text(text):
 	newtext = newtext.replace(u'\u2022', "</li><li>") + "</li></ul>"
 	return newtext
 
+def is_haunt(sb, book):
+	pass
+
+def parse_haunt(sb, book):
+	pass
+
 def parse_stat_block(sb, book):
 	if is_animal_companion(sb):
 		return parse_animal_companion(sb, book)
@@ -614,10 +677,15 @@ def parse_stat_block(sb, book):
 		return parse_spellbook(sb, book)
 	elif is_vehicle(sb, book):
 		return parse_vehicle(sb, book)
+	elif is_settlement(sb, book):
+		return parse_settlement(sb, book)
+	elif is_haunt(sb, book):
+		return parse_haunt(sb, book)
 	elif is_section(sb, book):
 		return parse_section(sb, book)
 	else:
 		print sb
+		print sb.html
 	return sb
 
 def stat_block_pass(section, book):

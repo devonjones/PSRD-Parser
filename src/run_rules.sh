@@ -80,9 +80,9 @@
 ./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Spellblights"                      ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellblights.html
 ./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Spell Duels"                       ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellDuels.html
 ./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Binding Outsiders"                 ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/bindingOutsiders.html
-#./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Building and Modifying Constructs" ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/buildingAndModifyingConstructs.html
-#./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "New Familiars"                     ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/newFamiliars.html
-#./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Spellbooks"                        ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellbooks.html
+./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Building and Modifying Constructs" ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/buildingAndModifyingConstructs.html
+./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "New Familiars"                     ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/newFamiliars.html
+./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Spellbooks"                        ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellbooks.html
 ./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Designing Spells"                  ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/designingSpells.html
 
 # Ultimate Combat
@@ -110,7 +110,7 @@
 ./rules_parse.py -o ../data/ -b "Ultimate Combat" -t "Duels"                       ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/combat/duels.html
 ./rules_parse.py -o ../data/ -b "Ultimate Combat" -t "Performance Combat"          ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/combat/performanceCombat.html
 ./rules_parse.py -o ../data/ -b "Ultimate Combat" -t "Siege Engines"               ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/combat/siegeEngines.html
-#./rules_parse.py -o ../data/ -b "Ultimate Combat" -t "Vehicles"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/ultimateCombatVehicles.html
+./rules_parse.py -o ../data/ -b "Ultimate Combat" -t "Vehicles"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/ultimateCombatVehicles.html
 ./rules_parse.py -o ../data/ -b "Ultimate Combat" -t "Variant Rules"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/introduction.html
 ./rules_parse.py -o ../data/ -b "Ultimate Combat" -t "Armor as Damage Reduction"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/armorAsDamageReduction.html
 ./rules_parse.py -o ../data/ -b "Ultimate Combat" -t "Called Shots"                    ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/variants/calledShots.html
@@ -129,7 +129,7 @@
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "NPC Gallery"           ../web/paizo.com/pathfinderRPG/prd/mastery/nPCGallery.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Planar Adventures"     ../web/paizo.com/pathfinderRPG/prd/mastery/planarAdventures.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Sanity and Madness"    ../web/paizo.com/pathfinderRPG/prd/mastery/sanityAndMadness.html
-#./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Settlements"           ../web/paizo.com/pathfinderRPG/prd/mastery/settlements.html
+./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Settlements"           ../web/paizo.com/pathfinderRPG/prd/mastery/settlements.html
 
 
 

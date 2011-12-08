@@ -5,6 +5,7 @@ from psrd.sql.afflictions import create_affliction_details_table, create_afflict
 from psrd.sql.classes import create_class_details_table, create_class_details_index
 from psrd.sql.creatures import create_creature_details_table, create_creature_details_index
 from psrd.sql.animal_companions import create_animal_companion_details_table, create_animal_companion_details_index
+from psrd.sql.settlements import create_settlement_details_table, create_settlement_details_index
 from psrd.sql.vehicles import create_vehicle_details_table, create_vehicle_details_index
 from psrd.sql.traps import create_trap_details_table, create_trap_details_index
 from psrd.sql.items import create_item_details_table, create_item_details_index
@@ -62,6 +63,8 @@ def create_db_v_2(conn, curs, ver):
 	create_animal_companion_details_index(curs)
 	create_vehicle_details_table(curs)
 	create_vehicle_details_index(curs)
+	create_settlement_details_table(curs)
+	create_settlement_details_index(curs)
 	create_creature_details_table(curs)
 	create_creature_details_index(curs)
 	create_trap_details_table(curs)

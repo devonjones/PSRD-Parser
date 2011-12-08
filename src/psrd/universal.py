@@ -13,19 +13,21 @@ class Heading():
 		return "<Heading %s:%s>" % (self.level, self.name)
 
 class StatBlockHeading(Heading):
-	def __init__(self, name):
+	def __init__(self, name, html):
 		self.name = name
 		self.keys = []
 		self.details = []
+		self.html = [html]
 
 	def __repr__(self):
 		return "<StatBlockHeading %s %s>" % (self.name, self.keys)
 
 class StatBlockSection(StatBlockHeading):
-	def __init__(self, name):
+	def __init__(self, name, html):
 		self.name = name
 		self.keys = []
 		self.details = []
+		self.html = [html]
 
 	def __repr__(self):
 		return "<StatBlockSection %s %s>" % (self.name, self.keys)
@@ -129,9 +131,9 @@ def stat_block_pass(details):
 	retdetails = []
 	for detail in details:
 		if has_name(detail, 'p') and detail.get('class', "").find('stat-block-title') > -1:
-			retdetails.append(StatBlockHeading(get_text(detail)))
+			retdetails.append(StatBlockHeading(get_text(detail), detail))
 		elif has_name(detail, 'h3') and detail.get('id', "").find('companion') > -1:
-			retdetails.append(StatBlockHeading(get_text(detail)))
+			retdetails.append(StatBlockHeading(get_text(detail), detail))
 		else:
 			retdetails.append(detail)
 	return retdetails
@@ -156,11 +158,12 @@ def stat_block_collapse_pass(details):
 		stat_block_preparse(curr)
 	return retdetails
 
-def stat_block_internals_first_pass(details):
+def stat_block_internals_first_pass(sb, details):
 	retdetails = []
 	for detail in details:
+		sb.html.append(detail)
 		if has_name(detail, 'p') and detail.get('class', "") == 'stat-block-breaker':
-			retdetails.append(StatBlockSection(get_text(detail)))
+			retdetails.append(StatBlockSection(get_text(detail), detail))
 		else:
 			retdetails.append(detail)
 	return retdetails
@@ -223,6 +226,7 @@ def stat_block_key_inner_parse(sb, detail, key, text):
 				text = []
 			elif len(text) > 0:
 				store_key(sb, 'descriptor', text)
+				text = []
 			key = ''.join(element.findAll(text=True))
 		else:
 			if hasattr(element, 'name'):
@@ -247,7 +251,7 @@ def store_key(sb, key, text):
 	sb.keys.append((key.strip(), ptext.strip()))
 
 def stat_block_preparse(sb):
-	sb.details = stat_block_internals_first_pass(sb.details)
+	sb.details = stat_block_internals_first_pass(sb, sb.details)
 	sb.details = stat_block_collapse_pass(sb.details)
 	stat_block_key_first_pass(sb)
 

@@ -1,4 +1,5 @@
 import re
+from BeautifulSoup import BeautifulSoup
 from psrd.universal import StatBlockHeading, StatBlockSection, Heading, filter_name
 
 def colon_filter(value):
@@ -483,16 +484,16 @@ def vehicle_parse_function(field):
 
 def is_creature(sb):
 	fields = dict(sb.keys)
-	if fields.has_key('Senses'):
-		for detail in sb.details:
-			if detail.__class__ == StatBlockSection and detail.name.lower().strip() in ['ecology', 'statistics']:
-				return True
+	for detail in sb.details:
+		if detail.__class__ == StatBlockSection and detail.name.lower().strip() in ['ecology', 'statistics']:
+			return True
 	return False
 
 def parse_creature(sb, book):
 	names = sb.name.split('CR')
 	creature = {'type': 'creature', 'source': book, 'name': filter_name(names[0])}
-	creature['cr'] = names[1].strip()
+	if len(names) > 1:
+		creature['cr'] = names[1].strip()
 	sections = []
 	text = []
 	for key, value in sb.keys:
@@ -608,6 +609,10 @@ def perception_fix(sb, value):
 	sb['senses'] = sb['senses'] + "; Perception " + value
 
 def parse_creature_descriptor(creature, value):
+	if value.startswith('AC'):
+		default_closure('ac')(creature, value[2:])
+		return
+		
 	descsplit = value.split("(")
 	if len(descsplit) > 1:
 		value = descsplit.pop(0)
@@ -653,10 +658,16 @@ def _list_text(text):
 	return newtext
 
 def is_haunt(sb, book):
-	pass
+	fields = dict(sb.keys)
+	if fields.has_key('Destruction'):
+		if fields.has_key('Notice'):
+			return True
+	return False
 
 def parse_haunt(sb, book):
-	pass
+	section = {'type': 'haunt', 'source': book, 'name': filter_name(''.join(sb.html.pop(0).findAll(text=True)))}
+	section['body'] = ''.join([unicode(elem) for elem in sb.html])
+	return section
 
 def parse_stat_block(sb, book):
 	if is_animal_companion(sb):

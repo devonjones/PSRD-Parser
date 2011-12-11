@@ -10,6 +10,7 @@
         {"name": "Chases", "file": "rules/chases.json"},
         {"name": "Disasters", "file": "rules/disasters.json"},
         {"name": "Drugs and Addiction", "file": "rules/drugs_and_addiction.json"},
+        {"name": "Haunts", "file": "rules/haunts.json"},
         {"name": "Hazards", "file": "rules/hazards.json"},
         {"name": "Sanity and Madness", "file": "rules/sanity_and_madness.json"},
         {"name": "NPC Boons", "file": "rules/npc_boons.json"},

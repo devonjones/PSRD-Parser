@@ -54,7 +54,7 @@
 #./creature_parse.py -o ../local/ -b "Bestiary" ../web/paizo.com/pathfinderRPG/prd/monsters/duergar.html
 ./creature_parse.py -o ../local/ -b "Bestiary" ../web/paizo.com/pathfinderRPG/prd/monsters/eagle.html
 ./creature_parse.py -o ../local/ -b "Bestiary" ../web/paizo.com/pathfinderRPG/prd/monsters/eel.html
-#./creature_parse.py -o ../local/ -b "Bestiary" ../web/paizo.com/pathfinderRPG/prd/monsters/elemental.html
+./creature_parse.py -o ../local/ -b "Bestiary" ../web/paizo.com/pathfinderRPG/prd/monsters/elemental.html
 ./creature_parse.py -o ../local/ -b "Bestiary" ../web/paizo.com/pathfinderRPG/prd/monsters/elephant.html
 ./creature_parse.py -o ../local/ -b "Bestiary" ../web/paizo.com/pathfinderRPG/prd/monsters/ettercap.html
 ./creature_parse.py -o ../local/ -b "Bestiary" ../web/paizo.com/pathfinderRPG/prd/monsters/ettin.html
@@ -206,13 +206,11 @@
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/azer.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/badger.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/banshee.html
-# Fucked up, needs repair
-#./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/bat.html
+./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/bat.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/bee.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/beetle.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/belker.html
-# Fucked up, needs repair
-#./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/blindheim.html
+./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/blindheim.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/blinkDog.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/bodak.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/brownie.html
@@ -247,7 +245,7 @@
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/dullahan.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/dustDigger.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/dZiriak.html
-#./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/elemental.html
+./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/elemental.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/facelessStalker.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/fetchling.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/fly.html
@@ -260,7 +258,7 @@
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/golem.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/grayRender.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/gremlin.html
-#./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/grick.html
+./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/grick.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/grig.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/grindylow.html
 #./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/grippli.html
@@ -317,7 +315,7 @@
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/qlippoth.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/quickling.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/quickwood.html
-#./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/rast.html
+./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/rast.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/ravener.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/ray.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/redcap.html
@@ -344,7 +342,7 @@
 #./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/soulboundDoll.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/soulEater.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/spider.html
-#./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/spriggan.html
+./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/spriggan.html
 #./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/sylph.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/tendriculos.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/tenebrousWorm.html

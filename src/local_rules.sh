@@ -142,12 +142,12 @@
 ./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Disasters"             ../web/paizo.com/pathfinderRPG/prd/mastery/disasters.html
 ./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Drugs and Addiction"   ../web/paizo.com/pathfinderRPG/prd/mastery/drugsAndAddiction.html
 ./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Fast Play Ship Combat" ../web/paizo.com/pathfinderRPG/prd/mastery/fastPlayShipCombat.html
-#./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Haunts"                ../web/paizo.com/pathfinderRPG/prd/mastery/haunts.html
+./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Haunts"                ../web/paizo.com/pathfinderRPG/prd/mastery/haunts.html
 ./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Hazards"               ../web/paizo.com/pathfinderRPG/prd/mastery/hazards.html
 ./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "NPC Boons"             ../web/paizo.com/pathfinderRPG/prd/mastery/nPCBoons.html
 ./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "NPC Gallery"           ../web/paizo.com/pathfinderRPG/prd/mastery/nPCGallery.html
 ./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Planar Adventures"     ../web/paizo.com/pathfinderRPG/prd/mastery/planarAdventures.html
 ./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Sanity and Madness"    ../web/paizo.com/pathfinderRPG/prd/mastery/sanityAndMadness.html
-#./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Settlements"           ../web/paizo.com/pathfinderRPG/prd/mastery/settlements.html
+./rules_parse.py -o ../local/ -b "Game Mastery Guide" -t "Settlements"           ../web/paizo.com/pathfinderRPG/prd/mastery/settlements.html
 
 

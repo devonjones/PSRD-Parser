@@ -620,7 +620,10 @@ def parse_creature_descriptor(creature, value):
 		subtype.replace(')', '')
 		creature['creature_subtype'] = subtype
 	values = value.split()
-	if len(values) >= 3:
+	if len(values) == 2:
+		creature['alignment'] = values.pop(0)
+		creature['creature_type'] = values.pop(0)
+	elif len(values) >= 3:
 		creature['alignment'] = values.pop(0)
 		if values[0] == 'or':
 			alignment = creature['alignment']

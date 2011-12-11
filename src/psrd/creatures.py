@@ -83,15 +83,20 @@ def parse_creature(filename, output, book):
 	struct = rule_pass(struct)
 	print_struct(struct)
 	struct = ability_pass(struct)
+	currrules = []
 	if struct['type'] == 'section':
 		for child in struct['sections']:
 			if child['type'] == 'creature':
+				if len(currrules) > 0:
+					sections = child.setdefault('sections', [])
+					sections.extend(currrules)
 				write_creature(output, book, child)
 			elif child['type'] == 'race':
 				makedirs(output, book, 'races')
 				write_race(output, book, child)
 			else:
-				write_rules(output, child, book, child['name'])
+				currrules.append(child)
+				#write_rules(output, child, book, child['name'])
 	else:
 		raise Exception("Uh Oh")
 

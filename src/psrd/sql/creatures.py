@@ -80,8 +80,9 @@ def insert_creature_detail(curs, section_id,
 		feats, skills, racial_modifiers, languages, special_qualities, gear,
 		environment, organization, treasure]
 	targs = kwargs.copy()
-	del targs['spells']
-	test_args(kwargs)
+	if targs.has_key('spells'):
+		del targs['spells']
+	test_args(targs)
 
 	sql = '\n'.join([
 		"INSERT INTO creature_details",
@@ -121,7 +122,7 @@ def create_creature_spells_table(curs):
 		"  creature_spells_id INTEGER PRIMARY KEY,"
 		"  section_id INTEGER NOT NULL,"
 		"  name TEXT,"
-		"  body TEXT,"
+		"  body TEXT"
 		")"])
 	curs.execute(sql)
 

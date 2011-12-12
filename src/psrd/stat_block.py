@@ -715,18 +715,25 @@ def parse_creature_descriptor(creature, value):
 		raise Exception('well fuck: %s' %(values))
 
 def is_creature_type(sb, book):
-	if len(sb.keys) == 2:
-		fields = dict(sb.keys)
+	fields = dict(sb.keys)
+	if len(fields.keys()) == 2:
 		if fields.has_key('Traits') and fields.has_key('descriptor'):
 			return True
 	return False
 
 def parse_creature_type(sb, book):
 	section = {'type': 'section', 'subtype': 'creature_type', 'source': book, 'name': filter_name(sb.name.strip())}
+	desc_text = ""
+	trait_text = ""
+	for key, value in sb.keys:
+		if key == 'Traits':
+			trait_text = trait_text + value
+		else:
+			desc_text = desc_text + value
 	fields = dict(sb.keys)
-	section['text'] = _list_text(fields['descriptor'])
+	section['text'] = _list_text(desc_text)
 	traits =  {'type': 'section', 'source': book, 'name': 'Traits'}
-	traits['text'] = _list_text(fields['Traits'])
+	traits['text'] = _list_text(trait_text)
 	section['sections'] = [traits]
 	return section
 

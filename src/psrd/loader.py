@@ -10,7 +10,7 @@ from psrd.sql.afflictions import insert_affliction_detail
 from psrd.sql.animal_companions import insert_animal_companion_detail
 from psrd.sql.settlements import insert_settlement_detail
 from psrd.sql.vehicles import insert_vehicle_detail
-from psrd.sql.creatures import insert_creature_detail
+from psrd.sql.creatures import insert_creature_detail, insert_creature_spell
 from psrd.sql.traps import insert_trap_detail
 from psrd.sql.items import insert_item_detail
 from psrd.sql.classes import insert_class_detail
@@ -112,6 +112,10 @@ def _vehicle_insert(curs, section, section_id):
 
 def _creature_insert(curs, section, section_id):
 	insert_creature_detail(curs, **section)
+	if section.has_key('spells'):
+		spells = section['spells']
+		for key in spells.keys():
+			insert_creature_spell(curs, section_id, key, spells[key])
 
 def _trap_insert(curs, section, section_id):
 	insert_trap_detail(curs, **section)

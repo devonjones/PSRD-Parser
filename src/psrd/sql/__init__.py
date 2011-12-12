@@ -3,7 +3,7 @@ import sqlite3
 from psrd.sql.abilities import create_ability_types_table, create_ability_types_index
 from psrd.sql.afflictions import create_affliction_details_table, create_affliction_details_index
 from psrd.sql.classes import create_class_details_table, create_class_details_index
-from psrd.sql.creatures import create_creature_details_table, create_creature_details_index
+from psrd.sql.creatures import create_creature_details_table, create_creature_details_index, create_creature_spells_table, create_creature_spells_index
 from psrd.sql.animal_companions import create_animal_companion_details_table, create_animal_companion_details_index
 from psrd.sql.settlements import create_settlement_details_table, create_settlement_details_index
 from psrd.sql.vehicles import create_vehicle_details_table, create_vehicle_details_index
@@ -67,6 +67,8 @@ def create_db_v_2(conn, curs, ver):
 	create_settlement_details_index(curs)
 	create_creature_details_table(curs)
 	create_creature_details_index(curs)
+	create_creature_spells_table(curs)
+	create_creature_spells_index(curs)
 	create_trap_details_table(curs)
 	create_trap_details_index(curs)
 	create_item_details_table(curs)

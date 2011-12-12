@@ -177,6 +177,10 @@ def stat_block_key_first_pass(sb):
 	for detail in sb.details:
 		if has_name(detail, 'p') and detail.get('class', "").find('stat-block-1') > -1 and top:
 			started = True
+			if key and key.startswith("XP "):
+				xp = key.replace('XP', '').strip()
+				store_key(sb, 'XP', xp)
+				key = None
 			key, text = stat_block_key_inner_parse(sb, detail, key, text)
 		elif has_name(detail, 'p') and detail.get('class', "").find('stat-block-1') > -1 and top:
 			ikey, value = sb.keys.pop()
@@ -219,8 +223,10 @@ def stat_block_key_second_pass(sb):
 	return sb
 
 def stat_block_key_inner_parse(sb, detail, key, text):
+	stored = False
 	for element in detail.contents:
 		if has_name(element, 'b'):
+			stored = True
 			if key:
 				store_key(sb, key, text)
 				text = []
@@ -233,6 +239,10 @@ def stat_block_key_inner_parse(sb, detail, key, text):
 				text.append(''.join(element.findAll(text=True)))
 			else:
 				text.append(element)
+	if len(sb.keys) <=1 and not stored:
+		store_key(sb, 'descriptor', text)
+		text = []
+		
 	return key, text
 
 def colon_pass(details):

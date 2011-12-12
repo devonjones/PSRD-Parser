@@ -496,6 +496,15 @@ def parse_creature(sb, book):
 		creature['cr'] = names[1].strip()
 	sections = []
 	text = []
+	descriptors = []
+	for tup in sb.keys:
+		if tup[0] == 'descriptor':
+			descriptors.append(tup)
+	for tup in descriptors:
+		sb.keys.remove(tup)
+	if len(descriptors) > 0:
+		parse_creature_descriptors(creature, descriptors)
+	
 	for key, value in sb.keys:
 		creature_parse_function(key)(creature, value)
 	for detail in sb.details:
@@ -543,6 +552,7 @@ def creature_parse_function(field):
 		'resist': default_closure('resist'),
 		'sr': default_closure('sr'),
 		'weaknesses': default_closure('weaknesses'),
+		'weakness': default_closure('weaknesses'),
 		'sq': default_closure('special_qualities'),
 		'special qualities': default_closure('special_qualities'),
 
@@ -552,12 +562,17 @@ def creature_parse_function(field):
 		'special attacks': default_closure('special_attacks'),
 		'special attack': default_closure('special_attacks'),
 		'attacks': default_closure('special_attacks'),
-		'spell-like abilities': default_closure('spell_like_abilities'),
-		'spell-lilke abilities': default_closure('spell_like_abilities'),
-		'spells prepared': default_closure('spells_prepared'),
-		'cleric spells prepared': default_closure('spells_prepared'),
-		'spells known': default_closure('spells_known'),
-		'sorcerer spells known': default_closure('spells_known'),
+
+		'spell-like abilities': creature_spell_closure('spell-like abilities'),
+		'spell-lilke abilities': creature_spell_closure('spell-like abilities'),
+		'bloodline spell-like ability': creature_spell_closure('bloodline spell-like ability'),
+		'ifrit spell-like abilities': creature_spell_closure('ifrit spell-like abilities'),
+		'arcane school spell-like abilities': creature_spell_closure('arcane school spell-like abilities'),
+		'spells prepared': creature_spell_closure('spells prepared'),
+		'cleric spells prepared': creature_spell_closure('cleric spells prepared'),
+		'ranger spells prepared': creature_spell_closure('ranger spells prepared'),
+		'spells known': creature_spell_closure('spells known'),
+		'sorcerer spells known': creature_spell_closure('sorcerer spells known'),
 
 		'str': default_closure('strength'),
 		'dex': default_closure('dexterity'),
@@ -592,6 +607,14 @@ def creature_parse_function(field):
 		return xp_closure('field')
 	return functions[field.lower()]
 
+def creature_spell_closure(field):
+	def fxn(sb, value):
+		value = colon_filter(value)
+		value = value.replace('&ndash;', '-')
+		spells = sb.setdefault('spells', {})
+		spells[field] = value
+	return fxn
+
 def parse_broken_environment(sb, value):
 	sb['environment'] = 'any'
 
@@ -608,11 +631,60 @@ def noop(creature, value):
 def perception_fix(sb, value):
 	sb['senses'] = sb['senses'] + "; Perception " + value
 
+def parse_creature_classes(creature, value):
+	name = creature['name'].split("(")[0].strip().lower()
+	values = value.lower().split(name)
+	if len(values) == 2:
+		first = values[0].strip()
+		second = values[1].strip()
+		if len(first) > 0:
+			parse_super_race(creature, first)
+		if len(second) > 0:
+			second = second.split("(")[0].strip()
+			parts = second.split(" ")
+			try:
+				int(parts[-1])
+				creature['level'] = second
+			except ValueError:
+				raise Exception("Not a level, not sure what to do: %s" % second)
+	elif len(values) == 1:
+		parse_super_race(creature, values[0])
+	else:
+		raise Exception("Not sure what to do here: %s" % value)
+
+def parse_super_race(creature, snippet):
+	fields = snippet.split(' ')
+	sr = []
+	for field in fields:
+		if field in ['male', 'female']:
+			creature['sex'] = field
+		else:
+			sr.append(field)
+	if len(sr) > 0:
+		creature['super_race'] = ' '.join(sr)
+
+def parse_creature_descriptors(creature, value):
+	real = []
+	for tup in value:
+		key, val = tup
+		if val.startswith('AC'):
+			default_closure('ac')(creature, val[2:])
+		else:
+			real.append(val)
+	parse_creature_descriptor(creature, real.pop())
+	if len(real) > 0:
+		parse_creature_classes(creature, real.pop(0))
+	if len(real) > 0:
+		raise Exception("Too many descriptors: %s" % value)
+
 def parse_creature_descriptor(creature, value):
 	if value.startswith('AC'):
 		default_closure('ac')(creature, value[2:])
 		return
-		
+	bsb = None
+	if value.find('(but see below) ') > -1:
+		value = value.replace('(but see below) ', '')
+		bsb = " (but see below)"
 	descsplit = value.split("(")
 	if len(descsplit) > 1:
 		value = descsplit.pop(0)
@@ -625,6 +697,10 @@ def parse_creature_descriptor(creature, value):
 		creature['creature_type'] = values.pop(0)
 	elif len(values) >= 3:
 		creature['alignment'] = values.pop(0)
+		if values[0] == 'alignment':
+			creature['alignment'] = creature['alignment'] + " " + values.pop(0)
+		if bsb:
+			creature['alignment'] = creature['alignment'] + bsb
 		if values[0] == 'or':
 			alignment = creature['alignment']
 			alignment = alignment + " " + values.pop(0)

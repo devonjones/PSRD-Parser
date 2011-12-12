@@ -101,13 +101,6 @@ def ap_archetype_pass(rules):
 	rules['sections'] = newsections
 	return rules
 
-def familiar_pass(rules, basename):
-	if basename in ['familiar.html', 'newFamiliars.html']:
-		creatures = find_all_sections(rules, section_type='creature')
-		for creature in creatures:
-			creature['subtype'] = 'familiar'
-	return rules
-
 def ultimate_combat_structure_pass(rules, basename):
 	if basename == 'classArchetypes.html':
 		topsections = []
@@ -164,10 +157,8 @@ def parse_rules(filename, output, book, title):
 	rules = parse_universal(filename, output, book)
 	rules = stat_block_pass(rules, book)
 	rules = structure_pass(rules, basename, book)
-	rules = familiar_pass(rules, basename)
 	if not basename in ['glossary.html']:
 		rules = ability_pass(rules)
-	#rules = entity_pass(rules)
 	rules = title_pass(rules, book, title)
 	if not basename in ['ranger.html', 'universalMonsterRules.html', 'buildingAndModifyingConstructs.html', 'spellbooks.html']:
 		rules = abbrev_pass(rules)

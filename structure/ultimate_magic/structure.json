@@ -31,7 +31,6 @@
             {"name": "Spell Duels", "file": "rules/spell_duels.json"},
             {"name": "Binding Outsiders", "file": "rules/building_and_modifying_constructs.json"},
             {"name": "Binding Outsiders", "file": "rules/binding_outsiders.json"},
-            {"name": "New Familiars", "file": "rules/new_familiars.json"},
             {"name": "Spellbooks", "file": "rules/spellbooks.json"},
             {"name": "Designing Spells", "file": "rules/designing_spells.json"}
           ]

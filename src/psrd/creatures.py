@@ -2,50 +2,24 @@ import os
 import json
 from BeautifulSoup import BeautifulSoup
 from psrd.universal import parse_universal, print_struct
-from psrd.sections import ability_pass, entity_pass, cap_words
+from psrd.sections import ability_pass, entity_pass, cap_words, find_section, find_all_sections, remove_section
 from psrd.rules import write_rules
 from psrd.stat_block import stat_block_pass
 from psrd.files import char_replace, makedirs
 from psrd.races import write_race
 
-def monster_structural_pass(struct):
-	sections = []
-	changed = False
+def structural_pass(struct):
 	for child in struct.get('sections', []):
-		sections.append(child)
-		if child['type'] == 'creature':
-			changed = True
-			child['name'] = struct['name']
-			soup = BeautifulSoup(struct['text'])
-			child['description'] = ''.join(soup.findAll(text=True))
-		elif child.get('name', '').strip().endswith('Characters'):
-			changed = True
+		if child.get('name', '').strip().endswith('Characters'):
 			child['type'] = 'race'
 			child['subtype'] = 'monster_race'
-	if changed:
-		return {'type': 'section', 'sections': sections, 'source': struct['source']}
-	else:
-		return struct
-
-def structural_pass(struct):
-	if struct.has_key('name'):
-		# Single monster
-		struct = monster_structural_pass(struct)
-	else:
-		# Multiple Monsters
-		newsections = []
-		for child in struct['sections']:
-			newstruct = monster_structural_pass(child)
-			if child == newstruct:
-				newsections.append(child)
-			else:
-				newsections.extend(newstruct['sections'])
-		struct['sections'] = newsections
+		else:
+			structural_pass(child)
 	return struct
 
 def animal_companion_pass(struct):
 	newsections = []
-	for section in struct['sections']:
+	for section in struct.get('sections', []):
 		if section.get('name', '').endswith('Companion') or section.get('name', '').endswith('Companions'):
 			name = section['name'].replace(' Animal Companion', '')
 			name = name.replace(' Companions', '')
@@ -55,9 +29,16 @@ def animal_companion_pass(struct):
 			animalsec = newsections[-1].setdefault('sections', [])
 			animalsec.append(nsec)
 		else:
-			newsections.append(section)
+			newsections.append(animal_companion_pass(section))
 	struct['sections'] = newsections
 	return struct
+
+def familiar_pass(rules, basename):
+	if basename in ['familiar.html', 'newFamiliars.html']:
+		creatures = find_all_sections(rules, section_type='creature')
+		for creature in creatures:
+			creature['subtype'] = 'familiar'
+	return rules
 
 def rule_pass(struct):
 	newsections = []
@@ -76,27 +57,18 @@ def rule_pass(struct):
 	return struct
 
 def parse_creature(filename, output, book):
+	basename = os.path.basename(filename)
 	struct = parse_universal(filename, output, book, max_title=4)
 	struct = stat_block_pass(struct, book)
-	struct = structural_pass(struct)
 	struct = animal_companion_pass(struct)
 	struct = rule_pass(struct)
-	print_struct(struct)
+	#print_struct(struct)
 	struct = ability_pass(struct)
+	struct = familiar_pass(struct, basename)
 	currrules = []
 	if struct['type'] == 'section':
-		for child in struct['sections']:
-			if child['type'] == 'creature':
-				if len(currrules) > 0:
-					sections = child.setdefault('sections', [])
-					sections.extend(currrules)
-				write_creature(output, book, child)
-			elif child['type'] == 'race':
-				makedirs(output, book, 'races')
-				write_race(output, book, child)
-			else:
-				currrules.append(child)
-				#write_rules(output, child, book, child['name'])
+		struct['name'] = struct['sections'][0]['name']
+		write_creature(output, book, struct)
 	else:
 		raise Exception("Uh Oh")
 

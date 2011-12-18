@@ -62,7 +62,6 @@ def parse_creature(filename, output, book):
 	struct = stat_block_pass(struct, book)
 	struct = animal_companion_pass(struct)
 	struct = rule_pass(struct)
-	#print_struct(struct)
 	struct = ability_pass(struct)
 	struct = familiar_pass(struct, basename)
 	currrules = []

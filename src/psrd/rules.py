@@ -70,7 +70,6 @@ def advanced_players_guide_structure_pass(rules, basename):
 			if section['type'] == 'section':
 				section['subtype'] = 'cleric_subdomain'
 	elif basename == 'sorcerer.html':
-		print "XXXXXXX"
 		newsections = []
 		cl = rules['sections'].pop(0)
 		newsections.append(cl)

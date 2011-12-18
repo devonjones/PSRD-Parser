@@ -185,7 +185,7 @@ def stat_block_key_first_pass(sb):
 		elif has_name(detail, 'p') and detail.get('class', "").find('stat-block-2') > -1 and top:
 			text.append(unicode(detail))
 		elif has_name(detail, 'p') and detail.get('class', "").find('stat-block-xp') > -1 and top:
-			xp = unicode(detail)
+			xp = ''.join(detail.findAll(text=True))
 			xp = xp.replace('XP', '').strip()
 			store_key(sb, 'XP', xp)
 		else:

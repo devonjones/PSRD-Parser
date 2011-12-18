@@ -4,9 +4,15 @@ def colon_filter(value):
 		value = value[1:]
 	return value.strip()
 
+def comma_filter(value):
+	if value.endswith(","):
+		value = value[:1]
+	return value.strip()
+
 def default_closure(field):
 	def fxn(sb, value):
 		value = colon_filter(value)
+		value = comma_filter(value)
 		value = value.replace('&ndash;', '-')
 		sb[field] = value
 	return fxn

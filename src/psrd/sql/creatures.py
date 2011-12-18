@@ -26,7 +26,6 @@ def create_creature_details_table(curs):
 		"  dr TEXT,"
 		"  resist TEXT,"
 		"  immune TEXT,"
-		"  vulnerability TEXT,"
 		"  sr TEXT,"
 		"  weaknesses TEXT,"
 		"  speed TEXT,"
@@ -61,12 +60,16 @@ def create_creature_details_index(curs):
 		"CREATE INDEX creature_details_section_id",
 		" ON creature_details (section_id)"])
 	curs.execute(sql)
+	sql = '\n'.join([
+		"CREATE INDEX creature_details_creature_type",
+		" ON creature_details (creature_type)"])
+	curs.execute(sql)
 
 def insert_creature_detail(curs, section_id,
 		sex=None, super_race=None, level=None, cr=None, xp=None, alignment=None, size=None, creature_type=None,
 		creature_subtype=None, init=None, senses=None, aura=None,
 		ac=None, hp=None, fortitude=None, reflex=None, will=None, resist=None, defensive_abilities=None,
-		dr=None, immune=None, vulnerability=None, sr=None, weaknesses=None,
+		dr=None, immune=None, sr=None, weaknesses=None,
 		speed=None, melee=None, ranged=None, space=None, reach=None, special_attacks=None,
 		strength=None, dexterity=None, constitution=None, intelligence=None, wisdom=None, charisma=None,
 		base_attack=None, cmb=None, cmd=None, feats=None, skills=None, racial_modifiers=None, languages=None,
@@ -74,7 +77,7 @@ def insert_creature_detail(curs, section_id,
 		environment=None, organization=None, treasure=None, **kwargs):
 	values = [section_id,
 		sex, super_race, level, cr, xp, alignment, size, creature_type, creature_subtype, init, senses, aura,
-		ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, vulnerability, sr, weaknesses,
+		ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, sr, weaknesses,
 		speed, melee, ranged, space, reach, special_attacks,
 		strength, dexterity, constitution, intelligence, wisdom, charisma, base_attack, cmb, cmd,
 		feats, skills, racial_modifiers, languages, special_qualities, gear,
@@ -88,14 +91,13 @@ def insert_creature_detail(curs, section_id,
 		"INSERT INTO creature_details",
 		" (section_id,",
 		"  sex, super_race, level, cr, xp, alignment, size, creature_type, creature_subtype, init, senses, aura,",
-		"  ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, vulnerability, sr,",
-		"  weaknesses,",
+		"  ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, sr, weaknesses,",
 		"  speed, melee, ranged, space, reach, special_attacks,",
 		"  strength, dexterity, constitution, intelligence, wisdom, charisma,",
 		"  base_attack, cmb, cmd, feats, skills, racial_modifiers, languages, special_qualities, gear,",
 		"  environment, organization, treasure)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])

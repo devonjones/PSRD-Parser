@@ -1,3 +1,4 @@
+from psrd.sections import cap_words
 from psrd.stat_block.utils import colon_filter, default_closure, noop
 from psrd.universal import StatBlockSection, filter_name
 
@@ -52,7 +53,6 @@ def parse_creature(sb, book):
 
 def creature_parse_function(field):
 	functions = {
-		'xp': default_closure('xp'),
 		'init': default_closure('init'),
 		'senses': default_closure('senses'),
 		'perception': perception_fix,
@@ -67,10 +67,10 @@ def creature_parse_function(field):
 		'defensive ability': default_closure('defensive_abilities'),
 		'dr': default_closure('dr'),
 		'immune': default_closure('immune'),
-		'vulnerability': default_closure('vulnerability'),
 		'resist': default_closure('resist'),
 		'sr': default_closure('sr'),
 		'weaknesses': default_closure('weaknesses'),
+		'vulnerability': default_closure('weaknesses'),
 		'weakness': default_closure('weaknesses'),
 		'sq': default_closure('special_qualities'),
 		'special qualities': default_closure('special_qualities'),
@@ -146,9 +146,7 @@ def parse_broken_environment(sb, value):
 
 def xp_closure(field):
 	def fxn(sb, value):
-		values = field.split(' ')
-		values.pop(0)
-		sb['xp'] = ' '.join(values).strip()
+		sb['xp'] = value.replace('XP', '').strip() 
 	return fxn
 
 def perception_fix(sb, value):
@@ -208,18 +206,24 @@ def parse_creature_descriptor(creature, value):
 	if value.find('(but see below) ') > -1:
 		value = value.replace('(but see below) ', '')
 		bsb = " (but see below)"
+	any_al = None
+	if value.find('Any alignment (same as creator)') > -1:
+		any_al = 'Any alignment (same as creator)'
+		value = value.replace(any_al, 'Any')
 	descsplit = value.split("(")
 	if len(descsplit) > 1:
 		value = descsplit.pop(0)
 		subtype = ''.join(descsplit)
-		subtype.replace(')', '')
+		subtype = subtype.replace(')', '')
 		creature['creature_subtype'] = subtype
 	values = value.split()
 	if len(values) == 2:
 		creature['alignment'] = values.pop(0)
-		creature['creature_type'] = values.pop(0)
+		creature['creature_type'] = cap_words(values.pop(0))
 	elif len(values) >= 3:
 		creature['alignment'] = values.pop(0)
+		if any_al:
+			creature['alignment'] = any_al
 		if values[0] == 'alignment':
 			creature['alignment'] = creature['alignment'] + " " + values.pop(0)
 		if bsb:
@@ -230,10 +234,10 @@ def parse_creature_descriptor(creature, value):
 			alignment = alignment + " " + values.pop(0)
 			creature['alignment'] = alignment
 		creature['size'] = values.pop(0)
-		creature['creature_type'] = values.pop(0)
+		creature['creature_type'] = cap_words(values.pop(0))
 	if len(values) > 0:
 		if values[0] in ['beast', 'humanoid']:
-			creature['creature_type'] = creature['creature_type'] + " " + values.pop(0)
+			creature['creature_type'] = creature['creature_type'] + " " + cap_words(values.pop(0))
 	if len(values) > 0:
 		raise Exception('well fuck: %s' %(values))
 

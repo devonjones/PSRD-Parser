@@ -8,13 +8,29 @@ from psrd.stat_block import stat_block_pass
 from psrd.files import char_replace, makedirs
 from psrd.races import write_race
 
-def structural_pass(struct):
+def monster_race_pass(struct):
 	for child in struct.get('sections', []):
 		if child.get('name', '').strip().endswith('Characters'):
+			child['name'] = child['name'].replace('Characters', '').strip()
 			child['type'] = 'race'
 			child['subtype'] = 'monster_race'
 		else:
-			structural_pass(child)
+			monster_race_pass(child)
+	return struct
+
+def collapse_pass(struct):
+	if struct['type'] == 'section' and len(struct.get('sections', [])) == 1 and struct['sections'][0]['type'] == 'creature':
+		print struct['name']
+		soup = BeautifulSoup(struct['text'])
+		mon = struct['sections'][0]
+		mon['description'] = ''.join(soup.findAll(text=True))
+		mon['name'] = struct['name']
+		return mon
+	newchildren = []
+	for child in struct.get('sections', []):
+		newchildren.append(collapse_pass(child))
+	if len(newchildren) > 0:
+		struct['sections'] = newchildren
 	return struct
 
 def animal_companion_pass(struct):
@@ -64,9 +80,14 @@ def parse_creature(filename, output, book):
 	struct = rule_pass(struct)
 	struct = ability_pass(struct)
 	struct = familiar_pass(struct, basename)
+	struct = monster_race_pass(struct)
+	struct = collapse_pass(struct)
 	currrules = []
 	if struct['type'] == 'section':
 		struct['name'] = struct['sections'][0]['name']
+		struct['name'] = struct['name'].split(",")[0]
+		write_creature(output, book, struct)
+	elif struct['type'] == 'creature':
 		write_creature(output, book, struct)
 	else:
 		raise Exception("Uh Oh")

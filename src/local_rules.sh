@@ -15,6 +15,7 @@
 ./rules_parse.py -o ../local/ -b "Core Rulebook" -t "Creating NPCs"      ../web/paizo.com/pathfinderRPG/prd/creatingNPCs.html
 ./rules_parse.py -o ../local/ -b "Core Rulebook" -t "Magic Items"        ../web/paizo.com/pathfinderRPG/prd/magicItems.html
 ./rules_parse.py -o ../local/ -b "Core Rulebook" -t "Glossary"           ../web/paizo.com/pathfinderRPG/prd/glossary.html
+
 ./rules_parse.py -o ../local/ -b "Core Rulebook" -t "Armor"                 ../web/paizo.com/pathfinderRPG/prd/magicItems/armor.html
 ./rules_parse.py -o ../local/ -b "Core Rulebook" -t "Artifacts"             ../web/paizo.com/pathfinderRPG/prd/magicItems/artifacts.html
 ./rules_parse.py -o ../local/ -b "Core Rulebook" -t "Cursed Items"          ../web/paizo.com/pathfinderRPG/prd/magicItems/cursedItems.html

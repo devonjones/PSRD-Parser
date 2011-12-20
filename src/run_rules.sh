@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Core Rulebook
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Getting Started"    ../web/paizo.com/pathfinderRPG/prd/gettingStarted.html
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Classes"            ../web/paizo.com/pathfinderRPG/prd/classes.html
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Using Skills"       ../web/paizo.com/pathfinderRPG/prd/usingSkills.html
@@ -45,7 +47,6 @@
 ./rules_parse.py -o ../data/ -b "Bestiary 2" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/universalMonsterRules.html
 ./rules_parse.py -o ../data/ -b "Bestiary" -t "Creature Types"            ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/creatureTypes.html
 ./rules_parse.py -o ../data/ -b "Bestiary 2" -t "Monster Cohorts"         ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterCohorts.html
-
 
 # Advanced Player's Guide
 ./rules_parse.py -o ../data/ -b "Advanced Player's Guide" -t "Races"            ../web/paizo.com/pathfinderRPG/prd/advanced/advancedRaces.html
@@ -147,6 +148,5 @@
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Planar Adventures"     ../web/paizo.com/pathfinderRPG/prd/mastery/planarAdventures.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Sanity and Madness"    ../web/paizo.com/pathfinderRPG/prd/mastery/sanityAndMadness.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Settlements"           ../web/paizo.com/pathfinderRPG/prd/mastery/settlements.html
-
 
 

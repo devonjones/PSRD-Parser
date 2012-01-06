@@ -6,7 +6,7 @@ def colon_filter(value):
 
 def comma_filter(value):
 	if value.endswith(","):
-		value = value[:1]
+		value = value[:-1]
 	return value.strip()
 
 def default_closure(field):

@@ -1,0 +1,22 @@
+
+{
+  "name": "PFSRD",
+  "children": [
+    {
+      "name": "Bestiary 2",
+      "children": [
+        {"name": "Monster Introduction", "file": "rules/introduction.json"},
+        {"name": "Monster Creation", "file": "rules/monster_creation.json"},
+        {"name": "Monster Advancement", "file": "rules/monster_advancement.json"},
+        {"name": "Universal Monster Types", "file": "rules/universal_monster_rules.json"},
+        {"name": "Creature Types", "file": "rules/creature_types.json"},
+        {"name": "Monsters as PCs", "file": "rules/monster_as_pcs.json"},
+        {"name": "Monster Feats", "file": "rules/feats.json"},
+        {"name": "Monster Cohorts", "file": "rules/monster_cohorts.json"},
+        {"name": "Monster Roles", "file": "rules/monster_roles.json"},
+        {"name": "Encounter Tables", "file": "rules/encounter_tables.json"}
+      ]
+    }
+  ]
+}
+

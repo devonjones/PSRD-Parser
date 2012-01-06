@@ -17,3 +17,5 @@
 ./rules_loader.py -d ../local/psrd.db ../local/ultimate_combat/structure.json
 ./rules_loader.py -d ../local/psrd.db ../local/ultimate_magic/structure.json
 ./rules_loader.py -d ../local/psrd.db ../local/game_mastery_guide/structure.json
+./rules_loader.py -d ../local/psrd.db ../local/bestiary/structure.json
+./rules_loader.py -d ../local/psrd.db ../local/bestiary_2/structure.json

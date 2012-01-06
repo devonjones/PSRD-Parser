@@ -237,7 +237,7 @@ def stat_block_key_inner_parse(sb, detail, key, text):
 				text.append(''.join(element.findAll(text=True)))
 			else:
 				text.append(element)
-	if len(sb.keys) <=1 and not stored:
+	if len(sb.keys) <= 1 and not stored:
 		store_key(sb, 'descriptor', text)
 		text = []
 		
@@ -254,7 +254,7 @@ def colon_pass(details):
 
 def store_key(sb, key, text):
 	ptext = ''.join(text).strip()
-	if ptext.endswith(';'):
+	if ptext.endswith(';') or ptext.endswith(","):
 		ptext = ptext[:-1]
 	sb.keys.append((key.strip(), ptext.strip()))
 
@@ -287,7 +287,7 @@ def section_pass(struct, book):
 def filter_name(name):
 	name = name.strip()
 	if name[-1] == ':':
-		name = name[0:-1]
+		name = name[:-1]
 	return name.strip()
 
 # Adds text to sections

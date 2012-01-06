@@ -39,8 +39,8 @@
 ./rules_parse.py -o ../data/ -b "Bestiary" -t "Monster Creation"        ../web/paizo.com/pathfinderRPG/prd/monsters/monsterCreation.html
 ./rules_parse.py -o ../data/ -b "Bestiary" -t "Monster Roles"           ../web/paizo.com/pathfinderRPG/prd/monsters/monsterRoles.html
 ./rules_parse.py -o ../data/ -b "Bestiary" -t "Monster As PCs"          ../web/paizo.com/pathfinderRPG/prd/monsters/monstersAsPCs.html
-./rules_parse.py -o ../data/ -b "Bestiary" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/monsters/encounterTables.html
-./rules_parse.py -o ../data/ -b "Bestiary" -t "Encounter Tables"        ../web/paizo.com/pathfinderRPG/prd/monsters/universalMonsterRules.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/monsters/universalMonsterRules.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Encounter Tables"        ../web/paizo.com/pathfinderRPG/prd/monsters/encounterTables.html
 
 # Bestiary 2
 ./rules_parse.py -o ../data/ -b "Bestiary 2" -t "Monster Advancement"     ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterAdvancement.html

@@ -2,7 +2,7 @@
   "name": "PFSRD",
   "children": [
     {
-      "name": "Bestiary 2",
+      "name": "Rules: Bestiary 2",
       "children": [
         {"name": "Monster Advancement", "file": "rules/monster_advancement.json"},
         {"name": "Universal Monster Rules", "file": "rules/universal_monster_rules.json"},

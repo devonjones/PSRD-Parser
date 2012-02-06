@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Core Rulebook
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Getting Started"    ../web/paizo.com/pathfinderRPG/prd/gettingStarted.html
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Classes"            ../web/paizo.com/pathfinderRPG/prd/classes.html
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Using Skills"       ../web/paizo.com/pathfinderRPG/prd/usingSkills.html
@@ -28,6 +30,23 @@
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Wands"                 ../web/paizo.com/pathfinderRPG/prd/magicItems/wands.html
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Weapons"               ../web/paizo.com/pathfinderRPG/prd/magicItems/weapons.html
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Wonderous Items"       ../web/paizo.com/pathfinderRPG/prd/magicItems/wondrousItems.html
+
+# Bestiary
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Introduction"            ../web/paizo.com/pathfinderRPG/prd/monsters/introduction.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Creature Types"          ../web/paizo.com/pathfinderRPG/prd/monsters/creatureTypes.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Monster Advancement"     ../web/paizo.com/pathfinderRPG/prd/monsters/monsterAdvancement.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Monster Cohorts"         ../web/paizo.com/pathfinderRPG/prd/monsters/monsterCohorts.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Monster Creation"        ../web/paizo.com/pathfinderRPG/prd/monsters/monsterCreation.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Monster Roles"           ../web/paizo.com/pathfinderRPG/prd/monsters/monsterRoles.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Monster As PCs"          ../web/paizo.com/pathfinderRPG/prd/monsters/monstersAsPCs.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/monsters/universalMonsterRules.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Encounter Tables"        ../web/paizo.com/pathfinderRPG/prd/monsters/encounterTables.html
+
+# Bestiary 2
+./rules_parse.py -o ../data/ -b "Bestiary 2" -t "Monster Advancement"     ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterAdvancement.html
+./rules_parse.py -o ../data/ -b "Bestiary 2" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/universalMonsterRules.html
+./rules_parse.py -o ../data/ -b "Bestiary" -t "Creature Types"            ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/creatureTypes.html
+./rules_parse.py -o ../data/ -b "Bestiary 2" -t "Monster Cohorts"         ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterCohorts.html
 
 # Advanced Player's Guide
 ./rules_parse.py -o ../data/ -b "Advanced Player's Guide" -t "Races"            ../web/paizo.com/pathfinderRPG/prd/advanced/advancedRaces.html
@@ -81,7 +100,6 @@
 ./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Spell Duels"                       ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellDuels.html
 ./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Binding Outsiders"                 ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/bindingOutsiders.html
 ./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Building and Modifying Constructs" ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/buildingAndModifyingConstructs.html
-./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "New Familiars"                     ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/newFamiliars.html
 ./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Spellbooks"                        ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/spellbooks.html
 ./rules_parse.py -o ../data/ -b "Ultimate Magic" -t "Designing Spells"                  ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/magic/designingSpells.html
 
@@ -123,13 +141,12 @@
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Disasters"             ../web/paizo.com/pathfinderRPG/prd/mastery/disasters.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Drugs and Addiction"   ../web/paizo.com/pathfinderRPG/prd/mastery/drugsAndAddiction.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Fast Play Ship Combat" ../web/paizo.com/pathfinderRPG/prd/mastery/fastPlayShipCombat.html
-#./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Haunts"                ../web/paizo.com/pathfinderRPG/prd/mastery/haunts.html
+./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Haunts"                ../web/paizo.com/pathfinderRPG/prd/mastery/haunts.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Hazards"               ../web/paizo.com/pathfinderRPG/prd/mastery/hazards.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "NPC Boons"             ../web/paizo.com/pathfinderRPG/prd/mastery/nPCBoons.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "NPC Gallery"           ../web/paizo.com/pathfinderRPG/prd/mastery/nPCGallery.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Planar Adventures"     ../web/paizo.com/pathfinderRPG/prd/mastery/planarAdventures.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Sanity and Madness"    ../web/paizo.com/pathfinderRPG/prd/mastery/sanityAndMadness.html
 ./rules_parse.py -o ../data/ -b "Game Mastery Guide" -t "Settlements"           ../web/paizo.com/pathfinderRPG/prd/mastery/settlements.html
-
 
 

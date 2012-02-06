@@ -5,7 +5,8 @@ from psrd.universal import parse_universal
 from psrd.sections import entity_pass
 
 def race_pass(race):
-	race['subtype'] = 'race'
+	race['type'] = 'race'
+	race['subtype'] = 'standard_race'
 
 def racial_trait_pass(race):
 	traits = race['sections'][-1]

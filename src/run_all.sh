@@ -11,3 +11,4 @@ cp -r ../structure/* ../data
 ./run_skills.sh
 ./run_spell_lists.sh
 ./run_spells.sh
+./run_creatures.sh

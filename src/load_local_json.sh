@@ -11,8 +11,11 @@
 ./json_loader.py -d ../local/psrd.db -p "Skills" ../local/*/skills/*.json
 ./json_loader.py -d ../local/psrd.db -p "Feats" ../local/*/feats/*.json
 ./json_loader.py -d ../local/psrd.db -p "Classes" ../local/*/classes/*.json
+./json_loader.py -d ../local/psrd.db -p "Monsters" ../local/*/creatures/*.json
 ./rules_loader.py -d ../local/psrd.db ../local/core_rulebook/structure.json
 ./rules_loader.py -d ../local/psrd.db ../local/advanced_players_guide/structure.json
 ./rules_loader.py -d ../local/psrd.db ../local/ultimate_combat/structure.json
 ./rules_loader.py -d ../local/psrd.db ../local/ultimate_magic/structure.json
 ./rules_loader.py -d ../local/psrd.db ../local/game_mastery_guide/structure.json
+./rules_loader.py -d ../local/psrd.db ../local/bestiary/structure.json
+./rules_loader.py -d ../local/psrd.db ../local/bestiary_2/structure.json

@@ -21,7 +21,7 @@ def druid_animal_companion_fix(section):
 			keys = []
 			if s != section:
 				details.append(s)
-			s = StatBlockSection(tup[0])
+			s = StatBlockSection(tup[0], '<p><b>%s</b></p>' % tup[0])
 		else:
 			keys.append(tup)
 	s.keys = keys

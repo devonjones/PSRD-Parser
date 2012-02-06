@@ -10,7 +10,7 @@ from psrd.sql.afflictions import insert_affliction_detail
 from psrd.sql.animal_companions import insert_animal_companion_detail
 from psrd.sql.settlements import insert_settlement_detail
 from psrd.sql.vehicles import insert_vehicle_detail
-from psrd.sql.creatures import insert_creature_detail
+from psrd.sql.creatures import insert_creature_detail, insert_creature_spell
 from psrd.sql.traps import insert_trap_detail
 from psrd.sql.items import insert_item_detail
 from psrd.sql.classes import insert_class_detail
@@ -112,6 +112,10 @@ def _vehicle_insert(curs, section, section_id):
 
 def _creature_insert(curs, section, section_id):
 	insert_creature_detail(curs, **section)
+	if section.has_key('spells'):
+		spells = section['spells']
+		for key in spells.keys():
+			insert_creature_spell(curs, section_id, key, spells[key])
 
 def _trap_insert(curs, section, section_id):
 	insert_trap_detail(curs, **section)
@@ -168,7 +172,7 @@ def insert_spell_records(curs, section_id, spell):
 		insert_spell_descriptor(curs, section_id, descriptor)
 	for level in spell.get('level', []):
 		magic_type = find_magic_type(level['class'])
-		insert_spell_list(curs, section_id, level['level'], level['class'], magic_type)
+		insert_spell_list(curs, section_id, level['level'], cap_words(level['class']), magic_type)
 	for component in spell.get('components', []):
 		insert_spell_component(curs, section_id, component['type'], component.get('text'), 0)
 	for effect in spell.get('effects', []):
@@ -265,15 +269,11 @@ def fix_spell_list(struct):
 			newspells.append(_rename_spell("Ethereal Jaunt", spell))
 		elif spell['name'] == "Thunderous Drums":
 			newspells.append(_rename_spell("Thundering Drums", spell))
-		#elif spell['name'].lower() == "planarbinding, lesser":
-		#	newspells.append(_rename_spell("Planar Binding, Lesser", spell))
-		#elif spell['name'].lower() == "planarbinding, greater":
-		#	newspells.append(_rename_spell("Planar Binding, Greater", spell))
 		elif spell['name'] == "Lend Greater Judgment":
 			newspells.append(_rename_spell("Lend Judgment, Greater", spell))
 		elif spell['name'] == "Greater Magic Weapon":
 			newspells.append(_rename_spell("Magic Weapon, Greater", spell))
-		elif spell['name'] in ("Vermin Shape II", "Interrogation, Greater", "Lightning Rod"): # This is really fucked up, get ot it later.
+		elif spell['name'] in ("Vermin Shape II", "Interrogation, Greater", "Lightning Rod"): # This is really fucked up, get to it later.
 			pass
 		else:
 			newspells.append(spell)

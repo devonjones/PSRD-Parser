@@ -162,3 +162,12 @@
 * Glossary
   * Special Abilities
   * Conditions
+
+= Parse Errors =
+== Paizo copyright ==
+* Advanced Player's Guide
+  * Battle Herald
+* Ultimate Combat
+  * Vehicles
+* Ultimate Magic
+  * Spellblights

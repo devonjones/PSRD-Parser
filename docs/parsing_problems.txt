@@ -1,0 +1,13 @@
+paizo.com/pathfinderRPG/prd/ultimateCombat/classArchetypes/fighter.html
+line 292: pata
+
+paizo.com/pathfinderRPG/prd/bestiary3/asura.html#_asura
+line 234: CMB
+
+http://paizo.com/pathfinderRPG/prd/bestiary3/demodand.html#_demodand
+line 210/211: should be joined
+
+paizo.com/pathfinderRPG/prd/bestiary3/taotieh.html#_taotieh
+line 219:
+was "<b>; Price</b>"
+should be "; <b>Price</b>"

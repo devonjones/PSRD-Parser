@@ -315,7 +315,7 @@
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/poltergeist.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/primate.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/protean.html
-#./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/qlippoth.html
+./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/qlippoth.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/quickling.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/quickwood.html
 ./creature_parse.py -o ../local/ -b "Bestiary 2" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/rast.html
@@ -533,7 +533,7 @@
 ./creature_parse.py -o ../local/ -b "Bestiary 3" ../web/paizo.com/pathfinderRPG/prd/bestiary3/stymphalidies.html
 ./creature_parse.py -o ../local/ -b "Bestiary 3" ../web/paizo.com/pathfinderRPG/prd/bestiary3/suli.html
 ./creature_parse.py -o ../local/ -b "Bestiary 3" ../web/paizo.com/pathfinderRPG/prd/bestiary3/tanuki.html
-#./creature_parse.py -o ../local/ -b "Bestiary 3" ../web/paizo.com/pathfinderRPG/prd/bestiary3/taotieh.html
+./creature_parse.py -o ../local/ -b "Bestiary 3" ../web/paizo.com/pathfinderRPG/prd/bestiary3/taotieh.html
 ./creature_parse.py -o ../local/ -b "Bestiary 3" ../web/paizo.com/pathfinderRPG/prd/bestiary3/tatzlwyrm.html
 ./creature_parse.py -o ../local/ -b "Bestiary 3" ../web/paizo.com/pathfinderRPG/prd/bestiary3/terraCottaSoldier.html
 ./creature_parse.py -o ../local/ -b "Bestiary 3" ../web/paizo.com/pathfinderRPG/prd/bestiary3/thriae.html

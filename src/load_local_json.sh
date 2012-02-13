@@ -20,3 +20,5 @@
 ./rules_loader.py -d ../local/psrd.db ../local/bestiary/structure.json
 ./rules_loader.py -d ../local/psrd.db ../local/bestiary_2/structure.json
 ./rules_loader.py -d ../local/psrd.db ../local/bestiary_3/structure.json
+./index_loader.py -d ../local/psrd.db ../structure/index.json
+

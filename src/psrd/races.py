@@ -19,7 +19,7 @@ def racial_trait_pass(race):
 
 def parse_races(filename, output, book):
 	struct = parse_universal(filename, output, book)
-	#struct = entity_pass(struct)
+	struct = entity_pass(struct)
 	for race in struct['sections']:
 		race_pass(race)
 		racial_trait_pass(race)

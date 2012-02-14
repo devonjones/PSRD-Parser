@@ -230,7 +230,7 @@ def parse_class(cl, book):
 	cl = mark_subtype_pass(cl, "Grand Hex", "section", "witch_grand_hex")
 	cl = mark_subtype_pass(cl, "Patron Spells", "section", "witch_patron")
 	cl = spell_list_pass(cl)
-	#cl = entity_pass(cl)
+	cl = entity_pass(cl)
 	return cl
 
 def first_pass(filename, output, book):

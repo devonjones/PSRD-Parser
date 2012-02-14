@@ -82,6 +82,7 @@ def parse_creature(filename, output, book):
 	struct = familiar_pass(struct, basename)
 	struct = monster_race_pass(struct)
 	struct = collapse_pass(struct)
+	struct = entity_pass(struct)
 	currrules = []
 	if struct['type'] == 'section':
 		struct['name'] = struct['sections'][0]['name']

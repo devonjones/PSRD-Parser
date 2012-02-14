@@ -139,6 +139,7 @@ def creature_spell_closure(field):
 	def fxn(sb, value):
 		value = colon_filter(value)
 		value = value.replace('&ndash;', '-')
+		value = value.replace('&mdash;', '-')
 		spells = sb.setdefault('spells', {})
 		spells[field] = value
 	return fxn

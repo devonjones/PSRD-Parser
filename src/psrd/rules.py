@@ -159,6 +159,7 @@ def parse_rules(filename, output, book, title):
 	if not basename in ['glossary.html']:
 		rules = ability_pass(rules)
 	rules = title_pass(rules, book, title)
+	rules = entity_pass(rules)
 	if not basename in ['ranger.html', 'universalMonsterRules.html', 'buildingAndModifyingConstructs.html', 'spellbooks.html']:
 		rules = abbrev_pass(rules)
 	print_struct(rules)

@@ -132,7 +132,7 @@ def parse_spell(filename, output, book):
 	struct = parse_universal(filename, output, book, max_title=4)
 	struct = stat_block_pass(struct, book)
 	struct = heading_pass(struct)
-	#struct = entity_pass(struct)
+	struct = entity_pass(struct)
 	struct = ability_pass(struct)
 	if struct['type'] == 'section':
 		if struct.has_key('name'):

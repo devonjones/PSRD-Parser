@@ -62,14 +62,20 @@ def entity_pass(section):
 	for item in section.get('sections', []):
 		entity_pass(item)
 	if section.get('name') != None and section.get('name') != '':
-		section['name'] = BeautifulStoneSoup(section['name'], convertEntities=BeautifulStoneSoup.HTML_ENTITIES).contents[0]
-		section['name'] = section['name'].replace(u'\u2013', '-')
-		if section['name'].endswith(":"):
-			section['name'] = section['name'][:-1]
-	if section.get('description') != None:
-		section['description'] = BeautifulStoneSoup(section['description'], convertEntities=BeautifulStoneSoup.HTML_ENTITIES).contents[0]
-		section['description'] = section['description'].replace(u'\u2013', '-')
+		name = section['name']
+		name = name.replace('&ndash;', '-')
+		name = name.replace('&mdash;', '-')
+		name = name.replace('&nbsp;', '')
+		name = name.replace('&amp;', 'and')
+		name = name.replace('&hellip;', '...')
+		if name.endswith(":"):
+			name = section['name'][:-1]
+		section['name'] = name.strip()
 	return section
+
+def section_name_pass(struct):
+	if section.has_key('name') and section['name']:
+		return section
 
 def find_section(section, name=None, section_type=None):
 	if __test_name(name, section) and __test_type(section_type, section):

@@ -14,6 +14,7 @@ def default_closure(field):
 		value = colon_filter(value)
 		value = comma_filter(value)
 		value = value.replace('&ndash;', '-')
+		value = value.replace('&mdash;', '-')
 		sb[field] = value
 	return fxn
 

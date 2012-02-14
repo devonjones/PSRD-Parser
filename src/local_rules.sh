@@ -45,8 +45,14 @@
 # Bestiary 2
 ./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Monster Advancement"     ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterAdvancement.html
 ./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/universalMonsterRules.html
-./rules_parse.py -o ../local/ -b "Bestiary" -t "Creature Types"            ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/creatureTypes.html
+./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Creature Types"            ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/creatureTypes.html
 ./rules_parse.py -o ../local/ -b "Bestiary 2" -t "Monster Cohorts"         ../web/paizo.com/pathfinderRPG/prd/additionalMonsters/monsterCohorts.html
+
+# Bestiary 3
+#./rules_parse.py -o ../local/ -b "Bestiary 3" -t "Creature Types" ../web/paizo.com/pathfinderRPG/prd/bestiary3/creatureTypes.html
+./rules_parse.py -o ../local/ -b "Bestiary 3" -t "Monster Advancement" ../web/paizo.com/pathfinderRPG/prd/bestiary3/monsterAdvancement.html
+./rules_parse.py -o ../local/ -b "Bestiary 3" -t "Monster Cohorts" ../web/paizo.com/pathfinderRPG/prd/bestiary3/monsterCohorts.html
+./rules_parse.py -o ../local/ -b "Bestiary 3" -t "Universal Monster Rules" ../web/paizo.com/pathfinderRPG/prd/bestiary3/universalMonsterRules.html
 
 # Advanced Player's Guide
 ./rules_parse.py -o ../local/ -b "Advanced Player's Guide" -t "Races"            ../web/paizo.com/pathfinderRPG/prd/advanced/advancedRaces.html

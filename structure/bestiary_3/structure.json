@@ -1,0 +1,14 @@
+{
+  "name": "PFSRD",
+  "children": [
+    {
+      "name": "Rules: Bestiary 3",
+      "children": [
+        {"name": "Monster Advancement", "file": "rules/monster_advancement.json"},
+        {"name": "Universal Monster Rules", "file": "rules/universal_monster_rules.json"},
+        {"name": "Monster Cohorts", "file": "rules/monster_cohorts.json"}
+      ]
+    }
+  ]
+}
+

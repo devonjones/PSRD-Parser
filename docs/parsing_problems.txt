@@ -1,0 +1,19 @@
+paizo.com/pathfinderRPG/prd/ultimateCombat/classArchetypes/fighter.html
+line 292: pata
+
+paizo.com/pathfinderRPG/prd/bestiary3/asura.html
+line 234: CMB
+
+paizo.com/pathfinderRPG/prd/bestiary3/demodand.html
+line 210/211: should be joined
+
+paizo.com/pathfinderRPG/prd/bestiary3/sasquatch.html
+line 201/202: should be joined
+
+paizo.com/pathfinderRPG/prd/bestiary3/demon.html
+line 276/277: should be joined
+
+paizo.com/pathfinderRPG/prd/bestiary3/taotieh.html
+line 219:
+was "<b>; Price</b>"
+should be "; <b>Price</b>"

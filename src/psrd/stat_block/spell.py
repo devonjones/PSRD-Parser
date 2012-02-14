@@ -37,7 +37,6 @@ def spell_parse_function(field):
 		'target, effect, or area': effect_closure('Target, Effect, or Area'),
 		'target, effect, area': effect_closure('Target, Effect, or Area'),
 		'target/effect': effect_closure('Target or Effect'),
-		'fortitude': icy_prison_fuckup,
 	}
 	return functions[field.lower()]
 
@@ -47,9 +46,6 @@ def parse_spell(sb, book):
 	for key, value in sb.keys:
 		spell_parse_function(key)(spell, value)
 	return spell
-
-def icy_prison_fuckup(spell, value):
-	parse_saving_throw(spell, "Reflex partial, Fortitude negates (see text)", override=True)
 
 def effect_closure(field):
 	def fxn(spell, value):

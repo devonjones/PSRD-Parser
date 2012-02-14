@@ -1,0 +1,4 @@
+195c195
+< 	<p class="stat-block-1"><b>Saving Throw</b> Reflex partial, <b>Fortitude</b> negates (see text); <b>Spell Resistance</b> yes</p>
+---
+> 	<p class="stat-block-1"><b>Saving Throw</b> Reflex partial, Fortitude negates (see text); <b>Spell Resistance</b> yes</p>

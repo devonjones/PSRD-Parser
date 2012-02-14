@@ -1,0 +1,4 @@
+234c234
+< 				<p class="stat-block-1"><b>Base Atk</b> +9; C<b>MB</b> +14; <b>CMD </b>28</p>
+---
+> 				<p class="stat-block-1"><b>Base Atk</b> +9; <b>CMB</b> +14; <b>CMD </b>28</p>

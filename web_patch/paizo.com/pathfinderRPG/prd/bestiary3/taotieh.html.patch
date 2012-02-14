@@ -1,0 +1,4 @@
+219c219
+< 				<p class="stat-block-1"><b>CL </b>14th<b>; Price</b> 105,000 gp</p>
+---
+> 				<p class="stat-block-1"><b>CL </b>14th; <b>Price</b> 105,000 gp</p>

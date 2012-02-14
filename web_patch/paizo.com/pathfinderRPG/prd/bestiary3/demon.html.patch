@@ -1,0 +1,5 @@
+276,277c276
+< 				<p id="melee" class="stat-block-1 para-style-override"><b>Melee</b> mwk halberd +10 (1d10+4/&times;3 plus disease), gore +3 <br/>(1d6+2) or</p>
+< 				<p class="stat-block-1 para-style-override">gore +8 (1d6+4)</p>
+---
+> 				<p id="melee" class="stat-block-1 para-style-override"><b>Melee</b> mwk halberd +10 (1d10+4/&times;3 plus disease), gore +3 <br/>(1d6+2) or gore +8 (1d6+4)</p>

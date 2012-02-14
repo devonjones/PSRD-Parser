@@ -1,0 +1,5 @@
+210,211c210
+< 				<p class="stat-block-1"><b>Melee</b> <i>+2 <a href="../magicItems/weapons.html#unholy" >unholy</a> morningstar</i> +36/+31/+26/+21 (1d8+11), bite +32 (2d6+4), claw +32 (1d6+4) or</p>
+< 				<p class="stat-block-1">bite +34 (2d6+9), 2 claws +34 (1d6+9)</p>
+---
+> 				<p class="stat-block-1"><b>Melee</b> <i>+2 <a href="../magicItems/weapons.html#unholy" >unholy</a> morningstar</i> +36/+31/+26/+21 (1d8+11), bite +32 (2d6+4), claw +32 (1d6+4) or bite +34 (2d6+9), 2 claws +34 (1d6+9)</p>

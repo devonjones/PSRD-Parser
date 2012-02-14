@@ -1,0 +1,5 @@
+201,202c201
+< 				<p class="stat-block-1"><b>Melee</b> club +8 (1d6+9) or</p>
+< 				<p class="stat-block-1 para-style-override">slam +8 (1d4+9)</p>
+---
+> 				<p class="stat-block-1"><b>Melee</b> club +8 (1d6+9) or slam +8 (1d4+9)</p>

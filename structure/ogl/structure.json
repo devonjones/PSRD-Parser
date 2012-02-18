@@ -1,0 +1,10 @@
+{
+  "name": "PFSRD",
+  "children": [
+    {
+      "name": "Open Game License",
+      "file": "rules/ogl.json"
+    }
+  ]
+}
+

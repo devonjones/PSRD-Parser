@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# OGL
+./rules_parse.py -o ../data/ -b "OGL" -t "OGL" ../web/paizo.com/pathfinderRPG/prd/openGameLicense.html 
+
 # Core Rulebook
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Getting Started"    ../web/paizo.com/pathfinderRPG/prd/gettingStarted.html
 ./rules_parse.py -o ../data/ -b "Core Rulebook" -t "Classes"            ../web/paizo.com/pathfinderRPG/prd/classes.html

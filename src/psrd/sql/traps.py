@@ -3,6 +3,7 @@ def create_trap_details_table(curs):
 		"CREATE TABLE trap_details (",
 		"  trap_details_id INTEGER PRIMARY KEY,",
 		"  section_id INTEGER NOT NULL,",
+		"  cr TEXT,",
 		"  trap_type TEXT,",
 		"  perception TEXT,",
 		"  disable_device TEXT,",
@@ -19,13 +20,13 @@ def create_trap_details_index(curs):
 		" ON trap_details (section_id)"])
 	curs.execute(sql)
 
-def insert_trap_detail(curs, section_id, trap_type=None, perception=None, disable_device=None, duration=None, effect=None, trigger=None, reset=None, **kwargs):
-	values = [section_id, trap_type, perception, disable_device, duration, effect, trigger, reset]
+def insert_trap_detail(curs, section_id, cr=None, trap_type=None, perception=None, disable_device=None, duration=None, effect=None, trigger=None, reset=None, **kwargs):
+	values = [section_id, cr, trap_type, perception, disable_device, duration, effect, trigger, reset]
 	sql = '\n'.join([
 		"INSERT INTO trap_details",
-		" (section_id, trap_type, perception, disable_device, duration, effect, trigger, reset)",
+		" (section_id, cr, trap_type, perception, disable_device, duration, effect, trigger, reset)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
 def delete_trap_detail(curs, section_id):

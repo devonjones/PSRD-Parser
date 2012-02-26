@@ -3,6 +3,7 @@
 * Creating NPCs: Step 4, titles are getting turned into abbreviations
 * need to implement a stat block parser to extract things like diseases, curses, poisons, etc
 * Druid Animal Choices are gone
+* Vehicles missing descriptions
 
 = Unparsed =
 * NPC Gallery entries

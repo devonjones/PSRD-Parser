@@ -1,8 +1,9 @@
 #!/bin/bash
-mkdir -p ../local
-rm -rf ../local/*
+source dir.conf
+mkdir -p $DATA_DIR
+rm -rf $DATA_DIR/*
 
-cp -r ../structure/* ../local
+cp -r ../structure/* $DATA_DIR
 
 ./local_classes.sh
 ./local_feats.sh

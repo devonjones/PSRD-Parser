@@ -1,6 +1,7 @@
 #!/bin/bash
-./spell_list_parse.py -o ../local/ -b "Core Rulebook"           ../web/paizo.com/pathfinderRPG/prd/spellLists.html
-./spell_list_parse.py -o ../local/ -b "Advanced Player's Guide" ../web/paizo.com/pathfinderRPG/prd/advanced/advancedSpellLists.html
-./spell_list_parse.py -o ../local/ -b "Ultimate Magic"          ../web/paizo.com/pathfinderRPG/prd/ultimateMagic/ultimateMagicSpellLists.html
-./spell_list_parse.py -o ../local/ -b "Ultimate Combat"         ../web/paizo.com/pathfinderRPG/prd/ultimateCombat/ultimateCombatSpellLists.html
+source dir.conf
+./spell_list_parse.py -o $DATA_DIR -b "Core Rulebook"           $WEB_DIR/pathfinderRPG/prd/spellLists.html
+./spell_list_parse.py -o $DATA_DIR -b "Advanced Player's Guide" $WEB_DIR/pathfinderRPG/prd/advanced/advancedSpellLists.html
+./spell_list_parse.py -o $DATA_DIR -b "Ultimate Magic"          $WEB_DIR/pathfinderRPG/prd/ultimateMagic/ultimateMagicSpellLists.html
+./spell_list_parse.py -o $DATA_DIR -b "Ultimate Combat"         $WEB_DIR/pathfinderRPG/prd/ultimateCombat/ultimateCombatSpellLists.html
 

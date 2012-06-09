@@ -1,3 +1,4 @@
 #!/bin/bash
-./skill_parse.py -o ../data/ -b "Core Rulebook" ../web/paizo.com/pathfinderRPG/prd/skills/*.html
+source dir.conf
+./skill_parse.py -o $DATA_DIR -b "Core Rulebook" $WEB_DIR/pathfinderRPG/prd/skills/*.html
 

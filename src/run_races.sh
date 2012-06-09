@@ -1,3 +1,4 @@
 #!/bin/bash
-./race_parse.py -o ../data/ -b "Core Rulebook" ../web/paizo.com/pathfinderRPG/prd/races.html 
+source dir.conf
+./race_parse.py -o $DATA_DIR -b "Core Rulebook" $WEB_DIR/pathfinderRPG/prd/races.html 
 

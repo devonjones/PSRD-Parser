@@ -132,6 +132,8 @@ def class_pass(struct):
 		soup = BeautifulSoup(align['text'])
 		struct['alignment'] = ''.join(soup.findAll(text=True))
 	hd = find_section(struct, name="Hit Die", section_type='section')
+	if not hd:
+		hd = find_section(struct, name="Hit Dice", section_type='section')
 	if hd:
 		remove_section(struct, hd)
 		soup = BeautifulSoup(hd['text'])

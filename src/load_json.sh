@@ -1,5 +1,6 @@
 #!/bin/bash
 source dir.conf
+rm $DATA_DIR/psrd.db
 cp -r ../structure/* ../local
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Spells" $DATA_DIR/core_rulebook/spells/*.json
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Spells" $DATA_DIR/advanced_players_guide/spells/*.json

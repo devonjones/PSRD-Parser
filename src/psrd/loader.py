@@ -96,7 +96,7 @@ def _spell_insert(curs, section, section_id):
 	insert_spell_records(curs, section_id, section)
 
 def _class_insert(curs, section, section_id):
-	insert_class_detail(curs, section_id, section.get('alignment'), section.get('hit_die'))
+	insert_class_detail(curs, section_id, section.get('alignment'), section.get('hit_dice'))
 
 def _affliction_insert(curs, section, section_id):
 	insert_affliction_detail(curs, **section)

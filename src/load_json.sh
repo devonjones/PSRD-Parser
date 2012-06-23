@@ -17,7 +17,6 @@ cp -r ../structure/* ../local
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Feats"    $DATA_DIR/*/feats/*.json
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Classes"  $DATA_DIR/*/classes/*.json
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Monsters" $DATA_DIR/*/creatures/*.json
-./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ogl/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/core_rulebook/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/advanced_players_guide/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ultimate_combat/structure.json
@@ -27,4 +26,5 @@ cp -r ../structure/* ../local
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_2/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_3/structure.json
 ./index_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/index.json
+./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ogl/structure.json
 

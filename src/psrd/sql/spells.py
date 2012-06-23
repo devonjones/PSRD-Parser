@@ -210,7 +210,7 @@ def create_spell_components_table(curs):
 		"CREATE TABLE spell_components (",
 		"  spell_component_id INTEGER PRIMARY KEY,",
 		"  section_id INTEGER NO NULL,",
-		"  component_type TEXT NOT NULL,",
+		"  component_type TEXT,",
 		"  description TEXT,",
 		"  notable INT NOT NULL",
 		")"])

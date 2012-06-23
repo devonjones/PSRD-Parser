@@ -174,7 +174,7 @@ def insert_spell_records(curs, section_id, spell):
 		magic_type = find_magic_type(level['class'])
 		insert_spell_list(curs, section_id, level['level'], cap_words(level['class']), magic_type)
 	for component in spell.get('components', []):
-		insert_spell_component(curs, section_id, component['type'], component.get('text'), 0)
+		insert_spell_component(curs, section_id, component.get('type'), component.get('text'), 0)
 	for effect in spell.get('effects', []):
 		insert_spell_effect(curs, section_id, effect['name'], effect['text'])
 

@@ -71,19 +71,23 @@ def parse_saving_throw(spell, value, override=False):
 
 def parse_components(spell, value):
 	value = colon_filter(value)
-	m = re.search('\(.*?[^\)],.*?\)', value)
+	m = re.search ('(\(.*?\))', value)
+	content = []
 	while m:
-		value = re.sub(r"\((.*?)[^\)],(.*?)\)", r"(\1|\2)", value)
-		m = re.search('\(.*?[^\)],.*?\)', value)
+		value = re.sub('\(.*?\)', '{%s}' % len(content), value, count=1)
+		content.append(m.groups()[0].replace(",", "|"))
+		m = re.search('(\(.*?\))', value)
 	comps = value.split(', ')
 	finalcomps = []
 	for comp in comps:
-		if comp.find('(') > -1:
-			m = re.search('(.*) \((.*)\)', comp)
+		if comp.find('{') > -1:
+			m = re.search('(.*) {([0-9]*)}(.*)', comp)
 			name = m.group(1)
-			comments = m.group(2)
-			comments = comments.replace('|', ',')
+			content_index = int(m.group(2))
+			comments = content[content_index].replace('|', ',').replace('(', '').replace(')', '')
 			finalcomps.append({'type': name, 'text': comments})
+			if m.group(3) != '':
+				finalcomps.append({'text': m.group(3)})
 		else:
 			finalcomps.append({'type': comp})
 	spell['components'] = finalcomps

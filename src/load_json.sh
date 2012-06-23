@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 source dir.conf
 rm $DATA_DIR/psrd.db
 cp -r ../structure/* ../local

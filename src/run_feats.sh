@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 source dir.conf
 ./feat_parse.py -o $DATA_DIR -b "Core Rulebook"           $WEB_DIR/pathfinderRPG/prd/feats.html
 ./feat_parse.py -o $DATA_DIR -b "Bestiary"                $WEB_DIR/pathfinderRPG/prd/monsters/monsterFeats.html

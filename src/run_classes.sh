@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 source dir.conf
 ./class_parse.py -o $DATA_DIR -c core     -b "Core Rulebook"           $WEB_DIR/pathfinderRPG/prd/classes/*.html
 ./class_parse.py -o $DATA_DIR -c prestige -b "Core Rulebook"           $WEB_DIR/pathfinderRPG/prd/prestigeClasses/*.html

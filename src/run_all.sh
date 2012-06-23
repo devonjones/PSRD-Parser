@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 source dir.conf
 mkdir -p $DATA_DIR
 rm -rf $DATA_DIR/*

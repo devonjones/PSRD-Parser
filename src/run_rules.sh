@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 source dir.conf
 
 # OGL

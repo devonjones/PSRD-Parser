@@ -35,7 +35,7 @@ def fetch_parent(curs, parent_name):
 			return parent
 		else:
 			top = fetch_top(curs)
-			section_id = append_child_section(curs, top['section_id'], 'list', None, parent_name, None, 'PFSRD', None, None)
+			section_id = append_child_section(curs, top['section_id'], 'list', None, parent_name, None, 'PFSRD', None, None, None, None, False)
 			fetch_section(curs, section_id)
 			return curs.fetchone()
 		
@@ -68,7 +68,7 @@ def insert_section(curs, parent_id, section):
 	if section['type'] == 'spell_list':
 		add_spell_list(curs, section)
 	else:
-		sec_id = append_child_section(curs, parent_id, section['type'], section.get('subtype'), section.get('name'), section.get('abbrev'), section.get('source'), section.get('description'), section.get('text'))
+		sec_id = append_child_section(curs, parent_id, section['type'], section.get('subtype'), section.get('name'), section.get('abbrev'), section.get('source'), section.get('description'), section.get('text'), section.get('image'), section.get('alt'), section.get('create_index'))
 		section['section_id'] = sec_id
 		insert_subrecords(curs, section, sec_id)
 		for s in section.get('sections', []):
@@ -299,7 +299,7 @@ def process_structure_node(curs, filename, parent, struct):
 		find_section(curs, name=struct['name'], parent_id=parent['section_id'])
 		section = curs.fetchone()
 		if not section:
-			section_id = append_child_section(curs, parent['section_id'], 'list', None, struct['name'], None, 'PFSRD', None, None)
+			section_id = append_child_section(curs, parent['section_id'], 'list', None, struct['name'], None, 'PFSRD', None, None, None, None, False)
 			fetch_section(curs, section_id)
 			section = curs.fetchone()
 	for child in struct.get('children', []):

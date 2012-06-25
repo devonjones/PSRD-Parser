@@ -1,0 +1,78 @@
+    From beginning to end if paizo releases a new version of the site:
+
+    in PSRD-Parser/src, create dir.conf:
+
+export DATA_DIR=../../pfsrd-data
+export WEB_DIR=../../pfsrd-web/paizo.com
+
+    Then start the process.
+
+source dir.conf
+
+cd $DATA_DIR
+git checkout master
+git pull
+
+cd $WEB_DIR/..
+git checkout master
+git pull
+rm -rf paizo.com
+
+    Run web scraper
+
+meld . # or git diff
+
+    If everything looks good
+
+git add <All files>
+git commit -m "<something about paizo's new release>"
+git push
+git checkout modified
+git merge master
+
+    Handle any conflicts
+
+meld . # or git diff
+
+    If everything looks good
+
+git commit -am "<something about paizo's new release and the merge>"
+git push origin modified
+
+cd <PSRD-Parser>/src
+
+./run_all.sh
+meld .
+
+    Repeat, modifying code until the import is clean and the diff looks right.
+
+cd $DATA_DIR
+git add <all files>
+git commit -m "<Message about data>"
+git push
+git checkout modified
+git merge master
+
+    Handle any conflicts.
+
+meld .
+
+    If everything looks good
+
+
+git commit -am "<message>"
+git push origin modified
+
+cd <PSRD-Parser>/src
+./load_json.sh
+
+cd $DATA_DIR
+git add psrd.db
+git commit -a "<message>"
+git push origin modified
+cp psrd.db <PathfinderOpenReference>/tools
+
+cd <PathfinderOpenReference>/tools
+./split.sh
+
+    Modify PsrdDbHelper.java to increment the db rev

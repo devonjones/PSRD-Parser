@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
 from psrd.universal import parse_universal, print_struct, StatBlockHeading, StatBlockSection
-from psrd.sections import ability_pass, entity_pass, find_section, find_all_sections, add_section, remove_section, cap_words
+from psrd.sections import ability_pass, entity_pass, find_section, find_all_sections, add_section, remove_section, cap_words, quote_pass
 from psrd.stat_block import stat_block_pass
 
 def druid_animal_companion_fix(section):
@@ -211,6 +211,7 @@ def parse_class(cl, book):
 	cl = arcane_school_pass(cl)
 	cl = ability_pass(cl)
 	cl = ranger_pass(cl)
+	cl = quote_pass(cl)
 	cl = mark_subtype_pass(cl, "Discovery", "ability", "alchemist_discovery")
 	cl = mark_subtype_pass(cl, "Rage Powers", "ability", "barbarian_rage_power")
 	cl = mark_subtype_pass(cl, "Bardic Performance", "section", "bardic_performance")

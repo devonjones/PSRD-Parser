@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
 from psrd.universal import parse_universal
-from psrd.sections import ability_pass, is_anonymous_section, has_subsections, entity_pass
+from psrd.sections import ability_pass, is_anonymous_section, has_subsections, entity_pass, quote_pass
 
 def parse_attr_line(text):
 	attr = None
@@ -35,6 +35,7 @@ def skill_pass(skill):
 
 def parse_skills(filename, output, book):
 	skill = parse_universal(filename, output, book)
+	skill = quote_pass(skill)
 	skill = entity_pass(skill)
 	skill_pass(skill)
 	print "%s: %s" %(skill['source'], skill['name'])

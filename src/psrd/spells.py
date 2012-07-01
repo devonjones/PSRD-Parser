@@ -1,7 +1,7 @@
 import os
 import json
 from psrd.universal import parse_universal, print_struct
-from psrd.sections import ability_pass, entity_pass, cap_words
+from psrd.sections import ability_pass, entity_pass, cap_words, quote_pass
 from psrd.rules import write_rules
 from psrd.stat_block import stat_block_pass
 from psrd.files import char_replace
@@ -132,6 +132,7 @@ def parse_spell(filename, output, book):
 	struct = parse_universal(filename, output, book, max_title=4)
 	struct = stat_block_pass(struct, book)
 	struct = heading_pass(struct)
+	struct = quote_pass(struct)
 	struct = entity_pass(struct)
 	struct = ability_pass(struct)
 	if struct['type'] == 'section':

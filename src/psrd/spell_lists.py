@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
 from psrd.universal import parse_universal, print_struct
-from psrd.sections import ability_pass, is_anonymous_section, has_subsections, entity_pass
+from psrd.sections import ability_pass, is_anonymous_section, has_subsections, entity_pass, quote_pass
 
 def core_structure_pass(section, filename):
 	section['name'] = 'Spell Lists'
@@ -110,6 +110,7 @@ def create_spell(name, soup, school=None, descriptor=None):
 
 def parse_spell_lists(filename, output, book):
 	struct = parse_universal(filename, output, book)
+	struct = quote_pass(struct)
 	struct = entity_pass(struct)
 	rules, spell_lists = spell_list_structure_pass(struct, os.path.basename(filename))
 	spell_lists = spell_list_name_pass(spell_lists)

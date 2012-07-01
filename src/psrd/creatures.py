@@ -2,7 +2,7 @@ import os
 import json
 from BeautifulSoup import BeautifulSoup
 from psrd.universal import parse_universal, print_struct
-from psrd.sections import ability_pass, entity_pass, cap_words, find_section, find_all_sections, remove_section
+from psrd.sections import ability_pass, entity_pass, cap_words, find_section, find_all_sections, remove_section, quote_pass
 from psrd.rules import write_rules
 from psrd.stat_block import stat_block_pass
 from psrd.files import char_replace, makedirs
@@ -82,6 +82,7 @@ def parse_creature(filename, output, book):
 	struct = familiar_pass(struct, basename)
 	struct = monster_race_pass(struct)
 	struct = collapse_pass(struct)
+	struct = quote_pass(struct)
 	struct = entity_pass(struct)
 	currrules = []
 	if struct['type'] == 'section':

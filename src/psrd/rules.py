@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.stat_block import stat_block_pass, parse_section
 from psrd.universal import parse_universal, print_struct, StatBlockHeading
-from psrd.sections import ability_pass, entity_pass, find_section, find_all_sections, remove_section
+from psrd.sections import ability_pass, entity_pass, find_section, find_all_sections, remove_section, quote_pass
 
 def mark_subtype_pass(struct, name, subtype):
 	s = find_section(struct, name=name)
@@ -159,6 +159,7 @@ def parse_rules(filename, output, book, title):
 	if not basename in ['glossary.html']:
 		rules = ability_pass(rules)
 	rules = title_pass(rules, book, title)
+	rules = quote_pass(rules)
 	rules = entity_pass(rules)
 	if not basename in ['ranger.html', 'universalMonsterRules.html', 'buildingAndModifyingConstructs.html', 'spellbooks.html']:
 		rules = abbrev_pass(rules)

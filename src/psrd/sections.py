@@ -1,3 +1,4 @@
+# -*- coding: UTF8 -*-
 import re
 import sys
 from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup
@@ -56,6 +57,26 @@ def ability_pass(section):
 	if section.has_key('sections'):
 		for s in section['sections']:
 			ability_pass(s)
+	return section
+
+def filter_quotes(text):
+	if unicode(text).find(u'\u201c') > -1:
+		text = unicode(text).replace(u'\u201c', '&ldquo;')
+	if unicode(text).find(u'\u00e2&euro;&oelig;') > -1:
+		text = unicode(text).replace(u'\u00e2&euro;&oelig;', '&ldquo;')
+	if unicode(text).find(u'\u201d') > -1:
+		text = unicode(text).replace(u'\u201d', '&rdquo;')
+	if unicode(text).find(u'\u00e2&euro;') > -1:
+		text = unicode(text).replace(u'\u00e2&euro;', '&rdquo;')
+	return text
+
+def quote_pass(section):
+	for item in section.get('sections', []):
+		quote_pass(item)
+	if section.has_key('text'):
+		section['text'] = filter_quotes(section['text'])
+	if section.has_key('description'):
+		section['description'] = filter_quotes(section['description'])
 	return section
 
 def entity_pass(section):

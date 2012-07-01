@@ -6,7 +6,7 @@ from psrd.tables import is_table, parse_table
 class Heading():
 	def __init__(self, level, name):
 		self.level = level
-		self.name = name
+		self.name = name.strip()
 		self.details = []
 
 	def __repr__(self):
@@ -14,7 +14,7 @@ class Heading():
 
 class StatBlockHeading(Heading):
 	def __init__(self, name, html):
-		self.name = name
+		self.name = name.strip()
 		self.keys = []
 		self.details = []
 		self.html = [html]
@@ -24,7 +24,7 @@ class StatBlockHeading(Heading):
 
 class StatBlockSection(StatBlockHeading):
 	def __init__(self, name, html):
-		self.name = name
+		self.name = name.strip()
 		self.keys = []
 		self.details = []
 		self.html = [html]
@@ -50,6 +50,7 @@ def br_filter(soup):
 	brs = soup.findAll('br')
 	for br in brs:
 		br.extract()
+
 def get_text(detail):
 	return ''.join(detail.findAll(text=True))
 

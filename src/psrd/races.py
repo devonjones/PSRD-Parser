@@ -2,7 +2,7 @@ import os
 import json
 from psrd.files import char_replace
 from psrd.universal import parse_universal
-from psrd.sections import entity_pass
+from psrd.sections import entity_pass, quote_pass
 
 def race_pass(race):
 	race['type'] = 'race'
@@ -19,6 +19,7 @@ def racial_trait_pass(race):
 
 def parse_races(filename, output, book):
 	struct = parse_universal(filename, output, book)
+	struct = quote_pass(struct)
 	struct = entity_pass(struct)
 	for race in struct['sections']:
 		race_pass(race)

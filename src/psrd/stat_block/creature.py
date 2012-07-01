@@ -28,6 +28,10 @@ def parse_creature(sb, book):
 	for key, value in sb.keys:
 		creature_parse_function(key)(creature, value)
 	for detail in sb.details:
+		if detail.name.lower() == 'base statistics':
+			detail.name = 'Statistics'
+		if detail.name.lower() == 'environment':
+			detail.name = 'Ecology'
 		if detail.__class__ == StatBlockSection and detail.name.lower() in ['defense', 'offense', 'statistics', 'ecology']:
 			for key, value in detail.keys:
 				creature_parse_function(key)(creature, value)
@@ -53,6 +57,13 @@ def parse_creature(sb, book):
 
 def creature_parse_function(field):
 	functions = {
+		'cr': default_closure('cr'),
+		'size': default_closure('size'),
+		'hit dice': default_closure('hit_dice'),
+		'natural armor': default_closure('natural armor'),
+		'breath weapon': default_closure('breath weapon'),
+		'bloodline': default_closure('bloodline'),
+
 		'init': default_closure('init'),
 		'senses': default_closure('senses'),
 		'perception': perception_fix,

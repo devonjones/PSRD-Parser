@@ -10,12 +10,9 @@ def get_title(tag):
 		texts = heads[0].findAll(text=True)
 		head = texts.pop(0).strip()
 	if caption.strip() != '':
-		caption = caption.replace('Table: ', '').strip()
-		final = []
 		captions = caption.split(' ')
-		for caption in captions:
-			final.append(caption)
-			return ' '.join(final)
+		final = filter(lambda x: x != '', captions)
+		return ' '.join(final)
 	return head
 
 def parse_table(tag, book):

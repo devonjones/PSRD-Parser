@@ -13,6 +13,7 @@ from psrd.sql.vehicles import insert_vehicle_detail
 from psrd.sql.creatures import insert_creature_detail, insert_creature_spell
 from psrd.sql.traps import insert_trap_detail
 from psrd.sql.items import insert_item_detail
+from psrd.sql.links import insert_link_detail
 from psrd.sql.classes import insert_class_detail
 from psrd.sql.feats import insert_feat_type, insert_feat_type_description
 from psrd.sql.skills import insert_skill_attribute
@@ -25,6 +26,20 @@ class ProcessLastException(Exception):
 	def __str__(self):
 		return repr(self.parameter)
 
+def generate_url(curs, parent_id, name, parent_url=None):
+	if name is None:
+		return
+	if parent_id == None:
+		return "pfsrd://name"
+	if parent_url == None:
+		p_id = parent_id
+		while parent_url is None:
+			find_section(curs, section_id=p_id)
+			section = curs.fetchone()
+			parent_url = section['url']
+			p_id = section['parent_id']
+	return parent_url + "/" + name
+
 def fetch_parent(curs, parent_name):
 	if not parent_name:
 		return fetch_top(curs)
@@ -35,7 +50,7 @@ def fetch_parent(curs, parent_name):
 			return parent
 		else:
 			top = fetch_top(curs)
-			section_id = append_child_section(curs, top['section_id'], 'list', None, parent_name, None, 'PFSRD', None, None, None, None, False)
+			section_id = append_child_section(curs, top['section_id'], 'list', None, parent_name, None, 'PFSRD', None, None, None, None, generate_url(curs, top['section_id'], parent_name), False)
 			fetch_section(curs, section_id)
 			return curs.fetchone()
 		
@@ -43,6 +58,7 @@ def load_documents(db, args, parent):
 	conn = get_db_connection(db)
 	last = []
 	for arg in args:
+		print arg
 		fp = open(arg, 'r')
 		struct = json.load(fp)
 		fp.close()
@@ -68,7 +84,7 @@ def insert_section(curs, parent_id, section):
 	if section['type'] == 'spell_list':
 		add_spell_list(curs, section)
 	else:
-		sec_id = append_child_section(curs, parent_id, section['type'], section.get('subtype'), section.get('name'), section.get('abbrev'), section.get('source'), section.get('description'), section.get('text'), section.get('image'), section.get('alt'), section.get('create_index'))
+		sec_id = append_child_section(curs, parent_id, section['type'], section.get('subtype'), section.get('name'), section.get('abbrev'), section.get('source'), section.get('description'), section.get('text'), section.get('image'), section.get('alt'), generate_url(curs, parent_id, section.get('name')), section.get('create_index'))
 		section['section_id'] = sec_id
 		insert_subrecords(curs, section, sec_id)
 		for s in section.get('sections', []):
@@ -117,6 +133,9 @@ def _creature_insert(curs, section, section_id):
 		for key in spells.keys():
 			insert_creature_spell(curs, section_id, key, spells[key])
 
+def _link_insert(curs, section, section_id):
+	insert_link_detail(curs, section_id, section['url'], section.get('display', False))
+
 def _trap_insert(curs, section, section_id):
 	insert_trap_detail(curs, **section)
 
@@ -140,6 +159,7 @@ def insert_subrecords(curs, section, section_id):
 		"creature": _creature_insert,
 		"trap": _trap_insert,
 		"item": _item_insert,
+		"link": _link_insert,
 		"table": _noop,
 		"racial_trait": _noop,
 		"section": _noop,
@@ -288,6 +308,7 @@ def _rename_spell(name, spell):
 def process_structure_node(curs, filename, parent, struct):
 	section = None
 	if struct.has_key('file'):
+		print struct['file']
 		jsonfile = os.path.dirname(filename) + "/" + struct['file']
 		fp = open(jsonfile, 'r')
 		data = json.load(fp)
@@ -299,7 +320,7 @@ def process_structure_node(curs, filename, parent, struct):
 		find_section(curs, name=struct['name'], parent_id=parent['section_id'])
 		section = curs.fetchone()
 		if not section:
-			section_id = append_child_section(curs, parent['section_id'], 'list', None, struct['name'], None, 'PFSRD', None, None, None, None, False)
+			section_id = append_child_section(curs, parent['section_id'], 'list', None, struct['name'], None, 'PFSRD', None, None, None, None, generate_url(curs, parent['section_id'], struct['name'], parent['url']), False)
 			fetch_section(curs, section_id)
 			section = curs.fetchone()
 	for child in struct.get('children', []):

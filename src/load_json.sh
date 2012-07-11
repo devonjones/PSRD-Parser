@@ -22,9 +22,10 @@ cp -r ../structure/* ../local
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ultimate_combat/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ultimate_magic/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/game_mastery_guide/structure.json
-./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary/structure.json
-./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_2/structure.json
-./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_3/structure.json
+#./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary/structure.json
+#./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_2/structure.json
+#./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_3/structure.json
+./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_all/structure.json
 ./index_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/index.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ogl/structure.json
 

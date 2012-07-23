@@ -20,7 +20,6 @@ def monster_race_pass(struct):
 
 def collapse_pass(struct):
 	if struct['type'] == 'section' and len(struct.get('sections', [])) == 1 and struct['sections'][0]['type'] == 'creature':
-		print struct['name']
 		soup = BeautifulSoup(struct['text'])
 		mon = struct['sections'][0]
 		mon['description'] = ''.join(soup.findAll(text=True))
@@ -86,8 +85,9 @@ def parse_creature(filename, output, book):
 	struct = entity_pass(struct)
 	currrules = []
 	if struct['type'] == 'section':
-		struct['name'] = struct['sections'][0]['name']
-		struct['name'] = struct['name'].split(",")[0]
+		if not struct.has_key('name'):
+			struct['name'] = struct['sections'][0]['name']
+			struct['name'] = struct['name'].split(",")[0]
 		write_creature(output, book, struct)
 	elif struct['type'] == 'creature':
 		write_creature(output, book, struct)

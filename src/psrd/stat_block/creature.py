@@ -96,6 +96,7 @@ def creature_parse_function(field):
 		'spell-lilke abilities': creature_spell_closure('spell-like abilities'),
 		'spell-like ability': creature_spell_closure('spell-like abilities'),
 		'bloodline spell-like ability': creature_spell_closure('bloodline spell-like ability'),
+		'bloodline spell-like abilities': creature_spell_closure('bloodline spell-like abilities'),
 		'bloodline': creature_spell_closure('bloodline'),
 		'ifrit spell-like abilities': creature_spell_closure('ifrit spell-like abilities'),
 		'arcane school spell-like abilities': creature_spell_closure('arcane school spell-like abilities'),
@@ -111,7 +112,6 @@ def creature_parse_function(field):
 		'domain spell-like abilities': creature_spell_closure('domain spell-like abilities'),
 		'conjurer spells prepared': creature_spell_closure('conjurer spells prepared'),
 		'sorcerer spell-like abilities': creature_spell_closure('sorcerer spell-like abilities'),
-		'bloodline': creature_spell_closure('bloodline'),
 
 		'str': default_closure('strength'),
 		'dex': default_closure('dexterity'),

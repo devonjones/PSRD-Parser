@@ -1,8 +1,8 @@
 #!/bin/bash
-set -e
 
 source dir.conf
 rm $DATA_DIR/psrd.db
+set -e
 cp -r ../structure/* ../local
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Spells" $DATA_DIR/core_rulebook/spells/*.json
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Spells" $DATA_DIR/advanced_players_guide/spells/*.json
@@ -26,6 +26,6 @@ cp -r ../structure/* ../local
 #./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_2/structure.json
 #./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_3/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_all/structure.json
-./index_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/index.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ogl/structure.json
+./index_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/index.json
 

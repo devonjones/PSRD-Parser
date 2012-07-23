@@ -20,13 +20,35 @@ def create_section_index_index(curs):
 
 def fetch_indexable_sections(curs):
 	sql = '\n'.join([
-		"SELECT s.section_id, s.type, s.subtype, s.name, p.name AS parent_name",
+		"SELECT s.section_id, s.type, s.subtype, s.name, p.name AS parent_name, p.type as parent_type",
 		" FROM sections AS s",
 		"  INNER JOIN sections AS p",
 		"   ON s.parent_id = p.section_id",
-		" WHERE s.name IS NOT NULL"
-		"  AND s.type != 'list'"
+		" WHERE s.name IS NOT NULL",
+		"  AND s.type != 'list'",
+		"  AND s.create_index != 0",
 		" ORDER BY s.section_id"])
+	curs.execute(sql)
+
+def strip_unindexed_urls(curs):
+	sql = '\n'.join([
+		"UPDATE sections",
+		" SET url = NULL",
+		" WHERE section_id NOT IN (",
+		"  SELECT section_id",
+		"   FROM section_index)",
+		"  AND type != 'list'",
+		"  AND parent_id NOT IN (",
+		"   SELECT section_id",
+		"    FROM sections",
+		"     WHERE type == 'list')",
+		"  AND parent_id NOT IN (",
+		"   SELECT s.section_id",
+		"    FROM sections s",
+		"     INNER JOIN sections p",
+		"      ON p.section_id = s.parent_id",
+		"    WHERE p.type == 'list'",
+		"     AND p.name LIKE 'Rules%')"])
 	curs.execute(sql)
 
 def count_sections_with_name(curs, name):
@@ -37,6 +59,7 @@ def count_sections_with_name(curs, name):
 		"   ON s.parent_id = p.section_id",
 		" WHERE s.name IS NOT NULL",
 		"  AND s.type != 'list'",
+		"  AND s.create_index != 0",
 		"  AND s.name = ?"])
 	curs.execute(sql, [name])
 
@@ -44,7 +67,7 @@ def fetch_index(curs, section_id, name=None):
 	values = [section_id]
 	sqla = [
 		"SELECT *",
-		" FROM section_index"
+		" FROM section_index",
 		" WHERE section_id = ?"
 		]
 	if name:

@@ -26,11 +26,16 @@ class ProcessLastException(Exception):
 	def __str__(self):
 		return repr(self.parameter)
 
-def generate_url(curs, parent_id, name, parent_url=None):
+def generate_url(curs, parent_id, name, create_index=True, parent_url=None):
+	if not create_index:
+		return
 	if name is None:
 		return
+	name = name.replace(':', '')
+	name = name.replace('&', 'and')
+	name = name.replace('?', '')
 	if parent_id == None:
-		return "pfsrd://name"
+		return "pfsrd://%s" % name
 	if parent_url == None:
 		p_id = parent_id
 		while parent_url is None:
@@ -38,6 +43,22 @@ def generate_url(curs, parent_id, name, parent_url=None):
 			section = curs.fetchone()
 			parent_url = section['url']
 			p_id = section['parent_id']
+	if name.find(', ') > -1:
+		parent_chunks = parent_url.split('/')
+		name_chunks = name.split(', ')
+		merged = []
+		while len(name_chunks) > 0:
+			nc = name_chunks.pop()
+			if nc == parent_chunks[-1]:
+				parent_chunks.pop()
+			merged.insert(0, nc)
+		parent_chunks.extend(merged)
+		result = '/'.join(parent_chunks)
+		if result == parent_url:
+			name_chunks = name.split(', ')
+			parent_chunks.extend(merged)
+			result = '/'.join(parent_chunks)
+		return result
 	return parent_url + "/" + name
 
 def fetch_parent(curs, parent_name):
@@ -84,7 +105,7 @@ def insert_section(curs, parent_id, section):
 	if section['type'] == 'spell_list':
 		add_spell_list(curs, section)
 	else:
-		sec_id = append_child_section(curs, parent_id, section['type'], section.get('subtype'), section.get('name'), section.get('abbrev'), section.get('source'), section.get('description'), section.get('text'), section.get('image'), section.get('alt'), generate_url(curs, parent_id, section.get('name')), section.get('create_index'))
+		sec_id = append_child_section(curs, parent_id, section['type'], section.get('subtype'), section.get('name'), section.get('abbrev'), section.get('source'), section.get('description'), section.get('text'), section.get('image'), section.get('alt'), generate_url(curs, parent_id, section.get('name'), create_index=section.get('create_index', True)), section.get('create_index'))
 		section['section_id'] = sec_id
 		insert_subrecords(curs, section, sec_id)
 		for s in section.get('sections', []):
@@ -320,12 +341,12 @@ def process_structure_node(curs, filename, parent, struct):
 		find_section(curs, name=struct['name'], parent_id=parent['section_id'])
 		section = curs.fetchone()
 		if not section:
-			section_id = append_child_section(curs, parent['section_id'], 'list', None, struct['name'], None, 'PFSRD', None, None, None, None, generate_url(curs, parent['section_id'], struct['name'], parent['url']), False)
+			section_id = append_child_section(curs, parent['section_id'], 'list', None, struct['name'], None, 'PFSRD', None, None, None, None, generate_url(curs, parent['section_id'], struct['name'], create_index=struct.get('create_index', True), parent_url=parent['url']), False)
 			fetch_section(curs, section_id)
 			section = curs.fetchone()
 	for child in struct.get('children', []):
 		process_structure_node(curs, filename, section, child)
-	
+
 def load_rule_structure_document(db, conn, filename, struct):
 	curs = conn.cursor()
 	try:

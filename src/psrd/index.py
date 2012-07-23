@@ -3,7 +3,7 @@ import sys
 import os
 from psrd.sql import get_db_connection
 from psrd.sql import find_section, fetch_top, append_child_section, fetch_section, update_section
-from psrd.sql.section_index import fetch_indexable_sections, count_sections_with_name, fetch_index, insert_index
+from psrd.sql.section_index import fetch_indexable_sections, count_sections_with_name, fetch_index, insert_index, strip_unindexed_urls
 
 def save_index(curs, section_id, search_name):
 	fetch_index(curs, section_id, search_name)
@@ -12,8 +12,10 @@ def save_index(curs, section_id, search_name):
 
 def index_section(curs, section):
 	if section['name'] == section['parent_name']:
-		# if a section has the same name as it's parent, don't index it.
-		return
+		if section['type'] == 'section':
+			# if a section has the same name as it's parent and it is not
+			# a more interesting type then 'section', don't index it
+			return
 	if section['type'] != 'section':
 		save_index(curs, section['section_id'], section['name'])
 	elif section['subtype'] != None:
@@ -50,6 +52,14 @@ def load_additional_index_entries(db, conn, filename, struct):
 	finally:
 		curs.close()
 
+def strip_urls(conn):
+	curs = conn.cursor()
+	try:
+		strip_unindexed_urls(curs)
+		conn.commit()
+	finally:
+		curs.close()
+
 def load_section_index(db, args, parent):
 	conn = get_db_connection(db)
 	build_default_index(db, conn)
@@ -59,3 +69,4 @@ def load_section_index(db, args, parent):
 		struct = json.load(fp)
 		fp.close()
 		load_additional_index_entries(db, conn, arg, struct)
+	strip_urls(conn)

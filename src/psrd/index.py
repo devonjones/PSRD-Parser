@@ -11,11 +11,12 @@ def save_index(curs, section_id, search_name):
 		insert_index(curs, section_id, search_name)
 
 def index_section(curs, section):
-	if section['name'] == section['parent_name']:
-		if section['type'] == 'section':
-			# if a section has the same name as it's parent and it is not
-			# a more interesting type then 'section', don't index it
-			return
+	if section['create_index'] != 1:
+		if section['name'] == section['parent_name']:
+			if section['type'] == 'section':
+				# if a section has the same name as it's parent and it is not
+				# a more interesting type then 'section', don't index it
+				return
 	if section['type'] != 'section':
 		save_index(curs, section['section_id'], section['name'])
 	elif section['subtype'] != None:
@@ -24,6 +25,8 @@ def index_section(curs, section):
 		count_sections_with_name(curs, section['name'])
 		rec = curs.fetchone()
 		if rec['cnt'] <= 5:
+			save_index(curs, section['section_id'], section['name'])
+		elif section['create_index'] == 1:
 			save_index(curs, section['section_id'], section['name'])
 
 def build_default_index(db, conn):

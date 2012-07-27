@@ -331,8 +331,6 @@ def prepend_child_section(curs, parent_id, section_type, subtype, name, abbrev, 
 	return insert_child_section(curs, parent['lft'], parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
 
 def insert_child_section(curs, update_above, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
-	if create_index is None:
-		create_index = True
 	if text and text.find('\n') > -1:
 		text = text.replace('\n', '')
 	values = [update_above]

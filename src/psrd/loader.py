@@ -155,7 +155,8 @@ def _creature_insert(curs, section, section_id):
 			insert_creature_spell(curs, section_id, key, spells[key])
 
 def _link_insert(curs, section, section_id):
-	insert_link_detail(curs, section_id, section['url'], section.get('display', False))
+	insert_link_detail(curs, section_id, section['url'],
+		section.get('display', False))
 
 def _trap_insert(curs, section, section_id):
 	insert_trap_detail(curs, **section)

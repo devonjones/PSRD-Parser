@@ -20,13 +20,15 @@ def create_section_index_index(curs):
 
 def fetch_indexable_sections(curs):
 	sql = '\n'.join([
-		"SELECT s.section_id, s.type, s.subtype, s.name, p.name AS parent_name, p.type as parent_type",
+		"SELECT s.section_id, s.type, s.subtype, s.name, p.name AS parent_name, p.type as parent_type, s.create_index",
 		" FROM sections AS s",
 		"  INNER JOIN sections AS p",
 		"   ON s.parent_id = p.section_id",
 		" WHERE s.name IS NOT NULL",
 		"  AND s.type != 'list'",
-		"  AND s.create_index != 0",
+		"  AND s.type != 'link'",
+		"  AND (s.create_index == 1",
+		"   OR s.create_index IS NULL)",
 		" ORDER BY s.section_id"])
 	curs.execute(sql)
 
@@ -59,7 +61,9 @@ def count_sections_with_name(curs, name):
 		"   ON s.parent_id = p.section_id",
 		" WHERE s.name IS NOT NULL",
 		"  AND s.type != 'list'",
-		"  AND s.create_index != 0",
+		"  AND s.type != 'link'",
+		"  AND (s.create_index == 1",
+		"   OR s.create_index IS NULL)",
 		"  AND s.name = ?"])
 	curs.execute(sql, [name])
 

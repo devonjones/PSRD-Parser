@@ -18,6 +18,17 @@ def create_section_index_index(curs):
 		" ON section_index (search_name)"])
 	curs.execute(sql)
 
+def update_link_create_index(curs):
+	sql = '\n'.join([
+		"UPDATE sections",
+		" SET create_index = 1",
+		" WHERE section_id IN (",
+		"  SELECT s.section_id",
+		"   FROM sections s",
+		"    INNER JOIN link_details ld",
+		"     ON s.url = ld.url)"])
+	curs.execute(sql)
+
 def fetch_indexable_sections(curs):
 	sql = '\n'.join([
 		"SELECT s.section_id, s.type, s.subtype, s.name, p.name AS parent_name, p.type as parent_type, s.create_index",

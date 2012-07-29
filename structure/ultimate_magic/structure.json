@@ -8,6 +8,7 @@
           "name": "Spellcasting Class Options",
           "children": [
             {"name": "Spellcasting Class Options", "file": "rules/spellcasting_class_options.json"},
+            {"name": "Alchemist", "file": "rules/alchemist.json"},
             {"name": "Bard", "file": "rules/bard.json"},
             {"name": "Cleric", "file": "rules/cleric.json"},
             {"name": "Druid", "file": "rules/druid.json"},

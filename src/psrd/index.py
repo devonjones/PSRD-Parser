@@ -3,7 +3,7 @@ import sys
 import os
 from psrd.sql import get_db_connection
 from psrd.sql import find_section, fetch_top, append_child_section, fetch_section, update_section
-from psrd.sql.section_index import fetch_indexable_sections, count_sections_with_name, fetch_index, insert_index, strip_unindexed_urls
+from psrd.sql.section_index import fetch_indexable_sections, count_sections_with_name, fetch_index, insert_index, strip_unindexed_urls, update_link_create_index
 
 def save_index(curs, section_id, search_name):
 	fetch_index(curs, section_id, search_name)
@@ -32,6 +32,7 @@ def index_section(curs, section):
 def build_default_index(db, conn):
 	curs = conn.cursor()
 	try:
+		update_link_create_index(curs)
 		fetch_indexable_sections(curs)
 		section = curs.fetchone()
 		while section:

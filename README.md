@@ -10,7 +10,7 @@ The database's structure is a hierarchy.  It uses two forms of hierarchical stru
 1. The two forms have different strengths and weaknesses
 2. The database is meant to be generated once, and read many times, so the code for writing it can be reasonably centralized.
 
-The first hierarchical structure is the simplest.  Each section has a '''section_id''', and every section also has a '''parent_id'''.  The '''parent_id''' references the '''section_id''' of the node's parent in the hierarchy.  Other then the top node of the hierarchy, all sections have a '''parent_id'''.
+The first hierarchical structure is the simplest.  Each section has a section_id, and every section also has a parent_id.  The parent_id references the section_id of the node's parent in the hierarchy.  Other then the top node of the hierarchy, all sections have a parent_id.
 
 The second hierarchical structure is detailed in the article by [Mike Hillyer](http://mikehillyer.com) entitled [Managing Hierarchical Data in MySQL](http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/). It is not as simple, but gives a build in way to be able to easily determine all sections that are below a section in the hierarchy, regardless of depth, in one query.
 

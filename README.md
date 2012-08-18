@@ -1,18 +1,18 @@
 # PSRD Parser #
-This program parses the text from the Paizo Pathfinder SRD Website and turns the data into a series of json files.  It then can transform those json files into an sqlite3 database intended for use with teh Pathfinder Open Reference project.
+This program parses the text from the [Paizo Pathfinder Reference Document](http://paizo.com/pathfinderRPG/prd/) website and turns the data into a series of JSON files.  It then can transform those JSON files into an SQLite3 database intended for use with the [Pathfinder Open Reference](https://github.com/devonjones/PathfinderOpenReference) project.
 
 # Database #
 
-## HEIRARCHY ##
+## HIERARCHY ##
 
-The database's structure is a heirarchy.  It uses two forms of heirarchical structure because:
+The database's structure is a hierarchy.  It uses two forms of hierarchical structure because:
+
 1. The two forms have different strengths and weaknesses
 2. The database is meant to be generated once, and read many times, so the code for writing it can be reasonably centralized.
 
-The first heirarchical structure is the simplest.  Each section has a section_id, and every section also has a parent_id.  The parent_id references the section_id of the node's parent in the heirarchy.  Other then the top node of the heirarchy, all sections have a parent_id.
+The first hierarchical structure is the simplest.  Each section has a '''section_id''', and every section also has a '''parent_id'''.  The '''parent_id''' references the '''section_id''' of the node's parent in the hierarchy.  Other then the top node of the hierarchy, all sections have a '''parent_id'''.
 
-The second heirarchical structure is detailed in this article: http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
-It is not as simple, but gives a build in way to be able to easily determine all sections that are below a section in the heirarchy, regardless of depth, in one query.
+The second hierarchical structure is detailed in the article by [Mike Hillyer](http://mikehillyer.com) entitled [Managing Hierarchical Data in MySQL](http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/). It is not as simple, but gives a build in way to be able to easily determine all sections that are below a section in the hierarchy, regardless of depth, in one query.
 
 ## TABLES ##
 
@@ -20,9 +20,9 @@ It is not as simple, but gives a build in way to be able to easily determine all
       section_id INTEGER PRIMARY KEY,           // Primary key
       type TEXT NOT NULL,                       // See TYPES below
       subtype TEXT,                             // See SUBTYPES below
-      lft INTEGER NOT NULL,                     // Left side of the section's set, see HEIRARCHY
-      rgt INTEGER NOT NULL,                     // Right side of the section's set, see HEIRARCHY
-      parent_id INTEGER,                        // Id of the section's parent, see HEIRARCHY
+      lft INTEGER NOT NULL,                     // Left side of the section's set, see HIERARCHY
+      rgt INTEGER NOT NULL,                     // Right side of the section's set, see HIERARCHY
+      parent_id INTEGER,                        // Id of the section's parent, see HIERARCHY
       name TEXT,                                // Section's name.  Text
       abbrev TEXT,                              // Section's abbreviation.  Text
       source TEXT NOT NULL,                     // Section's source book.  Text
@@ -270,7 +270,7 @@ It is not as simple, but gives a build in way to be able to easily determine all
 ## TYPES ##
 
 ability
-* description: Contains any section that represents an ability.  Many subtypes are shared with section.  For example, rogue talents sometimes grant ablities, but not always.
+* description: Contains any section that represents an ability.  Many subtypes are shared with section.  For example, rogue talents sometimes grant abilities, but not always.
 * subtypes: barbarian_rage_power, bardic_performance, gunslinger_deed, magus_arcana, ninja_trick, rogue_advanced_talent, rogue_talent, summoner_evolution_1, summoner_evolution_2, summoner_evolution_3, summoner_evolution_4, witch_grand_hex, witch_hex, witch_major_hex
 * tables: ability_types
 
@@ -302,7 +302,7 @@ creature
 feat
 * description: Section describes a feat
 * subtypes: None
-* tables: feat_type_desciptions, feat_types
+* tables: feat_type_descriptions, feat_types
 
 haunt
 * description: Section describes a haunt (Game Mastery Guide)

@@ -1,0 +1,24 @@
+{
+  "name": "PFSRD",
+  "children": [
+    {
+      "name": "Rules: Advanced Race Guide",
+      "children": [
+        {"name": "Core Races", "file": "rules/core_races.json"},
+        {"name": "Featured Races", "file": "rules/featured_races.json"},
+        {"name": "Uncommon Races", "file": "rules/uncommon_races.json"},
+        {
+          "name": "Race Builder",
+          "file": "rules/race_builder.json",
+          "children": [
+            {"name": "Racial Qualities", "file": "rules/racial_qualities.json"},
+            {"name": "Racial Traits", "file": "rules/racial_traits.json"},
+            {"name": "Example Races", "file": "rules/example_races.json"}
+          ]
+        },
+        {"name": "Age, Height & Weight", "file": "rules/age_height__weight.json"}
+      ]
+    }
+  ]
+}
+

@@ -49,16 +49,16 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Bestiary" -t "Encounter Tables"        $WEB_DIR/pathfinderRPG/prd/monsters/encounterTables.html
 
 # Bestiary 2
-./rules_parse.py -o $DATA_DIR -b "Bestiary 2" -t "Monster Advancement"     $WEB_DIR/pathfinderRPG/prd/additionalMonsters/monsterAdvancement.html
-./rules_parse.py -o $DATA_DIR -b "Bestiary 2" -t "Universal Monster Rules" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/universalMonsterRules.html
-./rules_parse.py -o $DATA_DIR -b "Bestiary 2" -t "Creature Types"          $WEB_DIR/pathfinderRPG/prd/additionalMonsters/creatureTypes.html
-./rules_parse.py -o $DATA_DIR -b "Bestiary 2" -t "Monster Cohorts"         $WEB_DIR/pathfinderRPG/prd/additionalMonsters/monsterCohorts.html
+#./rules_parse.py -o $DATA_DIR -b "Bestiary 2" -t "Monster Advancement"     $WEB_DIR/pathfinderRPG/prd/additionalMonsters/monsterAdvancement.html
+#./rules_parse.py -o $DATA_DIR -b "Bestiary 2" -t "Universal Monster Rules" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/universalMonsterRules.html
+#./rules_parse.py -o $DATA_DIR -b "Bestiary 2" -t "Creature Types"          $WEB_DIR/pathfinderRPG/prd/additionalMonsters/creatureTypes.html
+#./rules_parse.py -o $DATA_DIR -b "Bestiary 2" -t "Monster Cohorts"         $WEB_DIR/pathfinderRPG/prd/additionalMonsters/monsterCohorts.html
 
 # Bestiary 3
 #./rules_parse.py -o $DATA_DIR -b "Bestiary 3" -t "Creature Types"          $WEB_DIR/pathfinderRPG/prd/bestiary3/creatureTypes.html
-./rules_parse.py -o $DATA_DIR -b "Bestiary 3" -t "Monster Advancement"     $WEB_DIR/pathfinderRPG/prd/bestiary3/monsterAdvancement.html
-./rules_parse.py -o $DATA_DIR -b "Bestiary 3" -t "Monster Cohorts"         $WEB_DIR/pathfinderRPG/prd/bestiary3/monsterCohorts.html
-./rules_parse.py -o $DATA_DIR -b "Bestiary 3" -t "Universal Monster Rules" $WEB_DIR/pathfinderRPG/prd/bestiary3/universalMonsterRules.html
+#./rules_parse.py -o $DATA_DIR -b "Bestiary 3" -t "Monster Advancement"     $WEB_DIR/pathfinderRPG/prd/bestiary3/monsterAdvancement.html
+#./rules_parse.py -o $DATA_DIR -b "Bestiary 3" -t "Monster Cohorts"         $WEB_DIR/pathfinderRPG/prd/bestiary3/monsterCohorts.html
+#./rules_parse.py -o $DATA_DIR -b "Bestiary 3" -t "Universal Monster Rules" $WEB_DIR/pathfinderRPG/prd/bestiary3/universalMonsterRules.html
 
 # Advanced Player's Guide
 ./rules_parse.py -o $DATA_DIR -b "Advanced Player's Guide" -t "Races"            $WEB_DIR/pathfinderRPG/prd/advanced/advancedRaces.html
@@ -161,4 +161,14 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Sanity and Madness"    $WEB_DIR/pathfinderRPG/prd/mastery/sanityAndMadness.html
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Settlements"           $WEB_DIR/pathfinderRPG/prd/mastery/settlements.html
 
+
+# Advanced Race Guide
+./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Age, Height & Weight"    $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/ageHeightWeight.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Core Races"              $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/coreRaces.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Featured Races"          $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/featuredRaces.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Race Builder"            $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/raceBuilder.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Uncommon Races"          $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/uncommonRaces.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Example Races"           $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/raceBuilder/exampleRaces.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Racial Qualities"        $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/raceBuilder/racialQualities.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Racial Traits"           $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/raceBuilder/racialTraits.html
 

@@ -2,7 +2,7 @@ import os
 
 def char_replace(instr):
 	instr = instr.replace(' ', '_')
-	for char in ['(', ')', '[', ']', ',', '/', "'", ":", ";"]:
+	for char in ['(', ')', '[', ']', ',', '/', "'", ":", ";", "&"]:
 		instr = instr.replace(char, '')
 	return instr.lower()
 

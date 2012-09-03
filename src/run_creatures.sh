@@ -432,6 +432,7 @@ source dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 3" $WEB_DIR/pathfinderRPG/prd/bestiary3/disenchanter.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 3" $WEB_DIR/pathfinderRPG/prd/bestiary3/div.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 3" $WEB_DIR/pathfinderRPG/prd/bestiary3/dragon.html
+./creature_parse.py -o $DATA_DIR -b "Bestiary 3" $WEB_DIR/pathfinderRPG/prd/bestiary3/dragonFaerie.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 3" $WEB_DIR/pathfinderRPG/prd/bestiary3/dragonne.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 3" $WEB_DIR/pathfinderRPG/prd/bestiary3/drake.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 3" $WEB_DIR/pathfinderRPG/prd/bestiary3/dybbuk.html

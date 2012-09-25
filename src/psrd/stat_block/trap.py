@@ -32,7 +32,7 @@ def parse_trap(sb, book):
 		else:
 			details.append(detail)
 	sb.details = details
-	trap = parse_section(sb, book)
+	trap = parse_section(sb, book, keys=False)
 	for key, value in sb.keys:
 		trap_parse_function(key)(trap, value)
 	trap['type'] = 'trap'

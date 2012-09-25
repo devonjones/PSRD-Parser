@@ -39,7 +39,7 @@ def parse_affliction_type(affliction, value):
 		affliction['contracted'] = ', '.join(values).strip()
 
 def parse_affliction(sb, book):
-	affliction = parse_section(sb, book)
+	affliction = parse_section(sb, book, keys=False)
 	affliction['type'] = 'affliction'
 	for key, value in sb.keys:
 		affliction_parse_function(key)(affliction, value)

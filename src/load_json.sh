@@ -32,3 +32,5 @@ cp -r ../structure/* ../local
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ogl/structure.json
 ./index_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/index.json
 
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/psrd.db > $DATA_DIR/urllist.txt
+

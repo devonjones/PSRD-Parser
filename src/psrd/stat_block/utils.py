@@ -24,6 +24,7 @@ def noop(creature, value):
 class StatBlockFunctions():
 	def __init__(self):
 		self.functions = []
+		self.default = None
 
 	def __call__(self):
 		return self
@@ -31,9 +32,14 @@ class StatBlockFunctions():
 	def add_function(self, test, function):
 		self.functions.append((test, function))
 
+	def add_default(self, function):
+		self.default = function
+
 StatBlockFunctions = StatBlockFunctions()
 
-def parse_stat_block(sb, book):
+def parse_stat_block(sb, book, no_sb=False):
+	if no_sb:
+		return StatBlockFunctions.default(sb, book, no_sb=no_sb)
 	for test, function in StatBlockFunctions().functions:
 		if test(sb, book):
 			return function(sb, book)

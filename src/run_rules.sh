@@ -107,6 +107,48 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Wizard"                            $WEB_DIR/pathfinderRPG/prd/ultimateMagic/spellcastingClassOptions/wizard.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Updates"                           $WEB_DIR/pathfinderRPG/prd/ultimateMagic/ultimateMagicAppendices.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Words of Power"                    $WEB_DIR/pathfinderRPG/prd/ultimateMagic/ultimateMagicWordsOfPower.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Class Word Lists"                  $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/classWordLists.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Effect Words"                      $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Meta Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/metaWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Target Words" -n                   $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/targetWords.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Acid Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/acidWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Alignment Words" -n                $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/alignmentWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Animal Words" -n                   $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/animalWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Armor Words" -n                    $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/armorWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Binding Words" -n                  $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/bindingWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Body Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/bodyWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Change Words" -n                   $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/changeWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Cold Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/coldWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Command Words" -n                  $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/commandWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Concealing Words" -n               $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/concealingWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Death Words" -n                    $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/deathWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Destruction Words" -n              $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/destructionWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Detection Words" -n                $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/detectionWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Dispelling Words" -n               $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/dispellingWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Divination Words" -n               $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/divinationWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Electricity Words" -n              $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/electricityWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Fear Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/fearWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Fire Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/fireWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Flight Words" -n                   $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/flightWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Force Words" -n                    $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/forceWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Gravity Words" -n                  $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/gravityWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Healing Words" -n                  $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/healingWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Illumination Words" -n             $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/illuminationWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Illusion Words" -n                 $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/illusionWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Language Words" -n                 $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/languageWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Life Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/lifeWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Pain Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/painWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Power Words" -n                    $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/powerWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Sonic Words" -n                    $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/sonicWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Summoning Words" -n                $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/summoningWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Teleportation Words" -n            $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/teleportationWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Time Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/timeWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Wall Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/wallWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Weather Words" -n                  $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/weatherWords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Wounding Words" -n                 $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords/woundingWords.html
+
+
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Mastering Magic"                   $WEB_DIR/pathfinderRPG/prd/ultimateMagic/magic/introduction.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Spellblights"                      $WEB_DIR/pathfinderRPG/prd/ultimateMagic/magic/spellblights.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Spell Duels"                       $WEB_DIR/pathfinderRPG/prd/ultimateMagic/magic/spellDuels.html

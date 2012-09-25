@@ -6,17 +6,20 @@ def is_section(sb, book):
 		return True
 	return False
 
-def parse_section(sb, book):
+def parse_section(sb, book, no_sb=False, keys=True):
 	section = {'type': 'section', 'source': book, 'name': filter_name(sb.name.strip())}
 	text = []
 	sections = []
 	sectiontext = []
 	ns = None
+	if keys:
+		for key in sb.keys:
+			text.append("<p class='stat-block-1'><b>%s </b>%s</p>" % key)
 	for detail in sb.details:
 		if detail.__class__ == StatBlockSection:
-			sections.append(parse_stat_block(detail, book))
+			sections.append(parse_stat_block(detail, book, no_sb=no_sb))
 		elif detail.__class__ == StatBlockHeading:
-			sections.append(parse_stat_block(sb, book))
+			sections.append(parse_stat_block(sb, book, no_sb=no_sb))
 		elif detail.__class__ == dict:
 			if len(sectiontext) > 0:
 				section['text'] = ''.join(sectiontext)

@@ -19,7 +19,7 @@ def parse_settlement(sb, book):
 			settlement_parse_function(key)(settlement, value)
 		if len(detail.details) > 0:
 			sections = settlement.setdefault('sections', [])
-			sec = parse_section(detail, book)
+			sec = parse_section(detail, book, keys=False)
 			if sec['name'] == 'DEMOGRAPHICS':
 				sec['name'] = 'Notable NPCs'
 			sections.append(sec)

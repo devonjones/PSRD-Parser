@@ -37,7 +37,56 @@
           ]
         },
         {"name": "Feats", "file": "rules/feats.json"},
-        {"name": "Words of Power", "file": "rules/words_of_power.json"},
+        {
+          "name": "Words of Power",
+          "file": "rules/words_of_power.json",
+          "children": [
+            {"name": "Class Word Lists", "file": "rules/class_word_lists.json"},
+            {
+              "name": "Effect Words",
+              "file": "rules/effect_words.json",
+              "children": [
+                {"name": "Acid Words", "file": "rules/acid_words.json"},
+                {"name": "Alignment Words", "file": "rules/alignment_words.json"},
+                {"name": "Animal Words", "file": "rules/animal_words.json"},
+                {"name": "Armor Words", "file": "rules/armor_words.json"},
+                {"name": "Binding Words", "file": "rules/binding_words.json"},
+                {"name": "Body Words", "file": "rules/body_words.json"},
+                {"name": "Change Words", "file": "rules/change_words.json"},
+                {"name": "Cold Words", "file": "rules/cold_words.json"},
+                {"name": "Command Words", "file": "rules/command_words.json"},
+                {"name": "Concealing Words", "file": "rules/concealing_words.json"},
+                {"name": "Death Words", "file": "rules/death_words.json"},
+                {"name": "Destruction Words", "file": "rules/destruction_words.json"},
+                {"name": "Detection Words", "file": "rules/detection_words.json"},
+                {"name": "Dispelling Words", "file": "rules/dispelling_words.json"},
+                {"name": "Divination Words", "file": "rules/divination_words.json"},
+                {"name": "Electricity Words", "file": "rules/electricity_words.json"},
+                {"name": "Fear Words", "file": "rules/fear_words.json"},
+                {"name": "Fire Words", "file": "rules/fire_words.json"},
+                {"name": "Flight Words", "file": "rules/flight_words.json"},
+                {"name": "Force Words", "file": "rules/force_words.json"},
+                {"name": "Gravity Words", "file": "rules/gravity_words.json"},
+                {"name": "Healing Words", "file": "rules/healing_words.json"},
+                {"name": "Illumination Words", "file": "rules/illumination_words.json"},
+                {"name": "Illusion Words", "file": "rules/illusion_words.json"},
+                {"name": "Language Words", "file": "rules/language_words.json"},
+                {"name": "Life Words", "file": "rules/life_words.json"},
+                {"name": "Pain Words", "file": "rules/pain_words.json"},
+                {"name": "Power Words", "file": "rules/power_words.json"},
+                {"name": "Sonic Words", "file": "rules/sonic_words.json"},
+                {"name": "Summoning Words", "file": "rules/summoning_words.json"},
+                {"name": "Teleportation Words", "file": "rules/teleportation_words.json"},
+                {"name": "Time Words", "file": "rules/time_words.json"},
+                {"name": "Wall Words", "file": "rules/wall_words.json"},
+                {"name": "Weather Words", "file": "rules/weather_words.json"},
+                {"name": "Wounding Words", "file": "rules/wounding_words.json"}
+              ]
+            },
+            {"name": "Meta Words", "file": "rules/meta_words.json"},
+            {"name": "Target Words", "file": "rules/target_words.json"}
+          ]
+        },
         {"name": "Updates", "file": "rules/updates.json"}
       ]
     }

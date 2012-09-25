@@ -41,7 +41,7 @@ def spell_parse_function(field):
 	return functions[field.lower()]
 
 def parse_spell(sb, book):
-	spell = parse_section(sb, book)
+	spell = parse_section(sb, book, keys=False)
 	spell['type'] = 'spell'
 	for key, value in sb.keys:
 		spell_parse_function(key)(spell, value)

@@ -25,19 +25,20 @@ StatBlockFunctions().add_function(is_vehicle, parse_vehicle)
 StatBlockFunctions().add_function(is_settlement, parse_settlement)
 StatBlockFunctions().add_function(is_haunt, parse_haunt)
 StatBlockFunctions().add_function(is_section, parse_section)
+StatBlockFunctions().add_default(parse_section)
 
-def stat_block_pass(section, book):
+def stat_block_pass(section, book, no_sb=False):
 	if section.__class__ == dict:
 		if section.has_key('sections'):
 			newsections = []
 			for s in section['sections']:
 				if s.__class__ == StatBlockHeading:
-					newsections.append(parse_stat_block(s, book))
+					newsections.append(parse_stat_block(s, book, no_sb=no_sb))
 				elif s.__class__ == dict:
 					newsections.append(stat_block_pass(s, book))
 				else:
 					newsections.append(s)
 			section['sections'] = newsections
 		return section
-	return parse_stat_block(section, book)
+	return parse_stat_block(section, book, no_sb=no_sb)
 

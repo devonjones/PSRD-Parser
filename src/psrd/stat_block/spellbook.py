@@ -17,7 +17,7 @@ def parse_spellbook(sb, book):
 		else:
 			newdetails.append(detail)
 	sb.details = newdetails
-	section = parse_section(sb, book)
+	section = parse_section(sb, book, keys=False)
 	for key in sb.keys:
 		newsec = {'type': 'section', 'source': book, 'name': key[0], 'text': key[1]}
 		sections = section.setdefault('sections', [])

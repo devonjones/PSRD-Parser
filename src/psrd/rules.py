@@ -142,7 +142,6 @@ def title_pass(rules, book, title):
 def abbrev_pass(rules):
 	m = re.search('\s*\((.*?)\)', rules.get('name', ''))
 	if m:
-		print m.group(1)
 		name = re.sub('\s*\(%s\)' % m.group(1), '', rules['name']).strip()
 		if name != '':
 			rules['abbrev'] = m.group(1)
@@ -151,10 +150,13 @@ def abbrev_pass(rules):
 		abbrev_pass(s)
 	return rules
 
-def parse_rules(filename, output, book, title):
+def parse_rules_no_sb(filename, output, book, title):
+	return parse_rules(filename, output, book, title, no_sb=True)
+
+def parse_rules(filename, output, book, title, no_sb=False):
 	basename = os.path.basename(filename)
 	rules = parse_universal(filename, output, book)
-	rules = stat_block_pass(rules, book)
+	rules = stat_block_pass(rules, book, no_sb=no_sb)
 	rules = structure_pass(rules, basename, book)
 	if not basename in ['glossary.html']:
 		rules = ability_pass(rules)

@@ -322,22 +322,26 @@ def fetch_immediate_subordinantes(curs, parent_id, section_type=None):
 def insert_section_left(curs, section_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	fetch_section(curs, section_id)
 	section = curs.fetchone()
-	return insert_child_section(curs, section['lft'] - 1, section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, section['lft'] - 1, section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	return curs.lastrowid
 
 def insert_section_right(curs, section_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	fetch_section(curs, section_id)
 	section = curs.fetchone()
-	return insert_child_section(curs, section['rgt'], section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, section['rgt'], section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	return curs.lastrowid
 
 def append_child_section(curs, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	fetch_section(curs, parent_id)
 	parent = curs.fetchone()
-	return insert_child_section(curs, parent['rgt'] - 1, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, parent['rgt'] - 1, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	return curs.lastrowid
 
 def prepend_child_section(curs, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	fetch_section(curs, parent_id)
 	parent = curs.fetchone()
-	return insert_child_section(curs, parent['lft'], parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, parent['lft'], parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	return curs.lastrowid
 
 def insert_child_section(curs, update_above, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	if text and text.find('\n') > -1:
@@ -362,7 +366,6 @@ def insert_child_section(curs, update_above, parent_id, section_type, subtype, n
 		" VALUES",
 		"(? + 1, ? + 2, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
-	return curs.lastrowid
 
 def update_section(curs, section_id, description=None):
 	values = []

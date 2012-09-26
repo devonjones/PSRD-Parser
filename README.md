@@ -7,7 +7,7 @@ This program parses the text from the [Paizo Pathfinder Reference Document](http
 
 The functions, under src/psrd/sql, that select data from the database, will not return a list of rows. The cursor will be modified and it is up to the caller to extract rows from the cursor.
 
-The functions, under src/psrd/sql, that insert data into the database, will not return the rowid. As above, the cursor will be modified and it is up to the caller to extract that information.
+The functions, under src/psrd/sql, that insert/update data in the database, will not return the rowid. As above, the cursor will be modified and it is up to the caller to extract that information.
 
 ## HIERARCHY ##
 

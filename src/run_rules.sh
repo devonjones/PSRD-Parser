@@ -199,6 +199,35 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Hazards"               $WEB_DIR/pathfinderRPG/prd/mastery/hazards.html
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "NPC Boons"             $WEB_DIR/pathfinderRPG/prd/mastery/nPCBoons.html
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "NPC Gallery"           $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery.html
+
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Adventurers"           $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/adventurers.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Brigands"              $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/brigands.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "City Watch"            $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/cityWatch.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Coliseum"              $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/coliseum.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Criminals I"           $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/criminalsI.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Criminals II"          $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/criminalsII.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Crusaders"             $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/crusaders.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Dungeon"               $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/dungeon.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Entertainers"          $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/entertainers.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Fighting School"       $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/fightingSchool.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Frontier"              $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/frontier.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Heretics"              $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/heretics.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Marauders"             $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/marauders.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Mercenaries"           $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/mercenaries.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Merchants"             $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/merchants.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Military"              $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/military.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Nobles"                $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/nobles.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Road"                  $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/road.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Royalty"               $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/royalty.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Sailors"               $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/sailors.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Scholars"              $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/scholars.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Seers"                 $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/seers.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Street"                $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/street.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Tavern"                $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/tavern.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Temple"                $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/temple.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Tribe"                 $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/tribe.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Villagers"             $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/villagers.html
+
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Planar Adventures"     $WEB_DIR/pathfinderRPG/prd/mastery/planarAdventures.html
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Sanity and Madness"    $WEB_DIR/pathfinderRPG/prd/mastery/sanityAndMadness.html
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Settlements"           $WEB_DIR/pathfinderRPG/prd/mastery/settlements.html

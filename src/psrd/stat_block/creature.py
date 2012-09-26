@@ -2,12 +2,25 @@ from psrd.sections import cap_words
 from psrd.stat_block.utils import colon_filter, default_closure, noop
 from psrd.universal import StatBlockSection, filter_name
 
+def is_npc(sb, book):
+	if is_creature(sb, book):
+		fields = dict(sb.keys)
+		for detail in sb.details:
+			if detail.__class__ == StatBlockSection and detail.name.lower().strip() in ['boon']:
+				return True
+	return False
+
 def is_creature(sb, book):
 	fields = dict(sb.keys)
 	for detail in sb.details:
 		if detail.__class__ == StatBlockSection and detail.name.lower().strip() in ['ecology', 'statistics']:
 			return True
 	return False
+
+def parse_npc(sb, book):
+	npc = parse_creature(sb, book)
+	npc['subtype'] = 'npc'
+	return npc
 
 def parse_creature(sb, book):
 	names = sb.name.split('CR')
@@ -98,20 +111,31 @@ def creature_parse_function(field):
 		'bloodline spell-like ability': creature_spell_closure('bloodline spell-like ability'),
 		'bloodline spell-like abilities': creature_spell_closure('bloodline spell-like abilities'),
 		'bloodline': creature_spell_closure('bloodline'),
-		'ifrit spell-like abilities': creature_spell_closure('ifrit spell-like abilities'),
+		'arcane spell-like abilities': creature_spell_closure('arcane spell-like abilities'),
 		'arcane school spell-like abilities': creature_spell_closure('arcane school spell-like abilities'),
+		'domain spell-like abilities': creature_spell_closure('domain spell-like abilities'),
+		'ifrit spell-like abilities': creature_spell_closure('ifrit spell-like abilities'),
+		'sorcerer spell-like abilities': creature_spell_closure('sorcerer spell-like abilities'),
+
 		'spells prepared': creature_spell_closure('spells prepared'),
+		'adept spells prepared': creature_spell_closure('adept spells prepared'),
+		'bard spells prepared': creature_spell_closure('bard spells prepared'),
 		'cleric spells prepared': creature_spell_closure('cleric spells prepared'),
+		'conjurer spells prepared': creature_spell_closure('conjurer spells prepared'),
+		'druid spells prepared': creature_spell_closure('druid spells prepared'),
+		'paladin spells prepared': creature_spell_closure('paladin spells prepared'),
 		'ranger spells prepared': creature_spell_closure('ranger spells prepared'),
 		'witch spells prepared': creature_spell_closure('witch spells prepared'),
+		'wizard spells prepared': creature_spell_closure('wizard spells prepared'),
+
 		'spells known': creature_spell_closure('spells known'),
+		'bard spells known': creature_spell_closure('bard spells known'),
 		'sorcerer spells known': creature_spell_closure('sorcerer spells known'),
+
 		'opposition schools': creature_spell_closure('opposition schools'),
+		'prohibited schools': creature_spell_closure('prohibited schools'),
 		'd': creature_spell_closure('d'),
 		'domains': creature_spell_closure('domains'),
-		'domain spell-like abilities': creature_spell_closure('domain spell-like abilities'),
-		'conjurer spells prepared': creature_spell_closure('conjurer spells prepared'),
-		'sorcerer spell-like abilities': creature_spell_closure('sorcerer spell-like abilities'),
 
 		'str': default_closure('strength'),
 		'dex': default_closure('dexterity'),
@@ -130,6 +154,9 @@ def creature_parse_function(field):
 		'languages': default_closure('languages'),
 		'language': default_closure('languages'),
 		'gear': default_closure('gear'),
+		'combat gear': default_closure('combat_gear'),
+		'other gear': default_closure('other_gear'),
+		'boon': default_closure('boon'),
 
 		'space': default_closure('space'),
 		'reach': default_closure('reach'),

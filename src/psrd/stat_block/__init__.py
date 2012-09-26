@@ -1,5 +1,5 @@
 from animal_companion import is_animal_companion, parse_animal_companion
-from creature import is_creature, parse_creature
+from creature import is_creature, parse_creature, is_npc, parse_npc
 from spell import is_spell, parse_spell
 from trap import is_trap, parse_trap
 from affliction import is_affliction, parse_affliction
@@ -14,6 +14,7 @@ from utils import StatBlockFunctions, parse_stat_block
 from psrd.universal import StatBlockHeading
 
 StatBlockFunctions().add_function(is_animal_companion, parse_animal_companion)
+StatBlockFunctions().add_function(is_npc, parse_npc)
 StatBlockFunctions().add_function(is_creature, parse_creature)
 StatBlockFunctions().add_function(is_spell, parse_spell)
 StatBlockFunctions().add_function(is_trap, parse_trap)

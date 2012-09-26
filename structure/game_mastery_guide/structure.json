@@ -14,7 +14,39 @@
         {"name": "Hazards", "file": "rules/hazards.json"},
         {"name": "Sanity and Madness", "file": "rules/sanity_and_madness.json"},
         {"name": "NPC Boons", "file": "rules/npc_boons.json"},
-        {"name": "NPC Gallery", "file": "rules/npc_gallery.json"}
+        {
+          "name": "NPC Gallery",
+          "file": "rules/npc_gallery.json",
+          "children": [
+            {"name": "Adventurers", "file": "rules/adventurers.json"},
+            {"name": "Brigands", "file": "rules/brigands.json"},
+            {"name": "City Watch", "file": "rules/city_watch.json"},
+            {"name": "Coliseum", "file": "rules/coliseum.json"},
+            {"name": "Criminals I", "file": "rules/criminals_i.json"},
+            {"name": "Criminals II", "file": "rules/criminals_ii.json"},
+            {"name": "Crusaders", "file": "rules/crusaders.json"},
+            {"name": "Dungeon", "file": "rules/dungeon.json"},
+            {"name": "Entertainers", "file": "rules/entertainers.json"},
+            {"name": "Fighting School", "file": "rules/fighting_school.json"},
+            {"name": "Frontier", "file": "rules/frontier.json"},
+            {"name": "Heretics", "file": "rules/heretics.json"},
+            {"name": "Marauders", "file": "rules/marauders.json"},
+            {"name": "Mercenaries", "file": "rules/mercenaries.json"},
+            {"name": "Merchants", "file": "rules/merchants.json"},
+            {"name": "Military", "file": "rules/military.json"},
+            {"name": "Nobles", "file": "rules/nobles.json"},
+            {"name": "Road", "file": "rules/road.json"},
+            {"name": "Royalty", "file": "rules/royalty.json"},
+            {"name": "Sailors", "file": "rules/sailors.json"},
+            {"name": "Scholars", "file": "rules/scholars.json"},
+            {"name": "Seers", "file": "rules/seers.json"},
+            {"name": "Street", "file": "rules/street.json"},
+            {"name": "Tavern", "file": "rules/tavern.json"},
+            {"name": "Temple", "file": "rules/temple.json"},
+            {"name": "Tribe", "file": "rules/tribe.json"},
+            {"name": "Villagers", "file": "rules/villagers.json"}
+          ]
+        }
       ]
     }
   ]

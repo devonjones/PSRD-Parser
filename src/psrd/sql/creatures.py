@@ -49,6 +49,9 @@ def create_creature_details_table(curs):
 		"  languages TEXT,"
 		"  special_qualities TEXT,"
 		"  gear TEXT,"
+		"  combat_gear TEXT,"
+		"  other_gear TEXT,"
+		"  boon TEXT,"
 		"  environment TEXT,"
 		"  organization TEXT,"
 		"  treasure TEXT,"
@@ -76,7 +79,7 @@ def insert_creature_detail(curs, section_id,
 		speed=None, melee=None, ranged=None, space=None, reach=None, special_attacks=None,
 		strength=None, dexterity=None, constitution=None, intelligence=None, wisdom=None, charisma=None,
 		base_attack=None, cmb=None, cmd=None, feats=None, skills=None, racial_modifiers=None, languages=None,
-		special_qualities=None, gear=None,
+		special_qualities=None, gear=None, combat_gear=None, other_gear=None, boon=None,
 		environment=None, organization=None, treasure=None,
 		hit_dice=None, natural_armor=None, breath_weapon=None, **kwargs):
 	values = [section_id,
@@ -84,7 +87,8 @@ def insert_creature_detail(curs, section_id,
 		ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, sr, weaknesses,
 		speed, melee, ranged, space, reach, special_attacks,
 		strength, dexterity, constitution, intelligence, wisdom, charisma, base_attack, cmb, cmd,
-		feats, skills, racial_modifiers, languages, special_qualities, gear,
+		feats, skills, racial_modifiers, languages,
+		special_qualities, gear, combat_gear, other_gear, boon,
 		environment, organization, treasure,
 		hit_dice, natural_armor, breath_weapon]
 	targs = kwargs.copy()
@@ -99,7 +103,8 @@ def insert_creature_detail(curs, section_id,
 		"  ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, sr, weaknesses,",
 		"  speed, melee, ranged, space, reach, special_attacks,",
 		"  strength, dexterity, constitution, intelligence, wisdom, charisma,",
-		"  base_attack, cmb, cmd, feats, skills, racial_modifiers, languages, special_qualities, gear,",
+		"  base_attack, cmb, cmd, feats, skills, racial_modifiers, languages,",
+		"  special_qualities, gear, combat_gear, other_gear, boon,",
 		"  environment, organization, treasure,",
 		"  hit_dice, natural_armor, breath_weapon)",
 		" VALUES",
@@ -107,7 +112,7 @@ def insert_creature_detail(curs, section_id,
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
-		"  ?, ?, ?)"])
+		"  ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
 def delete_creature_detail(curs, section_id):

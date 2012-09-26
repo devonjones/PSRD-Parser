@@ -109,7 +109,6 @@ def insert_creature_detail(curs, section_id,
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
 		"  ?, ?, ?)"])
 	curs.execute(sql, values)
-	return curs.lastrowid
 
 def delete_creature_detail(curs, section_id):
 	values = [section_id]
@@ -119,13 +118,13 @@ def delete_creature_detail(curs, section_id):
 	curs.execute(sql, values)
 
 def fetch_creature_detail(curs, section_id):
+	# There will only be one row in the result set.
 	values = [section_id]
 	sql = '\n'.join([
 		"SELECT *",
 		" FROM creature_details",
 		" WHERE section_id = ?"])
 	curs.execute(sql, values)
-	return curs.fetchone()
 
 def create_creature_spells_table(curs):
 	sql = '\n'.join([
@@ -151,7 +150,6 @@ def insert_creature_spell(curs, section_id, name, body):
 		" VALUES",
 		" (?, ?, ?)"])
 	curs.execute(sql, values)
-	return curs.lastrowid
 
 def delete_creature_spell(curs, section_id, name=None):
 	values = [section_id]
@@ -165,11 +163,11 @@ def delete_creature_spell(curs, section_id, name=None):
 	curs.execute(sql, values)
 
 def fetch_creature_spells(curs, section_id):
+	# There may be many rows in the result set.
 	values = [section_id]
 	sql = '\n'.join([
 		"SELECT *",
 		" FROM creature_spells",
 		" WHERE section_id = ?"])
 	curs.execute(sql, values)
-	return curs.fetchall()
 

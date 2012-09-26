@@ -193,6 +193,7 @@ def _build_section_type(sqla, values, section_type):
 			values.append(section_type)
 
 def fetch_top(curs):
+	# There will only be one row in the result set.
 	sql = '\n'.join([
 		"SELECT section_id, lft, rgt, type, subtype, name, abbrev, source, description, body, image, alt, url, create_index",
 		" FROM sections",
@@ -201,15 +202,16 @@ def fetch_top(curs):
 	return curs.fetchone()
 
 def fetch_section(curs, section_id):
+	# There will only be one row in the result set.
 	values = [section_id]
 	sql = '\n'.join([
 		"SELECT section_id, lft, rgt, parent_id, type, subtype, name, abbrev, source, description, body, image, alt, url, create_index",
 		" FROM sections",
 		" WHERE section_id = ?"])
 	curs.execute(sql, values)
-	return curs.fetchone()
 
 def find_section(curs, **kwargs):
+	# There may be many rows in the result set.
 	values = []
 	where = " WHERE "
 	sqla = [
@@ -221,9 +223,9 @@ def find_section(curs, **kwargs):
 		where = "  AND "
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
-	return curs.fetchall()
 
 def fetch_section_subtree(curs, parent_id, section_type=None):
+	# There may be many rows in the result set.
 	values = [parent_id]
 	sqla = [
 		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index",
@@ -234,9 +236,9 @@ def fetch_section_subtree(curs, parent_id, section_type=None):
 	sqla.append(" ORDER BY node.lft")
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
-	return curs.fetchall()
 
 def fetch_section_leaves(curs, parent_id):
+	# There may be many rows in the result set.
 	sql = '\n'.join([
 		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index",
 		" FROM sections AS node, sections AS parent",
@@ -245,9 +247,9 @@ def fetch_section_leaves(curs, parent_id):
 		"  AND node.rgt = node.lft + 1",
 		" ORDER BY node.lft"])
 	curs.execute(sql, (parent_id,))
-	return curs.fetchall()
 
 def fetch_section_path(curs, section_id):
+	# There may be many rows in the result set.
 	values = [section_id]
 	sql = '\n'.join([
 		"SELECT parent.section_id, parent.lft, parent.rgt, parent.parent_id, parent.type, parent.subtype, parent.name, parent.abbrev, parent.source, parent.description, parent.body, parent.image, parent.alt, parent.url, parent.create_index",
@@ -256,9 +258,9 @@ def fetch_section_path(curs, section_id):
 		"  AND node.section_id = ?",
 		" ORDER BY parent.lft"])
 	curs.execute(sql, values)
-	return curs.fetchall()
 
 def fetch_section_full_tree_depth(curs, section_type=None):
+	# There may be many rows in the result set.
 	values = []
 	sqla = [
 		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index,",
@@ -270,9 +272,9 @@ def fetch_section_full_tree_depth(curs, section_type=None):
 	sqla.append(" ORDER BY node.lft")
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
-	return curs.fetchall()
 
 def fetch_section_tree_depth_indented(curs, parent_id, section_type=None):
+	# There may be many rows in the result set.
 	# FIXME: This took 10 minutes to return 7 results for parent_id=10122.
 	parent = fetch_section(curs, parent_id)
 	values = [parent['lft'], parent['rgt']]
@@ -288,9 +290,9 @@ def fetch_section_tree_depth_indented(curs, parent_id, section_type=None):
 	sqla.append(" ORDER BY node.lft")
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
-	return curs.fetchall()
 
 def fetch_section_tree_depth(curs, parent_id, section_type=None, depth=None):
+	# There may be many rows in the result set.
 	values = [parent_id]
 	sqla = [
 		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index,",
@@ -314,10 +316,10 @@ def fetch_section_tree_depth(curs, parent_id, section_type=None, depth=None):
 	sqla.append(" ORDER BY node.lft")
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
-	return curs.fetchall()
 
 def fetch_immediate_subordinantes(curs, parent_id, section_type=None):
-	return fetch_section_tree_depth(curs, parent_id, section_type, 1)
+	# There may be many rows in the result set.
+	fetch_section_tree_depth(curs, parent_id, section_type, 1)
 
 def insert_section_left(curs, section_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	fetch_section(curs, section_id)

@@ -3,6 +3,12 @@ This program parses the text from the [Paizo Pathfinder Reference Document](http
 
 # Database #
 
+## QUERY METHODS ##
+
+The functions, under src/psrd/sql, that select data from the database, will not return a list of rows. The cursor will be modified and it is up to the caller to extract rows from the cursor.
+
+The functions, under src/psrd/sql, that insert data into the database, will not return the rowid. As above, the cursor will be modified and it is up to the caller to extract that information.
+
 ## HIERARCHY ##
 
 The database's structure is a hierarchy.  It uses two forms of hierarchical structure because:

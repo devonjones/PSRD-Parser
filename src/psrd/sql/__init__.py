@@ -199,7 +199,6 @@ def fetch_top(curs):
 		" FROM sections",
 		" WHERE lft = 1"])
 	curs.execute(sql)
-	return curs.fetchone()
 
 def fetch_section(curs, section_id):
 	# There will only be one row in the result set.

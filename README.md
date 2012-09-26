@@ -1,6 +1,12 @@
 # PSRD Parser #
 This program parses the text from the [Paizo Pathfinder Reference Document](http://paizo.com/pathfinderRPG/prd/) website and turns the data into a series of JSON files.  It then can transform those JSON files into an SQLite3 database intended for use with the [Pathfinder Open Reference](https://github.com/devonjones/PathfinderOpenReference) project.
 
+# Configuration #
+
+Any third-party libraries that need to be installed are listed in conf/requirements.txt.
+
+You need to ensure you have a src/dir.conf file, that sets up certain environment variables and is sourced by the shell scripts. A template file is provided: src/dir.conf.template.
+
 # Database #
 
 ## HIERARCHY ##

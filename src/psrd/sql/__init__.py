@@ -181,7 +181,6 @@ def section_insert_top(curs):
 		" VALUES",
 		" ('section', 1, 2, 'PFSRD', 'PFSRD', 'pfsrd://PFSRD')"])
 	curs.execute(sql)
-	return curs.lastrowid
 
 def _build_section_type(sqla, values, section_type):
 	if section_type:
@@ -378,7 +377,6 @@ def update_section(curs, section_id, description=None):
 	values.append(section_id)
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
-	return curs.lastrowid
 
 def delete_node_with_children(curs, section_id):
 	section = fetch_section(curs, section_id)

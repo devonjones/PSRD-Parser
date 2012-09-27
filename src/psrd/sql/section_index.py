@@ -3,7 +3,8 @@ def create_section_index_table(curs):
 		"CREATE TABLE section_index (",
 		"  section_index_id INTEGER PRIMARY KEY,",
 		"  section_id INTEGER NOT NULL,",
-		"  search_name TEXT",
+		"  search_name TEXT,",
+		"  type TEXT",
 		")"])
 	curs.execute(sql)
 
@@ -91,10 +92,10 @@ def fetch_index(curs, section_id, name=None):
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
 
-def insert_index(curs, section_id, name):
+def insert_index(curs, section_id, name, type_name):
 	sql = '\n'.join([
 		"INSERT INTO section_index",
-		" (section_id, search_name)",
+		" (section_id, search_name, type)",
 		"VALUES",
-		" (?, ?)"])
-	curs.execute(sql, (section_id, name))
+		" (?, ?, ?)"])
+	curs.execute(sql, (section_id, name, type_name))

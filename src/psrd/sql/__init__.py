@@ -12,6 +12,7 @@ from psrd.sql.items import create_item_details_table, create_item_details_index
 from psrd.sql.feats import create_feat_types_table, create_feat_types_index, create_feat_type_descriptions_table, create_feat_type_descriptions_index
 from psrd.sql.links import create_link_details_table, create_link_details_index
 from psrd.sql.section_index import create_section_index_table, create_section_index_index
+from psrd.sql.section_sort import create_section_sort_table, create_section_sort_index
 from psrd.sql.skills import create_skill_attributes_table, create_skill_attributes_index
 from psrd.sql.spells import create_spell_details_table, create_spell_details_index, create_spell_lists_table, create_spell_lists_index, create_spell_descriptors_table, create_spell_descriptors_index, create_spell_components_table, create_spell_components_index, create_spell_effects_table, create_spell_effects_index
 
@@ -79,6 +80,8 @@ def create_db_v_2(conn, curs, ver):
 	create_link_details_index(curs)
 	create_section_index_table(curs)
 	create_section_index_index(curs)
+	create_section_sort_table(curs)
+	create_section_sort_index(curs)
 	create_spell_details_table(curs)
 	create_spell_details_index(curs)
 	create_spell_lists_table(curs)

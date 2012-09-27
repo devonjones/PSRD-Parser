@@ -4,11 +4,12 @@ import os
 from psrd.sql import get_db_connection
 from psrd.sql import find_section, fetch_top, append_child_section, fetch_section, update_section
 from psrd.sql.section_index import fetch_indexable_sections, count_sections_with_name, fetch_index, insert_index, strip_unindexed_urls, update_link_create_index
+from psrd.sql.section_sort import create_sorts
 
-def save_index(curs, section_id, search_name):
+def save_index(curs, section_id, search_name, type_name):
 	fetch_index(curs, section_id, search_name)
 	if not curs.fetchone():
-		insert_index(curs, section_id, search_name)
+		insert_index(curs, section_id, search_name, type_name)
 
 def index_section(curs, section):
 	if section['create_index'] != 1:
@@ -18,16 +19,16 @@ def index_section(curs, section):
 				# a more interesting type then 'section', don't index it
 				return
 	if section['type'] != 'section':
-		save_index(curs, section['section_id'], section['name'])
+		save_index(curs, section['section_id'], section['name'], section['type'])
 	elif section['subtype'] != None:
-		save_index(curs, section['section_id'], section['name'])
+		save_index(curs, section['section_id'], section['name'], section['type'])
 	else:
 		count_sections_with_name(curs, section['name'])
 		rec = curs.fetchone()
 		if rec['cnt'] <= 5:
-			save_index(curs, section['section_id'], section['name'])
+			save_index(curs, section['section_id'], section['name'], section['type'])
 		elif section['create_index'] == 1:
-			save_index(curs, section['section_id'], section['name'])
+			save_index(curs, section['section_id'], section['name'], section['type'])
 
 def build_default_index(db, conn):
 	curs = conn.cursor()
@@ -64,6 +65,14 @@ def strip_urls(conn):
 	finally:
 		curs.close()
 
+def create_sort(conn):
+	curs = conn.cursor()
+	try:
+		create_sorts(curs)
+		conn.commit()
+	finally:
+		curs.close()
+
 def load_section_index(db, args, parent):
 	conn = get_db_connection(db)
 	build_default_index(db, conn)
@@ -74,3 +83,4 @@ def load_section_index(db, args, parent):
 		fp.close()
 		load_additional_index_entries(db, conn, arg, struct)
 	strip_urls(conn)
+	create_sort(conn)

@@ -63,14 +63,16 @@ def generate_url(curs, parent_id, name, create_index=True, parent_url=None):
 
 def fetch_parent(curs, parent_name):
 	if not parent_name:
-		return fetch_top(curs)
+		fetch_top(curs)
+		return curs.fetchone()
 	else:
 		find_section(curs, name=parent_name, type='list')
 		parent = curs.fetchone()
 		if parent:
 			return parent
 		else:
-			top = fetch_top(curs)
+			fetch_top(curs)
+			top = curs.fetchone()
 			section_id = append_child_section(curs, top['section_id'], 'list', None, parent_name, None, 'PFSRD', None, None, None, None, generate_url(curs, top['section_id'], parent_name), False)
 			fetch_section(curs, section_id)
 			return curs.fetchone()

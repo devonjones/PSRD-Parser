@@ -123,6 +123,7 @@ def delete_creature_detail(curs, section_id):
 	curs.execute(sql, values)
 
 def fetch_creature_detail(curs, section_id):
+	# There will only be one row in the result set.
 	values = [section_id]
 	sql = '\n'.join([
 		"SELECT *",
@@ -167,6 +168,7 @@ def delete_creature_spell(curs, section_id, name=None):
 	curs.execute(sql, values)
 
 def fetch_creature_spells(curs, section_id):
+	# There may be many rows in the result set.
 	values = [section_id]
 	sql = '\n'.join([
 		"SELECT *",

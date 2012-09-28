@@ -9,6 +9,12 @@ You need to ensure you have a src/dir.conf file, that sets up certain environmen
 
 # Database #
 
+## QUERY METHODS ##
+
+The functions, under src/psrd/sql, that select data from the database, will not return a list of rows. The cursor will be modified and it is up to the caller to extract rows from the cursor.
+
+The functions, under src/psrd/sql, that insert/update data in the database, will not return the rowid. As above, the cursor will be modified and it is up to the caller to extract that information.
+
 ## HIERARCHY ##
 
 The database's structure is a hierarchy.  It uses two forms of hierarchical structure because:

@@ -181,26 +181,26 @@ def section_insert_top(curs):
 		" VALUES",
 		" ('section', 1, 2, 'PFSRD', 'PFSRD', 'pfsrd://PFSRD')"])
 	curs.execute(sql)
-	return curs.lastrowid
 
 def _build_section_type(sqla, values, section_type):
 	if section_type:
 		if type(section_type) == list:
-			sqla.append("  AND (" + ' OR '.join(["node.section_type = ?" for st in section_type])) + ")"
+			sqla.append("  AND (" + ' OR '.join(["node.type = ?" for _ in section_type]) + ")")
 			values.extend(section_type)
 		else:
-			sqla.append("  AND node.section_type = ?")
+			sqla.append("  AND node.type = ?")
 			values.append(section_type)
 
 def fetch_top(curs):
+	# There will only be one row in the result set.
 	sql = '\n'.join([
 		"SELECT section_id, lft, rgt, type, subtype, name, abbrev, source, description, body, image, alt, url, create_index",
 		" FROM sections",
 		" WHERE lft = 1"])
 	curs.execute(sql)
-	return curs.fetchone()
 
 def fetch_section(curs, section_id):
+	# There will only be one row in the result set.
 	values = [section_id]
 	sql = '\n'.join([
 		"SELECT section_id, lft, rgt, parent_id, type, subtype, name, abbrev, source, description, body, image, alt, url, create_index",
@@ -209,6 +209,7 @@ def fetch_section(curs, section_id):
 	curs.execute(sql, values)
 
 def find_section(curs, **kwargs):
+	# There may be many rows in the result set.
 	values = []
 	where = " WHERE "
 	sqla = [
@@ -222,6 +223,7 @@ def find_section(curs, **kwargs):
 	curs.execute(sql, values)
 
 def fetch_section_subtree(curs, parent_id, section_type=None):
+	# There may be many rows in the result set.
 	values = [parent_id]
 	sqla = [
 		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index",
@@ -234,6 +236,7 @@ def fetch_section_subtree(curs, parent_id, section_type=None):
 	curs.execute(sql, values)
 
 def fetch_section_leaves(curs, parent_id):
+	# There may be many rows in the result set.
 	sql = '\n'.join([
 		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index",
 		" FROM sections AS node, sections AS parent",
@@ -241,9 +244,10 @@ def fetch_section_leaves(curs, parent_id):
 		"  AND parent.section_id = ?",
 		"  AND node.rgt = node.lft + 1",
 		" ORDER BY node.lft"])
-	curs.execute(sql, (parent_id))
+	curs.execute(sql, (parent_id,))
 
 def fetch_section_path(curs, section_id):
+	# There may be many rows in the result set.
 	values = [section_id]
 	sql = '\n'.join([
 		"SELECT parent.section_id, parent.lft, parent.rgt, parent.parent_id, parent.type, parent.subtype, parent.name, parent.abbrev, parent.source, parent.description, parent.body, parent.image, parent.alt, parent.url, parent.create_index",
@@ -254,9 +258,10 @@ def fetch_section_path(curs, section_id):
 	curs.execute(sql, values)
 
 def fetch_section_full_tree_depth(curs, section_type=None):
+	# There may be many rows in the result set.
 	values = []
 	sqla = [
-		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index",
+		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index,",
 		"  (COUNT(parent.name) - 1) AS depth",
 		" FROM sections AS node, sections AS parent",
 		" WHERE node.lft BETWEEN parent.lft AND parent.rgt"]
@@ -267,10 +272,12 @@ def fetch_section_full_tree_depth(curs, section_type=None):
 	curs.execute(sql, values)
 
 def fetch_section_tree_depth_indented(curs, parent_id, section_type=None):
-	parent = fetch_section(parent_id)
+	# There may be many rows in the result set.
+	# FIXME: This took 10 minutes to return 7 results for parent_id=10122.
+	parent = fetch_section(curs, parent_id)
 	values = [parent['lft'], parent['rgt']]
 	sqla = [
-		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, SUBSTR('                              ', 0, COUNT(parent.name)) || node.name,"
+		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, SUBSTR('                              ', 0, COUNT(parent.name)) || node.name AS name,"
 		"   node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index, (COUNT(parent.name) - 1) AS depth",
 		" FROM sections AS node, sections AS parent",
 		" WHERE node.lft BETWEEN parent.lft AND parent.rgt",
@@ -283,9 +290,10 @@ def fetch_section_tree_depth_indented(curs, parent_id, section_type=None):
 	curs.execute(sql, values)
 
 def fetch_section_tree_depth(curs, parent_id, section_type=None, depth=None):
+	# There may be many rows in the result set.
 	values = [parent_id]
 	sqla = [
-		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index",
+		"SELECT node.section_id, node.lft, node.rgt, node.parent_id, node.type, node.subtype, node.name, node.abbrev, node.source, node.description, node.body, node.image, node.alt, node.url, node.create_index,",
 		"  (COUNT(parent.section_id) - (sub_tree.sdepth + 1)) AS depth",
 		" FROM sections AS node, sections AS parent, sections AS sub_parent, (",
 		"   SELECT snode.section_id, (COUNT(sparent.section_id) - 1) AS sdepth",
@@ -308,27 +316,32 @@ def fetch_section_tree_depth(curs, parent_id, section_type=None, depth=None):
 	curs.execute(sql, values)
 
 def fetch_immediate_subordinantes(curs, parent_id, section_type=None):
-	return fetch_section_tree_depth(curs, parent_id, section_type, 1)
+	# There may be many rows in the result set.
+	fetch_section_tree_depth(curs, parent_id, section_type, 1)
 
 def insert_section_left(curs, section_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	fetch_section(curs, section_id)
 	section = curs.fetchone()
-	return insert_child_section(curs, section['lft'] - 1, section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, section['lft'] - 1, section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	return curs.lastrowid
 
 def insert_section_right(curs, section_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	fetch_section(curs, section_id)
 	section = curs.fetchone()
-	return insert_child_section(curs, section['rgt'], section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, section['rgt'], section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	return curs.lastrowid
 
 def append_child_section(curs, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	fetch_section(curs, parent_id)
 	parent = curs.fetchone()
-	return insert_child_section(curs, parent['rgt'] - 1, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, parent['rgt'] - 1, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	return curs.lastrowid
 
 def prepend_child_section(curs, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	fetch_section(curs, parent_id)
 	parent = curs.fetchone()
-	return insert_child_section(curs, parent['lft'], parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, parent['lft'], parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	return curs.lastrowid
 
 def insert_child_section(curs, update_above, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
 	if text and text.find('\n') > -1:
@@ -353,7 +366,6 @@ def insert_child_section(curs, update_above, parent_id, section_type, subtype, n
 		" VALUES",
 		"(? + 1, ? + 2, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
-	return curs.lastrowid
 
 def update_section(curs, section_id, description=None):
 	values = []
@@ -368,10 +380,9 @@ def update_section(curs, section_id, description=None):
 	values.append(section_id)
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
-	return curs.lastrowid
 
 def delete_node_with_children(curs, section_id):
-	section = fetch_section(section_id)
+	section = fetch_section(curs, section_id)
 	width = section['rgt'] - section['lft'] + 1
 	values = [section['lft'], section['rgt']]
 	sql = '\n'.join([
@@ -389,8 +400,8 @@ def delete_node_with_children(curs, section_id):
 	curs.execute(sql, values)
 
 def delete_node_promote_children(curs, section_id):
-	section = fetch_section(section_id)
-	width = section['rgt'] - section['lft'] + 1
+	section = fetch_section(curs, section_id)
+	width = section['rgt'] - section['lft'] + 1 # FIXME: width is not used
 	values = [section['lft']]
 	sql = '\n'.join([
 		"DELETE FROM sections",

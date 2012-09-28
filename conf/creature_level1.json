@@ -1,0 +1,310 @@
+{
+  "name": "Creature Level 1 Representation",
+
+  "properties": {
+
+    "source": {
+      "type": "string",
+      "description": "Source book for the creature",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "description": "PFSRD URL of the creature",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the creature",
+      "required": true
+    },
+    "description": {
+      "type": ["null", "string"],
+      "description": "Description of the creature",
+      "required": true
+    },
+    "cr": {
+      "type": ["null", "string"],
+      "description": "Challenge rating of the creature",
+      "required": true
+    },
+    "xp": {
+      "type": ["null", "string"],
+      "description": "Experience points the creature awards",
+      "required": true
+    },
+    "sex": {
+      "type": ["null", "string"],
+      "description": "The sex of the creature",
+      "required": true
+    },
+    "super_race": {
+      "type": ["null", "string"],
+      "description": "Super race of the creature",
+      "required": true
+    },
+    "level": {
+      "type": ["null", "string"],
+      "description": "The level of the creature",
+      "required": true
+    },
+    "alignment": {
+      "type": ["null", "string"],
+      "description": "Alignment of the creature",
+      "required": true
+    },
+    "size": {
+      "type": ["null", "string"],
+      "description": "Size of the creature",
+      "required": true
+    },
+    "hit_dice": {
+      "type": ["null", "string"],
+      "description": "Hit dice for the creature",
+      "required": true
+    },
+    "creature_type": {
+      "type": ["null", "string"],
+      "description": "Type of creature",
+      "required": true
+    },
+    "creature_subtype": {
+      "type": ["null", "string"],
+      "description": "Subtype of creature",
+      "required": true
+    },
+    "init": {
+      "type": ["null", "string"],
+      "description": "Initiative of the creature",
+      "required": true
+    },
+    "senses": {
+      "type": ["null", "string"],
+      "description": "The creature's senses",
+      "required": true
+    },
+    "aura": {
+      "type": ["null", "string"],
+      "description": "The creature's aura",
+      "required": true
+    },
+    "ac": {
+      "type": ["null", "string"],
+      "description": "Armor class of the creature",
+      "required": true
+    },
+    "hp": {
+      "type": ["null", "string"],
+      "description": "The creature's hit points",
+      "required": true
+    },
+    "saves": {
+      "type": "object",
+      "description": "Different saves the creature has",
+      "properties": {
+        "fortitude": {
+          "type": ["null", "string"],
+          "description": "The creature's fortitude save",
+          "required": true
+        },
+        "reflex": {
+          "type": ["null", "string"],
+          "description": "The creature's reflex save",
+          "required": true
+        },
+        "will": {
+          "type": ["null", "string"],
+          "description": "The creature's will save",
+          "required": true
+        }
+      }
+    },
+    "defensive_abilities": {
+      "type": ["null", "string"],
+      "description": "The creature's defensive abilities",
+      "required": true
+    },
+    "dr": {
+      "type": ["null", "string"],
+      "description": "The creature's damage resistance",
+      "required": true
+    },
+    "immune": {
+      "type": ["null", "string"],
+      "description": "The creature's immunities",
+      "required": true
+    },
+    "weaknesses": {
+      "type": ["null", "string"],
+      "description": "The creature's weaknesses",
+      "required": true
+    },
+    "sr": {
+      "type": ["null", "string"],
+      "description": "The creature's spell resistance",
+      "required": true
+    },
+    "natural_armor": {
+      "type": ["null", "string"],
+      "description": "The creature's natural armor",
+      "required": true
+    },
+    "resist": {
+      "type": ["null", "string"],
+      "description": "The creature's resistances",
+      "required": true
+    },
+    "speed": {
+      "type": ["null", "string"],
+      "description": "The creature's speed",
+      "required": true
+    },
+    "melee": {
+      "type": ["null", "string"],
+      "description": "The creature's melee attacks",
+      "required": true
+    },
+    "ranged": {
+      "type": ["null", "string"],
+      "description": "The creature's ranged attacks",
+      "required": true
+    },
+    "breath_weapon": {
+      "type": ["null", "string"],
+      "description": "The creature's breath weapon",
+      "required": true
+    },
+    "space": {
+      "type": ["null", "string"],
+      "description": "The space the creature takes up",
+      "required": true
+    },
+    "reach": {
+      "type": ["null", "string"],
+      "description": "The reach of the creature",
+      "required": true
+    },
+    "special_attacks": {
+      "type": ["null", "string"],
+      "description": "The creature's special_attacks",
+      "required": true
+    },
+    "spells": {
+      "type": "array",
+      "description": "The creature's spell-like abilities",
+      "required": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": ["null", "string"],
+            "description": "Name of the spell-like ability",
+            "required": true
+          },
+          "body": {
+            "type": ["null", "string"],
+            "description": "Description of the spell-like ability",
+            "required": true
+          }
+        }
+      }
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Different attributes the creature has",
+      "properties": {
+        "strength": {
+          "type": ["null", "string"],
+          "description": "The creature's strength",
+          "required": true
+        },
+        "dexterity": {
+          "type": ["null", "string"],
+          "description": "The creature's dexterity",
+          "required": true
+        },
+        "constitution": {
+          "type": ["null", "string"],
+          "description": "The creature's constitution",
+          "required": true
+        },
+        "intelligence": {
+          "type": ["null", "string"],
+          "description": "The creature's intelligence",
+          "required": true
+        },
+        "wisdom": {
+          "type": ["null", "string"],
+          "description": "The creature's wisdom",
+          "required": true
+        },
+        "charisma": {
+          "type": ["null", "string"],
+          "description": "The creature's charisma",
+          "required": true
+        }
+      }
+    },
+    "base_attack": {
+      "type": ["null", "string"],
+      "description": "The creature's base attack bonus",
+      "required": true
+    },
+    "cmb": {
+      "type": ["null", "string"],
+      "description": "The creature's combat manuever bonus",
+      "required": true
+    },
+    "cmd": {
+      "type": ["null", "string"],
+      "description": "The creature's combat maneuver defense",
+      "required": true
+    },
+    "feats": {
+      "type": ["null", "string"],
+      "description": "The creature's feats",
+      "required": true
+    },
+    "skills": {
+      "type": ["null", "string"],
+      "description": "The creature's skills",
+      "required": true
+    },
+    "racial_modifiers": {
+      "type": ["null", "string"],
+      "description": "The creature's racial modifiers",
+      "required": true
+    },
+    "languages": {
+      "type": ["null", "string"],
+      "description": "Languages the creature knows",
+      "required": true
+    },
+    "special_qualities": {
+      "type": ["null", "string"],
+      "description": "The creature's special qualities",
+      "required": true
+    },
+    "gear": {
+      "type": ["null", "string"],
+      "description": "The creature's gear",
+      "required": true
+    },
+    "environment": {
+      "type": ["null", "string"],
+      "description": "Information about the environment the creature lives in",
+      "required": true
+    },
+    "organization": {
+      "type": ["null", "string"],
+      "description": "Informqation about how the creature(s) are organized",
+      "required": true
+    },
+    "treasure": {
+      "type": ["null", "string"],
+      "description": "The treasure the creature has",
+      "required": true
+    }
+
+  }
+}

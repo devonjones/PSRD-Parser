@@ -3,5 +3,6 @@
 *.pyc
 local/*
 data/*
+src/dir.conf
 web/*
 web

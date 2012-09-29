@@ -1,0 +1,2 @@
+BeautifulSoup>=3.2,<3.3
+jsonschema>=0.6,<0.7

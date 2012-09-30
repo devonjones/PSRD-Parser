@@ -30,7 +30,7 @@ def vehicle_parse_function(field):
 	functions = {
 		'descriptor': parse_vehicle_descriptor,
 		'squares': default_closure('squares'),
-		'cost': default_closure('squares'),
+		'cost': default_closure('cost'),
 		'ac': default_closure('ac'),
 		'hardness': default_closure('hardness'),
 		'hp': default_closure('hp'),

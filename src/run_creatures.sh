@@ -561,3 +561,30 @@ source dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 3" $WEB_DIR/pathfinderRPG/prd/bestiary3/zoog.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 3" $WEB_DIR/pathfinderRPG/prd/bestiary3/zuvembie.html
 
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/adventurers.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/brigands.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/cityWatch.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/coliseum.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/criminalsI.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/criminalsII.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/crusaders.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/dungeon.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/entertainers.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/fightingSchool.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/frontier.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/heretics.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/marauders.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/mercenaries.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/merchants.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/military.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/nobles.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/road.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/royalty.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/sailors.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/scholars.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/seers.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/street.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/tavern.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/temple.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/tribe.html
+./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/villagers.html

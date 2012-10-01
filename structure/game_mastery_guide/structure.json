@@ -13,8 +13,13 @@
         {"name": "Haunts", "file": "rules/haunts.json"},
         {"name": "Hazards", "file": "rules/hazards.json"},
         {"name": "Sanity and Madness", "file": "rules/sanity_and_madness.json"},
-        {"name": "NPC Boons", "file": "rules/npc_boons.json"},
-        {"name": "NPC Gallery", "file": "rules/npc_gallery.json"}
+        {
+          "name": "NPCs",
+          "children": [
+            {"name": "NPC Boons", "file": "rules/npc_boons.json"},
+            {"name": "NPC Gallery", "file": "rules/npc_gallery.json"}
+          ]
+        }
       ]
     }
   ]

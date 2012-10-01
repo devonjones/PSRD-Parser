@@ -58,7 +58,7 @@
             {"name": "Scrolls", "file": "rules/scrolls.json"},
             {"name": "Staves", "file": "rules/staves.json"},
             {"name": "Wands", "file": "rules/wands.json"},
-            {"name": "Wonderous Items", "file": "rules/wonderous_items.json"},
+            {"name": "Wondrous Items", "file": "rules/wondrous_items.json"},
             {"name": "Intelligent Items", "file": "rules/intelligent_items.json"},
             {"name": "Cursed Items", "file": "rules/cursed_items.json"},
             {"name": "Specific Cursed Items", "file": "rules/specific_cursed_items.json"},

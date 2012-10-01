@@ -19,6 +19,7 @@ cp -r ../structure/* ../local
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Monsters" $DATA_DIR/bestiary/creatures/*.json
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Monsters" $DATA_DIR/bestiary_2/creatures/*.json
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Monsters" $DATA_DIR/bestiary_3/creatures/*.json
+./json_loader.py -d $DATA_DIR/psrd.db -p "Monsters" $DATA_DIR/game_mastery_guide/creatures/*.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/core_rulebook/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/advanced_players_guide/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/advanced_race_guide/structure.json

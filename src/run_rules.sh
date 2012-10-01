@@ -35,7 +35,7 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Core Rulebook" -t "Staves"                $WEB_DIR/pathfinderRPG/prd/magicItems/staves.html
 ./rules_parse.py -o $DATA_DIR -b "Core Rulebook" -t "Wands"                 $WEB_DIR/pathfinderRPG/prd/magicItems/wands.html
 ./rules_parse.py -o $DATA_DIR -b "Core Rulebook" -t "Weapons"               $WEB_DIR/pathfinderRPG/prd/magicItems/weapons.html
-./rules_parse.py -o $DATA_DIR -b "Core Rulebook" -t "Wonderous Items"       $WEB_DIR/pathfinderRPG/prd/magicItems/wondrousItems.html
+./rules_parse.py -o $DATA_DIR -b "Core Rulebook" -t "Wondrous Items"        $WEB_DIR/pathfinderRPG/prd/magicItems/wondrousItems.html
 
 # Bestiary
 ./rules_parse.py -o $DATA_DIR -b "Bestiary" -t "Introduction"            $WEB_DIR/pathfinderRPG/prd/monsters/introduction.html
@@ -87,7 +87,7 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Advanced Player's Guide" -t "Rods"             $WEB_DIR/pathfinderRPG/prd/advanced/magicItems/rods.html
 ./rules_parse.py -o $DATA_DIR -b "Advanced Player's Guide" -t "Staves"           $WEB_DIR/pathfinderRPG/prd/advanced/magicItems/staves.html
 ./rules_parse.py -o $DATA_DIR -b "Advanced Player's Guide" -t "Weapons"          $WEB_DIR/pathfinderRPG/prd/advanced/magicItems/weapons.html
-./rules_parse.py -o $DATA_DIR -b "Advanced Player's Guide" -t "Wonderous Items"  $WEB_DIR/pathfinderRPG/prd/advanced/magicItems/wondrousItems.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Player's Guide" -t "Wondrous Items"  $WEB_DIR/pathfinderRPG/prd/advanced/magicItems/wondrousItems.html
 
 # Ultimate Magic
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Spellcasting Class Options"        $WEB_DIR/pathfinderRPG/prd/ultimateMagic/spellcastingClassOptions.html

@@ -15,6 +15,7 @@ from psrd.sql.section_index import create_section_index_table, create_section_in
 from psrd.sql.section_sort import create_section_sort_table, create_section_sort_index
 from psrd.sql.skills import create_skill_attributes_table, create_skill_attributes_index
 from psrd.sql.spells import create_spell_details_table, create_spell_details_index, create_spell_lists_table, create_spell_lists_index, create_spell_descriptors_table, create_spell_descriptors_index, create_spell_components_table, create_spell_components_index, create_spell_effects_table, create_spell_effects_index
+from psrd.sql.url_ref import create_url_references_table, create_url_references_index
 
 def check_db_version(curs):
 	sql = ''.join([
@@ -92,6 +93,8 @@ def create_db_v_2(conn, curs, ver):
 	create_spell_components_index(curs)
 	create_spell_effects_table(curs)
 	create_spell_effects_index(curs)
+	create_url_references_table(curs)
+	create_url_references_index(curs)
 	section_insert_top(curs)
 	set_version(curs, ver)
 	conn.commit()

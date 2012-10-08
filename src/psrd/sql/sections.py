@@ -6,3 +6,11 @@ def insert_section(curs, parent_id, section):
 	for s in section.get('sections', []):
 		insert_section(curs, sec_id, s)
 	return sec_id
+
+def fetch_section_by_url(curs, url):
+	values = [url]
+	sql = '\n'.join([
+		"SELECT *",
+		" FROM sections",
+		" WHERE url = ?"])
+	curs.execute(sql, values)

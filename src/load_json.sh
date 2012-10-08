@@ -3,7 +3,7 @@
 source dir.conf
 rm $DATA_DIR/psrd.db
 set -e
-cp -r ../structure/* ../local
+cp -r ../structure/* $DATA_DIR
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Spells" $DATA_DIR/core_rulebook/spells/*.json
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Spells" $DATA_DIR/advanced_players_guide/spells/*.json
 ./json_loader.py -d $DATA_DIR/psrd.db -p "Spells" $DATA_DIR/ultimate_magic/spells/*.json
@@ -32,6 +32,16 @@ cp -r ../structure/* ../local
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_all/structure.json
 ./rules_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ogl/structure.json
 ./index_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/index.json
+./url_ref_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/core_rulebook/urlref.json
+./url_ref_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/advanced_players_guide/urlref.json
+./url_ref_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/advanced_race_guide/urlref.json
+./url_ref_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ultimate_combat/urlref.json
+./url_ref_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/ultimate_magic/urlref.json
+./url_ref_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/game_mastery_guide/urlref.json
+./url_ref_loader.py -d $DATA_DIR/psrd.db $DATA_DIR/bestiary_all/urlref.json
 
-echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/psrd.db > $DATA_DIR/urllist.txt
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/psrd.db > $DATA_DIR/urllist.txt.tmp
+echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/psrd.db >> $DATA_DIR/urllist.txt.tmp
+cat $DATA_DIR/urllist.txt.tmp | sort > $DATA_DIR/urllist.txt
+rm $DATA_DIR/urllist.txt.tmp
 

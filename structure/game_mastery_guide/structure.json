@@ -1,8 +1,8 @@
 {
-  "name": "PFSRD",
+  "name": "Game Mastery Guide",
   "children": [
     {
-      "name": "Rules: Game Mastery Guide",
+      "name": "Rules",
       "children": [
         {"name": "Planar Adventures", "file": "rules/planar_adventures.json"},
         {"name": "Settlements", "file": "rules/settlements.json"},

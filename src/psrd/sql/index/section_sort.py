@@ -31,10 +31,9 @@ def insert_sort(curs, type_name):
 		"VALUES",
 		" (?)"])
 	curs.execute(sql, [type_name])
+	return curs.lastrowid
 
-def create_sorts(curs):
-	select_section_types(curs)
-	types = curs.fetchall()
+def create_sorts(curs, types):
 	tlist = resort([t['type'] for t in types])
 	for t in tlist:
 		insert_sort(curs, t)
@@ -49,10 +48,4 @@ def resort(tlist):
 			results.append(t)
 	results.extend(end)
 	return results
-
-def select_section_types(curs):
-	sql = '\n'.join([
-		"SELECT DISTINCT type",
-		" FROM sections"])
-	curs.execute(sql)
 

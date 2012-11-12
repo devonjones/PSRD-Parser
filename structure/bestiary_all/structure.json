@@ -1,9 +1,9 @@
 
 {
-  "name": "PFSRD",
+  "name": "Bestiary",
   "children": [
     {
-      "name": "Rules: Bestiary (All)",
+      "name": "Rules",
       "children": [
         {"name": "Monster Introduction", "file": "rules/introduction.json"},
         {"name": "Monster Creation", "file": "rules/monster_creation.json"},

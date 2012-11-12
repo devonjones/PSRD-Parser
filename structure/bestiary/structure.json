@@ -1,9 +1,9 @@
 
 {
-  "name": "PFSRD",
+  "name": "Bestiary",
   "children": [
     {
-      "name": "Rules: Bestiary",
+      "name": "Rules",
       "children": [
         {"name": "Monster Introduction", "file": "rules/introduction.json"},
         {"name": "Monster Creation", "file": "rules/monster_creation.json"},
@@ -12,7 +12,7 @@
         {"name": "Creature Types", "file": "rules/creature_types.json"},
         {"name": "Monster Roles", "file": "rules/monster_roles.json"},
         {"name": "Encounter Tables", "file": "rules/encounter_tables.json"},
-		{
+        {
           "name": "Misc Monster Rules",
           "children": [
             {"name": "Monsters as PCs", "file": "rules/monster_as_pcs.json"},

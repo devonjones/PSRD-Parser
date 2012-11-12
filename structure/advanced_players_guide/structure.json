@@ -1,8 +1,8 @@
 {
-  "name": "PFSRD",
+  "name": "Advanced Player's Guide",
   "children": [
     {
-      "name": "Rules: Advanced Player's Guide",
+      "name": "Rules",
       "children": [
         {"name": "Races", "file": "rules/races.json"},
         {"name": "Base Classes", "file": "rules/base_classes.json"},

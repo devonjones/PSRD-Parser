@@ -1,8 +1,8 @@
 {
-  "name": "PFSRD",
+  "name": "Advanced Race Guide",
   "children": [
     {
-      "name": "Rules: Advanced Race Guide",
+      "name": "Rules",
       "children": [
         {"name": "Core Races", "file": "rules/core_races.json"},
         {"name": "Featured Races", "file": "rules/featured_races.json"},

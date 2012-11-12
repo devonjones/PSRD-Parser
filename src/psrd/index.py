@@ -2,7 +2,7 @@ import json
 import sys
 import os
 from psrd.sql import get_db_connection
-from psrd.sql import find_section, fetch_top, append_child_section, fetch_section, update_section
+from psrd.sql import fetch_top, append_child_section, fetch_section, update_section
 from psrd.sql.section_index import fetch_indexable_sections, count_sections_with_name, fetch_index, insert_index, strip_unindexed_urls, update_link_create_index
 from psrd.sql.section_sort import create_sorts
 
@@ -43,20 +43,6 @@ def build_default_index(db, conn):
 	finally:
 		curs.close()
 
-def load_additional_index_entries(db, conn, filename, struct):
-	curs = conn.cursor()
-	try:
-		find_section(curs, name=struct['name'])
-		parent = curs.fetchone()
-		if struct.has_key('file'):
-			print struct['file']
-		for child in struct['children']:
-			pass
-			#process_structure_node(curs, filename, parent, child) 
-		conn.commit()
-	finally:
-		curs.close()
-
 def strip_urls(conn):
 	curs = conn.cursor()
 	try:
@@ -65,22 +51,7 @@ def strip_urls(conn):
 	finally:
 		curs.close()
 
-def create_sort(conn):
-	curs = conn.cursor()
-	try:
-		create_sorts(curs)
-		conn.commit()
-	finally:
-		curs.close()
-
 def load_section_index(db, args, parent):
 	conn = get_db_connection(db)
 	build_default_index(db, conn)
-	# Used for file loading additional indices
-	for arg in args:
-		fp = open(arg, 'r')
-		struct = json.load(fp)
-		fp.close()
-		load_additional_index_entries(db, conn, arg, struct)
 	strip_urls(conn)
-	create_sort(conn)

@@ -1,4 +1,5 @@
 import os
+import glob
 
 def char_replace(instr):
 	instr = instr.replace(' ', '_')
@@ -14,3 +15,12 @@ def makedirs(output, book, localdir):
 		os.makedirs(bookdir + "/rules/")
 	if not os.path.exists(bookdir + "/" + localdir + "/"):
 		os.makedirs(bookdir + "/" + localdir + "/")
+
+def locate_other_dbs(filename, sep):
+	parts = filename.split(sep)
+	parts.pop()
+	search = sep.join(parts) + "*.db"
+	files = glob.glob(search)
+	files.remove(filename)
+	return files
+

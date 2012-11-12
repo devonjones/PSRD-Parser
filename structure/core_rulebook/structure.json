@@ -1,8 +1,8 @@
 {
-  "name": "PFSRD",
+  "name": "Core Rulebook",
   "children": [
     {
-      "name": "Rules: Core Rulebook",
+      "name": "Rules",
       "children": [
         {"name": "Getting Started", "file": "rules/getting_started.json"},
         {

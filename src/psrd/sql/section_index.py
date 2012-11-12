@@ -99,3 +99,43 @@ def insert_index(curs, section_id, name, type_name):
 		"VALUES",
 		" (?, ?, ?)"])
 	curs.execute(sql, (section_id, name, type_name))
+
+def fetch_central_index(curs):
+	sql = '\n'.join([
+		"SELECT s.section_id, s.parent_id, s.source,",
+		"  (SELECT p.name",
+		"   FROM sections p",
+		"    WHERE s.parent_id = p.section_id",
+		"   LIMIT 1) as parent_name,",
+		"  s.type, s.subtype, s.name, si.search_name, s.description, s.url,",
+		"  ftd.feat_type_description,",
+		"  (SELECT c.description",
+		"   FROM sections c",
+		"    WHERE c.parent_id = s.section_id",
+		"     AND c.name = 'Prerequisites'",
+		"     AND s.type = 'feat'",
+		"   LIMIT 1) as feat_prerequisites,",
+		"   sa.attribute as skill_attribute,",
+		"   sa.armor_check_penalty as skill_armor_check_penalty,",
+		"   sa.trained_only as skill_trained_only,",
+		"   sd.school as spell_school,",
+		"   sd.subschool as spell_subschool,",
+		"   sd.descriptor_text as spell_descriptor_text,",
+		"   cd.creature_type,",
+		"   cd.creature_subtype,",
+		"   cd.cr as creature_cr,",
+		"   cd.xp as creature_xp,",
+		"   cd.size as creature_size,",
+		"   cd.alignment as creature_alignment",
+		" FROM sections s",
+		"  INNER JOIN section_index si",
+		"   ON s.section_id = si.section_id",
+		"  LEFT OUTER JOIN feat_type_descriptions ftd",
+		"   ON s.section_id = ftd.section_id",
+		"  LEFT OUTER JOIN skill_attributes sa",
+		"   ON s.section_id = sa.section_id",
+		"  LEFT OUTER JOIN spell_details sd",
+		"   ON s.section_id = sd.section_id",
+		"  LEFT OUTER JOIN creature_details cd",
+		"   ON s.section_id = cd.section_id"])
+	curs.execute(sql)

@@ -1,8 +1,8 @@
 {
-  "name": "PFSRD",
+  "name": "Ultimate Combat",
   "children": [
     {
-      "name": "Rules: Ultimate Combat",
+      "name": "Rules",
       "children": [
         {
           "name": "Class Archetypes",

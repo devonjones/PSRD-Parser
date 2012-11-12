@@ -1,6 +1,7 @@
 import json
 import sys
 import os
+from psrd.files import locate_other_dbs
 from psrd.sql import get_db_connection
 from psrd.universal import print_struct
 from psrd.sections import cap_words
@@ -61,7 +62,7 @@ def generate_url(curs, parent_id, name, create_index=True, parent_url=None):
 		return result
 	return parent_url + "/" + name
 
-def fetch_parent(curs, parent_name):
+def fetch_parent(curs, parent_name, source_name):
 	if not parent_name:
 		fetch_top(curs)
 		return curs.fetchone()
@@ -73,12 +74,45 @@ def fetch_parent(curs, parent_name):
 		else:
 			fetch_top(curs)
 			top = curs.fetchone()
-			section_id = append_child_section(curs, top['section_id'], 'list', None, parent_name, None, 'PFSRD', None, None, None, None, generate_url(curs, top['section_id'], parent_name), False)
+			section_id = append_child_section(curs, top['section_id'], 'list', None, parent_name, None, source_name, None, None, None, None, generate_url(curs, top['section_id'], parent_name), False)
 			fetch_section(curs, section_id)
 			return curs.fetchone()
-		
+
+def get_connections(db, source):
+	conn = get_db_connection(db, source)
+	db_list = locate_other_dbs(db, '-')
+	conn_list = []
+	for fn in db_list:
+		conn_list.append(get_db_connection(fn, source))
+	return conn, conn_list
+
+def get_cursors(conn, conn_list):
+	curs = conn.cursor()
+	curs_list = []
+	for c in conn_list:
+		curs_list.append(c.cursor())
+	return curs, curs_list
+
+def conn_rollback(conn, conn_list):
+	conn.rollback()
+	for c in conn_list:
+		conn.rollback()
+
+def conn_commit(conn, conn_list):
+	conn.commit()
+	for c in conn_list:
+		conn.commit()
+
+def curs_close(curs, curs_list):
+	curs.close()
+	for c in curs_list:
+		c.close()
+
 def load_documents(db, args, parent):
-	conn = get_db_connection(db)
+	fp = open(args[0], 'r')
+	struct = json.load(fp)
+	fp.close()
+	conn, conn_list = get_connections(db, struct['source'])
 	last = []
 	for arg in args:
 		print arg
@@ -86,32 +120,32 @@ def load_documents(db, args, parent):
 		struct = json.load(fp)
 		fp.close()
 		try:
-			load_document(db, conn, arg, struct, parent)
+			load_document(db, conn, conn_list, arg, struct, parent)
 		except ProcessLastException, pe:
-			conn.rollback()
+			conn_rollback(conn, conn_list)
 			last.append((struct, arg))
 	for struct, arg in last:
-		load_document(db, conn, arg, struct, parent)
+		load_document(db, conn, conn_list, arg, struct, parent)
 
-def load_document(db, conn, filename, struct, parent):
-	curs = conn.cursor()
+def load_document(db, conn, conn_list, filename, struct, parent):
+	curs, curs_list = get_cursors(conn, conn_list)
 	try:
-		top = fetch_parent(curs, parent)
-		section_id = insert_section(curs, top['section_id'], struct)
-		conn.commit()
+		top = fetch_parent(curs, parent, struct['source'])
+		section_id = insert_section(curs, curs_list, top['section_id'], struct)
+		conn_commit(conn, conn_list)
 	finally:
-		curs.close()
+		curs_close(curs, curs_list)
 	print_struct(struct)
 
-def insert_section(curs, parent_id, section):
+def insert_section(curs, curs_list, parent_id, section):
 	if section['type'] == 'spell_list':
-		add_spell_list(curs, section)
+		add_spell_list(curs, curs_list, section)
 	else:
 		sec_id = append_child_section(curs, parent_id, section['type'], section.get('subtype'), section.get('name'), section.get('abbrev'), section.get('source'), section.get('description'), section.get('text'), section.get('image'), section.get('alt'), generate_url(curs, parent_id, section.get('name'), create_index=section.get('create_index', True)), section.get('create_index'))
 		section['section_id'] = sec_id
-		insert_subrecords(curs, section, sec_id)
+		insert_subrecords(curs, curs_list, section, sec_id)
 		for s in section.get('sections', []):
-			insert_section(curs, sec_id, s)
+			insert_section(curs, curs_list, sec_id, s)
 		return sec_id
 
 def _feat_insert(curs, section, section_id):
@@ -131,8 +165,8 @@ def _ability_insert(curs, section, section_id):
 	for ability_type in section['ability_types']:
 		insert_ability_type(curs, section_id, ability_type)
 
-def _spell_insert(curs, section, section_id):
-	insert_spell_records(curs, section_id, section)
+def _spell_insert(curs, curs_list, section, section_id):
+	insert_spell_records(curs, curs_list, section_id, section)
 
 def _class_insert(curs, section, section_id):
 	insert_class_detail(curs, section_id, section.get('alignment'), section.get('hit_dice'))
@@ -169,13 +203,12 @@ def _item_insert(curs, section, section_id):
 def _noop(curs, section, section_id):
 	pass
 
-def insert_subrecords(curs, section, section_id):
+def insert_subrecords(curs, curs_list, section, section_id):
 	fxns = {
 		"affliction": _affliction_insert,
 		"feat": _feat_insert,
 		"skill": _skill_insert,
 		"ability": _ability_insert,
-		"spell": _spell_insert,
 		"class": _class_insert,
 		"animal_companion": _animal_companion_insert,
 		"settlement": _settlement_insert,
@@ -189,15 +222,27 @@ def insert_subrecords(curs, section, section_id):
 		"section": _noop,
 		"class_archetype": _noop,
 	}
+	cl_fxns = {
+		"spell": _spell_insert
+	}
 	if section['type'] in fxns:
 		section['section_id'] = section_id
 		fxns[section['type']](curs, section, section_id)
+	elif section['type'] in cl_fxns:
+		section['section_id'] = section_id
+		cl_fxns[section['type']](curs, curs_list, section, section_id)
 	else:
 		sys.stderr.write("%s has no section type handler\n" % section['type'])
 
-def insert_spell_records(curs, section_id, spell):
+def insert_spell_records(curs, curs_list, section_id, spell):
 	if spell.has_key('parent'):
 		orig = fetch_complete_spell(curs, spell['parent'])
+		if not orig:
+			# Need to handle case where spell is in a previous book
+			for c in curs_list:
+				orig = fetch_complete_spell(c, spell['parent'])
+				if orig:
+					break
 		if not orig:
 			raise ProcessLastException(spell['parent'])
 		spell = merge_spells(orig, spell)
@@ -229,37 +274,40 @@ def find_magic_type(class_name):
 	return magic_type
 
 def load_spell_list_documents(db, args, parent):
-	conn = get_db_connection(db)
+	fp = open(args[0], 'r')
+	struct = json.load(fp)
+	fp.close()
+	conn, conn_list = get_connections(db, struct['source'])
 	last = []
 	for arg in args:
 		fp = open(arg, 'r')
 		struct = json.load(fp)
 		fp.close()
 		try:
-			load_spell_list_document(db, conn, arg, struct, parent)
+			load_spell_list_document(db, conn, conn_list, arg, struct, parent)
 		except ProcessLastException, pe:
-			conn.rollback()
+			conn_rollback(conn, conn_list)
 			last.append((struct, arg))
 	for struct, arg in last:
-		load_document(db, conn, arg, struct, parent)
+		load_document(db, conn, conn_list, arg, struct, parent)
 
-def load_spell_list_document(db, conn, filename, struct, parent):
-	curs = conn.cursor()
+def load_spell_list_document(db, conn, conn_list, filename, struct, parent):
+	curs, curs_list = get_cursors(conn, conn_list)
 	try:
-		section_id = add_spell_list(curs, struct)
-		conn.commit()
+		section_id = add_spell_list(curs, curs_list, struct)
+		conn_commit(conn, conn_list)
 	finally:
-		curs.close()
+		curs_close(curs, curs_list)
 	print_struct(struct)
 
-def add_spell_list(curs, struct):
+def add_spell_list(curs, curs_list, struct):
 	if not struct['type'] == 'spell_list':
 		raise Exception("This should only be run on spell list files")
 	if struct['class'] in ("Sorcerer/wizard", "Sorcerer/Wizard"):
 		struct['class'] = "Sorcerer"
-		add_spell_list(curs, struct)
+		add_spell_list(curs, curs_list, struct)
 		struct['class'] = "Wizard"
-		add_spell_list(curs, struct)
+		add_spell_list(curs, curs_list, struct)
 		return
 	struct = fix_spell_list(struct)
 	level = struct['level']
@@ -268,15 +316,26 @@ def add_spell_list(curs, struct):
 		name = cap_words(sp['name'].strip())
 		find_section(curs, name=name, type='spell')
 		spell = curs.fetchone()
+		use_curs = curs
+		if not spell:
+			for c in curs_list:
+				find_section(c, name=name, type='spell')
+				spell = c.fetchone()
+				use_curs = c
+				if spell:
+					break
 		if not spell:
 			raise Exception("Cannot find spell %s" % name)
-		fetch_spell_lists(curs, spell['section_id'], class_name=class_name)
-		if not curs.fetchone():
-			magic_type = find_magic_type(class_name.lower())
-			insert_spell_list(curs, spell['section_id'], level, class_name, magic_type)
-			fix_spell_level_text(curs, spell['section_id'])
-		if sp.has_key('description'):
-			update_section(curs, spell['section_id'], description=sp['description'])
+		do_add_spell_list(use_curs, spell, sp, class_name, level)
+
+def do_add_spell_list(curs, spell, sp, class_name, level):
+	fetch_spell_lists(curs, spell['section_id'], class_name=class_name)
+	if not curs.fetchone():
+		magic_type = find_magic_type(class_name.lower())
+		insert_spell_list(curs, spell['section_id'], level, class_name, magic_type)
+		fix_spell_level_text(curs, spell['section_id'])
+	if sp.has_key('description'):
+		update_section(curs, spell['section_id'], description=sp['description'])
 
 def fix_spell_level_text(curs, section_id):
 	fetch_spell_lists(curs, section_id)
@@ -329,7 +388,7 @@ def _rename_spell(name, spell):
 	newspell['name'] = name
 	return newspell
 
-def process_structure_node(curs, filename, parent, struct):
+def process_structure_node(curs, curs_list, filename, parent, struct):
 	section = None
 	if struct.has_key('file'):
 		print struct['file']
@@ -337,7 +396,7 @@ def process_structure_node(curs, filename, parent, struct):
 		fp = open(jsonfile, 'r')
 		data = json.load(fp)
 		fp.close()
-		section_id = insert_section(curs, parent['section_id'], data)
+		section_id = insert_section(curs, curs_list, parent['section_id'], data)
 		fetch_section(curs, section_id)
 		section = curs.fetchone()
 	else:
@@ -348,26 +407,29 @@ def process_structure_node(curs, filename, parent, struct):
 			fetch_section(curs, section_id)
 			section = curs.fetchone()
 	for child in struct.get('children', []):
-		process_structure_node(curs, filename, section, child)
+		process_structure_node(curs, curs_list, filename, section, child)
 
-def load_rule_structure_document(db, conn, filename, struct):
-	curs = conn.cursor()
+def load_rule_structure_document(db, conn, conn_list, filename, struct):
+	curs, curs_list = get_cursors(conn, conn_list)
 	try:
 		find_section(curs, name=struct['name'])
 		parent = curs.fetchone()
 		if struct.has_key('file'):
 			print struct['file']
 		for child in struct['children']:
-			process_structure_node(curs, filename, parent, child) 
-		conn.commit()
+			process_structure_node(curs, curs_list, filename, parent, child) 
+		conn_commit(conn, conn_list)
 	finally:
-		curs.close()
+		curs_close(curs, curs_list)
 	print_struct(struct)
 
 def load_rule_structure_documents(db, args, parent):
-	conn = get_db_connection(db)
+	fp = open(args[0], 'r')
+	struct = json.load(fp)
+	fp.close()
+	conn, conn_list = get_connections(db, struct['name'])
 	for arg in args:
 		fp = open(arg, 'r')
 		struct = json.load(fp)
 		fp.close()
-		load_rule_structure_document(db, conn, arg, struct)
+		load_rule_structure_document(db, conn, conn_list, arg, struct)

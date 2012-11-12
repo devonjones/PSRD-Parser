@@ -12,10 +12,8 @@ from psrd.sql.items import create_item_details_table, create_item_details_index
 from psrd.sql.feats import create_feat_types_table, create_feat_types_index, create_feat_type_descriptions_table, create_feat_type_descriptions_index
 from psrd.sql.links import create_link_details_table, create_link_details_index
 from psrd.sql.section_index import create_section_index_table, create_section_index_index
-from psrd.sql.section_sort import create_section_sort_table, create_section_sort_index
 from psrd.sql.skills import create_skill_attributes_table, create_skill_attributes_index
 from psrd.sql.spells import create_spell_details_table, create_spell_details_index, create_spell_lists_table, create_spell_lists_index, create_spell_descriptors_table, create_spell_descriptors_index, create_spell_components_table, create_spell_components_index, create_spell_effects_table, create_spell_effects_index
-from psrd.sql.url_ref import create_url_references_table, create_url_references_index
 
 def check_db_version(curs):
 	sql = ''.join([
@@ -45,7 +43,7 @@ def create_db_v_1(conn, curs):
 	conn.commit()
 	return ver
 
-def create_db_v_2(conn, curs, ver):
+def create_db_v_2(conn, curs, ver, source=None):
 	if ver >= 2:
 		return ver
 	ver = 2
@@ -81,8 +79,6 @@ def create_db_v_2(conn, curs, ver):
 	create_link_details_index(curs)
 	create_section_index_table(curs)
 	create_section_index_index(curs)
-	create_section_sort_table(curs)
-	create_section_sort_index(curs)
 	create_spell_details_table(curs)
 	create_spell_details_index(curs)
 	create_spell_lists_table(curs)
@@ -93,9 +89,8 @@ def create_db_v_2(conn, curs, ver):
 	create_spell_components_index(curs)
 	create_spell_effects_table(curs)
 	create_spell_effects_index(curs)
-	create_url_references_table(curs)
-	create_url_references_index(curs)
-	section_insert_top(curs)
+	if source:
+		section_insert_top(curs, source)
 	set_version(curs, ver)
 	conn.commit()
 	return ver
@@ -106,12 +101,12 @@ def dict_factory(cursor, row):
 		d[col[0]] = row[idx]
 	return d
 
-def get_db_connection(db):
+def get_db_connection(db, source=None):
 	conn = sqlite3.connect(os.path.expanduser(db))
 	curs = conn.cursor()
 	try:
 		ver = create_db_v_1(conn, curs)
-		ver = create_db_v_2(conn, curs, ver)
+		ver = create_db_v_2(conn, curs, ver, source)
 	finally:
 		curs.close()
 	conn.row_factory = dict_factory
@@ -180,13 +175,17 @@ def create_tags_table(curs):
 		")"])
 	curs.execute(sql)
 
-def section_insert_top(curs):
+def section_insert_top(curs, source):
+	url = source.replace(':', '')
+	url = url.replace('&', 'and')
+	url = url.replace('?', '')
+	url = 'pfsrd://' + url
 	sql = '\n'.join([
 		"INSERT INTO sections",
 		" (type, lft, rgt, name, source, url)",
 		" VALUES",
-		" ('section', 1, 2, 'PFSRD', 'PFSRD', 'pfsrd://PFSRD')"])
-	curs.execute(sql)
+		" ('section', 1, 2, ?, ?, ?)"])
+	curs.execute(sql, (source, source, url))
 
 def _build_section_type(sqla, values, section_type):
 	if section_type:
@@ -429,3 +428,8 @@ def delete_node_promote_children(curs, section_id):
 		" WHERE lft > ?"])
 	curs.execute(sql, values)
 
+def select_section_types(curs):
+	sql = '\n'.join([
+		"SELECT DISTINCT type",
+		" FROM sections"])
+	curs.execute(sql)

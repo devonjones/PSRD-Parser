@@ -111,3 +111,10 @@ def fetch_index_by_url(curs, url):
 		" FROM central_index",
 		" WHERE url = ?"])
 	curs.execute(sql, values)
+
+def select_section_types(curs):
+	sql = '\n'.join([
+		"SELECT DISTINCT type",
+		" FROM central_index"])
+	curs.execute(sql)
+

@@ -75,6 +75,7 @@ cp -r ../structure/* $DATA_DIR
 ./url_ref_loader.py         -d $DATA_DIR/index.db   $DATA_DIR/advanced_race_guide/urlref.json
 ./url_ref_loader.py         -d $DATA_DIR/index.db   $DATA_DIR/game_mastery_guide/urlref.json
 ./url_ref_loader.py         -d $DATA_DIR/index.db   $DATA_DIR/bestiary_all/urlref.json
+./menu_loader.py            -d $DATA_DIR/index.db   $DATA_DIR/menu.json
 
 # OGL and Community Use License
 ./rules_loader.py      -d $DATA_DIR/book-ogl.db               $DATA_DIR/ogl/structure.json

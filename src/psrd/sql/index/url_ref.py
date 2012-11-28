@@ -27,7 +27,7 @@ def insert_url_reference(curs, index_id, url):
 	curs.execute(sql, values)
 
 def delete_url_reference(curs, url):
-	values = [urk]
+	values = [url]
 	sql = '\n'.join([
 		"DELETE FROM url_references",
 		" WHERE url = ?"])

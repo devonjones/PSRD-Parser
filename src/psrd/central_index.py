@@ -4,11 +4,11 @@ import os
 import os.path
 import psrd.sql
 import psrd.sql.index
-import psrd.sql.index.section_sort
 import psrd.sql.section_index
 from psrd.sql.index.central_index import insert_central_index
 from psrd.sql.index.feat_type_index import insert_feat_type_index
 from psrd.sql.index.spell_list_index import insert_spell_list_index
+from psrd.sql.index.books import insert_book
 from psrd.sql.feats import fetch_feat_types
 from psrd.sql.spells import fetch_spell_lists
 
@@ -18,7 +18,11 @@ def build_central_index(db, conn, source_conn, db_name):
 	try:
 		psrd.sql.section_index.fetch_central_index(source_curs)
 		index_source = source_curs.fetchall()
+		book = False
 		for item in index_source:
+			if not book:
+				insert_book(curs, item['source'], db_name)
+				book = True
 			item['database'] = db_name
 			index_id = insert_central_index(curs, **item)
 			if item['type'] == 'feat':
@@ -43,22 +47,9 @@ def handle_spell(curs, source_curs, index_id, section_id):
 		insert_spell_list_index(curs, index_id,
 			spell_list['level'], spell_list['class'], spell_list['magic_type'])
 
-def create_sort(conn, source_conn):
-	curs = conn.cursor()
-	source_curs = source_conn.cursor()
-	try:
-		psrd.sql.select_section_types(source_curs)
-		types = curs.fetchall()
-		psrd.sql.index.section_sort.create_sorts(curs, types)
-		conn.commit()
-	finally:
-		curs.close()
-		source_curs.close()
-
 def load_central_index(db, args, parent):
 	conn = psrd.sql.index.get_db_connection(db)
 	for arg in args:
 		source_conn = psrd.sql.get_db_connection(arg)
 		db_name = os.path.basename(arg)
 		build_central_index(db, conn, source_conn, db_name)
-	create_sort(conn, source_conn)

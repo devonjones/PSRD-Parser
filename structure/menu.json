@@ -1,0 +1,98 @@
+[
+	{"name": "Bookmarks", "priority": 0, "children": [
+		{"group": "bookmarks", "priority": 10}
+	]},
+	{"name": "Classes", "priority": 10, "children": [
+		{"name": "Core Classes", "type": "class", "subtype": "core", "priority": 10},
+		{"name": "Base Classes", "type": "class", "subtype": "base", "priority": 20},
+		{"name": "Prestige Classes", "type": "class", "subtype": "prestige", "priority": 30},
+		{"name": "NPC Classes", "type": "class", "subtype": "npc", "priority": 40}
+	]},
+	{"name": "Class Customizations", "priority": 20, "children": [
+		{"name": "Alchemist Archetypes", "type": "class_archetype", "subtype": "alchemist", "priority": 10},
+		{"name": "Alchemist Discoveries", "subtype": "alchemist_discovery", "priority": 10},
+		{"name": "Barbarian Archetypes", "type": "class_archetype", "subtype": "barbarian", "priority": 10},
+		{"name": "Barbarian Rage Powers", "subtype": "barbarian_rage_power", "priority": 10},
+		{"name": "Bard Archetypes", "type": "class_archetype", "subtype": "bard", "priority": 10},
+		{"name": "Bardic Performances", "subtype": "bardic_performance", "priority": 10},
+		{"name": "Cavalier Archetypes", "type": "class_archetype", "subtype": "cavalier", "priority": 10},
+		{"name": "Cavalier Orders", "subtype": "warrior_order", "priority": 10},
+		{"name": "Cleric Archetypes", "type": "class_archetype", "subtype": "cleric", "priority": 10},
+		{"name": "Cleric Domain", "subtype": "cleric_domain", "priority": 10},
+		{"name": "Cleric Subdomain", "subtype": "cleric_subdomain", "priority": 10},
+		{"name": "Druid Archetypes", "type": "class_archetype", "subtype": "druid", "priority": 10},
+		{"name": "Druid Animal Companions", "type": "animal_companion", "priority": 10},
+		{"name": "Fighter Archetypes", "type": "class_archetype", "subtype": "fighter", "priority": 10},
+		{"name": "Gunslinger Archetypes", "type": "class_archetype", "subtype": "gunslinger", "priority": 10},
+		{"name": "Gunslinger Deeds", "subtype": "gunslinger_deed", "priority": 10},
+		{"name": "Inquisitor Archetypes", "type": "class_archetype", "subtype": "inquisitor", "priority": 10},
+		{"name": "Magus Archetypes", "type": "class_archetype", "subtype": "magus", "priority": 10},
+		{"name": "Magus Arcana", "subtype": "magus_arcana", "priority": 10},
+		{"name": "Monk Archetypes", "type": "class_archetype", "subtype": "monk", "priority": 10},
+		{"name": "Ninja Tricks", "subtype": "ninja_trick", "priority": 10},
+		{"name": "Oracle Archetypes", "type": "class_archetype", "subtype": "oracle", "priority": 10},
+		{"name": "Oracle Mystery", "subtype": "oracle_mystery", "priority": 10},
+		{"name": "Paladin Archetypes", "type": "class_archetype", "subtype": "paladin", "priority": 10},
+		{"name": "Ranger Archetypes", "type": "class_archetype", "subtype": "ranger", "priority": 10},
+		{"name": "Ranger Combat Styles", "subtype": "ranger_combat_style", "priority": 10},
+		{"name": "Rogue Archetypes", "type": "class_archetype", "subtype": "rogue", "priority": 10},
+		{"name": "Rogue Talents", "subtype": "rogue_talent", "priority": 10},
+		{"name": "Rogue Advanced Talents", "subtype": "rogue_advanced_talent", "priority": 10},
+		{"name": "Sorcerer Archetypes", "type": "class_archetype", "subtype": "sorcerer", "priority": 10},
+		{"name": "Sorcerer Bloodlines", "subtype": "sorcerer_bloodline", "priority": 10},
+		{"name": "Summoner Archetypes", "type": "class_archetype", "subtype": "summoner", "priority": 10},
+		{"name": "Summoner 1 Point Evolutions", "subtype": "summoner_evolution_1", "priority": 10},
+		{"name": "Summoner 2 Point Evolutions", "subtype": "summoner_evolution_2", "priority": 10},
+		{"name": "Summoner 3 Point Evolutions", "subtype": "summoner_evolution_3", "priority": 10},
+		{"name": "Summoner 4 Point Evolutions", "subtype": "summoner_evolution_4", "priority": 10},
+		{"name": "Witch Archetypes", "type": "class_archetype", "subtype": "witch", "priority": 10},
+		{"name": "Witch Hexes", "subtype": "witch_hex", "priority": 10},
+		{"name": "Witch Major Hexes", "subtype": "witch_major_hex", "priority": 10},
+		{"name": "Witch Grand Hexes", "subtype": "witch_grand_hex", "priority": 10},
+		{"name": "Witch Patrons", "subtype": "witch_patron", "priority": 10},
+		{"name": "Wizard Archetypes", "type": "class_archetype", "subtype": "wizard", "priority": 10},
+		{"name": "Wizard Arcane Schools", "subtype": "arcane_school", "priority": 10},
+		{"name": "Wizard Elemental Arcane Schools", "subtype": "elemental_arcane_school", "priority": 10},
+		{"name": "Wizard Focused Arcane Schools", "subtype": "focused_arcane_school", "priority": 10},
+		{"name": "Wizard Familiars", "type": "creature", "subtype": "familiar", "priority": 10}
+	]},
+	{"name": "Creatures", "priority": 30, "children": [
+		{"name": "All Creatures", "type": "creature", "priority": 10},
+		{"group": "creature_type", "priority": 20}
+	]},
+	{"name": "Feats", "priority": 30, "children": [
+		{"name": "All Feats", "type": "feat", "priority": 10},
+		{"group": "feat_type", "priority": 20}
+	]},
+	{"name": "Races", "priority": 30, "children": [
+		{"name": "Core Races", "type": "race", "subtype": "standard_race", "priority": 10},
+		{"name": "Featured Races", "type": "race", "subtype": "featured_race", "priority": 20},
+		{"name": "Uncommon Races", "type": "race", "subtype": "uncommon_race", "priority": 30}
+	]},
+	{"name": "Skills", "priority": 30, "type": "skill"},
+	{"name": "Spells", "priority": 30, "children": [
+		{"name": "All Spells", "type": "spell", "priority": 10},
+		{"group": "spell_classes", "priority": 20}
+	]},
+	{"name": "Rules: Core Rulebook", "priority": 40, "children": [
+		{"group": "children", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules", "priority": 10}
+	]},
+	{"name": "Rules: Advanced Player's Guide", "priority": 50, "children": [
+		{"group": "children", "db": "book-apg.db", "url": "pfsrd://Advanced Player's Guide/Rules", "priority": 10}
+	]},
+	{"name": "Rules: Advanced Race Guide", "priority": 50, "children": [
+		{"group": "children", "db": "book-arg.db", "url": "pfsrd://Advanced Race Guide/Rules", "priority": 10}
+	]},
+	{"name": "Rules: Ultimate Combat", "priority": 50, "children": [
+		{"group": "children", "db": "book-uc.db", "url": "pfsrd://Ultimate Combat/Rules", "priority": 10}
+	]},
+	{"name": "Rules: Ultimate Magic", "priority": 50, "children": [
+		{"group": "children", "db": "book-um.db", "url": "pfsrd://Ultimate Magic/Rules", "priority": 10}
+	]},
+	{"name": "Rules: Bestiary", "priority": 60, "children": [
+		{"group": "children", "db": "book-b1.db", "url": "pfsrd://Bestiary/Rules", "priority": 10}
+	]},
+	{"name": "Rules: Game Mastery Guide", "priority": 60, "children": [
+		{"group": "children", "db": "book-gmg.db", "url": "pfsrd://Game Mastery Guide/Rules", "priority": 10}
+	]}
+]

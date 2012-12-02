@@ -7,6 +7,7 @@ def create_menu_table(curs):
 		"  type TEXT,"
 		"  subtype TEXT,"
 		"  url TEXT,"
+		"  source TEXT,"
 		"  db TEXT,"
 		"  grouping TEXT,"
 		"  priority INTEGER"
@@ -20,13 +21,13 @@ def create_menu_index(curs):
 	curs.execute(sql)
 
 def insert_menu(curs, parent_menu_id=None, name=None, type=None, subtype=None,
-		url=None, db=None, group=None, priority=None):
-	values = [parent_menu_id, name, type, subtype, url, db, group, priority]
+		url=None, source=None, db=None, group=None, priority=None):
+	values = [parent_menu_id, name, type, subtype, url, source, db, group, priority]
 	sql = '\n'.join([
 		"INSERT INTO menu",
-		" (parent_menu_id, name, type, subtype, url, db, grouping, priority)",
+		" (parent_menu_id, name, type, subtype, url, source, db, grouping, priority)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 	return curs.lastrowid
 

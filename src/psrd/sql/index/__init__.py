@@ -10,8 +10,6 @@ from psrd.sql.index.section_sort import create_section_sort_table
 from psrd.sql.index.section_sort import create_section_sort_index
 from psrd.sql.index.menu import create_menu_table
 from psrd.sql.index.menu import create_menu_index
-from psrd.sql.index.url_ref import create_url_references_table
-from psrd.sql.index.url_ref import create_url_references_index
 from psrd.sql.index.books import create_books_table
 
 def check_db_version(curs):
@@ -56,8 +54,6 @@ def create_db_v_2(conn, curs, ver):
 	create_section_sort_index(curs)
 	create_menu_table(curs)
 	create_menu_index(curs)
-	create_url_references_table(curs)
-	create_url_references_index(curs)
 	create_books_table(curs)
 	set_version(curs, ver)
 	conn.commit()

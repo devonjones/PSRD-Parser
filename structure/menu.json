@@ -74,25 +74,25 @@
 		{"name": "All Spells", "type": "spell", "priority": 10},
 		{"group": "spell_classes", "priority": 20}
 	]},
-	{"name": "Rules: Core Rulebook", "priority": 40, "children": [
-		{"group": "children", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules", "priority": 10}
+	{"name": "Rules: Core Rulebook", "source": "Core Rulebook", "priority": 40, "children": [
+		{"group": "children", "source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules", "priority": 10}
 	]},
-	{"name": "Rules: Advanced Player's Guide", "priority": 50, "children": [
-		{"group": "children", "db": "book-apg.db", "url": "pfsrd://Advanced Player's Guide/Rules", "priority": 10}
+	{"name": "Rules: Advanced Player's Guide", "source": "Advanced Player's Guide", "priority": 50, "children": [
+		{"group": "children", "source": "Advanced Player's Guide", "db": "book-apg.db", "url": "pfsrd://Advanced Player's Guide/Rules", "priority": 10}
 	]},
-	{"name": "Rules: Advanced Race Guide", "priority": 50, "children": [
-		{"group": "children", "db": "book-arg.db", "url": "pfsrd://Advanced Race Guide/Rules", "priority": 10}
+	{"name": "Rules: Advanced Race Guide", "source": "Advanced Race Guide", "priority": 50, "children": [
+		{"group": "children", "source": "Advanced Race Guide", "db": "book-arg.db", "url": "pfsrd://Advanced Race Guide/Rules", "priority": 10}
 	]},
-	{"name": "Rules: Ultimate Combat", "priority": 50, "children": [
-		{"group": "children", "db": "book-uc.db", "url": "pfsrd://Ultimate Combat/Rules", "priority": 10}
+	{"name": "Rules: Ultimate Combat", "source": "Ultimate Combat", "priority": 50, "children": [
+		{"group": "children", "source": "Ultimate Combat", "db": "book-uc.db", "url": "pfsrd://Ultimate Combat/Rules", "priority": 10}
 	]},
-	{"name": "Rules: Ultimate Magic", "priority": 50, "children": [
-		{"group": "children", "db": "book-um.db", "url": "pfsrd://Ultimate Magic/Rules", "priority": 10}
+	{"name": "Rules: Ultimate Magic", "source": "Ultimate Magic", "priority": 50, "children": [
+		{"group": "children", "source": "Ultimate Magic", "db": "book-um.db", "url": "pfsrd://Ultimate Magic/Rules", "priority": 10}
 	]},
-	{"name": "Rules: Bestiary", "priority": 60, "children": [
-		{"group": "children", "db": "book-b1.db", "url": "pfsrd://Bestiary/Rules", "priority": 10}
+	{"name": "Rules: Bestiary", "source": "Bestiary", "priority": 60, "children": [
+		{"group": "children", "source": "Bestiary", "db": "book-b1.db", "url": "pfsrd://Bestiary/Rules", "priority": 10}
 	]},
-	{"name": "Rules: Game Mastery Guide", "priority": 60, "children": [
-		{"group": "children", "db": "book-gmg.db", "url": "pfsrd://Game Mastery Guide/Rules", "priority": 10}
+	{"name": "Rules: Game Mastery Guide", "source": "Game Mastery Guide", "priority": 60, "children": [
+		{"group": "children", "source": "Game Mastery Guide", "db": "book-gmg.db", "url": "pfsrd://Game Mastery Guide/Rules", "priority": 10}
 	]}
 ]

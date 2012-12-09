@@ -64,6 +64,16 @@
 		{"name": "All Feats", "type": "feat", "priority": 10},
 		{"group": "feat_type", "priority": 20}
 	]},
+	{"name": "Quick Reference", "priority": 30, "children": [
+		{"source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules/Glossary/Conditions", "priority": 10},
+		{"name": "Combat Maneuvers", "subtype": "combat_maneuver", "priority": 20},
+		{"name": "Special Attacks", "source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules/Combat/Special Attacks", "priority": 20},
+		{"source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules/Combat/Actions In Combat/Free Actions", "priority": 30},
+		{"source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules/Combat/Actions In Combat/Full-Round Actions", "priority": 30},
+		{"source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules/Combat/Actions In Combat/Miscellaneous Actions", "priority": 30},
+		{"source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules/Combat/Actions In Combat/Move Actions", "priority": 30},
+		{"source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules/Combat/Actions In Combat/Standard Actions", "priority": 30}
+	]},
 	{"name": "Races", "priority": 30, "children": [
 		{"name": "Core Races", "type": "race", "subtype": "standard_race", "priority": 10},
 		{"name": "Featured Races", "type": "race", "subtype": "featured_race", "priority": 20},

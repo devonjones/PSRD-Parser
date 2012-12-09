@@ -64,6 +64,16 @@
 		{"name": "All Feats", "type": "feat", "priority": 10},
 		{"group": "feat_type", "priority": 20}
 	]},
+	{"name": "Hazards", "priority": 30, "children": [
+		{"name": "Addictions", "type": "affliction", "subtype": "addiction"},
+		{"name": "Curses", "type": "affliction", "subtype": "curse"},
+		{"name": "Diseases", "type": "affliction", "subtype": "disease"},
+		{"name": "Haunts", "type": "haunt"},
+		{"name": "Infestations", "type": "affliction", "subtype": "infestation"},
+		{"name": "Insanities", "type": "affliction", "subtype": "insanity"},
+		{"name": "Poisons", "type": "affliction", "subtype": "poison"},
+		{"name": "Traps", "type": "trap"}
+	]},
 	{"name": "Quick Reference", "priority": 30, "children": [
 		{"source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules/Glossary/Conditions", "priority": 10},
 		{"name": "Combat Maneuvers", "subtype": "combat_maneuver", "priority": 20},

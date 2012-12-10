@@ -13,6 +13,7 @@ from psrd.sql.settlements import insert_settlement_detail
 from psrd.sql.vehicles import insert_vehicle_detail
 from psrd.sql.creatures import insert_creature_detail, insert_creature_spell
 from psrd.sql.traps import insert_trap_detail
+from psrd.sql.haunts import insert_haunt_detail
 from psrd.sql.items import insert_item_detail
 from psrd.sql.links import insert_link_detail
 from psrd.sql.classes import insert_class_detail
@@ -197,6 +198,9 @@ def _link_insert(curs, section, section_id):
 def _trap_insert(curs, section, section_id):
 	insert_trap_detail(curs, **section)
 
+def _haunt_insert(curs, section, section_id):
+	insert_haunt_detail(curs, **section)
+
 def _item_insert(curs, section, section_id):
 	insert_item_detail(curs, **section)
 
@@ -215,6 +219,7 @@ def insert_subrecords(curs, curs_list, section, section_id):
 		"vehicle": _vehicle_insert,
 		"creature": _creature_insert,
 		"trap": _trap_insert,
+		"haunt": _haunt_insert,
 		"item": _item_insert,
 		"link": _link_insert,
 		"table": _noop,

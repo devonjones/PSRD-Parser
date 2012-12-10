@@ -8,6 +8,7 @@ from psrd.sql.animal_companions import create_animal_companion_details_table, cr
 from psrd.sql.settlements import create_settlement_details_table, create_settlement_details_index
 from psrd.sql.vehicles import create_vehicle_details_table, create_vehicle_details_index
 from psrd.sql.traps import create_trap_details_table, create_trap_details_index
+from psrd.sql.haunts import create_haunt_details_table, create_haunt_details_index
 from psrd.sql.items import create_item_details_table, create_item_details_index
 from psrd.sql.feats import create_feat_types_table, create_feat_types_index, create_feat_type_descriptions_table, create_feat_type_descriptions_index
 from psrd.sql.links import create_link_details_table, create_link_details_index
@@ -75,6 +76,8 @@ def create_db_v_2(conn, curs, ver, source=None):
 	create_creature_spells_index(curs)
 	create_trap_details_table(curs)
 	create_trap_details_index(curs)
+	create_haunt_details_table(curs)
+	create_haunt_details_index(curs)
 	create_item_details_table(curs)
 	create_item_details_index(curs)
 	create_link_details_table(curs)

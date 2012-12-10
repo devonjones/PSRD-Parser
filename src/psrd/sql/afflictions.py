@@ -10,7 +10,8 @@ def create_affliction_details_table(curs):
 		"  effect TEXT,",
 		"  initial_effect TEXT,",
 		"  secondary_effect TEXT,",
-		"  cure TEXT",
+		"  cure TEXT,",
+		"  cost TEXT",
 		")"])
 	curs.execute(sql)
 
@@ -20,13 +21,13 @@ def create_affliction_details_index(curs):
 		" ON affliction_details (section_id)"])
 	curs.execute(sql)
 
-def insert_affliction_detail(curs, section_id, contracted=None, save=None, onset=None, frequency=None, effect=None, initial_effect=None, secondary_effect=None, cure=None, **kwargs):
-	values = [section_id, contracted, save, onset, frequency, effect, initial_effect, secondary_effect, cure]
+def insert_affliction_detail(curs, section_id, contracted=None, save=None, onset=None, frequency=None, effect=None, initial_effect=None, secondary_effect=None, cure=None, cost=None, **kwargs):
+	values = [section_id, contracted, save, onset, frequency, effect, initial_effect, secondary_effect, cure, cost]
 	sql = '\n'.join([
 		"INSERT INTO affliction_details",
-		" (section_id, contracted, save, onset, frequency, effect, initial_effect, secondary_effect, cure)",
+		" (section_id, contracted, save, onset, frequency, effect, initial_effect, secondary_effect, cure, cost)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
 def delete_affliction_detail(curs, section_id):

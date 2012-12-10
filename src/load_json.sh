@@ -75,6 +75,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./rules_loader.py      -d $DATA_DIR/book-b1.db               $DATA_DIR/bestiary_all/structure.json
 ./json_loader.py       -d $DATA_DIR/book-b1.db -p "Monsters" $DATA_DIR/bestiary/creatures/*.json
 ./index_loader.py      -d $DATA_DIR/book-b1.db
+./url_ref_loader.py    -d $DATA_DIR/book-b1.db               $DATA_DIR/bestiary/urlref.json
 ./url_ref_loader.py    -d $DATA_DIR/book-b1.db               $DATA_DIR/bestiary_all/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b1.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-b1.db >> $DATA_DIR/urllist.txt.tmp

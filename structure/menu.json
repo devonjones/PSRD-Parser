@@ -21,7 +21,7 @@
 		{"name": "Cleric Domain", "subtype": "cleric_domain", "priority": 10},
 		{"name": "Cleric Subdomain", "subtype": "cleric_subdomain", "priority": 10},
 		{"name": "Druid Archetypes", "type": "class_archetype", "subtype": "druid", "priority": 10},
-		{"name": "Druid Animal Companions", "type": "animal_companion", "priority": 10},
+		{"name": "Druid Animal Companions", "type": "animal_companion", "subtype": "base", "priority": 10},
 		{"name": "Fighter Archetypes", "type": "class_archetype", "subtype": "fighter", "priority": 10},
 		{"name": "Gunslinger Archetypes", "type": "class_archetype", "subtype": "gunslinger", "priority": 10},
 		{"name": "Gunslinger Deeds", "subtype": "gunslinger_deed", "priority": 10},

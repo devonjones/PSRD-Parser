@@ -24,18 +24,23 @@ def animal_companion_parse_function(field):
 	return functions[field.lower()]
 
 def parse_animal_companion(sb, book):
-	ac = {'type': 'animal_companion', 'source': book, 'name': filter_name(sb.name.strip()), 'sections': []}
+	ac = {'type': 'animal_companion', 'subtype': 'base', 'source': book, 'name': filter_name(sb.name.strip()), 'sections': []}
 	text = []
 	for key, value in sb.keys:
 		animal_companion_parse_function(key)(ac, value)
 	for detail in sb.details:
 		if detail.__class__ == StatBlockSection and detail.name.endswith('th-Level Advancement'):
-			advancement = {'level': detail.name, 'source': book, 'type': 'animal_companion', 'name': filter_name(ac['name'])}
+			advancement = {'level': detail.name[:3], 'source': book, 'type': 'animal_companion', 'name': filter_name(ac['name'])}
 			for key, value in detail.keys:
 				animal_companion_parse_function(key)(advancement, value)
+
+			advancement['subtype'] = 'advancement'
 			ac['sections'].append(advancement)
 		else:
 			text.append(detail)
+	if ac["name"].endswith('th-Level Advancement'):
+		ac['level'] = ac['name'][:3]
+		ac['subtype'] = "advancement"
 	if len(text) > 0:
 		ac['text'] = ''.join(text)
 	return ac

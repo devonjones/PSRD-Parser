@@ -223,6 +223,7 @@ def insert_subrecords(curs, curs_list, section, section_id):
 		"item": _item_insert,
 		"link": _link_insert,
 		"table": _noop,
+		"trait": _noop,
 		"racial_trait": _noop,
 		"section": _noop,
 		"class_archetype": _noop,

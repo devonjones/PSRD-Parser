@@ -36,7 +36,7 @@ def stat_block_pass(section, book, no_sb=False):
 				if s.__class__ == StatBlockHeading:
 					newsections.append(parse_stat_block(s, book, no_sb=no_sb))
 				elif s.__class__ == dict:
-					newsections.append(stat_block_pass(s, book))
+					newsections.append(stat_block_pass(s, book, no_sb=no_sb))
 				else:
 					newsections.append(s)
 			section['sections'] = newsections

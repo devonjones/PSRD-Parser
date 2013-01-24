@@ -216,3 +216,101 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Racial Qualities"        $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/raceBuilder/racialQualities.html
 ./rules_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "Racial Traits"           $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/raceBuilder/racialTraits.html
 
+# Ultimate Equipment
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Arms And Armor"                     $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/armsAndArmor/index.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Armor"                              $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/armsAndArmor/armor.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Weapons"                            $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/armsAndArmor/weapons.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Special Materials"                  $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/armsAndArmor/materials.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Gear"                               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/index.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Adventuring Gear"                   $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/adventuringGear.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Tools and Skill Kits"               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/toolsAndSkillKits.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Animals, Mounts, and Related Gear"  $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/animalsAndTransports.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Clothing"                           $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/clothing.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Entertainment and Trade Goods"      $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/entertainmentAndTradeGoods.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Food and Drink"                     $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/foodAndDrink.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Lodging and Services"               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/lodgingAndServices.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Alchemical Remedies"                $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/alchemicalRemedies.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Alchemical Tools"                   $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/alchemicalTools.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Alchemical Weapons"                 $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/alchemicalWeapons.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Poisons"                            $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/poisons.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Magic Arms and Armor"               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/index.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Armor Special Abilities" -n         $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/armorSpecialAbilities.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Specific Magic Armor and Shields"   $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/specificMagicArmorShields.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Weapon Special Abilities"           $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/weaponSpecialAbilities.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Specific Magic Weapons"             $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/specificMagicWeapons.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Rings, Rods & Staves"               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/ringsRodsStaves/index.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Rings"                              $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/ringsRodsStaves/rings.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Rods"                               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/ringsRodsStaves/rods.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Staves"                             $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/ringsRodsStaves/staves.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Wondrous Items"                     $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/index.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Belt"                               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/belts.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Body"                               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/body.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Chest"                              $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/chest.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Eyes"                               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/eyes.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Feet"                               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/feet.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Hands"                              $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/hands.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Head"                               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/head.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Headbands"                          $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/headbands.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Neck"                               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/neck.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Shoulders"                          $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/shoulders.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Wrists"                             $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/wrists.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Artifacts and Other Items"          $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/artifactsAndOthers/index.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Artifacts"                          $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/artifactsAndOthers/artifacts.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Cursed Items"                       $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/artifactsAndOthers/cursedItems.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Intelligent Items"                  $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/artifactsAndOthers/intelligentItems.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Appendix"                           $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/appendix.html
+
+# NPC Codex
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Core Class NPCs"         $WEB_DIR/pathfinderRPG/prd/npcCodex/core/index.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Barbarian"               $WEB_DIR/pathfinderRPG/prd/npcCodex/core/barbarian.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Bard"                    $WEB_DIR/pathfinderRPG/prd/npcCodex/core/bard.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Cleric"                  $WEB_DIR/pathfinderRPG/prd/npcCodex/core/cleric.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Druid"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/core/druid.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Fighter"                 $WEB_DIR/pathfinderRPG/prd/npcCodex/core/fighter.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Monk"                    $WEB_DIR/pathfinderRPG/prd/npcCodex/core/monk.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Paladin"                 $WEB_DIR/pathfinderRPG/prd/npcCodex/core/paladin.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Ranger"                  $WEB_DIR/pathfinderRPG/prd/npcCodex/core/ranger.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Rogue"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/core/rogue.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Sorcerer"                $WEB_DIR/pathfinderRPG/prd/npcCodex/core/sorcerer.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Wizard"                  $WEB_DIR/pathfinderRPG/prd/npcCodex/core/wizard.html
+
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Prestige Class NPCs"     $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/index.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Arcane Archer"           $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/arcaneArcher.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Arcane Trickster"        $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/arcaneTrickster.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Assassin"                $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/assassin.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Dragon Disciple"         $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/dragonDisciple.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Duelist"                 $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/duelist.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Eldritch Knight"         $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/eldritchKnight.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Loremaster"              $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/loremaster.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Mystic Theurge"          $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/mysticTheurge.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Pathfinder Chronicler"   $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/pathfinderChronicler.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Shadowdancer"            $WEB_DIR/pathfinderRPG/prd/npcCodex/prestige/shadowdancer.html
+
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "NPC Class NPCs"          $WEB_DIR/pathfinderRPG/prd/npcCodex/npc/index.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Adept"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/npc/adept.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Aristocrat"              $WEB_DIR/pathfinderRPG/prd/npcCodex/npc/aristocrat.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Commoner"                $WEB_DIR/pathfinderRPG/prd/npcCodex/npc/commoner.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Expert"                  $WEB_DIR/pathfinderRPG/prd/npcCodex/npc/expert.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Warrior"                 $WEB_DIR/pathfinderRPG/prd/npcCodex/npc/warrior.html
+
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Iconic NPCs"             $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/index.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Amiri"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/amiri.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Exren"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/ezren.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Harsk"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/harsk.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Kyra"                    $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/kyra.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Lem"                     $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/lem.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Lini"                    $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/lini.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Merisiel"                $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/merisiel.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Sajan"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/sajan.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Seelah"                  $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/seelah.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Seoni"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/seoni.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Valeros"                 $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/valeros.html
+
+#./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Appendix"                $WEB_DIR/pathfinderRPG/prd/npcCodex/appendix.html
+

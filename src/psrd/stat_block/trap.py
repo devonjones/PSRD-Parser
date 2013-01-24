@@ -39,5 +39,5 @@ def parse_trap(sb, book):
 	if 'CR' in trap['name']:
 		names = trap['name'].split('CR')
 		trap['name'] = filter_name(names.pop(0).strip())
-		trap['cr'] = int(names.pop(0).strip())
+		trap['cr'] = names.pop(0).strip()
 	return trap

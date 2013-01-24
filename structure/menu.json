@@ -58,7 +58,9 @@
 	]},
 	{"name": "Creatures", "priority": 30, "children": [
 		{"name": "All Creatures", "type": "creature", "priority": 10},
-		{"group": "creature_type", "priority": 20}
+		{"name": "Templates", "subtype": "template", "priority": 10},
+		{"group": "creature_type", "priority": 20},
+		{"name": "NPCs", "type": "creature", "subtype": "npc", "priority": 30}
 	]},
 	{"name": "Feats", "priority": 30, "children": [
 		{"name": "All Feats", "type": "feat", "priority": 10},

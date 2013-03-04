@@ -258,6 +258,7 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Neck"                               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/neck.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Shoulders"                          $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/shoulders.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Wrists"                             $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/wrists.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Slotless"                          $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/wondrousItems/slotless.html
 
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Artifacts and Other Items"          $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/artifactsAndOthers/index.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Artifacts"                          $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/artifactsAndOthers/artifacts.html
@@ -301,7 +302,7 @@ source dir.conf
 
 ./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Iconic NPCs"             $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/index.html
 ./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Amiri"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/amiri.html
-./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Exren"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/ezren.html
+./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Ezren"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/ezren.html
 ./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Harsk"                   $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/harsk.html
 ./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Kyra"                    $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/kyra.html
 ./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Lem"                     $WEB_DIR/pathfinderRPG/prd/npcCodex/iconic/lem.html

@@ -62,6 +62,12 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-arg.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-arg.db >> $DATA_DIR/urllist.txt.tmp
 
+# Ultimate Equipment 
+./rules_loader.py      -d $DATA_DIR/book-ue.db                $DATA_DIR/ultimate_equipment/structure.json
+./url_ref_loader.py    -d $DATA_DIR/book-ue.db                $DATA_DIR/ultimate_equipment/urlref.json
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ue.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-ue.db >> $DATA_DIR/urllist.txt.tmp
+
 # Game Mastery Guide
 ./json_loader.py       -d $DATA_DIR/book-gmg.db -p "Monsters" $DATA_DIR/game_mastery_guide/creatures/*.json
 ./rules_loader.py      -d $DATA_DIR/book-gmg.db               $DATA_DIR/game_mastery_guide/structure.json
@@ -91,6 +97,13 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-b3.db
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b3.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-b3.db >> $DATA_DIR/urllist.txt.tmp
+
+# NPC Codex
+./rules_loader.py      -d $DATA_DIR/book-npc.db               $DATA_DIR/npc_codex/structure.json
+./url_ref_loader.py    -d $DATA_DIR/book-npc.db               $DATA_DIR/npc_codex/urlref.json
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-npc.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-npc.db >> $DATA_DIR/urllist.txt.tmp
+
 
 # Central Index
 ./central_index_loader.py   -d $DATA_DIR/index.db   $DATA_DIR/book-*.db

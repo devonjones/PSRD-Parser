@@ -1,0 +1,73 @@
+{
+  "name": "NPC Codex",
+  "children": [
+    {
+      "name": "Rules",
+      "children": [
+        {
+          "name": "Core Classes",
+          "file": "core_class_npcs.json",
+          "children": [
+            {"name": "Barbarian", "file": "barbarian.json"},
+            {"name": "Bard", "file": "bard.json"},
+            {"name": "Cleric", "file": "cleric.json"},
+            {"name": "Druid", "file": "druid.json"},
+            {"name": "Fighter", "file": "fighter.json"},
+            {"name": "Monk", "file": "monk.json"},
+            {"name": "Paladin", "file": "paladin.json"},
+            {"name": "Ranger", "file": "ranger.json"},
+            {"name": "Rogue", "file": "rogue.json"},
+            {"name": "Sorcerer", "file": "sorcerer.json"},
+            {"name": "Wizard", "file": "wizard.json"}
+          ]
+        },
+        {
+          "name": "Prestige Classes",
+          "file": "prestige_class_npcs.json",
+          "children": [
+            {"name": "Arcane Archer", "file": "arcane_archer.json"},
+            {"name": "Arcane Trickster", "file": "arcane_trickster.json"},
+            {"name": "Assassin", "file": "assassin.json"},
+            {"name": "Dragon Disciple", "file": "dragon_disciple.json"},
+            {"name": "Duelist", "file": "duelist.json"},
+            {"name": "Eldritch Knight", "file": "eldritch_knight.json"},
+            {"name": "Loremaster", "file": "loremaster.json"},
+            {"name": "Mystic Theurge", "file": "mystic_theurge.json"},
+            {"name": "Pathfinder Chronicler", "file": "pathfinder_chronicler.json"},
+            {"name": "Shadowdancer", "file": "shadowdancer.json"}
+          ]
+        },
+        {
+          "name": "NPC Classes",
+          "file": "npc_class_npcs.json",
+          "children": [
+            {"name": "Adept", "file": "adept.json"},
+            {"name": "Aristocrat", "file": "aristocrat.json"},
+            {"name": "Commoner", "file": "commoner.json"},
+            {"name": "Expert", "file": "expert.json"},
+            {"name": "Warrior", "file": "warrior.json"}
+          ]
+        },
+        {
+          "name": "Iconic Characters",
+          "file": "iconic_npcs.json",
+          "children": [
+            {"name": "Amiri (Barbarian)", "file": "amiri.json"},
+            {"name": "Lem (Bard)", "file": "lem.json"},
+            {"name": "Kyra (Cleric)", "file": "kyra.json"},
+            {"name": "Lini (Druid)", "file": "lini.json"},
+            {"name": "Valeros (Fighter)", "file": "valeros.json"},
+            {"name": "Sajan (Monk)", "file": "sajan.json"},
+            {"name": "Seelah (Paladin)", "file": "seelah.json"},
+            {"name": "Harsk (Ranger)", "file": "harsk.json"},
+            {"name": "Merisiel (Rogue)", "file": "merisiel.json"},
+            {"name": "Seoni (Sorcerer)", "file": "seoni.json"},
+            {"name": "Ezren (Wizard"), "file": "ezren.json"}
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+

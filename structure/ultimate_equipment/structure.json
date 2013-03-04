@@ -1,0 +1,85 @@
+{
+  "name": "Ulimate Equipment",
+  "children": [
+    {
+      "name": "Rules",
+      "children": [
+        {
+          "name": "Arms and Armor",
+          "file": "rules/arms_and_armor.json",
+          "children": [
+            {"name": "Armor", "file": "rules/armor.json"},
+            {"name": "Weapons", "file": "rules/weapons.json"},
+            {"name": "Special Materials", "file": "rules/special_materials.json"}
+          ]
+        },
+        {
+          "name": "Gear",
+          "file": "rules/gear.json",
+          "children": [
+            {"name":  "Adventuring Gear", "file": "rules/adventuring_gear.json"},
+            {"name": "Tools and Skill Kits", "file": "rules/tools_and_skill_kits.json"},
+            {"name": "Animals, Mounts, and Related Gear", "file": "rules/animals_mounts_and_related_gear.json"},
+            {"name": "Clothing", "file": "rules/clothing.json"},
+            {"name": "Entertainment and Trade Goods", "file": "rules/entertainment_and_trade_goods.json"},
+            {"name": "Food and Drink", "file": "rules/food_and_drink.json"},
+            {"name": "Lodging and Services", "file": "rules/lodging_and_services.json"},
+            {"name": "Alchemical Remedies", "file": "rules/alchemical_remedies.json"},
+            {"name": "Alchemical Tools", "file": "rules/alchemical_tools.json"},
+            {"name": "Alchemical Weapons", "file": "rules/alchemical_weapons.json"},
+            {"name": "Poisons", "file": "rules/poisons.json"}
+          ]
+        },
+        {
+          "name": "Magic Arms and Armor",
+          "file": "rules/magic_arms_and_armor.json",
+          "children": [
+            {"name": "Armor Special Abilities", "file": "rules/armor_special_abilities.json"},
+            {"name": "Specific Magic Armor and Shields", "file": "rules/specific_magic_armor_and_shields.json"},
+            {"name": "Weapon Special Abilities", "file": "rules/weapon_special_abilities.json"},
+            {"name": "Specific Magic Weapons", "file": "rules/specific_magic_weapons.json"}
+          ]
+        },
+        {
+          "name": "Rings, Rods, & Staves",
+          "file": "rules/rings_rods__staves.json",
+          "children": [
+            {"name": "Rings", "file": "rules/rings.json"},
+            {"name": "Rods", "file": "rules/rods.json"},
+            {"name": "Staves", "file": "rules/staves.json"},
+          ]
+        },
+        {
+          "name": "Wondrous Items",
+          "file": "rules/wondrous_items.json",
+          "children": [
+            {"name": "Belt", "file": "rules/belt.json"},
+            {"name": "Body", "file": "rules/body.json"},
+            {"name": "Chest", "file": "rules/chest.json"},
+            {"name": "Eyes", "file": "rules/eyes.json"},
+            {"name": "Feet", "file": "rules/feet.json"},
+            {"name": "Hands", "file": "rules/hands.json"},
+            {"name": "Head", "file": "rules/head.json"},
+            {"name": "Headbands", "file": "rules/headbands.json"},
+            {"name": "Neck", "file": "rules/neck.json"},
+            {"name": "Shoulders", "file": "rules/shoulders.json"},
+            {"name": "Wrists", "file": "rules/wrists.json"},
+            {"name": "Slotless", "file": "rules/slotless.json"}
+          ]
+        },
+        {
+          "name": "Artifacts and Other Items",
+          "file": "rules/artifacts_and_other_items.json",
+          "children": [
+            {"name": "Artifacts", "file": "rules/artifacts.json"},
+            {"name": "Cursed Items", "file": "rules/cursed_items.json"},
+            {"name": "Intelligent Items", "file": "rules/intelligent_items.json"},
+          ]
+        },
+        {"name": "Appendix", "file": "rules/appendix.json"}
+      ]
+    }
+  ]
+}
+
+

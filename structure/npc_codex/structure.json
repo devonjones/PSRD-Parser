@@ -6,63 +6,63 @@
       "children": [
         {
           "name": "Core Classes",
-          "file": "core_class_npcs.json",
+          "file": "rules/core_class_npcs.json",
           "children": [
-            {"name": "Barbarian", "file": "barbarian.json"},
-            {"name": "Bard", "file": "bard.json"},
-            {"name": "Cleric", "file": "cleric.json"},
-            {"name": "Druid", "file": "druid.json"},
-            {"name": "Fighter", "file": "fighter.json"},
-            {"name": "Monk", "file": "monk.json"},
-            {"name": "Paladin", "file": "paladin.json"},
-            {"name": "Ranger", "file": "ranger.json"},
-            {"name": "Rogue", "file": "rogue.json"},
-            {"name": "Sorcerer", "file": "sorcerer.json"},
-            {"name": "Wizard", "file": "wizard.json"}
+            {"name": "Barbarian", "file": "rules/barbarian.json"},
+            {"name": "Bard", "file": "rules/bard.json"},
+            {"name": "Cleric", "file": "rules/cleric.json"},
+            {"name": "Druid", "file": "rules/druid.json"},
+            {"name": "Fighter", "file": "rules/fighter.json"},
+            {"name": "Monk", "file": "rules/monk.json"},
+            {"name": "Paladin", "file": "rules/paladin.json"},
+            {"name": "Ranger", "file": "rules/ranger.json"},
+            {"name": "Rogue", "file": "rules/rogue.json"},
+            {"name": "Sorcerer", "file": "rules/sorcerer.json"},
+            {"name": "Wizard", "file": "rules/wizard.json"}
           ]
         },
         {
           "name": "Prestige Classes",
-          "file": "prestige_class_npcs.json",
+          "file": "rules/prestige_class_npcs.json",
           "children": [
-            {"name": "Arcane Archer", "file": "arcane_archer.json"},
-            {"name": "Arcane Trickster", "file": "arcane_trickster.json"},
-            {"name": "Assassin", "file": "assassin.json"},
-            {"name": "Dragon Disciple", "file": "dragon_disciple.json"},
-            {"name": "Duelist", "file": "duelist.json"},
-            {"name": "Eldritch Knight", "file": "eldritch_knight.json"},
-            {"name": "Loremaster", "file": "loremaster.json"},
-            {"name": "Mystic Theurge", "file": "mystic_theurge.json"},
-            {"name": "Pathfinder Chronicler", "file": "pathfinder_chronicler.json"},
-            {"name": "Shadowdancer", "file": "shadowdancer.json"}
+            {"name": "Arcane Archer", "file": "rules/arcane_archer.json"},
+            {"name": "Arcane Trickster", "file": "rules/arcane_trickster.json"},
+            {"name": "Assassin", "file": "rules/assassin.json"},
+            {"name": "Dragon Disciple", "file": "rules/dragon_disciple.json"},
+            {"name": "Duelist", "file": "rules/duelist.json"},
+            {"name": "Eldritch Knight", "file": "rules/eldritch_knight.json"},
+            {"name": "Loremaster", "file": "rules/loremaster.json"},
+            {"name": "Mystic Theurge", "file": "rules/mystic_theurge.json"},
+            {"name": "Pathfinder Chronicler", "file": "rules/pathfinder_chronicler.json"},
+            {"name": "Shadowdancer", "file": "rules/shadowdancer.json"}
           ]
         },
         {
           "name": "NPC Classes",
-          "file": "npc_class_npcs.json",
+          "file": "rules/npc_class_npcs.json",
           "children": [
-            {"name": "Adept", "file": "adept.json"},
-            {"name": "Aristocrat", "file": "aristocrat.json"},
-            {"name": "Commoner", "file": "commoner.json"},
-            {"name": "Expert", "file": "expert.json"},
-            {"name": "Warrior", "file": "warrior.json"}
+            {"name": "Adept", "file": "rules/adept.json"},
+            {"name": "Aristocrat", "file": "rules/aristocrat.json"},
+            {"name": "Commoner", "file": "rules/commoner.json"},
+            {"name": "Expert", "file": "rules/expert.json"},
+            {"name": "Warrior", "file": "rules/warrior.json"}
           ]
         },
         {
           "name": "Iconic Characters",
-          "file": "iconic_npcs.json",
+          "file": "rules/iconic_npcs.json",
           "children": [
-            {"name": "Amiri (Barbarian)", "file": "amiri.json"},
-            {"name": "Lem (Bard)", "file": "lem.json"},
-            {"name": "Kyra (Cleric)", "file": "kyra.json"},
-            {"name": "Lini (Druid)", "file": "lini.json"},
-            {"name": "Valeros (Fighter)", "file": "valeros.json"},
-            {"name": "Sajan (Monk)", "file": "sajan.json"},
-            {"name": "Seelah (Paladin)", "file": "seelah.json"},
-            {"name": "Harsk (Ranger)", "file": "harsk.json"},
-            {"name": "Merisiel (Rogue)", "file": "merisiel.json"},
-            {"name": "Seoni (Sorcerer)", "file": "seoni.json"},
-            {"name": "Ezren (Wizard"), "file": "ezren.json"}
+            {"name": "Amiri (Barbarian)", "file": "rules/amiri.json"},
+            {"name": "Lem (Bard)", "file": "rules/lem.json"},
+            {"name": "Kyra (Cleric)", "file": "rules/kyra.json"},
+            {"name": "Lini (Druid)", "file": "rules/lini.json"},
+            {"name": "Valeros (Fighter)", "file": "rules/valeros.json"},
+            {"name": "Sajan (Monk)", "file": "rules/sajan.json"},
+            {"name": "Seelah (Paladin)", "file": "rules/seelah.json"},
+            {"name": "Harsk (Ranger)", "file": "rules/harsk.json"},
+            {"name": "Merisiel (Rogue)", "file": "rules/merisiel.json"},
+            {"name": "Seoni (Sorcerer)", "file": "rules/seoni.json"},
+            {"name": "Ezren (Wizard)", "file": "rules/ezren.json"}
           ]
         }
       ]

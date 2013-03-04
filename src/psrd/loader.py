@@ -14,7 +14,7 @@ from psrd.sql.vehicles import insert_vehicle_detail
 from psrd.sql.creatures import insert_creature_detail, insert_creature_spell
 from psrd.sql.traps import insert_trap_detail
 from psrd.sql.haunts import insert_haunt_detail
-from psrd.sql.items import insert_item_detail
+from psrd.sql.items import insert_item_detail, insert_item_misc
 from psrd.sql.links import insert_link_detail
 from psrd.sql.classes import insert_class_detail
 from psrd.sql.feats import insert_feat_type, insert_feat_type_description
@@ -203,6 +203,9 @@ def _haunt_insert(curs, section, section_id):
 
 def _item_insert(curs, section, section_id):
 	insert_item_detail(curs, **section)
+	if section.has_key('misc'):
+		for misc in section['misc']:
+			insert_item_misc(curs, section_id, **misc)
 
 def _noop(curs, section, section_id):
 	pass

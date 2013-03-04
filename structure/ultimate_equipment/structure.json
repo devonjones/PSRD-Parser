@@ -46,7 +46,7 @@
           "children": [
             {"name": "Rings", "file": "rules/rings.json"},
             {"name": "Rods", "file": "rules/rods.json"},
-            {"name": "Staves", "file": "rules/staves.json"},
+            {"name": "Staves", "file": "rules/staves.json"}
           ]
         },
         {
@@ -73,7 +73,7 @@
           "children": [
             {"name": "Artifacts", "file": "rules/artifacts.json"},
             {"name": "Cursed Items", "file": "rules/cursed_items.json"},
-            {"name": "Intelligent Items", "file": "rules/intelligent_items.json"},
+            {"name": "Intelligent Items", "file": "rules/intelligent_items.json"}
           ]
         },
         {"name": "Appendix", "file": "rules/appendix.json"}

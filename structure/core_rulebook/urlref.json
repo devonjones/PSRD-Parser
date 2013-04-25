@@ -467,5 +467,17 @@
 {"new": "pfsrd://Core Rulebook/Rules/Glossary/Special Abilities/Afflictions",
   "old": "pfsrd://Core Rulebook/Rules/Glossary/Special Abilities/Afflictions/Name"},
 {"new": "pfsrd://Core Rulebook/Rules/Magic/Spell Descriptions",
-  "old": "pfsrd://Core Rulebook/Rules/Magic/Spell Descriptions/Name"}
+  "old": "pfsrd://Core Rulebook/Rules/Magic/Spell Descriptions/Name"},
+
+{"new": "pfsrd://Core Rulebook/Rules/Magic Items/Weapons/Magic Weapon Special Ability Descriptions/Ki Focus",
+ "old": "pfsrd://Core Rulebook/Rules/Magic Items/Weapons/Magic Weapon Special Ability Descriptions/Ki"},
+
+{"new": "pfsrd://Core Rulebook/Rules/Magic/Divine Spells/Preparing Divine Spells/Spontaneous Casting of Cure and Inflict Spells",
+ "old": "pfsrd://Core Rulebook/Rules/Magic/Divine Spells/Preparing Divine Spells/Spontaneous Casting of Cure"},
+{"new": "pfsrd://Core Rulebook/Rules/Magic/Divine Spells/Preparing Divine Spells/Spontaneous Casting of Summon Nature's Ally Spells",
+ "old": "pfsrd://Core Rulebook/Rules/Magic/Divine Spells/Preparing Divine Spells/Spontaneous Casting of"},
+
+{"new": "pfsrd://Core Rulebook/Rules/Magic/Casting Spells/Counterspells/Dispel Magic as a Counterspell",
+ "old": "pfsrd://Core Rulebook/Rules/Magic/Casting Spells/Counterspells/Dispel Magic"}
+
 ]

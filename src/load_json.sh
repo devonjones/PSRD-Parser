@@ -64,6 +64,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 
 # Ultimate Equipment 
 ./rules_loader.py      -d $DATA_DIR/book-ue.db                $DATA_DIR/ultimate_equipment/structure.json
+./index_loader.py      -d $DATA_DIR/book-ue.db
 ./url_ref_loader.py    -d $DATA_DIR/book-ue.db                $DATA_DIR/ultimate_equipment/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ue.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-ue.db >> $DATA_DIR/urllist.txt.tmp
@@ -100,6 +101,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 
 # NPC Codex
 ./rules_loader.py      -d $DATA_DIR/book-npc.db               $DATA_DIR/npc_codex/structure.json
+./index_loader.py      -d $DATA_DIR/book-npc.db
 ./url_ref_loader.py    -d $DATA_DIR/book-npc.db               $DATA_DIR/npc_codex/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-npc.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-npc.db >> $DATA_DIR/urllist.txt.tmp

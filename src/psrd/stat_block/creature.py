@@ -1,5 +1,5 @@
 from psrd.sections import cap_words
-from psrd.stat_block.utils import colon_filter, default_closure, noop
+from psrd.stat_block.utils import colon_filter, default_closure, noop, parse_stat_block
 from psrd.universal import StatBlockSection, filter_name
 
 def is_npc(sb, book):
@@ -60,6 +60,8 @@ def parse_creature(sb, book):
 			for subd in detail.details:
 				newsec = {'type': 'section', 'source': book, 'text': unicode(subd)}
 				sections.append(newsec)
+		elif detail.__class__ == StatBlockSection and detail.name.lower() in ['tactics']:
+			sections.append(parse_stat_block(detail, book, no_sb=True))
 		else:
 			text.append(unicode(detail))
 	if len(text) > 0:

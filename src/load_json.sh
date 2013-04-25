@@ -90,12 +90,14 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 # Bestiary 2
 ./json_loader.py       -d $DATA_DIR/book-b2.db -p "Monsters" $DATA_DIR/bestiary_2/creatures/*.json
 ./index_loader.py      -d $DATA_DIR/book-b2.db
+./url_ref_loader.py    -d $DATA_DIR/book-b2.db               $DATA_DIR/bestiary_2/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b2.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-b2.db >> $DATA_DIR/urllist.txt.tmp
 
 # Bestiary 3
 ./json_loader.py       -d $DATA_DIR/book-b3.db -p "Monsters" $DATA_DIR/bestiary_3/creatures/*.json
 ./index_loader.py      -d $DATA_DIR/book-b3.db
+./url_ref_loader.py    -d $DATA_DIR/book-b3.db               $DATA_DIR/bestiary_3/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b3.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-b3.db >> $DATA_DIR/urllist.txt.tmp
 

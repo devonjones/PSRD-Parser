@@ -120,6 +120,9 @@
 {"new": "pfsrd://Bestiary 3/Monsters/Vampire/Jiang-Shi/Creating a Jiang-Shi/Jiang-Shi/Speed",
  "old": "pfsrd://Bestiary 3/Monsters/Vampire/Creating a Jiang-Shi/Speed"},
 {"new": "pfsrd://Bestiary 3/Monsters/Vampire/Jiang-Shi/Creating a Jiang-Shi/Jiang-Shi/Weaknesses",
- "old": "pfsrd://Bestiary 3/Monsters/Vampire/Creating a Jiang-Shi/Weaknesses"}
+ "old": "pfsrd://Bestiary 3/Monsters/Vampire/Creating a Jiang-Shi/Weaknesses"},
+
+{"new": "pfsrd://Bestiary 3/Monsters/Dragon/Imperial/Age Categories",
+ "old": "pfsrd://Bestiary 3/Monsters/Dragon/Imperial/Age Categories/Age Category"}
 ]
 

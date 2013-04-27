@@ -122,6 +122,11 @@
 {"new": "pfsrd://Bestiary/Monsters/Zombie/Zombie/Creating a Zombie/Zombie/Saves",
   "old": "pfsrd://Bestiary/Monsters/Zombie/Zombie/Creating a Zombie/Saves"},
 {"new": "pfsrd://Bestiary/Monsters/Zombie/Zombie/Creating a Zombie/Zombie/Special Qualities",
-  "old": "pfsrd://Bestiary/Monsters/Zombie/Zombie/Creating a Zombie/Special Qualities"}
+  "old": "pfsrd://Bestiary/Monsters/Zombie/Zombie/Creating a Zombie/Special Qualities"},
+
+{"new": "pfsrd://Bestiary/Monsters/Army Ant Swarm/Ant/Giant/Worker (-1 CR)",
+ "old": "pfsrd://Bestiary/Monsters/Army Ant Swarm/Ant/Giant/Worker (andndash;1 CR)"},
+{"new": "pfsrd://Bestiary/Monsters/Dragon/Age Categories",
+ "old": "pfsrd://Bestiary/Monsters/Dragon/Age Categories/Age Category"}
 ]
 

@@ -163,7 +163,7 @@ def parse_rules(filename, output, book, title, no_sb=False):
 	rules = title_pass(rules, book, title)
 	rules = quote_pass(rules)
 	rules = entity_pass(rules)
-	if not basename in ['ranger.html', 'universalMonsterRules.html', 'buildingAndModifyingConstructs.html', 'spellbooks.html']:
+	if not basename in ['ranger.html', 'universalMonsterRules.html', 'buildingAndModifyingConstructs.html', 'spellbooks.html', 'rings.html']:
 		rules = abbrev_pass(rules)
 	print_struct(rules)
 	print "%s: %s" %(rules['source'], rules['name'])

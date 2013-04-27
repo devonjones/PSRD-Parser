@@ -1,6 +1,6 @@
 from psrd.stat_block.utils import colon_filter, default_closure, collapse_text
 from psrd.stat_block.section import parse_section
-from psrd.universal import StatBlockSection, filter_name
+from psrd.universal import StatBlockSection, StatBlockHeading, Heading, filter_name
 
 def is_item(sb, book):
 	fields = dict(sb.keys)
@@ -50,14 +50,16 @@ def parse_item(sb, book):
 	for key, value in sb.keys:
 		item_parse_function(key, sb.name.strip())(item, value)
 	for detail in sb.details:
-		if detail.__class__ == StatBlockSection and detail.name.startswith("Construction"):
+		if isinstance(detail, StatBlockSection) and detail.name.startswith("Construction"):
 			for key, value in detail.keys:
 				item_parse_function(key, detail.name.strip())(item, value)
-		elif detail.__class__ == StatBlockSection:
+		elif isinstance(detail, StatBlockSection):
 			sections = item.setdefault('sections', [])
 			sections.append(parse_section(detail, book))
+		elif isinstance(detail, StatBlockHeading):
+			sections.append(parse_stat_block(sb, book, no_sb=no_sb))
 		else:
-			if isinstance(detail, dict):
+			if isinstance(detail, dict) or isinstance(detail, Heading):
 				text.append(detail)
 			else:
 				text.append(unicode(detail))

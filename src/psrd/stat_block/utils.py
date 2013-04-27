@@ -1,3 +1,4 @@
+from psrd.universal import title_collapse_pass, section_pass, Heading
 
 def colon_filter(value):
 	if value.startswith(":"):
@@ -63,3 +64,27 @@ def collapse_text(item, lines):
 	if len(sectionbuf) > 0:
 		sections = item.setdefault('sections', [])
 		sections.extend(sectionbuf)
+		level = has_heading(sections)
+		while level:
+			sections = title_collapse_pass(sections, level)
+			level = level - 1
+		if level == 0:
+			sections = sections_pass(sections, item['source'])
+		item['sections'] = sections
+
+def sections_pass(sections, book):
+	retsects = []
+	for section in sections:
+		if isinstance(section, Heading):
+			retsects.append(section_pass(section, book))
+		else:
+			retsects.append(section)
+	return retsects
+
+def has_heading(sections):
+	level = None
+	for section in sections:
+		if isinstance(section, Heading):
+			if not level or level < section.level:
+				level = section.level
+	return level

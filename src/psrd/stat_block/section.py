@@ -16,9 +16,9 @@ def parse_section(sb, book, no_sb=False, keys=True):
 		for key in sb.keys:
 			text.append("<p class='stat-block-1'><b>%s </b>%s</p>" % key)
 	for detail in sb.details:
-		if detail.__class__ == StatBlockSection:
+		if isinstance(detail, StatBlockSection):
 			sections.append(parse_stat_block(detail, book, no_sb=no_sb))
-		elif detail.__class__ == StatBlockHeading:
+		elif isinstance(detail, StatBlockHeading):
 			sections.append(parse_stat_block(sb, book, no_sb=no_sb))
 		elif isinstance(detail, dict):
 			if len(sectiontext) > 0:
@@ -42,7 +42,7 @@ def parse_section(sb, book, no_sb=False, keys=True):
 				if not ns:
 					ns = {'type': 'section', 'source': book}
 					sections.append(ns)
-				if isinstance(detail, dict):
+				if isinstance(detail, dict) or isinstance(detail, Heading):
 					sectiontext.append(detail)
 				else:
 					sectiontext.append(unicode(detail))

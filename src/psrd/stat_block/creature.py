@@ -1,6 +1,6 @@
 from psrd.sections import cap_words
-from psrd.stat_block.utils import colon_filter, default_closure, noop, parse_stat_block, collapse_text
-from psrd.universal import StatBlockSection, filter_name
+from psrd.stat_block.utils import colon_filter, default_closure, noop, parse_stat_block, collapse_text, has_heading, sections_pass
+from psrd.universal import StatBlockSection, Heading, filter_name, title_collapse_pass
 
 def is_npc(sb, book):
 	if is_creature(sb, book):
@@ -49,8 +49,11 @@ def parse_creature(sb, book):
 			for key, value in detail.keys:
 				creature_parse_function(key)(creature, value)
 			for subd in detail.details:
-				newsec = {'type': 'section', 'source': book, 'text': unicode(subd)}
-				sections.append(newsec)
+				if isinstance(subd, dict) or isinstance(subd, Heading):
+					sections.append(subd)
+				else:
+					newsec = {'type': 'section', 'source': book, 'text': unicode(subd)}
+					sections.append(newsec)
 		elif detail.__class__ == StatBlockSection and detail.name.lower() in ['special abilities']:
 			special_abilities = {'type': 'section', 'subtype': 'special_abilities', 'source': book, 'name': 'Special Abilities', 'sections': []}
 			for key in detail.keys:
@@ -58,15 +61,27 @@ def parse_creature(sb, book):
 				special_abilities['sections'].append(newsec)
 			sections.append(special_abilities)
 			for subd in detail.details:
-				newsec = {'type': 'section', 'source': book, 'text': unicode(subd)}
-				sections.append(newsec)
+				if isinstance(subd, dict) or isinstance(subd, Heading):
+					sections.append(subd)
+				else:
+					newsec = {'type': 'section', 'source': book, 'text': unicode(subd)}
+					sections.append(newsec)
 		elif detail.__class__ == StatBlockSection and detail.name.lower() in ['tactics']:
 			sections.append(parse_stat_block(detail, book, no_sb=True))
 		else:
-			text.append(unicode(detail))
+			if isinstance(detail, dict) or isinstance(detail, Heading):
+				text.append(detail)
+			else:
+				text.append(unicode(detail))
 	if len(text) > 0:
 		collapse_text(creature, text)
 	if len(sections) > 0:
+		level = has_heading(sections)
+		while level:
+			sections = title_collapse_pass(sections, level)
+			level = level - 1
+		if level == 0:
+			sections = sections_pass(sections, creature['source'])
 		creature['sections'] = sections
 	return creature
 

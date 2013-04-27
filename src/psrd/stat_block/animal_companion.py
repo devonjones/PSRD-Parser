@@ -1,4 +1,4 @@
-from psrd.stat_block.utils import colon_filter, default_closure
+from psrd.stat_block.utils import colon_filter, default_closure, collapse_text
 from psrd.universal import StatBlockSection, filter_name
 
 def is_animal_companion(sb, book):
@@ -42,6 +42,6 @@ def parse_animal_companion(sb, book):
 		ac['level'] = ac['name'][:3]
 		ac['subtype'] = "advancement"
 	if len(text) > 0:
-		ac['text'] = ''.join(text)
+		collapse_text(ac, text)
 	return ac
 

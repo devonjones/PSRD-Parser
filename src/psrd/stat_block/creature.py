@@ -1,5 +1,5 @@
 from psrd.sections import cap_words
-from psrd.stat_block.utils import colon_filter, default_closure, noop, parse_stat_block
+from psrd.stat_block.utils import colon_filter, default_closure, noop, parse_stat_block, collapse_text
 from psrd.universal import StatBlockSection, filter_name
 
 def is_npc(sb, book):
@@ -65,7 +65,7 @@ def parse_creature(sb, book):
 		else:
 			text.append(unicode(detail))
 	if len(text) > 0:
-		creature['text'] = ''.join(text)
+		collapse_text(creature, text)
 	if len(sections) > 0:
 		creature['sections'] = sections
 	return creature

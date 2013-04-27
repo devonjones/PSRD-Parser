@@ -1,4 +1,4 @@
-from psrd.stat_block.utils import colon_filter, default_closure, parse_stat_block
+from psrd.stat_block.utils import colon_filter, default_closure, parse_stat_block, collapse_text
 from psrd.universal import StatBlockHeading, StatBlockSection, Heading, filter_name
 
 def is_section(sb, book):
@@ -20,7 +20,7 @@ def parse_section(sb, book, no_sb=False, keys=True):
 			sections.append(parse_stat_block(detail, book, no_sb=no_sb))
 		elif detail.__class__ == StatBlockHeading:
 			sections.append(parse_stat_block(sb, book, no_sb=no_sb))
-		elif detail.__class__ == dict:
+		elif isinstance(detail, dict):
 			if len(sectiontext) > 0:
 				section['text'] = ''.join(sectiontext)
 				sectiontext = []
@@ -34,16 +34,22 @@ def parse_section(sb, book, no_sb=False, keys=True):
 			sections.append(ns)
 		else:
 			if len(sections) == 0:
-				text.append(unicode(detail))
+				if isinstance(detail, dict):
+					text.append(detail)
+				else:
+					text.append(unicode(detail))
 			else:
 				if not ns:
 					ns = {'type': 'section', 'source': book}
 					sections.append(ns)
-				sectiontext.append(unicode(detail))
+				if isinstance(detail, dict):
+					sectiontext.append(detail)
+				else:
+					sectiontext.append(unicode(detail))
 	if len(text) > 0:
-		section['text'] = ''.join(text)
+		collapse_text(section, text)
 	if len(sectiontext) > 0:
-		ns['text'] = ''.join(sectiontext)
+		collapse_text(ns, sectiontext)
 	if len(sections) > 0:
 		section['sections'] = sections
 	return section

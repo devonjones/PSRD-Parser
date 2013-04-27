@@ -1,4 +1,4 @@
-from psrd.stat_block.utils import colon_filter, default_closure
+from psrd.stat_block.utils import colon_filter, default_closure, collapse_text
 from psrd.stat_block.section import parse_section
 from psrd.universal import StatBlockSection, filter_name
 
@@ -36,11 +36,7 @@ def item_parse_function(field, detail):
 		'cl': default_closure('cl'),
 		'slot': parse_item_slot,
 		'price': default_closure('price'),
-		'skill': default_closure('skill'),
 		'weight': default_closure('weight'),
-		'requirements': default_closure('requirements'),
-		'cr increase': default_closure('cr_increase'),
-		'cost': default_closure('cost'),
 		'type': default_closure('item_type'),
 	}
 	if functions.has_key(field.lower()):
@@ -61,7 +57,10 @@ def parse_item(sb, book):
 			sections = item.setdefault('sections', [])
 			sections.append(parse_section(detail, book))
 		else:
-			text.append(unicode(detail))
+			if isinstance(detail, dict):
+				text.append(detail)
+			else:
+				text.append(unicode(detail))
 	if len(text) > 0:
-		item['text'] = ''.join(text)
+		collapse_text(item, text)
 	return item 

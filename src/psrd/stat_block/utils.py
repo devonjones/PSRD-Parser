@@ -43,6 +43,23 @@ def parse_stat_block(sb, book, no_sb=False):
 	for test, function in StatBlockFunctions().functions:
 		if test(sb, book):
 			return function(sb, book)
-	print sb
-	print sb.html
 	return sb
+
+def collapse_text(item, lines):
+	textbuf = []
+	sectionbuf = []
+	text = True
+	for line in lines:
+		if not isinstance(line, str) and not isinstance(line, unicode):
+			text = False
+		if text:
+			textbuf.append(line)
+		else:
+			if isinstance(line, str) or isinstance(line, unicode):
+				sectionbuf.append({'type': 'section', 'source': item['source'], 'text': line})
+			else:
+				sectionbuf.append(line)
+	item['text'] = ''.join(textbuf)
+	if len(sectionbuf) > 0:
+		sections = item.setdefault('sections', [])
+		sections.extend(sectionbuf)

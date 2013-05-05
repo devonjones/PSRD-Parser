@@ -64,7 +64,19 @@ def section_naming_pass(feat):
 		p['description'] = ''.join(soup.findAll(text=True))
 		del p['text']
 	return feat
-		
+
+def prerequisite_pass(feat):
+	p = find_section(feat, name="Prerequisites", section_type='section')
+	if p != None:
+		prereq = p['description']
+		if prereq.endswith("."):
+			prereq = prereq[:-1]
+		if prereq.find(";") > -1:
+			parts = prereq.split(";")
+		else:
+			parts = prereq.strip().split(", ")
+		feat['prerequisites'] = [part.strip() for part in parts]
+
 def feat_pass(feat):
 	feat['type'] = 'feat'
 	name = feat['name']
@@ -98,6 +110,7 @@ def parse_feats(filename, output, book):
 		feat_pass(feat)
 		ability_pass(feat)
 		section_naming_pass(feat)
+		prerequisite_pass(feat)
 		if rules['name'] == 'Monster Feats':
 			monster_feat_pass(feat)
 

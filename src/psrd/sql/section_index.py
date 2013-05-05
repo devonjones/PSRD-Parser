@@ -123,6 +123,7 @@ def fetch_central_index(curs):
 		"   sd.descriptor_text as spell_descriptor_text,",
 		"   cd.creature_type,",
 		"   cd.creature_subtype,",
+		"   cd.super_race as creature_super_race,",
 		"   cd.cr as creature_cr,",
 		"   cd.xp as creature_xp,",
 		"   cd.size as creature_size,",

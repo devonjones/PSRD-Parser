@@ -17,6 +17,7 @@ cp -r ../structure/* $DATA_DIR
 ./index_loader.py      -d $DATA_DIR/book-cr.db
 ./url_ref_loader.py    -d $DATA_DIR/book-cr.db               $DATA_DIR/core_rulebook/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-cr.db > $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-cr.db > $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-cr.db >> $DATA_DIR/urllist.txt.tmp
 
 # Advanced Player's Guide
@@ -28,6 +29,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-apg.db
 ./url_ref_loader.py    -d $DATA_DIR/book-apg.db               $DATA_DIR/advanced_players_guide/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-apg.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-apg.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-apg.db >> $DATA_DIR/urllist.txt.tmp
 
 # Ultimate Magic
@@ -40,6 +42,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-um.db
 ./url_ref_loader.py    -d $DATA_DIR/book-um.db               $DATA_DIR/ultimate_magic/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-um.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-um.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-um.db >> $DATA_DIR/urllist.txt.tmp
 
 # Ultimate Combat
@@ -51,6 +54,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-uc.db
 ./url_ref_loader.py    -d $DATA_DIR/book-uc.db               $DATA_DIR/ultimate_combat/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-uc.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-uc.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-uc.db >> $DATA_DIR/urllist.txt.tmp
 
 # Advanced Race Guide
@@ -60,6 +64,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-arg.db
 ./url_ref_loader.py    -d $DATA_DIR/book-arg.db               $DATA_DIR/advanced_race_guide/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-arg.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-arg.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-arg.db >> $DATA_DIR/urllist.txt.tmp
 
 # Ultimate Equipment 
@@ -67,6 +72,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-ue.db
 ./url_ref_loader.py    -d $DATA_DIR/book-ue.db                $DATA_DIR/ultimate_equipment/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ue.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ue.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-ue.db >> $DATA_DIR/urllist.txt.tmp
 
 # Game Mastery Guide
@@ -75,6 +81,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-gmg.db
 ./url_ref_loader.py    -d $DATA_DIR/book-gmg.db               $DATA_DIR/game_mastery_guide/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-gmg.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-gmg.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-gmg.db >> $DATA_DIR/urllist.txt.tmp
 
 # Bestiary
@@ -85,6 +92,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./url_ref_loader.py    -d $DATA_DIR/book-b1.db               $DATA_DIR/bestiary/urlref.json
 ./url_ref_loader.py    -d $DATA_DIR/book-b1.db               $DATA_DIR/bestiary_all/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b1.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b1.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-b1.db >> $DATA_DIR/urllist.txt.tmp
 
 # Bestiary 2
@@ -92,6 +100,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-b2.db
 ./url_ref_loader.py    -d $DATA_DIR/book-b2.db               $DATA_DIR/bestiary_2/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b2.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b2.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-b2.db >> $DATA_DIR/urllist.txt.tmp
 
 # Bestiary 3
@@ -99,6 +108,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-b3.db
 ./url_ref_loader.py    -d $DATA_DIR/book-b3.db               $DATA_DIR/bestiary_3/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b3.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b3.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-b3.db >> $DATA_DIR/urllist.txt.tmp
 
 # NPC Codex
@@ -106,6 +116,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-npc.db
 ./url_ref_loader.py    -d $DATA_DIR/book-npc.db               $DATA_DIR/npc_codex/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-npc.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-npc.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-npc.db >> $DATA_DIR/urllist.txt.tmp
 
 
@@ -118,5 +129,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./index_loader.py      -d $DATA_DIR/book-ogl.db
 
 cat $DATA_DIR/urllist.txt.tmp | sort > $DATA_DIR/urllist.txt
+cat $DATA_DIR/supportedurllist.txt.tmp | sort > $DATA_DIR/supportedurllist.txt
 rm $DATA_DIR/urllist.txt.tmp
+rm $DATA_DIR/supportedurllist.txt.tmp
 

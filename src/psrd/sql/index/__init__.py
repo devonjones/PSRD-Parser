@@ -2,6 +2,8 @@ import os
 import sqlite3
 from psrd.sql.index.central_index import create_central_index_table
 from psrd.sql.index.central_index import create_central_index_indexes
+from psrd.sql.index.url_ref import create_url_references_table
+from psrd.sql.index.url_ref import create_url_references_index
 from psrd.sql.index.feat_type_index import create_feat_type_index_table
 from psrd.sql.index.feat_type_index import create_feat_type_index_indexes
 from psrd.sql.index.spell_list_index import create_spell_list_index_table
@@ -46,6 +48,8 @@ def create_db_v_2(conn, curs, ver):
 	ver = 2
 	create_central_index_table(curs)
 	create_central_index_indexes(curs)
+	create_url_references_table(curs)
+	create_url_references_index(curs)
 	create_feat_type_index_table(curs)
 	create_feat_type_index_indexes(curs)
 	create_spell_list_index_table(curs)

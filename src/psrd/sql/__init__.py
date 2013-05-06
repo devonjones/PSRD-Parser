@@ -188,6 +188,7 @@ def section_insert_top(curs, source):
 	url = source.replace(':', '')
 	url = url.replace('&', 'and')
 	url = url.replace('?', '')
+	url = url.replace("'", '')
 	url = 'pfsrd://' + url
 	sql = '\n'.join([
 		"INSERT INTO sections",

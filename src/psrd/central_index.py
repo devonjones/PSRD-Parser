@@ -6,11 +6,13 @@ import psrd.sql
 import psrd.sql.index
 import psrd.sql.section_index
 from psrd.sql.index.central_index import insert_central_index
+from psrd.sql.index.url_ref import insert_url_reference
 from psrd.sql.index.feat_type_index import insert_feat_type_index
 from psrd.sql.index.spell_list_index import insert_spell_list_index
 from psrd.sql.index.books import insert_book
 from psrd.sql.feats import fetch_feat_types
 from psrd.sql.spells import fetch_spell_lists
+from psrd.sql.url_ref import fetch_url_references
 
 def build_central_index(db, conn, source_conn, db_name):
 	curs = conn.cursor()
@@ -29,6 +31,7 @@ def build_central_index(db, conn, source_conn, db_name):
 				handle_feat(curs, source_curs, index_id, item['section_id'])
 			elif item['type'] == 'spell':
 				handle_spell(curs, source_curs, index_id, item['section_id'])
+			handle_url_references(curs, source_curs, index_id, item['section_id'])
 		conn.commit()
 	finally:
 		curs.close()
@@ -46,6 +49,12 @@ def handle_spell(curs, source_curs, index_id, section_id):
 	for spell_list in spell_lists:
 		insert_spell_list_index(curs, index_id,
 			spell_list['level'], spell_list['class'], spell_list['magic_type'])
+
+def handle_url_references(curs, source_curs, index_id, section_id):
+	fetch_url_references(source_curs, section_id)
+	refs = source_curs.fetchall()
+	for ref in refs:
+		insert_url_reference(curs, index_id, ref['url'])
 
 def load_central_index(db, args, parent):
 	conn = psrd.sql.index.get_db_connection(db)

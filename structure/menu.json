@@ -101,7 +101,7 @@
 		{"group": "children", "source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules", "priority": 10}
 	]},
 	{"name": "Rules: Advanced Player's Guide", "source": "Advanced Player's Guide", "priority": 50, "children": [
-		{"group": "children", "source": "Advanced Player's Guide", "db": "book-apg.db", "url": "pfsrd://Advanced Player's Guide/Rules", "priority": 10}
+		{"group": "children", "source": "Advanced Player's Guide", "db": "book-apg.db", "url": "pfsrd://Advanced Players Guide/Rules", "priority": 10}
 	]},
 	{"name": "Rules: Advanced Race Guide", "source": "Advanced Race Guide", "priority": 50, "children": [
 		{"group": "children", "source": "Advanced Race Guide", "db": "book-arg.db", "url": "pfsrd://Advanced Race Guide/Rules", "priority": 10}

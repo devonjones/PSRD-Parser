@@ -8,6 +8,10 @@ def create_books_table(curs):
 	curs.execute(sql)
 
 def insert_book(curs, source=None, db=None):
+	source = source.replace(':', '')
+	source = source.replace('&', 'and')
+	source = source.replace('?', '')
+	source = source.replace("'", '')
 	values = [source, db]
 	sql = '\n'.join([
 		"INSERT INTO books",

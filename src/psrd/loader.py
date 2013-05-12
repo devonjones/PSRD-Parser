@@ -98,12 +98,12 @@ def get_cursors(conn, conn_list):
 def conn_rollback(conn, conn_list):
 	conn.rollback()
 	for c in conn_list:
-		conn.rollback()
+		c.rollback()
 
 def conn_commit(conn, conn_list):
 	conn.commit()
 	for c in conn_list:
-		conn.commit()
+		c.commit()
 
 def curs_close(curs, curs_list):
 	curs.close()

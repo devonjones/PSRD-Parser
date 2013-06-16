@@ -14,7 +14,7 @@ from psrd.sql.feats import create_feat_types_table, create_feat_types_index, cre
 from psrd.sql.links import create_link_details_table, create_link_details_index
 from psrd.sql.section_index import create_section_index_table, create_section_index_index
 from psrd.sql.skills import create_skill_attributes_table, create_skill_attributes_index
-from psrd.sql.spells import create_spell_details_table, create_spell_details_index, create_spell_lists_table, create_spell_lists_index, create_spell_descriptors_table, create_spell_descriptors_index, create_spell_components_table, create_spell_components_index, create_spell_effects_table, create_spell_effects_index
+from psrd.sql.spells import create_spell_details_table, create_spell_details_index, create_spell_lists_table, create_spell_lists_index, create_spell_subschools_table, create_spell_subschools_index, create_spell_descriptors_table, create_spell_descriptors_index, create_spell_components_table, create_spell_components_index, create_spell_effects_table, create_spell_effects_index
 from psrd.sql.url_ref import create_url_references_table
 from psrd.sql.url_ref import create_url_references_index
 
@@ -90,6 +90,8 @@ def create_db_v_2(conn, curs, ver, source=None):
 	create_spell_details_index(curs)
 	create_spell_lists_table(curs)
 	create_spell_lists_index(curs)
+	create_spell_subschools_table(curs)
+	create_spell_subschools_index(curs)
 	create_spell_descriptors_table(curs)
 	create_spell_descriptors_index(curs)
 	create_spell_components_table(curs)

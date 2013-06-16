@@ -19,7 +19,7 @@ from psrd.sql.links import insert_link_detail
 from psrd.sql.classes import insert_class_detail
 from psrd.sql.feats import insert_feat_type, insert_feat_type_description
 from psrd.sql.skills import insert_skill_attribute
-from psrd.sql.spells import insert_spell_detail, update_spell_detail, insert_spell_list, fetch_spell_lists, insert_spell_descriptor, insert_spell_component, fetch_spell_components, insert_spell_effect, fetch_complete_spell, merge_spells
+from psrd.sql.spells import insert_spell_detail, update_spell_detail, insert_spell_list, fetch_spell_lists, insert_spell_subschool, insert_spell_descriptor, insert_spell_component, fetch_spell_components, insert_spell_effect, fetch_complete_spell, merge_spells
 
 class ProcessLastException(Exception):
 	def __init__(self, value):
@@ -267,7 +267,10 @@ def insert_spell_records(curs, curs_list, section_id, spell):
 	level_text = "; ".join(level_list)
 	spell['level_text'] = level_text
 	insert_spell_detail(curs, **spell)
-	for descriptor in spell.get('descriptor', []):
+	if spell.has_key('subschool') and spell['subschool']:
+		for subschool in subschool_list(spell['subschool']):
+			insert_spell_subschool(curs, section_id, subschool)
+	for descriptor in filter_descriptors(spell.get('descriptor', [])):
 		insert_spell_descriptor(curs, section_id, descriptor)
 	for level in spell.get('level', []):
 		magic_type = find_magic_type(level['class'])
@@ -276,6 +279,22 @@ def insert_spell_records(curs, curs_list, section_id, spell):
 		insert_spell_component(curs, section_id, component.get('type'), component.get('text'), 0)
 	for effect in spell.get('effects', []):
 		insert_spell_effect(curs, section_id, effect['name'], effect['text'])
+
+def subschool_list(subschool):
+	subschool.replace(', or ', ',')
+	subschool.replace(' or ', ',')
+	return subschool.split(", ")
+
+def filter_descriptors(descriptors):
+	retlist = []
+	for descriptor in descriptors:
+		if not descriptor.startswith('see text'):
+			if descriptor.find(" or ") > -1:
+				for part in descriptor.split(" or "):
+					retlist.append(part.strip())
+			else:
+				retlist.append(descriptor)
+	return retlist
 
 def find_magic_type(class_name):
 	magic_type = 'arcane'

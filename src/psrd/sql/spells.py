@@ -150,6 +150,57 @@ def fetch_spell_lists(curs, section_id, class_name=None):
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
 
+####################
+# Spell Subschools #
+####################
+
+def create_spell_subschools_table(curs):
+	sql = '\n'.join([
+		"CREATE TABLE spell_subschools (",
+		"  spell_subschool_id INTEGER PRIMARY KEY,",
+		"  section_id INTEGER NO NULL,",
+		"  subschool TEXT NOT NULL",
+		")"])
+	curs.execute(sql)
+
+def create_spell_subschools_index(curs):
+	sql = '\n'.join([
+		"CREATE INDEX spell_subschools_section_id",
+		" ON spell_subschools (section_id)"])
+	curs.execute(sql)
+	sql = '\n'.join([
+		"CREATE INDEX spell_subschools_subschool",
+		" ON spell_subschools (subschool)"])
+	curs.execute(sql)
+
+def insert_spell_subschool(curs, section_id, subschool):
+	values = [section_id, subschool]
+	sql = '\n'.join([
+		"INSERT INTO spell_subschools",
+		" (section_id, subschool)",
+		" VALUES",
+		" (?, ?)"])
+	curs.execute(sql, values)
+
+def delete_spell_subschool(curs, section_id, subschool=None):
+	values = [section_id]
+	sqla = [
+		"DELETE FROM spell_subschools",
+		" WHERE section_id = ?"]
+	if subschool:
+		sqla.append("  AND subschool = ?")
+		values.append(subschool)
+	sql = '\n'.join(sqla)
+	curs.execute(sql, values)
+
+def fetch_spell_subschools(curs, section_id):
+	values = [section_id]
+	sql = '\n'.join([
+		"SELECT *",
+		" FROM spell_subschools",
+		" WHERE section_id = ?"])
+	curs.execute(sql, values)
+
 #####################
 # Spell Descriptors #
 #####################

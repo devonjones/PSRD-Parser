@@ -8,6 +8,12 @@ from psrd.sql.index.feat_type_index import create_feat_type_index_table
 from psrd.sql.index.feat_type_index import create_feat_type_index_indexes
 from psrd.sql.index.spell_list_index import create_spell_list_index_table
 from psrd.sql.index.spell_list_index import create_spell_list_index_indexes
+from psrd.sql.index.spell_subschool_index import create_spell_subschool_index_table
+from psrd.sql.index.spell_subschool_index import create_spell_subschool_index_indexes
+from psrd.sql.index.spell_descriptor_index import create_spell_descriptor_index_table
+from psrd.sql.index.spell_descriptor_index import create_spell_descriptor_index_indexes
+from psrd.sql.index.spell_component_index import create_spell_component_index_table
+from psrd.sql.index.spell_component_index import create_spell_component_index_indexes
 from psrd.sql.index.section_sort import create_section_sort_table
 from psrd.sql.index.section_sort import create_section_sort_index
 from psrd.sql.index.menu import create_menu_table
@@ -54,6 +60,12 @@ def create_db_v_2(conn, curs, ver):
 	create_feat_type_index_indexes(curs)
 	create_spell_list_index_table(curs)
 	create_spell_list_index_indexes(curs)
+	create_spell_subschool_index_table(curs)
+	create_spell_subschool_index_indexes(curs)
+	create_spell_descriptor_index_table(curs)
+	create_spell_descriptor_index_indexes(curs)
+	create_spell_component_index_table(curs)
+	create_spell_component_index_indexes(curs)
 	create_section_sort_table(curs)
 	create_section_sort_index(curs)
 	create_menu_table(curs)

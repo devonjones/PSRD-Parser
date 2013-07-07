@@ -1,0 +1,64 @@
+{
+  "name": "Ultimate Campaign",
+  "children": [
+    {
+      "name": "Rules",
+      "children": [
+        {
+          "name": "Character Background",
+          "children": [
+            {"name": "Introduction", "file": "rules/character_background.json"},
+            {"name": "Early Life", "file": "rules/early_life.json"},
+            {"name": "Adolescence", "file": "rules/adolescence.json"},
+            {"name": "Adulthood", "file": "rules/adulthood.json"},
+            {"name": "Background Generator", "file": "rules/background_generator.json"},
+            {"name": "Traits", "file": "rules/traits.json"}
+          ]
+        },
+        {
+          "name": "Downtime",
+          "children": [
+            {"name": "Introduction", "file": "rules/downtime.json"},
+            {"name": "Downtime Activities", "file": "rules/downtime_activities.json"},
+            {"name": "Managers", "file": "rules/managers.json"},
+            {"name": "Rooms And Teams", "file": "rules/rooms_and_teams.json"},
+            {"name": "Buildings And Organizations", "file": "rules/buildings_and_organizations.json"},
+            {"name": "Downtime Events", "file": "rules/downtime_events.json"}
+          ]
+        },
+        {
+          "name": "Campaign Systems",
+          "children": [
+            {"name": "Introduction", "file": "rules/campaign_systems.json"},
+            {"name": "Alignment", "file": "rules/alignment.json"},
+            {"name": "Bargaining", "file": "rules/bargaining.json"},
+            {"name": "Companions", "file": "rules/companions.json"},
+            {"name": "Contacts", "file": "rules/contacts.json"},
+            {"name": "Exploration", "file": "rules/exploration.json"},
+            {"name": "Honor", "file": "rules/honor.json"},
+            {"name": "Investment", "file": "rules/investment.json"},
+            {"name": "Lineage", "file": "rules/lineage.json"},
+            {"name": "Magic Item Creation", "file": "rules/magic_item_creation.json"},
+            {"name": "Relationships", "file": "rules/relationships.json"},
+            {"name": "Reputation And Fame", "file": "rules/reputation_and_fame.json"},
+            {"name": "Retirement", "file": "rules/retirement.json"},
+            {"name": "Retraining", "file": "rules/retraining.json"},
+            {"name": "Taxation", "file": "rules/taxation.json"},
+            {"name": "Young Characters", "file": "rules/young_characters.json"}
+          ]
+        },
+        {
+          "name": "Kingdoms And War",
+          "children": [
+            {"name": "Introduction", "file": "rules/kingdoms_and_war.json"},
+            {"name": "Kingdom Building", "file": "rules/kingdom_building.json"},
+            {"name": "Kingdom Turn Sequence", "file": "rules/kingdom_turn_sequence.json"},
+            {"name": "Optional Kingdom Rules", "file": "rules/optional_kingdom_rules.json"},
+            {"name": "Mass Combat", "file": "rules/mass_combat.json"}
+          ]
+        }
+      ]
+    }
+  ]
+}
+

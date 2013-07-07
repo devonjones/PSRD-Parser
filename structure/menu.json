@@ -115,6 +115,9 @@
 	{"name": "Rules: Ultimate Equipment", "source": "Ultimate Equipment", "priority": 50, "children": [
 		{"group": "children", "source": "Ultimate Equipment", "db": "book-ue.db", "url": "pfsrd://Ultimate Equipment/Rules", "priority": 10}
 	]},
+	{"name": "Rules: Ultimate Campaign", "source": "Ultimate Campaign", "priority": 50, "children": [
+		{"group": "children", "source": "Ultimate Campaign", "db": "book-ucampaign.db", "url": "pfsrd://Ultimate Campaign/Rules", "priority": 10}
+	]},
 	{"name": "Rules: Bestiary", "source": "Bestiary", "priority": 60, "children": [
 		{"group": "children", "source": "Bestiary", "db": "book-b1.db", "url": "pfsrd://Bestiary/Rules", "priority": 10}
 	]},

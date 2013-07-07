@@ -27,7 +27,6 @@ def parse_item_misc(detail, field):
 	def fxn(item, value):
 		misc = item.setdefault('misc', [])
 		misc.append({'subsection': detail, 'field': field, 'value': value})
-		print "* MISC(%s): %s : %s" % (detail, field, value)
 	return fxn
 
 def item_parse_function(field, detail):

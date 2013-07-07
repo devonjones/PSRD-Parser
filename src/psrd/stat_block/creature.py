@@ -23,10 +23,13 @@ def parse_npc(sb, book):
 	return npc
 
 def parse_creature(sb, book):
-	names = sb.name.split('CR')
-	creature = {'type': 'creature', 'source': book, 'name': filter_name(names[0])}
-	if len(names) > 1:
-		creature['cr'] = names[1].strip()
+	name = sb.name
+	cr = None
+	if name.find('CR') > -1:
+		name, cr = name.split('CR')
+	creature = {'type': 'creature', 'source': book, 'name': filter_name(name)}
+	if cr:
+		creature['cr'] = cr.strip()
 	sections = []
 	text = []
 	descriptors = []
@@ -87,7 +90,7 @@ def parse_creature(sb, book):
 
 def creature_parse_function(field):
 	functions = {
-		'cr': default_closure('cr'),
+		'cr': parse_cr,
 		'size': default_closure('size'),
 		'hit dice': default_closure('hit_dice'),
 		'natural armor': default_closure('natural_armor'),
@@ -205,6 +208,18 @@ def creature_parse_function(field):
 	if field.lower().startswith('xp'):
 		return xp_closure('field')
 	return functions[field.lower()]
+
+def parse_cr(sb, value):
+	try:
+		v = int(value)
+		sb['cr'] = value
+		return
+	except:
+		pass
+	if value.startswith('CR '):
+		sb['cr'] = value.replace('CR ', '')
+	else:
+		raise Exception("Unknown CR line: %s " % value)
 
 def creature_spell_closure(field):
 	def fxn(sb, value):

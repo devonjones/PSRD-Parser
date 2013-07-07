@@ -13,6 +13,7 @@ def is_trap(sb, book):
 
 def trap_parse_function(field):
 	functions = {
+		'cr': parse_cr,
 		'type': default_closure('trap_type'),
 		'perception': default_closure('perception'),
 		'disable device': default_closure('disable_device'),
@@ -22,6 +23,12 @@ def trap_parse_function(field):
 		'reset': default_closure('reset'),
 	}
 	return functions[field.lower()]
+
+def parse_cr(sb, value):
+	if value.startswith('CR '):
+		sb['cr'] = value.replace('CR ', '')
+	else:
+		raise Exception("Unknown CR line: %s " % value)
 
 def parse_trap(sb, book):
 	details = []

@@ -9,6 +9,9 @@ from spellbook import is_spellbook, parse_spellbook
 from vehicle import is_vehicle, parse_vehicle
 from settlement import is_settlement, parse_settlement
 from haunt import is_haunt, parse_haunt
+from kingdom_resource import is_kingdom_resource, parse_kingdom_resource
+from army import is_army, parse_army
+from resource import is_resource, parse_resource
 from section import is_section, parse_section
 from utils import StatBlockFunctions, parse_stat_block
 from psrd.universal import StatBlockHeading
@@ -25,6 +28,9 @@ StatBlockFunctions().add_function(is_spellbook, parse_spellbook)
 StatBlockFunctions().add_function(is_vehicle, parse_vehicle)
 StatBlockFunctions().add_function(is_settlement, parse_settlement)
 StatBlockFunctions().add_function(is_haunt, parse_haunt)
+StatBlockFunctions().add_function(is_resource, parse_resource)
+StatBlockFunctions().add_function(is_army, parse_army)
+StatBlockFunctions().add_function(is_kingdom_resource, parse_kingdom_resource)
 StatBlockFunctions().add_function(is_section, parse_section)
 StatBlockFunctions().add_default(parse_section)
 

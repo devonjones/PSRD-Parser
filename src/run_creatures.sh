@@ -258,7 +258,7 @@ source dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 2" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/forlarren.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 2" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/frostWorm.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 2" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/fungalCrawler.html
-#./creature_parse.py -o $DATA_DIR -b "Bestiary 2" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/gar.html
+./creature_parse.py -o $DATA_DIR -b "Bestiary 2" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/gar.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 2" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/giant.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 2" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/gloomwing.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 2" $WEB_DIR/pathfinderRPG/prd/additionalMonsters/golem.html

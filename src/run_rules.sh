@@ -189,6 +189,44 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Combat" -t "Piecemeal Armor"             $WEB_DIR/pathfinderRPG/prd/ultimateCombat/variants/piecemealArmor.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Combat" -t "Wounds and Vigor"            $WEB_DIR/pathfinderRPG/prd/ultimateCombat/variants/woundsAndVigor.html
 
+# Ultimate Campaign
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Character Background"        $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/characterBackground.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Early Life"                  $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/characterBackground/earlyLife.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Adolescence"                 $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/characterBackground/adolescence.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Adulthood"                   $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/characterBackground/adulthood.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Background Generator"        $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/characterBackground/backgroundGenerator.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Traits"                      $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/characterBackground/traits.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Downtime"                    $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/downtime.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Downtime Activities"         $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/downtime/downtimeActivities.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Managers"                    $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/downtime/managers.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Rooms And Teams"             $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/downtime/roomsAndTeams.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Buildings And Organizations" $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/downtime/buildingsAndOrganizations.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Downtime Events"             $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/downtime/downtimeEvents.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Campaign Systems"            $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Alignment"                   $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/alignment.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Bargaining"                  $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/bargaining.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Companions" -n               $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/companions.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Contacts"                    $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/contacts.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Exploration"                 $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/exploration.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Honor"                       $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/honor.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Investment"                  $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/investment.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Lineage"                     $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/lineage.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Magic Item Creation"         $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/magicItemCreation.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Relationships"               $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/relationships.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Reputation And Fame"         $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/reputationAndFame.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Retirement"                  $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/retirement.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Retraining"                  $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/retraining.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Taxation"                    $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/taxation.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Young Characters"            $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/campaignSystems/youngCharacters.html
+
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Kingdoms And War"            $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/kingdomsAndWar.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Kingdom Building"            $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/kingdomsAndWar/kingdomBuilding.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Kingdom Turn Sequence"       $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/kingdomsAndWar/kingdomTurnSequence.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Optional Kingdom Rules"      $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/kingdomsAndWar/optionalKingdomRules.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Mass Combat"                 $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/kingdomsAndWar/massCombat.html
+
 
 # Game Mastery Guide
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Chases"                $WEB_DIR/pathfinderRPG/prd/mastery/chases.html

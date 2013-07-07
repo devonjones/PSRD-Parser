@@ -132,7 +132,13 @@ def stat_block_pass(details):
 	retdetails = []
 	for detail in details:
 		if has_name(detail, 'p') and detail.get('class', "").find('stat-block-title') > -1:
-			retdetails.append(StatBlockHeading(get_text(detail), detail))
+			if len(detail.contents) > 1 and has_name(detail.contents[1], 'span') and detail.contents[1].get('class', "") == 'stat-block-cr':
+				sb = StatBlockHeading(detail.contents[0], detail)
+				cr = ''.join(detail.contents[1].findAll(text=True))
+				store_key(sb, 'CR', cr)
+				retdetails.append(sb)
+			else:
+				retdetails.append(StatBlockHeading(get_text(detail), detail))
 		elif has_name(detail, 'h3') and detail.get('id', "").find('companion') > -1:
 			retdetails.append(StatBlockHeading(get_text(detail), detail))
 		else:
@@ -230,7 +236,11 @@ def stat_block_key_inner_parse(sb, detail, key, text):
 				store_key(sb, key, text)
 				text = []
 			elif len(text) > 0:
-				store_key(sb, 'descriptor', text)
+				if type(text) == list and len(text) == 2:
+					for item in text:
+						store_key(sb, 'descriptor', item)
+				else:
+					store_key(sb, 'descriptor', text)
 				text = []
 			key = ''.join(element.findAll(text=True))
 		else:

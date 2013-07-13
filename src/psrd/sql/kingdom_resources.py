@@ -5,7 +5,6 @@ def create_kingdom_resource_details_table(curs):
 		"CREATE TABLE kingdom_resource_details (",
 		"  kingdom_resource_detail_id INTEGER PRIMARY KEY,",
 		"  section_id INTEGER NOT NULL,",
-		"  cr TEXT,",
 		"  bp TEXT,",
 		"  lot TEXT,",
 		"  kingdom TEXT,",
@@ -25,18 +24,18 @@ def create_kingdom_resource_details_index(curs):
 		" ON kingdom_resource_details (section_id)"])
 	curs.execute(sql)
 
-def insert_kingdom_resource_detail(curs, section_id, cr=None, bp=None, lot=None,
+def insert_kingdom_resource_detail(curs, section_id, bp=None, lot=None,
 		kingdom=None, discount=None, magic_items=None, settlement=None,
 		special=None, limit=None, upgrade_from=None, upgrade_to=None, **kwargs):
-	values = [section_id, cr, bp, lot, kingdom, discount, magic_items,
+	values = [section_id, bp, lot, kingdom, discount, magic_items,
 		settlement, special, limit, upgrade_from, upgrade_to]
 	test_args(kwargs)
 	sql = '\n'.join([
 		"INSERT INTO kingdom_resource_details",
-		" (section_id, cr, bp, lot, kingdom, discount, magic_items, settlement,"
+		" (section_id, bp, lot, kingdom, discount, magic_items, settlement,"
 		" special, resource_limit, upgrade_from, upgrade_to)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
 def delete_kingdom_resource_detail(curs, section_id):

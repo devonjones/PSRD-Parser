@@ -5,12 +5,10 @@ def create_army_details_table(curs):
 		"CREATE TABLE army_details (",
 		"  army_detail_id INTEGER PRIMARY KEY,",
 		"  section_id INTEGER NOT NULL,",
-		"  cr TEXT,",
 		"  xp TEXT,",
 		"  creature_type TEXT,",
 		"  alignment TEXT,",
 		"  size TEXT,",
-		"  descriptor TEXT,",
 		"  hp TEXT,",
 		"  acr TEXT,",
 		"  dv TEXT,",
@@ -30,19 +28,19 @@ def create_army_details_index(curs):
 		" ON army_details (section_id)"])
 	curs.execute(sql)
 
-def insert_army_detail(curs, section_id, cr=None, xp=None, creature_type=None,
-		alignment=None, size=None, descriptor=None, hp=None, acr=None, dv=None,
+def insert_army_detail(curs, section_id, xp=None, creature_type=None,
+		alignment=None, size=None, hp=None, acr=None, dv=None,
 		om=None, special=None, speed=None, consumption=None, tactics=None,
 		resources=None, note=None, **kwargs):
-	values = [section_id, cr, xp, creature_type, alignment, size, descriptor,
-		hp, acr, dv, om, special, speed, consumption, tactics, resources, note]
+	values = [section_id, xp, creature_type, alignment, size, hp, acr, dv, om,
+		special, speed, consumption, tactics, resources, note]
 	test_args(kwargs)
 	sql = '\n'.join([
 		"INSERT INTO army_details",
-		" (section_id, cr, xp, creature_type, alignment, size, descriptor, hp,"
-		" acr, dv, om, special, speed, consumption, tactics, resources, note)",
+		" (section_id, xp, creature_type, alignment, size, hp, acr, dv, om,"
+		" special, speed, consumption, tactics, resources, note)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
 def delete_army_detail(curs, section_id):

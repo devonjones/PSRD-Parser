@@ -7,6 +7,9 @@ from psrd.sql.creatures import create_creature_details_table, create_creature_de
 from psrd.sql.animal_companions import create_animal_companion_details_table, create_animal_companion_details_index
 from psrd.sql.settlements import create_settlement_details_table, create_settlement_details_index
 from psrd.sql.vehicles import create_vehicle_details_table, create_vehicle_details_index
+from psrd.sql.armies import create_army_details_table, create_army_details_index
+from psrd.sql.kingdom_resources import create_kingdom_resource_details_table, create_kingdom_resource_details_index
+from psrd.sql.resources import create_resource_details_table, create_resource_details_index
 from psrd.sql.traps import create_trap_details_table, create_trap_details_index
 from psrd.sql.haunts import create_haunt_details_table, create_haunt_details_index
 from psrd.sql.items import create_item_details_table, create_item_details_index, create_item_misc_table, create_item_misc_index
@@ -68,6 +71,12 @@ def create_db_v_2(conn, curs, ver, source=None):
 	create_animal_companion_details_index(curs)
 	create_vehicle_details_table(curs)
 	create_vehicle_details_index(curs)
+	create_army_details_table(curs)
+	create_army_details_index(curs)
+	create_kingdom_resource_details_table(curs)
+	create_kingdom_resource_details_index(curs)
+	create_resource_details_table(curs)
+	create_resource_details_index(curs)
 	create_settlement_details_table(curs)
 	create_settlement_details_index(curs)
 	create_creature_details_table(curs)

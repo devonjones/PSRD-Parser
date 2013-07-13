@@ -11,6 +11,9 @@ from psrd.sql.afflictions import insert_affliction_detail
 from psrd.sql.animal_companions import insert_animal_companion_detail
 from psrd.sql.settlements import insert_settlement_detail
 from psrd.sql.vehicles import insert_vehicle_detail
+from psrd.sql.armies import insert_army_detail
+from psrd.sql.kingdom_resources import insert_kingdom_resource_detail
+from psrd.sql.resources import insert_resource_detail
 from psrd.sql.creatures import insert_creature_detail, insert_creature_spell
 from psrd.sql.traps import insert_trap_detail
 from psrd.sql.haunts import insert_haunt_detail
@@ -185,6 +188,15 @@ def _settlement_insert(curs, section, section_id):
 def _vehicle_insert(curs, section, section_id):
 	insert_vehicle_detail(curs, **section)
 
+def _army_insert(curs, section, section_id):
+	insert_army_detail(curs, **section)
+
+def _kingdom_resource_insert(curs, section, section_id):
+	insert_kingdom_resource_detail(curs, **section)
+
+def _resource_insert(curs, section, section_id):
+	insert_resource_detail(curs, **section)
+
 def _creature_insert(curs, section, section_id):
 	insert_creature_detail(curs, **section)
 	if section.has_key('spells'):
@@ -221,6 +233,9 @@ def insert_subrecords(curs, curs_list, section, section_id):
 		"animal_companion": _animal_companion_insert,
 		"settlement": _settlement_insert,
 		"vehicle": _vehicle_insert,
+		"army": _army_insert,
+		"kingdom_resource": _kingdom_resource_insert,
+		"resource": _resource_insert,
 		"creature": _creature_insert,
 		"trap": _trap_insert,
 		"haunt": _haunt_insert,
@@ -228,6 +243,7 @@ def insert_subrecords(curs, curs_list, section, section_id):
 		"link": _link_insert,
 		"table": _noop,
 		"trait": _noop,
+		"drawback": _noop,
 		"racial_trait": _noop,
 		"section": _noop,
 		"class_archetype": _noop,

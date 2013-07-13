@@ -75,6 +75,15 @@ echo 'select url from sections where url is not null order by url;' | sqlite3 $D
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ue.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-ue.db >> $DATA_DIR/urllist.txt.tmp
 
+# Ultimate Campaign
+./rules_loader.py      -d $DATA_DIR/book-ucampaign.db                $DATA_DIR/ultimate_campaign/structure.json
+./json_loader.py       -d $DATA_DIR/book-ucampaign.db -p "Feats"     $DATA_DIR/ultimate_campaign/feats/*.json
+./index_loader.py      -d $DATA_DIR/book-ucampaign.db
+./url_ref_loader.py    -d $DATA_DIR/book-ucampaign.db                $DATA_DIR/ultimate_campaign/urlref.json
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ucampaign.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ucampaign.db >> $DATA_DIR/supportedurllist.txt.tmp
+echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-ucampaign.db >> $DATA_DIR/urllist.txt.tmp
+
 # Game Mastery Guide
 ./json_loader.py       -d $DATA_DIR/book-gmg.db -p "Monsters" $DATA_DIR/game_mastery_guide/creatures/*.json
 ./rules_loader.py      -d $DATA_DIR/book-gmg.db               $DATA_DIR/game_mastery_guide/structure.json

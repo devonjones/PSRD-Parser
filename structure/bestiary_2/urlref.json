@@ -122,6 +122,29 @@
 {"new": "pfsrd://Bestiary 2/Monsters/Ogrekin/Creating an Ogrekin/Ogrekin/Special Qualities and Defenses",
  "old": "pfsrd://Bestiary 2/Monsters/Ogrekin/Creating an Ogrekin/Special Qualities and Defenses"},
 {"new": "pfsrd://Bestiary 2/Monsters/Ogrekin/Creating an Ogrekin/Ogrekin/Type",
- "old": "pfsrd://Bestiary 2/Monsters/Ogrekin/Creating an Ogrekin/Type"}
+ "old": "pfsrd://Bestiary 2/Monsters/Ogrekin/Creating an Ogrekin/Type"},
+
+{"new": "pfsrd://Bestiary 2/Monsters/Quickling",
+ "old": "pfsrd://Bestiary 2/Monsters/quickling"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickling/Special Abilities",
+ "old": "pfsrd://Bestiary 2/Monsters/quickling/Special Abilities"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickling/Special Abilities/Natural Invisibility",
+ "old": "pfsrd://Bestiary 2/Monsters/quickling/Special Abilities/Natural Invisibility"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickling/Special Abilities/Slow Susceptibility",
+ "old": "pfsrd://Bestiary 2/Monsters/quickling/Special Abilities/Slow Susceptibility"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickling/Special Abilities/Supernatural Speed",
+ "old": "pfsrd://Bestiary 2/Monsters/quickling/Special Abilities/Supernatural Speed"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickwood",
+ "old": "pfsrd://Bestiary 2/Monsters/quickwood"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickwood/Special Abilities",
+ "old": "pfsrd://Bestiary 2/Monsters/quickwood/Special Abilities"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickwood/Special Abilities/Fear Aura",
+ "old": "pfsrd://Bestiary 2/Monsters/quickwood/Special Abilities/Fear Aura"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickwood/Special Abilities/Oaksight",
+ "old": "pfsrd://Bestiary 2/Monsters/quickwood/Special Abilities/Oaksight"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickwood/Special Abilities/Roots",
+ "old": "pfsrd://Bestiary 2/Monsters/quickwood/Special Abilities/Roots"},
+{"new": "pfsrd://Bestiary 2/Monsters/Quickwood/Special Abilities/Spell Absorption",
+ "old": "pfsrd://Bestiary 2/Monsters/quickwood/Special Abilities/Spell Absorption"}
 ]
 

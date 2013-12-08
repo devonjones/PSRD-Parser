@@ -108,7 +108,7 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Updates"                           $WEB_DIR/pathfinderRPG/prd/ultimateMagic/ultimateMagicAppendices.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Words of Power"                    $WEB_DIR/pathfinderRPG/prd/ultimateMagic/ultimateMagicWordsOfPower.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Class Word Lists"                  $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/classWordLists.html
-./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Effect Words"                      $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectwords.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Effect Words"                      $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/effectWords.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Meta Words" -n                     $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/metawords.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Magic" -t "Target Words" -n                   $WEB_DIR/pathfinderRPG/prd/ultimateMagic/wordsOfPower/targetwords.html
 
@@ -353,3 +353,22 @@ source dir.conf
 
 #./rules_parse.py -o $DATA_DIR -b "NPC Codex" -t "Appendix"                $WEB_DIR/pathfinderRPG/prd/npcCodex/appendix.html
 
+# Mythic Adventures
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Legendary Items" $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicItems/legendaryItems.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Artifacts"       $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicItems/artifacts.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Magic Items"     $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicItems/magicItems.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Hierophant"      $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicHeroes/hierophant.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Archmage"        $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicHeroes/archmage.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Champion"        $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicHeroes/champion.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Trickster"       $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicHeroes/trickster.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Guardian"        $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicHeroes/guardian.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Marshal"         $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicHeroes/marshal.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Mythic Items"    $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicItems.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Mythic Monsters" $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Mythic Spells"   $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicSpells.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Glossary"        $WEB_DIR/pathfinderRPG/prd/mythicAdventures/Glossary.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Mythic Heroes"   $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicHeroes.html
+./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Mythic Game"     $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicGame.html
+
+#./mythicSpells
+#./mythicMonsters

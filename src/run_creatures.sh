@@ -588,3 +588,36 @@ source dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/temple.html
 ./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/tribe.html
 ./creature_parse.py -o $DATA_DIR -b "Game Mastery Guide" $WEB_DIR/pathfinderRPG/prd/mastery/nPCGallery/villagers.html
+
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/aboleth.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/barghest.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/cockatrice.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/cyclops.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/demons.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/devils.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/dragons.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/elementals.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/ettin.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/gargoyle.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/giants.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/griffon.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/hellHound.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/hydra.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/lamia.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/lich.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/manticore.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/medusa.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/minotaur.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/mummy.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/ogre.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/owlbear.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/phoenix.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/rakshasa.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/skeleton.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/sphinx.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/treant.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/troll.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/vampire.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/worg.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/wyvern.html
+

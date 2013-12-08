@@ -172,6 +172,7 @@ def creature_parse_function(field):
 		'prohibited schools': creature_spell_closure('prohibited schools'),
 		'd': creature_spell_closure('d'),
 		'domains': creature_spell_closure('domains'),
+		'm': creature_spell_closure('mythic'),
 
 		'str': default_closure('strength'),
 		'dex': default_closure('dexterity'),
@@ -212,12 +213,18 @@ def creature_parse_function(field):
 def parse_cr(sb, value):
 	try:
 		v = int(value)
-		sb['cr'] = value
+		sb['cr'] = value 
 		return
 	except:
 		pass
 	if value.startswith('CR '):
-		sb['cr'] = value.replace('CR ', '')
+		mr = None
+		cr = value
+		if cr.find('/MR') > -1:
+			cr, mr = cr.split('/MR')
+		if mr:
+			sb['mr'] = mr.strip()
+		sb['cr'] = cr.replace('CR ', '')
 	else:
 		raise Exception("Unknown CR line: %s " % value)
 

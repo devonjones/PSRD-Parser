@@ -1,0 +1,36 @@
+{
+  "name": "Mythic Adventures",
+  "children": [
+    {
+      "name": "Rules",
+      "children": [
+        { "name": "Running a Mythic Game", "file": "rules/mythic_game.json" },
+        {
+          "name": "Mythic Heroes",
+          "children": [
+            {"name": "Introduction", "file": "rules/mythic_heroes.json"},
+            {"name": "Archmage", "file": "rules/archmage.json"},
+            {"name": "Champion", "file": "rules/champion.json"},
+            {"name": "Guardian", "file": "rules/guardian.json"},
+            {"name": "Hierophant", "file": "rules/hierophant.json"},
+            {"name": "Marshal", "file": "rules/marshal.json"},
+            {"name": "Trickster", "file": "rules/trickster.json"}
+          ]
+        },
+        { "name": "Mythic Feats", "file": "rules/feats.json" },
+        { "name": "Mythic Spells", "file": "rules/mythic_spells.json" },
+        {
+          "name": "Mythic Items",
+          "children": [
+            {"name": "Introduction", "file": "rules/mythic_items.json"},
+            {"name": "Magic Items", "file": "rules/magic_items.json"},
+            {"name": "Artifacts", "file": "rules/artifacts.json"},
+            {"name": "Legendary Items", "file": "rules/legendary_items.json"}
+          ]
+        },
+        { "name": "Mythic Monsters", "file": "rules/mythic_monsters.json" },
+        { "name": "Glossary", "file": "rules/glossary.json" }
+      ]
+    }
+  ]
+}

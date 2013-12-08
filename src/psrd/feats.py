@@ -45,6 +45,11 @@ def adjust_ultimate_campaign_pass(struct):
 	del struct['sections'][2]
 	return struct, feats
 
+def adjust_mythic_adventures_pass(struct):
+	feats = struct['sections'][2:]
+	del struct['sections'][2:]
+	return struct, feats
+
 def adjust_feat_structure_pass(struct, filename):
 	feats = []
 	if filename in ('feats.html', 'advancedFeats.html', 'ultimateMagicFeats.html'):
@@ -56,6 +61,8 @@ def adjust_feat_structure_pass(struct, filename):
 		struct, feats = adjust_ultimate_combat_pass(struct)
 	elif filename in ('storyFeats.html'):
 		struct, feats = adjust_ultimate_campaign_pass(struct)
+	elif filename in ('mythicFeats.html'):
+		struct, feats = adjust_mythic_adventures_pass(struct)
 	return struct, feats
 
 def section_naming_pass(feat):

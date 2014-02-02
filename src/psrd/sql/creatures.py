@@ -9,6 +9,7 @@ def create_creature_details_table(curs):
 		"  super_race TEXT,"
 		"  level TEXT,"
 		"  cr TEXT,"
+		"  mr TEXT,"
 		"  xp TEXT,"
 		"  alignment TEXT,"
 		"  size TEXT,"
@@ -72,7 +73,7 @@ def create_creature_details_index(curs):
 	curs.execute(sql)
 
 def insert_creature_detail(curs, section_id,
-		sex=None, super_race=None, level=None, cr=None, xp=None, alignment=None, size=None, creature_type=None,
+		sex=None, super_race=None, level=None, cr=None, mr=None, xp=None, alignment=None, size=None, creature_type=None,
 		creature_subtype=None, init=None, senses=None, aura=None,
 		ac=None, hp=None, fortitude=None, reflex=None, will=None, resist=None, defensive_abilities=None,
 		dr=None, immune=None, sr=None, weaknesses=None,
@@ -83,7 +84,7 @@ def insert_creature_detail(curs, section_id,
 		environment=None, organization=None, treasure=None,
 		hit_dice=None, natural_armor=None, breath_weapon=None, **kwargs):
 	values = [section_id,
-		sex, super_race, level, cr, xp, alignment, size, creature_type, creature_subtype, init, senses, aura,
+		sex, super_race, level, cr, mr, xp, alignment, size, creature_type, creature_subtype, init, senses, aura,
 		ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, sr, weaknesses,
 		speed, melee, ranged, space, reach, special_attacks,
 		strength, dexterity, constitution, intelligence, wisdom, charisma, base_attack, cmb, cmd,
@@ -99,7 +100,7 @@ def insert_creature_detail(curs, section_id,
 	sql = '\n'.join([
 		"INSERT INTO creature_details",
 		" (section_id,",
-		"  sex, super_race, level, cr, xp, alignment, size, creature_type, creature_subtype, init, senses, aura,",
+		"  sex, super_race, level, cr, mr, xp, alignment, size, creature_type, creature_subtype, init, senses, aura,",
 		"  ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, sr, weaknesses,",
 		"  speed, melee, ranged, space, reach, special_attacks,",
 		"  strength, dexterity, constitution, intelligence, wisdom, charisma,",
@@ -112,7 +113,7 @@ def insert_creature_detail(curs, section_id,
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
-		"  ?, ?, ?, ?, ?, ?)"])
+		"  ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
 def delete_creature_detail(curs, section_id):

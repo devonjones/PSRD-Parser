@@ -61,6 +61,7 @@
 		{"name": "All Creatures", "type": "creature", "priority": 10},
 		{"name": "Templates", "subtype": "template", "priority": 10},
 		{"group": "creature_type", "priority": 20},
+		{"name": "Mythic", "type": "creature", "subtype": "mythic", "priority": 30},
 		{"name": "NPCs", "type": "creature", "subtype": "npc", "priority": 30}
 	]},
 	{"name": "Feats", "priority": 30, "children": [

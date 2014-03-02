@@ -13,6 +13,7 @@ def create_spell_details_table(curs):
 		"  subschool TEXT,",
 		"  descriptor_text TEXT,",
 		"  level_text TEXT,",
+		"  component_text TEXT,",
 		"  casting_time TEXT,",
 		"  preparation_time TEXT,",
 		"  range TEXT,",
@@ -33,10 +34,13 @@ def create_spell_details_index(curs):
 		" ON spell_details (school)"])
 	curs.execute(sql)
 
-def insert_spell_detail(curs, section_id, school=None, subschool=None, descriptor_text=None, level_text=None,
-		casting_time=None, preparation_time=None, range=None, duration=None, saving_throw=None,
-		spell_resistance=None, as_spell_id=None, **kwargs):
-	values = [section_id, school, subschool, descriptor_text, level_text, casting_time, preparation_time, range, duration, saving_throw, spell_resistance, as_spell_id]
+def insert_spell_detail(curs, section_id, school=None, subschool=None,
+		descriptor_text=None, level_text=None, component_text=None,
+		casting_time=None, preparation_time=None, range=None, duration=None,
+		saving_throw=None, spell_resistance=None, as_spell_id=None, **kwargs):
+	values = [section_id, school, subschool, descriptor_text, level_text,
+		component_text, casting_time, preparation_time, range, duration,
+		saving_throw, spell_resistance, as_spell_id]
 	testa = kwargs.copy()
 	if testa.has_key('spell_detail_id'):
 		del testa['spell_detail_id']
@@ -53,9 +57,11 @@ def insert_spell_detail(curs, section_id, school=None, subschool=None, descripto
 	test_args(testa)
 	sql = '\n'.join([
 		"INSERT INTO spell_details",
-		" (section_id, school, subschool, descriptor_text, level_text, casting_time, preparation_time, range, duration, saving_throw, spell_resistance, as_spell_id)",
+		" (section_id, school, subschool, descriptor_text, level_text,",
+		"  component_text, casting_time, preparation_time, range, duration,"
+		"  saving_throw, spell_resistance, as_spell_id)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
 def update_spell_detail(curs, section_id, **kwargs):

@@ -282,7 +282,6 @@ def insert_spell_records(curs, curs_list, section_id, spell):
 		level_list.append(level['class'] + ": " + str(level['level']))
 	level_text = "; ".join(level_list)
 	spell['level_text'] = level_text
-	insert_spell_detail(curs, **spell)
 	if spell.has_key('subschool') and spell['subschool']:
 		for subschool in subschool_list(spell['subschool']):
 			insert_spell_subschool(curs, section_id, subschool)
@@ -291,10 +290,19 @@ def insert_spell_records(curs, curs_list, section_id, spell):
 	for level in spell.get('level', []):
 		magic_type = find_magic_type(level['class'])
 		insert_spell_list(curs, section_id, level['level'], cap_words(level['class']), magic_type)
+	component_text = []
 	for component in spell.get('components', []):
 		insert_spell_component(curs, section_id, component.get('type'), component.get('text'), 0)
+		if component.has_key('text') and component.has_key('type') and component['text']:
+			component_text.append("%s (%s)" % (component['type'], component['text']))
+		elif component.has_key('type') and component['type']:
+			component_text.append(component['type'])
+		elif component.has_key('text') and component['text']:
+			component_text.append("(%s)" % (component['text']))
+	spell['component_text'] = ", ".join(component_text)
 	for effect in spell.get('effects', []):
 		insert_spell_effect(curs, section_id, effect['name'], effect['text'])
+	insert_spell_detail(curs, **spell)
 
 def subschool_list(subschool):
 	subschool.replace(', or ', ',')

@@ -47,23 +47,6 @@
             {"name": "Expert", "file": "rules/expert.json"},
             {"name": "Warrior", "file": "rules/warrior.json"}
           ]
-        },
-        {
-          "name": "Iconic Characters",
-          "file": "rules/iconic_npcs.json",
-          "children": [
-            {"name": "Amiri (Barbarian)", "file": "rules/amiri.json"},
-            {"name": "Lem (Bard)", "file": "rules/lem.json"},
-            {"name": "Kyra (Cleric)", "file": "rules/kyra.json"},
-            {"name": "Lini (Druid)", "file": "rules/lini.json"},
-            {"name": "Valeros (Fighter)", "file": "rules/valeros.json"},
-            {"name": "Sajan (Monk)", "file": "rules/sajan.json"},
-            {"name": "Seelah (Paladin)", "file": "rules/seelah.json"},
-            {"name": "Harsk (Ranger)", "file": "rules/harsk.json"},
-            {"name": "Merisiel (Rogue)", "file": "rules/merisiel.json"},
-            {"name": "Seoni (Sorcerer)", "file": "rules/seoni.json"},
-            {"name": "Ezren (Wizard)", "file": "rules/ezren.json"}
-          ]
         }
       ]
     }

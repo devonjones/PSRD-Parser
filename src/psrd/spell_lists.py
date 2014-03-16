@@ -14,6 +14,8 @@ def core_structure_pass(section, filename):
 	for s in section['sections']:
 		if s['name'].endswith('Spells'):
 			spell_lists.append(s)
+		elif s['name'].endswith('Formulae'):
+			spell_lists.append(s)
 		elif s['name'] != 'Spells by Class':
 			sections.append(s)
 	section['sections'] = sections
@@ -35,7 +37,9 @@ def ultimate_magic_structure_pass(section, filename):
 
 def spell_list_structure_pass(section, filename):
 	spell_lists = []
-	if filename in ('spellLists.html'):
+	if filename == 'spellLists.html' and len(section['sections']) == 18:
+		section, spell_lists = mythic_structure_pass(section, filename)
+	elif filename in ('spellLists.html'):
 		section, spell_lists = core_structure_pass(section, filename)
 	elif filename in ('advancedSpellLists.html', 'ultimateCombatSpellLists.html'):
 		section, spell_lists = advanced_structure_pass(section, filename)
@@ -51,8 +55,12 @@ def spell_list_name_pass(spell_lists):
 	for casting_class in spell_lists:
 		clname = casting_class['name']
 		clname = clname.replace('Spells', '').strip()
+		clname = clname.replace('Formulae', '').strip()
 		for sl in casting_class['sections']:
 			sl['type'] = 'spell_list'
+			if clname.find('Mythic') > -1:
+				clname = clname.replace('Mythic', '').strip()
+				sl['type'] = 'mythic_spell_list'
 			sl['class'] = clname
 			m = re.search('(\d)', sl['name'])
 			sl['level'] = int(m.group(0))
@@ -75,6 +83,9 @@ def spell_pass(spell_list):
 			for ss in s['sections']:
 				soup = BeautifulSoup(ss['text'])
 				spells.append(create_spell(ss['name'], soup, school, descriptor))
+		elif spell_list['source'] in ('Mythic Adventures', 'Advanced Race Guide'):# spell_list['type'] == 'mythic_spell_list':
+			soup = BeautifulSoup(s['text'])
+			spells.append(create_spell(s['name'], soup))
 		else:
 			soup = BeautifulSoup(s['text'])
 			if ''.join(soup.findAll(text=True)) == '':
@@ -99,7 +110,7 @@ def create_spell(name, soup, school=None, descriptor=None):
 	desc = ''.join(soup.findAll(text=True))
 	if desc.startswith(":"):
 		desc = desc[1:].strip()
-	spell = {'name': name, 'description': desc}
+	spell = {'name': name, 'description': desc.strip()}
 	if len(comps) > 0:
 		spell['material'] = list(comps)
 	if school:

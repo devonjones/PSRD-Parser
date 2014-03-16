@@ -45,7 +45,7 @@ def parent_pass_out_of_file(spell):
 
 def cap_pass(spell):
 	spell['name'] = cap_words(spell['name'])
-	if not spell.has_key('level'):
+	if not spell.has_key('level') and spell['type'] == 'spell':
 		print "WTF: level %s %s" % (spell['name'], spell.keys())
 	for level in spell.get('level', []):
 		level['class'] = cap_words(level['class'])

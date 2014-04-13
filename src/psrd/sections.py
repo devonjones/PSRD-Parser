@@ -158,8 +158,27 @@ def cap_words(st):
 		word = part[0].upper() + part[1:]
 		word = _handle_parens(word)
 		word = _handle_slash(word)
+		word = _handle_dash(word)
+		word = _handle_roman(word)
 		fps.append(word)
 	return ' '.join(fps)
+
+def _handle_roman(st):
+	if st.lower() ==  "ii":
+		return "II"
+	elif st.lower() == "iii":
+		return "III"
+	elif st.lower() == "iv":
+		return "IV"
+	elif st.lower() == "vi":
+		return "VI"
+	elif st.lower() == "vii":
+		return "VII"
+	elif st.lower() == "viii":
+		return "VIII"
+	elif st.lower() == "ix":
+		return "IX"
+	return st
 
 def _handle_parens(st):
 	if st.find("(") > -1:
@@ -175,4 +194,14 @@ def _handle_slash(st):
 			word = part[0].upper() + part[1:]
 			fps.append(word)
 		return '/'.join(fps)
+	return st
+
+def _handle_dash(st):
+	if st.find("-"):
+		parts = st.split("-")
+		fps = []
+		for part in parts:
+			word = part[0].upper() + part[1:]
+			fps.append(word)
+		return '-'.join(fps)
 	return st

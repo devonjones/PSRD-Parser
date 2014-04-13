@@ -58,9 +58,9 @@ echo 'select url from sections where url is not null order by url;' | sqlite3 $D
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-uc.db >> $DATA_DIR/urllist.txt.tmp
 
 # Advanced Race Guide
-./spell_list_loader.py -d $DATA_DIR/book-arg.db               $DATA_DIR/advanced_race_guide/spell_lists/*.json
 ./json_loader.py       -d $DATA_DIR/book-arg.db -p "Races"    $DATA_DIR/advanced_race_guide/races/*.json
 ./rules_loader.py      -d $DATA_DIR/book-arg.db               $DATA_DIR/advanced_race_guide/structure.json
+./spell_list_loader.py -d $DATA_DIR/book-arg.db               $DATA_DIR/advanced_race_guide/spell_lists/*.json
 ./index_loader.py      -d $DATA_DIR/book-arg.db
 ./url_ref_loader.py    -d $DATA_DIR/book-arg.db               $DATA_DIR/advanced_race_guide/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-arg.db >> $DATA_DIR/urllist.txt.tmp
@@ -86,7 +86,6 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 
 # Mythic Adventures
 ./json_loader.py       -d $DATA_DIR/book-ma.db -p "Spells"   $DATA_DIR/mythic_adventures/spells/*.json
-./spell_list_loader.py -d $DATA_DIR/book-ma.db               $DATA_DIR/mythic_adventures/spell_lists/*.json
 ./json_loader.py       -d $DATA_DIR/book-ma.db -p "Feats"    $DATA_DIR/mythic_adventures/feats/*.json
 ./json_loader.py       -d $DATA_DIR/book-ma.db -p "Monsters" $DATA_DIR/mythic_adventures/creatures/*.json
 ./rules_loader.py      -d $DATA_DIR/book-ma.db               $DATA_DIR/mythic_adventures/structure.json

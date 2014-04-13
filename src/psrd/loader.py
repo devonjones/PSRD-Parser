@@ -19,6 +19,7 @@ from psrd.sql.traps import insert_trap_detail
 from psrd.sql.haunts import insert_haunt_detail
 from psrd.sql.items import insert_item_detail, insert_item_misc
 from psrd.sql.links import insert_link_detail
+from psrd.sql.mythic_spells import insert_mythic_spell_detail
 from psrd.sql.classes import insert_class_detail
 from psrd.sql.feats import insert_feat_type, insert_feat_type_description
 from psrd.sql.skills import insert_skill_attribute
@@ -170,6 +171,9 @@ def _ability_insert(curs, section, section_id):
 	for ability_type in section['ability_types']:
 		insert_ability_type(curs, section_id, ability_type)
 
+def _mythic_spell_insert(curs, curs_list, section, section_id):
+	insert_mythic_spell_records(curs, curs_list, section_id, section)
+
 def _spell_insert(curs, curs_list, section, section_id):
 	insert_spell_records(curs, curs_list, section_id, section)
 
@@ -249,6 +253,7 @@ def insert_subrecords(curs, curs_list, section, section_id):
 		"class_archetype": _noop,
 	}
 	cl_fxns = {
+		"mythic_spell": _mythic_spell_insert,
 		"spell": _spell_insert
 	}
 	if section['type'] in fxns:
@@ -259,6 +264,22 @@ def insert_subrecords(curs, curs_list, section, section_id):
 		cl_fxns[section['type']](curs, curs_list, section, section_id)
 	else:
 		sys.stderr.write("%s has no section type handler\n" % section['type'])
+
+def insert_mythic_spell_records(curs, curs_list, section_id, mythic_spell):
+	name = cap_words(mythic_spell['spell_source'].strip())
+	find_section(curs, name=name, type='spell')
+	spell = curs.fetchone()
+	use_curs = curs
+	if not spell:
+		for c in curs_list:
+			find_section(c, name=name, type='spell')
+			spell = c.fetchone()
+			use_curs = c
+			if spell:
+				break
+	if not spell:
+		raise Exception("Cannot find spell %s" % name)
+	insert_mythic_spell_detail(curs, **mythic_spell)
 
 def insert_spell_records(curs, curs_list, section_id, spell):
 	if spell.has_key('parent'):
@@ -387,7 +408,7 @@ def do_add_spell_list(curs, spell, sp, class_name, level):
 		magic_type = find_magic_type(class_name.lower())
 		insert_spell_list(curs, spell['section_id'], level, class_name, magic_type)
 		fix_spell_level_text(curs, spell['section_id'])
-	if sp.has_key('description'):
+	if sp.has_key('description') and sp['description'] != '':
 		update_section(curs, spell['section_id'], description=sp['description'])
 
 def fix_spell_level_text(curs, section_id):

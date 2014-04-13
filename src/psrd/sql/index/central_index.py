@@ -23,6 +23,7 @@ def create_central_index_table(curs):
 		"  spell_descriptor_text TEXT,",
 		"  spell_list_text TEXT,",
 		"  spell_component_text TEXT,",
+		"  spell_source TEXT,",
 		"  creature_type TEXT,",
 		"  creature_subtype TEXT,",
 		"  creature_super_race TEXT,",
@@ -67,7 +68,7 @@ def insert_central_index(curs, section_id=None, parent_id=None,
 		skill_trained_only=None, 
 		spell_school=None, spell_subschool_text=None,
 		spell_descriptor_text=None, spell_list_text=None,
-		spell_component_text=None,
+		spell_component_text=None, spell_source=None,
 		creature_type=None, creature_subtype=None, creature_super_race=None,
 		creature_cr=None, creature_xp=None, creature_size=None,
 		creature_alignment=None):
@@ -77,7 +78,7 @@ def insert_central_index(curs, section_id=None, parent_id=None,
 		feat_type_description, feat_prerequisites,
 		skill_attribute, skill_armor_check_penalty, skill_trained_only,
 		spell_school, spell_subschool_text, spell_descriptor_text,
-		spell_list_text, spell_component_text,
+		spell_list_text, spell_component_text, spell_source, 
 		creature_type, creature_subtype, creature_super_race, creature_cr,
 		creature_xp, creature_size, creature_alignment]
 	sql = '\n'.join([
@@ -87,11 +88,11 @@ def insert_central_index(curs, section_id=None, parent_id=None,
 		"  feat_type_description, feat_prerequisites,",
 		"  skill_attribute, skill_armor_check_penalty, skill_trained_only,",
 		"  spell_school, spell_subschool_text, spell_descriptor_text,",
-		"  spell_list_text, spell_component_text,"
+		"  spell_list_text, spell_component_text, spell_source,"
 		"  creature_type, creature_subtype, creature_super_race, creature_cr,",
 		"  creature_xp, creature_size, creature_alignment)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 	return curs.lastrowid
 

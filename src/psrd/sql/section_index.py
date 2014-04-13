@@ -123,6 +123,7 @@ def fetch_central_index(curs):
 		"   sd.descriptor_text as spell_descriptor_text,",
 		"   sd.level_text as spell_list_text,",
 		"   sd.component_text as spell_component_text,",
+		"   msd.spell_source as spell_source,",
 		"   cd.creature_type,",
 		"   cd.creature_subtype,",
 		"   cd.super_race as creature_super_race,",
@@ -139,6 +140,8 @@ def fetch_central_index(curs):
 		"   ON s.section_id = sa.section_id",
 		"  LEFT OUTER JOIN spell_details sd",
 		"   ON s.section_id = sd.section_id",
+		"  LEFT OUTER JOIN mythic_spell_details msd",
+		"   ON s.section_id = msd.section_id",
 		"  LEFT OUTER JOIN creature_details cd",
 		"   ON s.section_id = cd.section_id"])
 	curs.execute(sql)

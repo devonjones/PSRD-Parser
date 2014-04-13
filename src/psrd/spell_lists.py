@@ -110,7 +110,9 @@ def create_spell(name, soup, school=None, descriptor=None):
 	desc = ''.join(soup.findAll(text=True))
 	if desc.startswith(":"):
 		desc = desc[1:].strip()
-	spell = {'name': name, 'description': desc.strip()}
+	spell = {'name': name}
+	if desc.strip() != '':
+		spell['description'] = desc.strip()
 	if len(comps) > 0:
 		spell['material'] = list(comps)
 	if school:

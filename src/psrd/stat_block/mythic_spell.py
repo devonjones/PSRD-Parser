@@ -18,6 +18,7 @@ def mythic_spell_parse_function(field):
 def parse_mythic_spell(sb, book):
 	spell = parse_section(sb, book, keys=False)
 	spell['type'] = 'mythic_spell'
+	spell['subtype'] = 'mythic_spell'
 	for key, value in sb.keys:
 		mythic_spell_parse_function(key)(spell, value)
 	return spell

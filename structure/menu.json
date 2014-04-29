@@ -96,7 +96,8 @@
 	{"name": "Skills", "priority": 30, "type": "skill"},
 	{"name": "Spells", "priority": 30, "children": [
 		{"name": "All Spells", "type": "spell", "priority": 10},
-		{"group": "spell_classes", "priority": 20}
+		{"group": "spell_classes", "priority": 20},
+		{"name": "Mythic Spells", "subtype": "mythic_spell", "priority": 30}
 	]},
 	{"name": "Rules: Core Rulebook", "source": "Core Rulebook", "priority": 40, "children": [
 		{"group": "children", "source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules", "priority": 10}

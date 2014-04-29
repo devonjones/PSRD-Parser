@@ -176,6 +176,9 @@ def _mythic_spell_insert(curs, curs_list, section, section_id):
 
 def _spell_insert(curs, curs_list, section, section_id):
 	insert_spell_records(curs, curs_list, section_id, section)
+	if section.get('subtype') == 'mythic_spell':
+		section['spell_source'] = section['name']
+		insert_mythic_spell_detail(curs, section_id, section['spell_source'])
 
 def _class_insert(curs, section, section_id):
 	insert_class_detail(curs, section_id, section.get('alignment'), section.get('hit_dice'))
@@ -276,6 +279,7 @@ def insert_mythic_spell_records(curs, curs_list, section_id, mythic_spell):
 			spell = c.fetchone()
 			use_curs = c
 			if spell:
+				mythic_spell['spell_source'] = spell['name']
 				break
 	if not spell:
 		raise Exception("Cannot find spell %s" % name)

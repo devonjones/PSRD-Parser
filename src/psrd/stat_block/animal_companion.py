@@ -14,6 +14,7 @@ def is_animal_companion(sb, book):
 def animal_companion_parse_function(field):
 	functions = {
 		'ac': default_closure('ac'),
+		'cmd': default_closure('cmd'),
 		'attack': default_closure('attack'),
 		'ability scores': default_closure('ability_scores'),
 		'special qualities': default_closure('special_qualities'),

@@ -4,7 +4,7 @@ import json
 from BeautifulSoup import BeautifulSoup
 from psrd.files import char_replace
 from psrd.stat_block import stat_block_pass, parse_section
-from psrd.universal import parse_universal, print_struct, StatBlockHeading
+from psrd.universal import parse_universal, print_struct, StatBlockHeading, StatBlockSection
 from psrd.sections import ability_pass, entity_pass, find_section, find_all_sections, remove_section, quote_pass
 
 def mark_subtype_pass(struct, name, subtype):
@@ -119,13 +119,50 @@ def ultimate_combat_structure_pass(rules, basename):
 		return top
 	return rules
 
+def ultimate_magic_structure_pass(rules, basename, book):
+	if book == 'Ultimate Magic':
+		return druid_structural_pass(rules)
+
+def druid_structural_pass(section):
+	if section.has_key('sections'):
+		newsections = []
+		for s in section['sections']:
+			if s.__class__ == StatBlockHeading:
+				newsections.append(druid_animal_companion_fix(s))
+			elif s.__class__ == dict:
+				newsections.append(druid_structural_pass(s))
+			else:
+				newsections.append(s)
+		section['sections'] = newsections
+	return section
+
+def druid_animal_companion_fix(section):
+	tuples = section.keys
+	keys = []
+	details = []
+	s = section
+	for tup in tuples:
+		if tup[0] == 'Starting Statistics':
+			pass
+		elif tup[0] in ('4th-Level Advancement', '7th-Level Advancement'):
+			s.keys = keys
+			keys = []
+			if s != section:
+				details.append(s)
+			s = StatBlockSection(tup[0], '<p><b>%s</b></p>' % tup[0])
+		else:
+			keys.append(tup)
+	s.keys = keys
+	if s != section:
+		details.append(s)
+	section.details = details
+	return section
+
 def structure_pass(rules, basename, book):
 	if book == 'Core Rulebook':
 		return core_rulebook_structure_pass(rules, basename)
 	elif book == "Advanced Player's Guide":
 		return advanced_players_guide_structure_pass(rules, basename)
-	#elif book == 'Ultimate Magic':
-	#	return ultimate_magic_structure_pass(rules, basename)
 	elif book == 'Ultimate Combat':
 		return ultimate_combat_structure_pass(rules, basename)
 	return rules
@@ -156,6 +193,7 @@ def parse_rules_no_sb(filename, output, book, title):
 def parse_rules(filename, output, book, title, no_sb=False):
 	basename = os.path.basename(filename)
 	rules = parse_universal(filename, output, book)
+	rules = ultimate_magic_structure_pass(rules, basename, book)
 	rules = stat_block_pass(rules, book, no_sb=no_sb)
 	rules = structure_pass(rules, basename, book)
 	if not basename in ['glossary.html']:

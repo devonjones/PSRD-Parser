@@ -122,6 +122,7 @@ def ultimate_combat_structure_pass(rules, basename):
 def ultimate_magic_structure_pass(rules, basename, book):
 	if book == 'Ultimate Magic':
 		return druid_structural_pass(rules)
+	return rules
 
 def druid_structural_pass(section):
 	if section.has_key('sections'):
@@ -193,7 +194,8 @@ def parse_rules_no_sb(filename, output, book, title):
 def parse_rules(filename, output, book, title, no_sb=False):
 	basename = os.path.basename(filename)
 	rules = parse_universal(filename, output, book)
-	rules = ultimate_magic_structure_pass(rules, basename, book)
+	if basename in ["druid.html"]:
+		rules = ultimate_magic_structure_pass(rules, basename, book)
 	rules = stat_block_pass(rules, book, no_sb=no_sb)
 	rules = structure_pass(rules, basename, book)
 	if not basename in ['glossary.html']:

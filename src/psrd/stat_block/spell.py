@@ -70,6 +70,7 @@ def parse_saving_throw(spell, value, override=False):
 		spell['saving_throw'] = value
 
 def parse_components(spell, value):
+	spell['component_text'] = value
 	value = colon_filter(value)
 	m = re.search ('(\(.*?\))', value)
 	content = []
@@ -85,26 +86,58 @@ def parse_components(spell, value):
 			name = m.group(1)
 			content_index = int(m.group(2))
 			comments = content[content_index].replace('|', ',').replace('(', '').replace(')', '')
-			finalcomps.append({'type': name, 'text': comments})
+			finalcomps.extend(component_list(name, comments))
 			if m.group(3) != '':
 				finalcomps.append({'text': m.group(3)})
 		else:
-			finalcomps.append({'type': comp})
+			finalcomps.extend(component_list(comp))
 	spell['components'] = finalcomps
+
+def component_list(component, text=None):
+	components = []
+	component = component.replace("/", ",")
+	component = component.replace(" or ", ",")
+	if component.find("; see text") > -1:
+		if text:
+			text = text + "; see text"
+		else:
+			text = "see text"
+		component = component.replace("; see text", "")
+	for c in component.split(","):
+		comp = {'type': c.strip()}
+		if text:
+			comp['text'] = text
+		components.append(comp)
+	return components
 
 def parse_school(spell, value):
 	value = value.replace(';', '')
 	value = colon_filter(value)
 	m = re.search('\((.*)\)', value)
 	if m:
-		spell['subschool'] = m.group(1)
+		spell['subschool_text'] = m.group(1)
+		spell['subschool'] = subschool_list(spell['subschool_text'])
 		value= re.sub('\(.*\)', '', value)
 	m = re.search('\[(.*)\]', value)
 	if m:
 		descriptor = m.group(1)
-		spell['descriptor'] = descriptor.split(', ')
+		spell['descriptor_text'] = descriptor
+		descriptors = descriptor.split(', ')
+		repaired_descriptors = []
+		for d in descriptors:
+			if d.startswith('or '):
+				d = d[3:]
+			if d.endswith(' see text'):
+				d = d[:-9]
+			repaired_descriptors.append(d)
+		spell['descriptor'] = repaired_descriptors
 		value = re.sub('\[.*\]', '', value)
 	spell['school'] = value.strip()
+
+def subschool_list(subschool):
+	subschool = subschool.replace(', or ', ',')
+	subschool = subschool.replace(' or ', ',')
+	return [s.strip() for s in subschool.split(",")]
 
 def parse_level(spell, value):
 	value = colon_filter(value)

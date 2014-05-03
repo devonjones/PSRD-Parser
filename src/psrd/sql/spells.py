@@ -10,7 +10,7 @@ def create_spell_details_table(curs):
 		"  spell_detail_id INTEGER PRIMARY KEY,",
 		"  section_id INTEGER NO NULL,",
 		"  school TEXT NOT NULL,",
-		"  subschool TEXT,",
+		"  subschool_text TEXT,",
 		"  descriptor_text TEXT,",
 		"  level_text TEXT,",
 		"  component_text TEXT,",
@@ -34,11 +34,11 @@ def create_spell_details_index(curs):
 		" ON spell_details (school)"])
 	curs.execute(sql)
 
-def insert_spell_detail(curs, section_id, school=None, subschool=None,
+def insert_spell_detail(curs, section_id, school=None, subschool_text=None,
 		descriptor_text=None, level_text=None, component_text=None,
 		casting_time=None, preparation_time=None, range=None, duration=None,
 		saving_throw=None, spell_resistance=None, as_spell_id=None, **kwargs):
-	values = [section_id, school, subschool, descriptor_text, level_text,
+	values = [section_id, school, subschool_text, descriptor_text, level_text,
 		component_text, casting_time, preparation_time, range, duration,
 		saving_throw, spell_resistance, as_spell_id]
 	testa = kwargs.copy()
@@ -48,6 +48,8 @@ def insert_spell_detail(curs, section_id, school=None, subschool=None,
 		del testa['level']
 	if testa.has_key('levels'):
 		del testa['levels']
+	if testa.has_key('subschool'):
+		del testa['subschool']
 	if testa.has_key('descriptor'):
 		del testa['descriptor']
 	if testa.has_key('components'):
@@ -57,7 +59,7 @@ def insert_spell_detail(curs, section_id, school=None, subschool=None,
 	test_args(testa)
 	sql = '\n'.join([
 		"INSERT INTO spell_details",
-		" (section_id, school, subschool, descriptor_text, level_text,",
+		" (section_id, school, subschool_text, descriptor_text, level_text,",
 		"  component_text, casting_time, preparation_time, range, duration,"
 		"  saving_throw, spell_resistance, as_spell_id)",
 		" VALUES",

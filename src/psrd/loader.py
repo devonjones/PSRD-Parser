@@ -297,18 +297,13 @@ def insert_spell_records(curs, curs_list, section_id, spell):
 		if not orig:
 			raise ProcessLastException(spell['parent'])
 		spell = merge_spells(orig, spell)
-	descriptor_text = ', '.join(spell.get('descriptor', []))
-	if descriptor_text == "":
-		descriptor_text = None
-	else:
-		spell['descriptor_text'] = descriptor_text
 	level_list = []
 	for level in spell.get('level', []):
 		level_list.append(level['class'] + ": " + str(level['level']))
 	level_text = "; ".join(level_list)
 	spell['level_text'] = level_text
-	if spell.has_key('subschool') and spell['subschool']:
-		for subschool in subschool_list(spell['subschool']):
+	if spell.has_key('subschool_text') and spell['subschool_text']:
+		for subschool in spell.get('subschool', []):
 			insert_spell_subschool(curs, section_id, subschool)
 	for descriptor in filter_descriptors(spell.get('descriptor', [])):
 		insert_spell_descriptor(curs, section_id, descriptor)
@@ -324,15 +319,9 @@ def insert_spell_records(curs, curs_list, section_id, spell):
 			component_text.append(component['type'])
 		elif component.has_key('text') and component['text']:
 			component_text.append("(%s)" % (component['text']))
-	spell['component_text'] = ", ".join(component_text)
 	for effect in spell.get('effects', []):
 		insert_spell_effect(curs, section_id, effect['name'], effect['text'])
 	insert_spell_detail(curs, **spell)
-
-def subschool_list(subschool):
-	subschool.replace(', or ', ',')
-	subschool.replace(' or ', ',')
-	return subschool.split(", ")
 
 def filter_descriptors(descriptors):
 	retlist = []
@@ -495,7 +484,7 @@ def load_rule_structure_document(db, conn, conn_list, filename, struct):
 		if struct.has_key('file'):
 			print struct['file']
 		for child in struct['children']:
-			process_structure_node(curs, curs_list, filename, parent, child) 
+			process_structure_node(curs, curs_list, filename, parent, child)
 		conn_commit(conn, conn_list)
 	finally:
 		curs_close(curs, curs_list)

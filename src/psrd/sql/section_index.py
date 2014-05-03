@@ -119,7 +119,7 @@ def fetch_central_index(curs):
 		"   sa.armor_check_penalty as skill_armor_check_penalty,",
 		"   sa.trained_only as skill_trained_only,",
 		"   sd.school as spell_school,",
-		"   sd.subschool as spell_subschool_text,",
+		"   sd.subschool_text as spell_subschool_text,",
 		"   sd.descriptor_text as spell_descriptor_text,",
 		"   sd.level_text as spell_list_text,",
 		"   sd.component_text as spell_component_text,",

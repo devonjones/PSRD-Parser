@@ -53,8 +53,9 @@ def cap_pass(spell):
 def misc_fix_pass(spell):
 	if spell['name'] == 'Shadowbard':
 		spell['school'] = 'illusion'
-		spell['subschool'] = 'shadow'
+		spell['subschool_text'] = 'shadow'
 		spell['descriptor'] = ['shadow']
+		spell['descriptor_text'] = 'shadow'
 	elif spell['name'] == "Curse, Major":
 		spell['parent'] = "Bestow Curse"
 	elif spell['name'] in ("Acid Pit", "Hungry Pit", "Spiked Pit"):

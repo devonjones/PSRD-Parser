@@ -112,7 +112,11 @@ def create_spell(name, soup, school=None, descriptor=None):
 		desc = desc[1:].strip()
 	spell = {'name': name}
 	if desc.strip() != '':
-		spell['description'] = desc.strip()
+		desc = desc.strip()
+		desc = desc.replace("&ldquo;", '"')
+		desc = desc.replace("&rdquo;", '"')
+		desc = desc.replace("&ndash;", '-')
+		spell['description'] = desc
 	if len(comps) > 0:
 		spell['material'] = list(comps)
 	if school:

@@ -1,4 +1,5 @@
 import re
+from BeautifulSoup import BeautifulSoup
 from psrd.stat_block.utils import colon_filter, default_closure
 from psrd.stat_block.section import parse_section
 from psrd.universal import filter_name
@@ -45,6 +46,9 @@ def parse_spell(sb, book):
 	spell['type'] = 'spell'
 	for key, value in sb.keys:
 		spell_parse_function(key)(spell, value)
+	if spell['source'] == 'Advanced Race Guide':
+		text = ''.join(BeautifulSoup(spell['text']).findAll(text=True))
+		spell['description'] = text.split(".")[0] + "."
 	return spell
 
 def effect_closure(field):

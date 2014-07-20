@@ -41,7 +41,7 @@ def delete_spell_list_index(curs, index_id, class_name=None):
 	curs.execute(sql, values)
 
 def fetch_spell_list_index(curs, index_id, class_name=None):
-	values = [section_id]
+	values = [index_id]
 	sqla = [
 		"SELECT *",
 		" FROM spell_list_index",

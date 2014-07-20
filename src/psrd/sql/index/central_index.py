@@ -121,6 +121,19 @@ def fetch_index_by_url(curs, url):
 		" WHERE url = ?"])
 	curs.execute(sql, values)
 
+def find_central_index(curs, **kwargs):
+	values = []
+	where = " WHERE "
+	sqla = [
+		"SELECT *",
+		" FROM central_index"]
+	for key in kwargs.keys():
+		sqla.append(where + key + " = ?")
+		values.append(kwargs[key])
+		where = "  AND "
+	sql = '\n'.join(sqla)
+	curs.execute(sql, values)
+
 def select_section_types(curs):
 	sql = '\n'.join([
 		"SELECT DISTINCT type",

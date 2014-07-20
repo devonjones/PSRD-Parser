@@ -35,12 +35,12 @@ def delete_spell_subschool_index(curs, index_id, subschool=None):
 	curs.execute(sql, values)
 
 def fetch_spell_subschool_index(curs, index_id, subschool=None):
-	values = [section_id]
+	values = [index_id]
 	sqla = [
 		"SELECT *",
 		" FROM spell_subschool_index",
 		" WHERE index_id = ?"]
-	if class_name:
+	if subschool:
 		sqla.append("  AND subschool = ?")
 		values.append(subschool)
 	sqla.append(" ORDER BY subschool")

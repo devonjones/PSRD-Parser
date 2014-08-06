@@ -20,9 +20,12 @@ def process_armor(table_data, armor_list):
 						key = 'Shield Bonus'
 					else:
 						key = 'Armor Bonus'
+				subsection = "Armor"
+				if armor['Name'] in table_data.get('distinct_section', {}):
+					subsection = table_data['distinct_section'][armor['Name']]
 				misc.append({
 					"field": key,
-					"subsection": "Armor",
+					"subsection": subsection,
 					"value": value})
 		armor['item'] = item
 		set_subtype(table_data, "Armor Type", armor)

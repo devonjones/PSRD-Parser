@@ -1,0 +1,179 @@
+{
+	"tables": [
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Eastern Armor and Weapons/Eastern Armor/Table Eastern Armor",
+			"parser": "armor",
+			"default_subtype": "armor",
+			"alternate_names": {
+				"Lamellar, leather": "Lamellar Armor",
+				"Lamellar, horn": "Lamellar Armor",
+				"Lamellar, steel": "Lamellar Armor",
+				"Lamellar, iron": "Lamellar Armor"
+			},
+			"distinct_section": {
+				"Lamellar, leather": "Leather",
+				"Lamellar, horn": "Horn",
+				"Lamellar, steel": "Steel",
+				"Lamellar, iron": "Iron"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Eastern Armor and Weapons/Eastern Weapons/Weapon Descriptions/Table Eastern Weapons-Martial",
+			"parser": "weapons",
+			"default_subtype": "weapon",
+			"alternate_subtypes": {
+				"Bamboo shaft": "ammunition",
+				"Arrow, iron-tipped distance": "ammunition",
+				"Arrow, whistling": "ammunition",
+				"Poisoned sand tube": "ammunition"
+			},
+			"alternate_names": {
+				"Broadsword, nine ring": "Broadsword, Nine-Ring",
+				"Sword, tri-point double-edged": "Tri-Point Double-Edged Sword",
+				"Bamboo shaft": "Bamboo Shaft Arrow"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Eastern Armor and Weapons/Eastern Weapons/Weapon Descriptions/Table Eastern Weapons-Exotic",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Gladiator Weapons/Gladiator Weapon Descriptions/Table Gladiator Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon",
+			"alternate_subtypes": {
+				"Javelin": "ammunition"
+			},
+			"alternate_names": {
+				"Madu, leather": "Madu",
+				"Madu, steel": "Madu"
+			},
+			"distinct_section": {
+				"Madu, leather": "Leather",
+				"Madu, steel": "Steel"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Stone Age/Table Stone Age Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon",
+			"alternate_subtypes": {
+				"Atlatl dart": "ammunition",
+				"Kesteros dart": "ammunition"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Bronze Age/Table Bronze Age Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Firearms/Firearm Descriptions/Early Firearms/Table Early Firearms",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Firearms/Firearm Descriptions/Advanced Firearms/Table Advanced Firearms",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Firearms/Firearm Descriptions/Firearm Ammunition and Adventuring Gear/Table Firearm Gear",
+			"parser": "gear2",
+			"default_subtype": "ammunition",
+			"alternate_subtypes": {
+				"Gunsmith's kit": "gear"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Siege Engines/Siege Weapon Descriptions/Table Ranged Siege Engines",
+			"parser": "weapons",
+			"default_subtype": "siege_engine",
+			"alternate_names": {
+				"Ballista, light": "Ballista",
+				"Ballista, heavy": "Ballista",
+				"Ballista, gate breaker": "Ballista",
+				"Bombard, light": "Bombard",
+				"Bombard, standard": "Bombard",
+				"Bombard, heavy": "Bombard",
+				"Cannon, fiend's mouth": "Fiend's Mouth Cannon",
+				"Catapult, light": "Catapult",
+				"Catapult, standard": "Catapult",
+				"Catapult, heavy": "Catapult",
+				"Springal, arrow": "Springal",
+				"Springal, rocket": "Springal",
+				"Trebuchet, light": "Trebuchet",
+				"Trebuchet, standard": "Trebuchet",
+				"Trebuchet, heavy": "Trebuchet"
+			},
+			"distinct_section": {
+				"Ballista, light": "Light",
+				"Ballista, heavy": "Heavy",
+				"Ballista, gate breaker": "Gate Breaker",
+				"Bombard, light": "Light",
+				"Bombard, standard": "Standard",
+				"Bombard, heavy": "Heavy",
+				"Catapult, light": "Light",
+				"Catapult, standard": "Standard",
+				"Catapult, heavy": "Heavy",
+				"Springal, arrow": "Arrow",
+				"Springal, rocket": "Rocket",
+				"Trebuchet, light": "Light",
+				"Trebuchet, standard": "Standard",
+				"Trebuchet, heavy": "Heavy"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Siege Engines/Siege Weapon Descriptions/Close Assault Siege Engines/Table Close Assault Siege Engines",
+			"parser": "siege",
+			"default_subtype": "siege_engine",
+			"alternate_names": {
+				"Bridge, assault, Large": "Bridge, Assault",
+				"Bridge, assault, Huge": "Bridge, Assault",
+				"Bridge, assault, Gargantuan": "Bridge, Assault",
+				"Bridge, assault, Colossal": "Bridge, Assault",
+				"Bridge, assault, Corvus": "Corvus",
+				"Gallery, Large": "Gallery",
+				"Gallery, Huge": "Gallery",
+				"Gallery, Gargantuan": "Gallery",
+				"Gallery, Colossal": "Gallery",
+				"Ladder, escalade, Large": "Ladder, Escalade",
+				"Ladder, escalade, Huge": "Ladder, Escalade",
+				"Ladder, escalade, Gargantuan": "Ladder, Escalade",
+				"Ladder, escalade, Colossal": "Ladder, Escalade",
+				"Ram, Large": "Rams",
+				"Ram, Huge": "Rams",
+				"Ram, Gargantuan": "Rams",
+				"Ram, Colossal": "Rams",
+				"Siege tower, Large": "Siege Tower",
+				"Siege tower, Huge": "Siege Tower",
+				"Siege tower, Gargantuan": "Siege Tower",
+				"Siege tower, Colossal": "Siege Tower"
+			},
+			"distinct_section": {
+				"Bridge, assault, Large": "Large",
+				"Bridge, assault, Huge": "Huge",
+				"Bridge, assault, Gargantuan": "Gargantuan",
+				"Bridge, assault, Colossal": "Colossal",
+				"Gallery, Large": "Large",
+				"Gallery, Huge": "Huge",
+				"Gallery, Gargantuan": "Gargantuan",
+				"Gallery, Colossal": "Colossal",
+				"Ladder, escalade, Large": "Large",
+				"Ladder, escalade, Huge": "Huge",
+				"Ladder, escalade, Gargantuan": "Gargantuan",
+				"Ladder, escalade, Colossal": "Colossal",
+				"Ram, Large": "Large",
+				"Ram, Huge": "Huge",
+				"Ram, Gargantuan": "Gargantuan",
+				"Ram, Colossal": "Colossal",
+				"Siege tower, Large": "Large",
+				"Siege tower, Huge": "Huge",
+				"Siege tower, Gargantuan": "Gargantuan",
+				"Siege tower, Colossal": "Colossal"
+			}
+		}
+	]
+}
+

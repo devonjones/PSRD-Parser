@@ -1,0 +1,212 @@
+{
+	"tables": [
+		{
+			"url": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Descriptions/Table Weapons",
+			"parser": "weapons",
+			"alternate_names": {
+				"Axe, throwing": "Throwing Axe",
+				"Bolts, crossbow": "Bolts",
+				"Darts, blowgun": "Blowgun Darts",
+				"Hammer, light": "Light Hammer",
+				"Mace, light": "Mace",
+				"Pick, heavy": "Heavy Pick",
+				"Pick, light": "Light Pick",
+				"Sword, short": "Shortsword",
+				"Unarmed strike": "Strike, Unarmed"
+			},
+			"alternate_urls": {
+				"Shield, light": [
+					"pfsrd://Core Rulebook/Rules/Equipment/Armor/Armor Descriptions/Shield/Heavy; Wooden",
+					"pfsrd://Core Rulebook/Rules/Equipment/Armor/Armor Descriptions/Shield/Heavy; Steel"
+				],
+				"Shield, heavy": [
+					"pfsrd://Core Rulebook/Rules/Equipment/Armor/Armor Descriptions/Shield/Heavy; Wooden",
+					"pfsrd://Core Rulebook/Rules/Equipment/Armor/Armor Descriptions/Shield/Heavy; Steel"
+				],
+				"Spiked armor": [
+					"pfsrd://Core Rulebook/Rules/Equipment/Armor/Armor Descriptions/Armor Spikes"
+				],
+				"Spiked Shield, light": [
+					"pfsrd://Core Rulebook/Rules/Equipment/Armor/Armor Descriptions/Shield Spikes"
+				],
+				"Spiked Shield, heavy": [
+					"pfsrd://Core Rulebook/Rules/Equipment/Armor/Armor Descriptions/Shield Spikes"
+				]
+			},
+			"default_subtype": "weapon",
+			"alternate_subtypes": {
+				"Shield, light": "shield",
+				"Shield, heavy": "shield",
+				"Darts, blowgun": "ammunition",
+				"Bolts, crossbow": "ammunition",
+				"Bullets, sling": "ammunition",
+				"Arrows": "ammunition",
+				"Bolts": "ammunition",
+				"Bullets, sling": "ammunition",
+				"Spiked armor": "armor",
+				"Spiked Shield, light": "shield",
+				"Spiked Shield, heavy": "shield"
+			},
+			"additional_fields": {
+				"Net": {"Burst": "DC 25 Strength Check", "Hit Points": "5"}
+			}
+		},
+		{
+			"url": "pfsrd://Core Rulebook/Rules/Equipment/Armor/Armor Descriptions/Table Armor and Shields",
+			"parser": "armor",
+			"alternate_names": {
+				"Shield, light wooden": "Shield, Light; Wooden",
+				"Shield, light steel": "Shield, Light; Steel",
+				"Shield, heavy wooden": "Shield, Heavy; Wooden",
+				"Shield, heavy steel": "Shield, Heavy; Steel"
+			},
+			"default_subtype": "armor",
+			"alternate_subtypes": {
+				"Shield, light wooden": "shield",
+				"Shield, light steel": "shield",
+				"Shield, heavy wooden": "shield",
+				"Shield, heavy steel": "shield",
+				"Shield, tower": "shield",
+				"Shield spikes": "shield"
+			}
+		},
+		{
+			"url": "pfsrd://Core Rulebook/Rules/Equipment/Goods And Services/Table Goods and Services",
+			"parser": "gear",
+			"alternate_names": {
+				"Pouch, belt": "Belt Pouch",
+				"Blanket, winter": "Blanket",
+				"Bottle, glass": "Bottle",
+				"Case, map or scroll": "Scroll Case",
+				"Chalk, 1 piece": "Chalk",
+				"Fishing net, 25 sq. ft.": "Fishing Net",
+				"Holy symbol, wooden": "Holy Symbol, Silver or Wooden",
+				"Holy symbol, silver": "Holy Symbol, Silver or Wooden",
+				"Ladder, 10-foot": "Ladder",
+				"Lock, Simple": "Lock",
+				"Lock, Average": "Lock",
+				"Lock, Good": "Lock",
+				"Lock, Superior": "Lock",
+				"Manacles": "Manacles, Standard and Masterwork",
+				"Manacles, masterwork": "Manacles, Standard and Masterwork",
+				"Musical instrument, common": "Musical Instrument, Common or Masterwork",
+				"Musical instrument, masterwork": "Musical Instrument, Common or Masterwork",
+				"Mirror, small steel": "Mirror",
+				"Mug/Tankard, clay": "Mug/Tankard",
+				"Pitcher, clay": "Pitcher",
+				"Pole, 10-foot": "Pole",
+				"Pot, iron": "Pot",
+				"Rations, trail": "Trail Rations",
+				"Shovel or spade": "Shovel",
+				"Vial, ink or potion": "Vial",
+				"Ale, Gallon": "Meals",
+				"Ale, Mug": "Meals",
+				"Banquet": "Meals",
+				"Bread, loaf of": "Meals",
+				"Cheese, hunk of": "Meals",
+				"Meat, chunk of": "Meals",
+				"Wine, Common": "Meals",
+				"Wine, Fine": "Meals",
+				"Meals, Good": "Meals",
+				"Meals, Common": "Meals",
+				"Meals, Poor": "Meals",
+				"Inn stay, Good": "Inn",
+				"Inn stay, Common": "Inn",
+				"Inn stay, Poor": "Inn",
+				"Barding, Medium creature": "Barding, Medium Creature and Large Creature",
+				"Barding, Large creature": "Barding, Medium Creature and Large Creature",
+				"Horse, heavy": "Horse",
+				"Horse, heavy (combat trained)": "Horse",
+				"Horse, light": "Horse",
+				"Horse, light (combat trained)": "Horse",
+				"Horse, Pony": "Horse",
+				"Horse, Pony (combat trained)": "Horse",
+				"Saddle, Exotic, Military": "Saddle, Exotic",
+				"Saddle, Exotic, Pack": "Saddle, Exotic",
+				"Saddle, Exotic, Riding": "Saddle, Exotic"
+			},
+			"distinct_section": {
+				"Manacles": "Standard",
+				"Manacles, masterwork": "Masterwork",
+				"Musical instrument, common": "Common",
+				"Musical instrument, masterwork": "Masterwork",
+				"Holy symbol, wooden": "Wooden",
+				"Holy symbol, silver": "Silver",
+				"Lock, Simple": "Simple",
+				"Lock, Average": "Average",
+				"Lock, Good": "Good",
+				"Lock, Superior": "Superior",
+				"Ale, Gallon": "Ale, Gallon",
+				"Ale, Mug": "Ale, Mug",
+				"Banquet": "Banquet",
+				"Bread, loaf of": "Bread, Loaf of",
+				"Cheese, hunk of": "Cheese, Hunk of",
+				"Meat, chunk of": "Meat, Chunk of",
+				"Wine, Common": "Wine, Common",
+				"Wine, Fine": "Wine, Fine",
+				"Meals, Good": "Good",
+				"Meals, Common": "Common",
+				"Meals, Poor": "Poor",
+				"Inn stay, Good": "Good",
+				"Inn stay, Common": "Common",
+				"Inn stay, Poor": "Poor",
+				"Barding, Medium creature": "Medium Creature",
+				"Barding, Large creature": "Large Creature",
+				"Horse, heavy": "Heavy",
+				"Horse, heavy (combat trained)": "Heavy, Combat Trained",
+				"Horse, light": "Light",
+				"Horse, light (combat trained)": "Light, Combat Trained",
+				"Horse, Pony": "Pony",
+				"Horse, Pony (combat trained)": "Pony, Combat Trained",
+				"Saddle, Exotic, Military": "Military",
+				"Saddle, Exotic, Pack": "Pack",
+				"Saddle, Exotic, Riding": "Riding"
+			},
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Everburning torch": "gear",
+				"Holy water": "gear",
+				"Barding, Medium creature": "gear",
+				"Barding, Large creature": "gear",
+				"Bit and bridle": "gear",
+				"Feed": "gear",
+				"Saddle, Military": "gear",
+				"Saddle, Pack": "gear",
+				"Saddle, Riding": "gear",
+				"Saddle, Exotic, Military": "gear",
+				"Saddle, Exotic, Pack": "gear",
+				"Saddle, Exotic, Riding": "gear",
+				"Saddlebags": "gear",
+				"Stabling": "service",
+				"Oar": "gear"
+			},
+			"title_alternate_subtypes": {
+				"Special Substances and Items": "alchemical",
+				"Clothing": "clothing",
+				"Mounts and Related Gear": "mount",
+				"Transport": "transport",
+				"Spellcasting and Services": "service"
+			},
+			"additional_fields": {
+				"Acid (flask)": {"Craft": "DC 15 Craft (Alchemy) Check"},
+				"Alchemist's fire (flask)": {"Craft": "DC 20 Craft (Alchemy) Check"},
+				"Antitoxin (vial)": {"Craft": "DC 25 Craft (Alchemy) Check"},
+				"Everburning Torch": {"Aura": "evocation"},
+				"Smokestick": {"Craft": "DC 20 Craft (Alchemy) Check"},
+				"Sunrod": {"Craft": "DC 25 Craft (Alchemy) Check"},
+				"Tanglefoot bag": {"Craft": "DC 25 Craft (Alchemy) Check"},
+				"Thunderstone": {"Craft": "DC 25 Craft (Alchemy) Check"},
+				"Tindertwig": {"Craft": "DC 20 Craft (Alchemy) Check"},
+				"Chain": {"Burst": "DC 26 Strength Check", "Hardness": "10", "Hit Points": "5"},
+				"Lock, Simple": {"Open": "DC 20 Disable Device Check"},
+				"Lock, Average": {"Open": "DC 25 Disable Device Check"},
+				"Lock, Good": {"Open": "DC 30 Disable Device Check"},
+				"Lock, Superior": {"Open": "DC 40 Disable Device Check"},
+				"Manacles": {"Slip Free": "DC 30 Escape Artist Check", "Break": "DC 26 Strength Check", "Hardness": "10", "Hit Points": "10"},
+				"Manacles, masterwork": {"Slip Free": "DC 35 Escape Artist Check", "Break": "DC 28 Strength Check", "Hardness": "10", "Hit Points": "10"},
+				"Rope, hemp": {"Burst": "DC 23 Strength Check", "Hit Points": "2"},
+				"Rope, silk": {"Burst": "DC 24 Strength Check", "Hit Points": "4"}
+			}
+		}
+	]
+}

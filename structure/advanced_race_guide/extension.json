@@ -1,0 +1,321 @@
+{
+	"tables": [
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Dwarves/New Racial Rules/Dwarven Equipment/Dwarven Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Elves/New Racial Rules/Elven Equipment/Elven Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Gnomes/New Racial Rules/Gnome Equipment/Gnome Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Hound's blood": "alchemical",
+				"Moonrod": "alchemical",
+				"Scentbane incense": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Half-Elves/New Racial Rules/Half-Elven Equipment/Half-Elven Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_names": {
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Half-Orcs/New Racial Rules/Half-Orc Equipment/Half-Orc Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_names": {
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Halflings/New Racial Rules/Halfling Equipment/Halfling Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Alchemical preserves": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Humans/New Racial Rules/Human Equipment/Human Equipment",
+			"parser": "gear2",
+			"default_subtype": "weapon",
+			"distinct_section": {
+				"Whip, training": "Weapon"
+			},
+			"additional_fields": {
+				"Whip, training": {"Price": "1 gp", "Critical": "&times;2", "Dmg (L)": "1d4", "Dmg (M)": "1d3", "Dmg (S)": "1d2", "Dmg (T)": "1", "Proficiency": "Exotic Weapons", "Special": "disarm, nonlethal, reach, trip", "Type": "S", "Weapon Class": "One-Handed Melee Weapons", "Weight": "2 lbs."}
+			}
+		},
+
+
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Aasimars/New Racial Rules/Aasimar Equipment/Aasimar Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Ambrosia": "alchemical",
+				"Anointing oil": "alchemical",
+				"Celestial lamp": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Catfolk/New Racial Rules/Catfolk Equipment/Catfolk Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Trailscent kit": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Dhampirs/New Racial Rules/Dhampir Equipment/Dhampir Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_names": {
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Drow/New Racial Rules/Drow Equipment/Drow Equipment",
+			"parser": "gear2",
+			"default_subtype": "alchemical"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Drow/New Racial Rules/Drow Equipment/Drow Mounts",
+			"parser": "gear2",
+			"default_subtype": "mount",
+			"alternate_names": {
+				"Bat, dire, riding": "Riding Bat",
+				"Bat, dire, riding (combat trained)": "Riding Bat",
+				"Gecko, riding": "Riding Gecko",
+				"Gecko, riding (combat trained)": "Riding Gecko"
+			},
+			"distinct_section": {
+				"Bat, dire, riding": "Riding Bat",
+				"Bat, dire, riding (combat trained)": "Riding Bat, Combat Trained",
+				"Gecko, riding": "Riding Gecko",
+				"Gecko, riding (combat trained)": "Riding Gecko, Combat Trained"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Fetchlings/New Racial Rules/Fetchling Equipment/Fetchling Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_names": {
+				"Shadowcloy flask": "Shadowcloy"
+			},
+			"alternate_subtypes": {
+				"Gloom sight goggles": "alchemical",
+				"Shadowcloy flask": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Goblins/New Racial Rules/Goblin Equipment/Goblin Equipment",
+			"parser": "gear2",
+			"default_subtype": "alchemical"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Goblins/New Racial Rules/Goblin Equipment/Goblin Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Hobgoblins/New Racial Rules/Hobgoblin Equipment/Hobgoblin Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Brewed reek": "alchemical",
+				"Hobgoblin war draught": "alchemical",
+				"Unstable accelerant": "alchemical"
+			},
+			"alternate_names": {
+				"Fetters, masterwork": "Fetters"
+			},
+			"distinct_section": {
+				"Fetters, masterwork": "Masterwork"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Ifrits/New Racial Rules/Ifrit Equipment/Ifrit Equipment",
+			"parser": "gear2",
+			"default_subtype": "alchemical"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Kobolds/New Racial Rules/Kobold Equipment/Kobold Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Alchemical coal (blinding cinders)": "alchemical",
+				"Alchemical coal (choking smoke)": "alchemical"
+			},
+			"alternate_names": {
+				"Alchemical coal (blinding cinders)": "Alchemical Coal",
+				"Alchemical coal (choking smoke)": "Alchemical Coal"
+			},
+			"distinct_section": {
+				"Alchemical coal (blinding cinders)": "Blinding Cinders",
+				"Alchemical coal (choking smoke)": "Choking Smoke"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Kobolds/New Racial Rules/Kobold Equipment/Table Kobold Tail Attachments",
+			"parser": "weapons",
+			"default_subtype": "weapon",
+			"alternate_names": {
+				"Long lash": "Kobold Tail Attachments",
+				"Pounder": "Kobold Tail Attachments",
+				"Razored": "Kobold Tail Attachments",
+				"Spiked": "Kobold Tail Attachments",
+				"Sweeper": "Kobold Tail Attachments"
+			},
+			"distinct_section": {
+				"Long lash": "Long Lash",
+				"Pounder": "Pounder",
+				"Razored": "Razored",
+				"Spiked": "Spiked",
+				"Sweeper": "Sweeper"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Orcs/New Racial Rules/Orc Equipment/Orc Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"War spirit pouch": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Oreads/New Racial Rules/Oread Equipment/Oread Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Stonechipper salve": "alchemical"
+			},
+			"alternate_names": {
+				"Fleshgem (decorative)": "Flashgem",
+				"Fleshgem (spikes)": "Flashgem"
+			},
+			"distinct_section": {
+				"Fleshgem (decorative)": "Decorative",
+				"Fleshgem (spikes)": "Spikes"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Ratfolk/New Racial Rules/Ratfolk Equipment/Ratfolk Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Blight tonic": "alchemical",
+				"Pox burster": "alchemical",
+				"Stink ink": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Ratfolk/New Racial Rules/Ratfolk Equipment/Ratfolk Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Sylphs/New Racial Rules/Sylph Equipment/Sylph Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Elemental breath": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Tengus/New Racial Rules/Tengu Equipment/Tengu Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Wing oil": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Tieflings/New Racial Rules/Tiefling Equipment/Tiefling Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Fiendgore ungent": "alchemical"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Undines/New Racial Rules/Undine Equipment/Undine Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_subtypes": {
+				"Potion sponge": "alchemical"
+			}
+		},
+
+
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Duergar/New Racial Rules/Duergar Equipment/Duergar Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Gillmen/New Racial Rules/Gillman Equipment/Gillman Weapon",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Merfolk/New Racial Rules/Merfolk Equipment/Merfolk Equipment",
+			"parser": "gear2",
+			"default_subtype": "weapon",
+			"distinct_section": {
+				"Underwater crossbow, heavy": "Heavy",
+				"Underwater crossbow, light": "Light"
+			},
+			"alternate_names": {
+				"Underwater crossbow, heavy": "Underwater Crossbow",
+				"Underwater crossbow, light": "Underwater Crossbow"
+			},
+			"additional_fields": {
+				"Underwater crossbow, heavy": {"Critical": "19-20&times;2", "Dmg (L)": "2d8", "Dmg (M)": "1d10", "Dmg (S)": "1d8", "Dmg (T)": "1d6", "Proficiency": "Simple Weapons", "Type": "P", "Weapon Class": "Ranged Weapons", "Range": "120 ft."},
+				"Underwater crossbow, light": {"Critical": "19-20&times;2", "Dmg (L)": "1d8", "Dmg (M)": "1d8", "Dmg (S)": "1d6", "Dmg (T)": "1d3", "Proficiency": "Simple Weapons", "Type": "P", "Weapon Class": "Ranged Weapons", "Range": "80 ft."}
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Samsarans/New Racial Rules/Samsaran Equipment/Samsaran Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Strix/New Racial Rules/Strix Equipment/Strix Weapon",
+			"parser": "weapons",
+			"default_subtype": "weapon",
+			"alternate_names": {
+				"Net, snag": "Snag Net"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Sulis/New Racial Rules/Suli Equipment/Suli Equipment",
+			"parser": "gear2",
+			"default_subtype": "alchemical"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Svirfneblin/New Racial Rules/Svirfneblin Equipment/Svirfneblin Weapon",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Vishkanyas/New Racial Rules/Vishkanya Equipment/Vishkanya Equipment",
+			"parser": "gear2",
+			"default_subtype": "alchemical"
+		},
+		{
+			"url": "pfsrd://Advanced Race Guide/Races/Wayangs/New Racial Rules/Wayang Equipment/Wayang Equipment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_names": {
+				"Shadow stencil set": "Shadow Stencils"
+			}
+		}
+	]
+}

@@ -1,0 +1,138 @@
+{
+	"tables": [
+		{
+			"url": "pfsrd://Advanced Players Guide/Rules/Gear/Weapons/Table Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon",
+			"alternate_subtypes": {
+				"Arrow, blunt": "ammunition",
+				"Arrow, flight": "ammunition",
+				"Arrow, smoke": "ammunition"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Players Guide/Rules/Gear/Armor/Table Armor and Shields",
+			"parser": "armor",
+			"alternate_names": {
+				"Wooden": "Wooden Armor",
+				"Quickdraw shield, light wooden": "Quickdraw Shield, Light Wooden or Steel",
+				"Quickdraw shield, light steel": "Quickdraw Shield, Light Wooden or Steel"
+			},
+			"distinct_section": {
+				"Quickdraw shield, light wooden": "Wooden",
+				"Quickdraw shield, light steel": "Steel"
+			},
+			"default_subtype": "armor",
+			"alternate_subtypes": {
+				"Quickdraw shield, light wooden": "shield",
+				"Quickdraw shield, light steel": "shield"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Players Guide/Rules/Gear/Goods and Services/Adventuring Gear/Table Goods and Services",
+			"parser": "gear2",
+			"alternate_names": {
+				"Chest, small": "Chest",
+				"Chest, medium": "Chest",
+				"Chest, large": "Chest",
+				"Chest, huge": "Chest",
+				"Tent, small": "Tent",
+				"Tent, medium": "Tent",
+				"Tent, large": "Tent",
+				"Tent, pavilion": "Tent"
+			},
+			"distinct_section": {
+				"Chest, small": "Small",
+				"Chest, medium": "Medium",
+				"Chest, large": "Large",
+				"Chest, huge": "Huge",
+				"Tent, small": "Small",
+				"Tent, medium": "Medium",
+				"Tent, large": "Large",
+				"Tent, pavilion": "Pavilion"
+			},
+			"default_subtype": "gear",
+			"additional_fields": {
+				"Chest, small": {"Capacity": "2 cubic feet", "Hit Points": "1", "Break": "DC 17 Strength Check"},
+				"Chest, medium": {"Capacity": "4 cubic feet", "Hit Points": "15", "Break": "DC 23 Strength Check"},
+				"Chest, large": {"Capacity": "6 cubic feet", "Hit Points": "30", "Break": "DC 29 Strength Check"},
+				"Chest, huge": {"Capacity": "8 cubic feet", "Hit Points": "50", "Break": "DC 35 Strength Check"},
+				"Paper": {"Hardness": "0", "Hit Points": "1", "Break": "DC 5 Strength Check"},
+				"Periscope": {"Hardness": "5", "Hit Points": "2"},
+				"Rice Paper": {"Hardness": "0", "Hit Points": "1", "Break": "DC 2 Strength Check"},
+				"Rope, Spider's Silk": {"Hit Points": "6", "Burst": "DC 25 Strength Check"},
+				"Scroll Case": {"Hardness": "2 for leather or 5 for wood", "Hit Points": "2", "Break": "DC 15 Strength Check"},
+				"String or Twine": {"Hardness": "0", "Hit Points": "1", "Break": "DC 14 Strength Check"},
+				"Tent, small": {"Holds": "1 Medium Creature", "Assembly": "20 Minutes"},
+				"Tent, medium": {"Holds": "2 Medium Creatures", "Assembly": "30 Minutes"},
+				"Tent, large": {"Holds": "4 Medium Creatures", "Assembly": "45 Minutes"},
+				"Tent, pavilion": {"Holds": "10 Medium Creatures", "Assembly": "90 Minutes"}
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Players Guide/Rules/Gear/Goods and Services/Special Substances and Items/Special Substances and Items",
+			"parser": "gear2",
+			"alternate_names": {
+				"Weapon blanch, adamantine": "Weapon Blanch",
+				"Weapon blanch, cold iron": "Weapon Blanch",
+				"Weapon blanch, silver": "Weapon Blanch"
+			},
+			"distinct_section": {
+				"Weapon blanch, adamantine": "Adamantine",
+				"Weapon blanch, cold iron": "Cold Iron",
+				"Weapon blanch, silver": "Silver"
+			},
+			"default_subtype": "alchemical",
+			"alternate_subtypes": {
+				"Casting plaster": "gear"
+			}
+		},
+		{
+			"url": "pfsrd://Advanced Players Guide/Rules/Gear/Goods and Services/Tools and Skill Kits/Tools and Skill Kits",
+			"parser": "gear2",
+			"alternate_names": {
+				"Fortune-teller's deck, common": "Fortune-Teller's Deck",
+				"Fortune-teller's deck, quality": "Fortune-Teller's Deck",
+				"Fortune-teller's deck, masterwork": "Fortune-Teller's Deck"
+			},
+			"distinct_section": {
+				"Fortune-teller's deck, common": "Common",
+				"Fortune-teller's deck, quality": "Quality",
+				"Fortune-teller's deck, masterwork": "Masterwork"
+			},
+			"default_subtype": "gear"
+		},
+		{
+			"url": "pfsrd://Advanced Players Guide/Rules/Gear/Goods and Services/Animal-Related Gear/Animal-Related Gear",
+			"parser": "gear2",
+			"alternate_names": {
+				"Cage, Diminutive or Fine": "Cage",
+				"Cage, Huge": "Cage",
+				"Cage, Large": "Cage",
+				"Cage, Small or Medium": "Cage",
+				"Cage, Tiny": "Cage"
+			},
+			"distinct_section": {
+				"Cage, Diminutive or Fine": "Diminutive or Fine",
+				"Cage, Huge": "Huge",
+				"Cage, Large": "Large",
+				"Cage, Small or Medium": "Small or Medium",
+				"Cage, Tiny": "Tiny"
+			},
+			"default_subtype": "gear"
+		},
+		{
+			"url": "pfsrd://Advanced Players Guide/Rules/Gear/Goods and Services/Entertainment Items/Entertainment Items",
+			"parser": "gear2",
+			"alternate_names": {
+				"Loaded dice, average": "Loaded Dice",
+				"Loaded dice, superior": "Loaded Dice"
+			},
+			"distinct_section": {
+				"Loaded dice, average": "Average",
+				"Loaded dice, superior": "Superior"
+			},
+			"default_subtype": "gear"
+		}
+	]
+}

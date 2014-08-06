@@ -44,10 +44,14 @@ def process_weapons(table_data, weapons):
 				item[remap[key]] = weapon[key]
 			else:
 				misc = item.setdefault('misc', [])
+				subsection = "Weapon"
+				value = weapon[key]
+				if weapon['Name'] in table_data.get('distinct_section', {}):
+					subsection = table_data['distinct_section'][weapon['Name']]
 				misc.append({
 					"field": key,
-					"subsection": "Weapon",
-					"value": weapon[key]})
+					"subsection": subsection,
+					"value": value})
 		weapon['item'] = item
 		set_subtype(table_data, "Weapon Class", weapon)
 	#pp = pprint.PrettyPrinter(indent=4)

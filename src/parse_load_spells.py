@@ -40,6 +40,7 @@ def load_spell_data(db):
 			batch = []
 			count += 50
 			print "Saving through %s" % count
+	batcher.batch_save(batch)
 
 def make_spell(conn, line, spell=None):
 	if not spell:
@@ -65,6 +66,8 @@ def add_subschool(conn, spell, index_id):
 			slist.append(subschool["subschool"])
 		if len(slist) > 0:
 			spell.subschools = slist
+		else:
+			spell.subschools = None
 	finally:
 		curs.close()
 
@@ -78,6 +81,8 @@ def add_levels(conn, spell, index_id):
 			llist.append({"level": level["level"], "class": level["class"]})
 		if len(llist) > 0:
 			spell.levels = llist
+		else:
+			spell.levels = None
 	finally:
 		curs.close()
 
@@ -91,6 +96,8 @@ def add_descriptor(conn, spell, index_id):
 			dlist.append(descriptor["descriptor"])
 		if len(dlist) > 0:
 			spell.descriptors = dlist
+		else:
+			spell.descriptors = None
 	finally:
 		curs.close()
 

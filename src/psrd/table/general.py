@@ -6,14 +6,19 @@ def clear_nbsp(field):
 	return field
 
 def fix_cost(item):
+	ignore = [
+			"combat trained", "dragon's breath", "entangling shot",
+			"flare", "paper, bullet or pellet", "salt shot"]
+	ignore_cost = ["empty"]
+	ignore_cost.extend(ignore)
 	if item.has_key('Name'):
 		matches = re.search(r' \((.*)\)', item['Name'])
 		if matches:
 			if item.has_key('Cost'):
-				if not matches.group(1) in ("combat trained",  "empty"):
+				if not matches.group(1) in ignore_cost:
 					item['Cost'] = "%s/%s" %(
 							item['Cost'], matches.group(1))
-			if not matches.group(1) in ("combat trained"):
+			if not matches.group(1) in ignore:
 				parts = item['Name'].split('(')
 				item['Name'] = parts[0].strip()
 				if parts[1].find(",") > -1:

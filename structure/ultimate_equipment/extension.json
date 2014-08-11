@@ -1,0 +1,511 @@
+{
+	"tables": [
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Armor/Armor and Shields/Armor and Shields",
+			"parser": "armor",
+			"alternate_names": {
+				"Lamellar (leather)": "Lamellar",
+				"Lamellar (horn)": "Lamellar",
+				"Lamellar (steel)": "Lamellar",
+				"Lamellar (iron)": "Lamellar",
+				"Lamellar (stone)": "Lamellar",
+				"Light steel quickdraw": "Light Steel Quickdraw Shield",
+				"Light steel": "Light Steel Shield",
+				"Light wooden quickdraw": "Light Wooden Quickdraw Shield",
+				"Light wooden": "Light Wooden Shield",
+				"Madu (leather)": "Madu",
+				"Madu (steel)": "Madu",
+				"Heavy steel": "Heavy Steel Shield",
+				"Heavy wooden": "Heavy Wooden Shield",
+				"Tower": "Tower Shield"
+			},
+			"distinct_section": {
+				"Lamellar (leather)": "Leather",
+				"Lamellar (horn)": "Horn",
+				"Lamellar (steel)": "Steel",
+				"Lamellar (iron)": "Iron",
+				"Lamellar (stone)": "Stone",
+				"Madu (leather)": "Leather",
+				"Madu (steel)": "Steel"
+			},
+			"default_subtype": "armor",
+			"alternate_subtypes": {
+				"Buckler": "shield",
+				"Klar": "shield",
+				"Light steel quickdraw": "shield",
+				"Light steel": "shield",
+				"Light wooden quickdraw": "shield",
+				"Light wooden": "shield",
+				"Madu (leather)": "shield",
+				"Madu (steel)": "shield",
+				"Heavy steel": "shield",
+				"Heavy wooden": "shield",
+				"Tower": "shield"
+			}
+		},
+
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Weapon Descriptions/Simple Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Weapon Descriptions/Martial Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Weapon Descriptions/Exotic Weapons",
+			"parser": "weapons",
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Weapon Descriptions/Ammunition",
+			"parser": "weapons",
+			"alternate_names": {
+				"Bamboo shaft arrows": "Bamboo Shaft Arrow",
+				"Whistling arrows": "Whistling Arrow"
+			},
+			"default_subtype": "ammunition"
+		},
+
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Firearms/Firearm Ammunition",
+			"parser": "weapons",
+			"alternate_names": {
+				"Alchemical cartridge (dragon's breath)": "Alchemical Cartridge",
+				"Alchemical cartridge (entangling shot)": "Alchemical Cartridge",
+				"Alchemical cartridge (flare)": "Alchemical Cartridge",
+				"Alchemical cartridge (paper, bullet or pellet)": "Alchemical Cartridge",
+				"Alchemical cartridge (salt shot)": "Alchemical Cartridge"
+			},
+			"distinct_section": {
+				"Alchemical cartridge (dragon's breath)": "Dragon's Breath",
+				"Alchemical cartridge (entangling shot)": "Entangling Shot",
+				"Alchemical cartridge (flare)": "Flare",
+				"Alchemical cartridge (paper, bullet or pellet)": "Paper, Bullet or Pellet",
+				"Alchemical cartridge (salt shot)": "Salt Shot"
+			},
+			"default_subtype": "weapon"
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Firearms/Firearms",
+			"parser": "weapons",
+			"default_subtype": "ammunition"
+		},
+
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Adventuring Gear/Adventuring Gear",
+			"parser": "gear2",
+			"alternate_names": {
+				"Backpack, common": "Backpack",
+				"Backpack, masterwork": "Backpack",
+				"Buoy, common": "Buoy",
+				"Buoy, superior": "Buoy",
+				"Cauldron, mithral": "Cauldron",
+				"Chest, small": "Chest",
+				"Chest, medium": "Chest",
+				"Chest, large": "Chest",
+				"Chest, huge": "Chest",
+				"Coffin, common": "Coffin",
+				"Coffin, ornate": "Coffin",
+				"Dungeoneering kit, common": "Dungeoneering Kit",
+				"Dungeoneering kit, deluxe": "Dungeoneering Kit",
+				"Gambler's kit, common": "Gambler's Kit",
+				"Gambler's kit, cheating": "Gambler's Kit",
+				"Grappling hook, common": "Grappling Hook",
+				"Grappling hook, mithral": "Grappling Hook",
+				"Holy symbol, wooden": "Holy Symbol",
+				"Holy symbol, iron": "Holy Symbol",
+				"Holy symbol, silver": "Holy Symbol",
+				"Holy symbol, gold": "Holy Symbol",
+				"Holy symbol, platinum": "Holy Symbol",
+				"Lock, simple": "Lock",
+				"Lock, average": "Lock",
+				"Lock, good": "Lock",
+				"Lock, superior": "Lock",
+				"Manacles, common": "Manacles",
+				"Manacles, masterwork": "Manacles",
+				"Manacles, mithral": "Manacles",
+				"Pot, common": "Pot",
+				"Pot, mithral": "Pot",
+				"Riding kit, common": "Riding Kit",
+				"Riding kit, exotic mount": "Riding Kit",
+				"Shovel, common": "Shovel",
+				"Shovel, folding": "Shovel",
+				"Skillet, common": "Skillet",
+				"Skillet, mithral": "Skillet",
+				"Snorkel, common": "Snorkel",
+				"Snorkel, masterwork": "Snorkel",
+				"Stilts, common": "Stilts",
+				"Stilts, masterwork": "Stilts",
+				"Survival kit, common": "Survival Kit",
+				"Survival kit, masterwork": "Survival Kit",
+				"Tent, small": "Tent",
+				"Tent, medium": "Tent",
+				"Tent, large": "Tent",
+				"Tent, pavilion": "Tent",
+				"Waffle iron, common": "Waffle Iron",
+				"Waffle iron, mithral": "Waffle Iron",
+				"Wire saw, common": "Wire Saw",
+				"Wire saw, adamantine": "Wire Saw"
+			},
+			"distinct_section": {
+				"Backpack, common": "Common",
+				"Backpack, masterwork": "Masterwork",
+				"Buoy, common": "Common",
+				"Buoy, superior": "Superior",
+				"Cauldron, mithral": "Mithral",
+				"Chest, small": "Small",
+				"Chest, medium": "Medium",
+				"Chest, large": "Large",
+				"Chest, huge": "Huge",
+				"Coffin, common": "Common",
+				"Coffin, ornate": "Ornate",
+				"Dungeoneering kit, common": "Common",
+				"Dungeoneering kit, deluxe": "Delux",
+				"Gambler's kit, common": "Common",
+				"Gambler's kit, cheating": "Cheating",
+				"Grappling hook, common": "Common",
+				"Grappling hook, mithral": "Mithral",
+				"Holy symbol, wooden": "Wooden",
+				"Holy symbol, iron": "Iron",
+				"Holy symbol, silver": "Silver",
+				"Holy symbol, gold": "Gold",
+				"Holy symbol, platinum": "Platinum",
+				"Lock, simple": "Simple",
+				"Lock, average": "Average",
+				"Lock, good": "Good",
+				"Lock, superior": "Superior",
+				"Manacles, common": "Common",
+				"Manacles, masterwork": "Masterwork",
+				"Manacles, mithral": "Mithral",
+				"Pot, common": "Common",
+				"Pot, mithral": "Mithral",
+				"Riding kit, common": "Common",
+				"Riding kit, exotic mount": "Exotic Mount",
+				"Shovel, common": "Common",
+				"Shovel, folding": "Folding",
+				"Skillet, common": "Common",
+				"Skillet, mithral": "Mithral",
+				"Snorkel, common": "Common",
+				"Snorkel, masterwork": "Masterwork",
+				"Stilts, common": "Common",
+				"Stilts, masterwork": "Masterwork",
+				"Survival kit, common": "Common",
+				"Survival kit, masterwork": "Masterwork",
+				"Tent, small": "Small",
+				"Tent, medium": "Medium",
+				"Tent, large": "Large",
+				"Tent, pavilion": "Pavilion",
+				"Waffle iron, common": "Common",
+				"Waffle iron, mithral": "Mithral",
+				"Wire saw, common": "Common",
+				"Wire saw, adamantine": "Adamantine"
+			},
+			"default_subtype": "gear"
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Tools and Skill Kits/Tools and Skill Kits",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_names": {
+				"Artisan's tools, common": "Artisan's Tools",
+				"Artisan's tools, masterwork": "Artisan's Tools",
+				"Fortune-teller's deck, common": "Fortune-Teller's Deck",
+				"Fortune-teller's deck, quality": "Fortune-Teller's Deck",
+				"Fortune-teller's deck, masterwork": "Fortune-Teller's Deck",
+				"Musical instrument, common": "Musical Instrument",
+				"Musical instrument, masterwork": "Musical Instrument",
+				"Parasol": "Parasol",
+				"Parasol, umbrella": "parasol",
+				"Thieves' tools, common": "Thieves' Tools",
+				"Thieves' tools, masterwork": "Thieves' Tools"
+			},
+			"distinct_section": {
+				"Artisan's tools, common": "Common",
+				"Artisan's tools, masterwork": "Masterwork",
+				"Fortune-teller's deck, common": "Common",
+				"Fortune-teller's deck, quality": "Quality",
+				"Fortune-teller's deck, masterwork": "Masterwork",
+				"Musical instrument, common": "Common",
+				"Musical instrument, masterwork": "Masterwork",
+				"Parasol, umbrella": "Umbrella",
+				"Thieves' tools, common": "Common",
+				"Thieves' tools, masterwork": "Masterwork"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Animals/Mounts/and Related Gear/Animals/Mounts/and Related Gear/Pets and Familiars",
+			"parser": "gear2",
+			"default_subtype": "animal",
+			"alternate_names": {
+				"Dog, lap": "Dog",
+				"Squirrel, common": "Squirrel",
+				"Squirrel, flying": "Squirrel"
+			},
+			"distinct_section": {
+				"Dog, lap": "Lap",
+				"Squirrel, common": "Common",
+				"Squirrel, flying": "Flying"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Animals/Mounts/and Related Gear/Animals/Mounts/and Related Gear/Guard and Hunting Animals",
+			"parser": "gear2",
+			"default_subtype": "animal",
+			"alternate_names": {
+				"Dog, guard": "Dog",
+				"Cat, Small": "Cat"
+			},
+			"distinct_section": {
+				"Dog, guard": "Guard",
+				"Cat, Small": "Small"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Animals/Mounts/and Related Gear/Animals/Mounts/and Related Gear/Farm and Work Animals",
+			"parser": "gear2",
+			"default_subtype": "animal",
+			"alternate_names": {
+			},
+			"distinct_section": {
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Animals/Mounts/and Related Gear/Animals/Mounts/and Related Gear/Mounts",
+			"parser": "gear2",
+			"default_subtype": "mount",
+			"alternate_names": {
+				"Axe beak (combat trained)": "Axe Beak",
+				"Dire bat, riding (combat trained)": "Dire Bat, Riding",
+				"Dog, riding": "Dog",
+				"Gecko, riding (combat trained)": "Gecko, Riding",
+				"Griffon (combat trained)": "Griffon",
+				"Hippogriff (combat trained)": "Griffon",
+				"Horse, heavy": "Horse",
+				"Horse, heavy (combat trained)": "Horse",
+				"Horse, light": "Horse",
+				"Horse, light (combat trained)": "Horse",
+				"Pony": "Horse",
+				"Pony (combat trained)": "Horse"
+			},
+			"distinct_section": {
+				"Axe beak (combat trained)": "Combat Trained",
+				"Dire bat, riding (combat trained)": "Combat Trained",
+				"Dog, riding": "Riding",
+				"Gecko, riding (combat trained)": "Riding, Combat Trained",
+				"Griffon (combat trained)": "Combat Trained",
+				"Hippogriff (combat trained)": "Combat Trained",
+				"Horse, heavy": "Heavy",
+				"Horse, heavy (combat trained)": "Heavy, Combat Trained",
+				"Horse, light": "Light",
+				"Horse, light (combat trained)": "Light, Combat Trained",
+				"Pony": "Pony",
+				"Pony (combat trained)": "Pony, Combat Trained"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Animals/Mounts/and Related Gear/Animals/Mounts/and Related Gear/Animal Related Gear",
+			"parser": "siege",
+			"default_subtype": "gear",
+			"alternate_names": {
+				"Barding, Medium creature": "Barding",
+				"Barding, Large creature": "Barding",
+				"Barding, Bit and bridle": "Bit and Bridle",
+				"Cage, Diminutive or Fine": "Cage",
+				"Cage, Tiny": "Cage",
+				"Cage, Small or Medium": "Cage",
+				"Cage, Large": "Cage",
+				"Cage, Huge": "Cage",
+				"Cage, Falconry gauntlet": "Falconry Gauntlet",
+				"Cage, Feed": "Feed",
+				"Saddle, Military": "Saddle",
+				"Saddle, Pack": "Saddle",
+				"Saddle, Riding": "Saddle",
+				"Saddle, exotic, Military": "Saddle",
+				"Saddle, exotic, Pack": "Saddle",
+				"Saddle, exotic, Riding": "Saddle",
+				"Saddle, exotic, Saddlebags": "Saddlebags",
+				"Saddle, exotic, Stabling": "Stabling"
+			},
+			"distinct_section": {
+				"Barding, Medium creature": "Medium Creature",
+				"Barding, Large creature": "Large Creature",
+				"Cage, Diminutive or Fine": "",
+				"Cage, Tiny": "Tiny",
+				"Cage, Small or Medium": "Small or Medium",
+				"Cage, Large": "Large",
+				"Cage, Huge": "Huge",
+				"Saddle, Military": "Military",
+				"Saddle, Pack": "Pack",
+				"Saddle, Riding": "Riding",
+				"Saddle, exotic, Military": "Exotic, Military",
+				"Saddle, exotic, Pack": "Exotic, Pack",
+				"Saddle, exotic, Riding": "Exotic, Riding"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Animals/Mounts/and Related Gear/Transports/Transport",
+			"parser": "gear2",
+			"default_subtype": "transport",
+			"alternate_names": {
+				"Chariot, light": "Chariot",
+				"Chariot, medium": "Chariot",
+				"Chariot, heavy": "Chariot",
+				"Wagon, light": "Wagon",
+				"Wagon, medium": "Wagon",
+				"Wagon, heavy": "Wagon"
+			},
+			"distinct_section": {
+				"Chariot, light": "Light",
+				"Chariot, medium": "Medium",
+				"Chariot, heavy": "Heavy",
+				"Wagon, light": "Light",
+				"Wagon, medium": "Medium",
+				"Wagon, heavy": "Heavy"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Clothing/Clothing",
+			"parser": "gear2",
+			"default_subtype": "clothing",
+			"alternate_names": {
+			},
+			"distinct_section": {
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Entertainment and Trade Goods/Entertainment/Entertainment",
+			"parser": "gear2",
+			"default_subtype": "gear",
+			"alternate_names": {
+				"Ball, 2 in.": "Ball",
+				"Ball, 5 in.": "Ball",
+				"Ball, 10 in.": "Ball",
+				"Loaded dice, average": "Loaded Dice",
+				"Loaded dice, superior": "Loaded Dice"
+			},
+			"distinct_section": {
+				"Ball, 2 in.": "2 in.", 
+				"Ball, 5 in.": "5 in.", 
+				"Ball, 10 in.": "10 in.", 
+				"Loaded dice, average": "Average", 
+				"Loaded dice, superior": "Superior" 
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Food and Drink/Food and Drink",
+			"parser": "gear2",
+			"default_subtype": "food",
+			"alternate_names": {
+				"Meal, poor": "Meals",
+				"Meal, common": "Meals",
+				"Meal, good": "Meals",
+				"Tea, ceremonial": "Tea",
+				"Wine, common": "Wine",
+				"Wine, fine": "Wine"
+			},
+			"distinct_section": {
+				"Meal, poor": "Poor",
+				"Meal, common": "Common",
+				"Meal, good": "Good",
+				"Tea, ceremonial": "Ceremonial",
+				"Wine, common": "Common",
+				"Wine, fine": "Fine"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Lodging and Services/Lodging and Services",
+			"parser": "gear2",
+			"default_subtype": "service",
+			"alternate_names": {
+				"Bath, cold": "Bath",
+				"Bath, hot": "Bath",
+				"Bath, public": "Bath",
+				"Hireling, untrained": "Hireling",
+				"Hireling, trained": "Hireling",
+				"Inn stay, poor": "Inn sTay",
+				"Inn stay, common": "Inn Stay",
+				"Inn stay, good": "Inn Stay",
+				"Inn suite, small": "Inn Stay",
+				"Inn suite, average": "Inn Stay",
+				"Inn suite, luxurious": "Inn Stay",
+				"Laundry, magic": "Laundry",
+				"Lawyer, novice": "Lawyer",
+				"Lawyer, competent": "Lawyer",
+				"Lawyer, experienced": "Lawyer",
+				"Scribe, text": "Scribe",
+				"Scribe, map": "Scribe"
+			},
+			"distinct_section": {
+				"Bath, cold": "Cold",
+				"Bath, hot": "Hot",
+				"Bath, public": "Public",
+				"Hireling, untrained": "Untrainted",
+				"Hireling, trained": "Trained",
+				"Inn stay, poor": "Poor",
+				"Inn stay, common": "Common",
+				"Inn stay, good": "Good",
+				"Inn suite, small": "Suite, Small",
+				"Inn suite, average": "Suite, Average",
+				"Inn suite, luxurious": "Suite, Luxurious",
+				"Laundry, magic": "Magic",
+				"Lawyer, novice": "Novice",
+				"Lawyer, competent": "Competent",
+				"Lawyer, experienced": "Experienced",
+				"Scribe, text": "Text",
+				"Scribe, map": "Map"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Alchemical Remedies/Alchemical Remedies",
+			"parser": "gear2",
+			"default_subtype": "alchemical",
+			"alternate_names": {
+			},
+			"distinct_section": {
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Alchemical Tools/Alchemical Tools",
+			"parser": "gear2",
+			"default_subtype": "alchemical",
+			"alternate_names": {
+				"Invisible ink, simple": "Invisible Ink",
+				"Invisible ink, average": "Invisible Ink",
+				"Invisible ink, good": "Invisible Ink",
+				"Invisible ink, superior": "Invisible Ink",
+				"Weapon blanch, adamantine": "Weapon Blanch",
+				"Weapon blanch, cold iron": "Weapon Blanch",
+				"Weapon blanch, silver": "Weapon Blanch"
+			},
+			"distinct_section": {
+				"Invisible ink, simple": "Simple",
+				"Invisible ink, average": "Average",
+				"Invisible ink, good": "Good",
+				"Invisible ink, superior": "Superior",
+				"Weapon blanch, adamantine": "Adamantine",
+				"Weapon blanch, cold iron": "Cold Iron",
+				"Weapon blanch, silver": "Silver"
+			}
+		},
+		{
+			"url": "pfsrd://Ultimate Equipment/Rules/Gear/Alchemical Weapons/Alchemical Weapons",
+			"parser": "weapons",
+			"default_subtype": "alchemical",
+			"alternate_names": {
+				"Pellet grenade, iron": "Pellet Grenade",
+				"Pellet grenade, silver": "Pellet Grenade",
+				"Pellet grenade, cold iron": "Pellet Grenade",
+				"Pellet grenade, adamantine": "Pellet Grenade"
+			},
+			"distinct_section": {
+				"Pellet grenade, iron": "Iron",
+				"Pellet grenade, silver": "Silver",
+				"Pellet grenade, cold iron": "Cold Iron",
+				"Pellet grenade, adamantine": "Adamantine"
+			}
+		}
+	]
+}

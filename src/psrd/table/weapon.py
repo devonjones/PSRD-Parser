@@ -6,6 +6,7 @@ def set_damage(weapon):
 	damage = {
 		"see text": ('see text', 'see text'),
 		"special": ('special', 'special'),
+		"Special": ('Special', 'Special'),
 		"1d2": ('&mdash;', '1d3'),
 		"1d3": ('1', '1d4'),
 		"1d4": ('1d2', '1d6'),

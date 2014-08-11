@@ -73,18 +73,22 @@
 			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Firearms/Firearm Ammunition",
 			"parser": "weapons",
 			"alternate_names": {
-				"Alchemical cartridge (dragon's breath)": "Alchemical Cartridge",
-				"Alchemical cartridge (entangling shot)": "Alchemical Cartridge",
-				"Alchemical cartridge (flare)": "Alchemical Cartridge",
-				"Alchemical cartridge (paper, bullet or pellet)": "Alchemical Cartridge",
-				"Alchemical cartridge (salt shot)": "Alchemical Cartridge"
+				"Alchemical cartridge, dragon's breath": "Alchemical Cartridge",
+				"Alchemical cartridge, entangling shot": "Alchemical Cartridge",
+				"Alchemical cartridge, flare": "Alchemical Cartridge",
+				"Alchemical cartridge, paper, bullet or pellet": "Alchemical Cartridge",
+				"Alchemical cartridge, salt shot": "Alchemical Cartridge",
+				"Black powder, dose": "Black Powder",
+				"Black powder, keg": "Black Powder"
 			},
 			"distinct_section": {
-				"Alchemical cartridge (dragon's breath)": "Dragon's Breath",
-				"Alchemical cartridge (entangling shot)": "Entangling Shot",
-				"Alchemical cartridge (flare)": "Flare",
-				"Alchemical cartridge (paper, bullet or pellet)": "Paper, Bullet or Pellet",
-				"Alchemical cartridge (salt shot)": "Salt Shot"
+				"Alchemical cartridge, dragon's breath": "Dragon's Breath",
+				"Alchemical cartridge, entangling shot": "Entangling Shot",
+				"Alchemical cartridge, flare": "Flare",
+				"Alchemical cartridge, paper, bullet or pellet": "Paper, Bullet or Pellet",
+				"Alchemical cartridge, salt shot": "Salt Shot",
+				"Black powder, dose": "Dose",
+				"Black powder, keg": "Keg"
 			},
 			"default_subtype": "weapon"
 		},
@@ -399,6 +403,16 @@
 			"parser": "gear2",
 			"default_subtype": "food",
 			"alternate_names": {
+				"Absinthe, glass": "Absinthe",
+				"Absinthe, bottle": "Absinthe",
+				"Ale, mug": "Ale",
+				"Ale, gallon": "Ale",
+				"Applejack, mug": "Applejack",
+				"Applejack, gallon": "Applejack",
+				"Mead, mug": "Mead",
+				"Mead, gallon": "Mead",
+				"Pulque, cup": "Pulque",
+				"Pulque, wineskin": "Pulque",
 				"Meal, poor": "Meals",
 				"Meal, common": "Meals",
 				"Meal, good": "Meals",
@@ -407,6 +421,16 @@
 				"Wine, fine": "Wine"
 			},
 			"distinct_section": {
+				"Absinthe, glass": "Glass",
+				"Absinthe, bottle": "Bottle",
+				"Ale, mug": "Mug",
+				"Ale, gallon": "Gallon",
+				"Applejack, mug": "Mug",
+				"Applejack, gallon": "Gallon",
+				"Mead, mug": "Mug",
+				"Mead, gallon": "Gallon",
+				"Pulque, cup": "Cup",
+				"Pulque, wineskin": "Wineskin",
 				"Meal, poor": "Poor",
 				"Meal, common": "Common",
 				"Meal, good": "Good",
@@ -509,3 +533,4 @@
 		}
 	]
 }
+

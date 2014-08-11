@@ -6,9 +6,7 @@ def clear_nbsp(field):
 	return field
 
 def fix_cost(item):
-	ignore = [
-			"combat trained", "dragon's breath", "entangling shot",
-			"flare", "paper, bullet or pellet", "salt shot"]
+	ignore = ["combat trained"]
 	ignore_cost = ["empty"]
 	ignore_cost.extend(ignore)
 	if item.has_key('Name'):

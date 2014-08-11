@@ -84,6 +84,34 @@
 			"default_subtype": "ammunition",
 			"alternate_subtypes": {
 				"Gunsmith's kit": "gear"
+			},
+			"alternate_names": {
+				"Alchemical cartridge, dragon's breath": "Alchemical Cartridges",
+				"Alchemical cartridge, entangling shot": "Alchemical Cartridges",
+				"Alchemical cartridge, flare": "Alchemical Cartridges",
+				"Alchemical cartridge, paper, bullet or pellet": "Alchemical Cartridges",
+				"Alchemical cartridge, salt shot": "Alchemical Cartridges",
+				"Black powder, dose": "Black Powder",
+				"Black powder, keg": "Black Powder",
+				"Pellets, handful": "Pellets",
+				"Pellets, 30 handfuls": "Pellets",
+				"Firearm bullet, 1": "Bullet",
+				"Firearm bullet, 30": "Bullet",
+				"Firearm bullet, pitted": "Bullet, Pitted",
+				"Firearm bullet, silver": "Bullet, Silver"
+			},
+			"distinct_section": {
+				"Alchemical cartridge, dragon's breath": "Dragon's Breath",
+				"Alchemical cartridge, entangling shot": "Entangling Shot",
+				"Alchemical cartridge, flare": "Flare",
+				"Alchemical cartridge, paper, bullet or pellet": "Paper",
+				"Alchemical cartridge, salt shot": "Salt Shot",
+				"Black powder, dose": "Dose",
+				"Black powder, keg": "Keg",
+				"Pellets, handful": "Handful",
+				"Pellets, 30 handfuls": "30 Handfuls",
+				"Firearm bullet, 1": "1",
+				"Firearm bullet, 30": "30"
 			}
 		},
 		{

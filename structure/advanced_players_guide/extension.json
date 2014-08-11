@@ -39,7 +39,10 @@
 				"Tent, small": "Tent",
 				"Tent, medium": "Tent",
 				"Tent, large": "Tent",
-				"Tent, pavilion": "Tent"
+				"Tent, pavilion": "Tent",
+				"Hourglass, 1 hour": "Hourglass",
+				"Hourglass, 1 minute": "Hourglass",
+				"Hourglass, 6 seconds": "Hourglass"
 			},
 			"distinct_section": {
 				"Chest, small": "Small",
@@ -49,7 +52,10 @@
 				"Tent, small": "Small",
 				"Tent, medium": "Medium",
 				"Tent, large": "Large",
-				"Tent, pavilion": "Pavilion"
+				"Tent, pavilion": "Pavilion",
+				"Hourglass, 1 hour": "1 Hour",
+				"Hourglass, 1 minute": "1 Minute",
+				"Hourglass, 6 seconds": "6 Seconds"
 			},
 			"default_subtype": "gear",
 			"additional_fields": {

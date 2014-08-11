@@ -150,16 +150,16 @@
 			"parser": "gear2",
 			"default_subtype": "gear",
 			"alternate_subtypes": {
-				"Alchemical coal (blinding cinders)": "alchemical",
-				"Alchemical coal (choking smoke)": "alchemical"
+				"Alchemical coal, blinding cinders": "alchemical",
+				"Alchemical coal, choking smoke": "alchemical"
 			},
 			"alternate_names": {
-				"Alchemical coal (blinding cinders)": "Alchemical Coal",
-				"Alchemical coal (choking smoke)": "Alchemical Coal"
+				"Alchemical coal, blinding cinders": "Alchemical Coal",
+				"Alchemical coal, choking smoke": "Alchemical Coal"
 			},
 			"distinct_section": {
-				"Alchemical coal (blinding cinders)": "Blinding Cinders",
-				"Alchemical coal (choking smoke)": "Choking Smoke"
+				"Alchemical coal, blinding cinders": "Blinding Cinders",
+				"Alchemical coal, choking smoke": "Choking Smoke"
 			}
 		},
 		{
@@ -197,12 +197,12 @@
 				"Stonechipper salve": "alchemical"
 			},
 			"alternate_names": {
-				"Fleshgem (decorative)": "Flashgem",
-				"Fleshgem (spikes)": "Flashgem"
+				"Fleshgem, decorative": "Fleshgem",
+				"Fleshgem, spikes": "Fleshgem"
 			},
 			"distinct_section": {
-				"Fleshgem (decorative)": "Decorative",
-				"Fleshgem (spikes)": "Spikes"
+				"Fleshgem, decorative": "Decorative",
+				"Fleshgem, spikes": "Spikes"
 			}
 		},
 		{

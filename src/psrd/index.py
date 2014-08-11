@@ -4,7 +4,7 @@ import os
 from psrd.sql import get_db_connection
 from psrd.sql import fetch_top, append_child_section, fetch_section, update_section
 from psrd.sql.section_index import fetch_indexable_sections, count_sections_with_name, fetch_index, insert_index, strip_unindexed_urls, update_link_create_index
-from psrd.sql.section_sort import create_sorts
+from psrd.sql.index.section_sort import create_sorts
 
 def save_index(curs, section_id, search_name, type_name):
 	fetch_index(curs, section_id, search_name)

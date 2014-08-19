@@ -40,7 +40,7 @@ def parse_creature(sb, book):
 		sb.keys.remove(tup)
 	if len(descriptors) > 0:
 		parse_creature_descriptors(creature, descriptors)
-	
+
 	for key, value in sb.keys:
 		creature_parse_function(key)(creature, value)
 	for detail in sb.details:
@@ -145,6 +145,10 @@ def creature_parse_function(field):
 		'evoker spell-like abilities': creature_spell_closure('evoker spell-like abilities'),
 		'dragon disciple spell-like abilities': creature_spell_closure('dragon disciple spell-like abilities'),
 		'shadowdancer spell-like abilities': creature_spell_closure('shadowdancer spell-like abilities'),
+		'devilbound spell-like abilities': creature_spell_closure('devilbound spell-like abilities'),
+		'gathlain spell-like abilities': creature_spell_closure('gathlain spell-like abilities'),
+		'kitsune spell-like abilities': creature_spell_closure('kitsune spell-like abilities'),
+		'wayang spell-like abilities': creature_spell_closure('wayang spell-like abilities'),
 
 		'spells prepared': creature_spell_closure('spells prepared'),
 		'adept spells prepared': creature_spell_closure('adept spells prepared'),
@@ -166,6 +170,8 @@ def creature_parse_function(field):
 
 		'spells known': creature_spell_closure('spells known'),
 		'bard spells known': creature_spell_closure('bard spells known'),
+		'inquisitor spells known': creature_spell_closure('inquisitor spells known'),
+		'oracle spells known': creature_spell_closure('oracle spells known'),
 		'sorcerer spells known': creature_spell_closure('sorcerer spells known'),
 
 		'opposition schools': creature_spell_closure('opposition schools'),
@@ -208,12 +214,13 @@ def creature_parse_function(field):
 	}
 	if field.lower().startswith('xp'):
 		return xp_closure('field')
+	#print field
 	return functions[field.lower()]
 
 def parse_cr(sb, value):
 	try:
 		v = int(value)
-		sb['cr'] = value 
+		sb['cr'] = value
 		return
 	except:
 		pass
@@ -242,7 +249,7 @@ def parse_broken_environment(sb, value):
 
 def xp_closure(field):
 	def fxn(sb, value):
-		sb['xp'] = value.replace('XP', '').strip() 
+		sb['xp'] = value.replace('XP', '').strip()
 	return fxn
 
 def perception_fix(sb, value):

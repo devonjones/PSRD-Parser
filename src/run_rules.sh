@@ -357,5 +357,20 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Mythic Heroes"   $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicHeroes.html
 ./rules_parse.py -o $DATA_DIR -b "Mythic Adventures" -t "Mythic Game"     $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicGame.html
 
-#./mythicSpells
-#./mythicMonsters
+# Pathfinder Campaign Setting: Technology Guide"
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Artifical Intelligence" $WEB_DIR/pathfinderRPG/prd/technologyGuide/ai.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Archtypes"       $WEB_DIR/pathfinderRPG/prd/technologyGuide/archetypes.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Armor"           $WEB_DIR/pathfinderRPG/prd/technologyGuide/armor.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Artifacts"       $WEB_DIR/pathfinderRPG/prd/technologyGuide/artifacts.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Crafting"        $WEB_DIR/pathfinderRPG/prd/technologyGuide/crafting.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Cybertech"       $WEB_DIR/pathfinderRPG/prd/technologyGuide/cybertech.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Introduction"    $WEB_DIR/pathfinderRPG/prd/technologyGuide/equipmentIntroduction.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Feats"           $WEB_DIR/pathfinderRPG/prd/technologyGuide/feats.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Gear"            $WEB_DIR/pathfinderRPG/prd/technologyGuide/gear.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Hazards"         $WEB_DIR/pathfinderRPG/prd/technologyGuide/hazards.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Pharmaceuticals" $WEB_DIR/pathfinderRPG/prd/technologyGuide/pharmaceuticals.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Skills"          $WEB_DIR/pathfinderRPG/prd/technologyGuide/skills.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Spells"          $WEB_DIR/pathfinderRPG/prd/technologyGuide/spells.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Technomancer"    $WEB_DIR/pathfinderRPG/prd/technologyGuide/technomancer.html
+./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Weapons"         $WEB_DIR/pathfinderRPG/prd/technologyGuide/weapons.html
+

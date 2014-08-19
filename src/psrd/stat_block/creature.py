@@ -214,7 +214,6 @@ def creature_parse_function(field):
 	}
 	if field.lower().startswith('xp'):
 		return xp_closure('field')
-	#print field
 	return functions[field.lower()]
 
 def parse_cr(sb, value):

@@ -13,6 +13,12 @@ def is_item(sb, book):
 		return True
 	if len(fields.keys()) == 1 and fields.has_key('Price'):
 		return True
+	if fields.has_key('Slot') and fields.has_key('Weight'):
+		# Technology Guide: Artifacts
+		return True
+	if fields.has_key('Hardness') and fields.has_key('HP') and fields.has_key('Yield'):
+		# Technology Guide: Reactors
+		return True
 	return False
 
 def parse_item_slot(item, value):
@@ -64,4 +70,4 @@ def parse_item(sb, book):
 				text.append(unicode(detail))
 	if len(text) > 0:
 		collapse_text(item, text)
-	return item 
+	return item

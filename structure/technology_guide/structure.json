@@ -1,0 +1,41 @@
+{
+  "name": "Technology Guide",
+  "children": [
+    {
+      "name": "Rules",
+      "children": [
+        {
+          "name": "Technology in the world",
+          "children": [
+            {"name": "Skills", "file": "rules/skills.json"},
+            {"name": "Feats", "file": "rules/feats.json"},
+            {"name": "Spells", "file": "rules/spells.json"},
+            {"name": "Archetypes", "file": "rules/archtypes.json"},
+            {"name": "Technomancer", "file": "rules/technomancer.json"},
+            {"name": "Crafting", "file": "rules/crafting.json"}
+          ]
+        },
+        {
+          "name": "Equipment",
+          "children": [
+            {"name": "Introduction", "file": "rules/introduction.json"},
+            {"name": "Weapons", "file": "rules/weapons.json"},
+            {"name": "Armor", "file": "rules/armor.json"},
+            {"name": "Pharmaceuticals", "file": "rules/pharmaceuticals.json"},
+            {"name": "Cybertech", "file": "rules/cybertech.json"},
+            {"name": "Gear", "file": "rules/gear.json"}
+          ]
+        },
+        {
+          "name": "Hazards and Artifacts",
+          "children": [
+            {"name": "Hazards", "file": "rules/hazards.json"},
+            {"name": "Artifical Intelligence", "file": "rules/artifical_intelligence.json"},
+            {"name": "Artifacts", "file": "rules/artifacts.json"}
+          ]
+        }
+      ]
+    }
+  ]
+}
+

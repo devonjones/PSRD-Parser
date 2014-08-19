@@ -2,5 +2,11 @@
 {"new": "pfsrd://Ultimate Combat/Rules/Vehicles/Vehicle Statistics",
   "old": "pfsrd://Ultimate Combat/Rules/Vehicles/Vehicle Statistics/Name"},
 {"new": "pfsrd://Ultimate Combat/Rules/Class Archetypes/Rogue/Advanced Rogue Talents/Hard Minded",
-  "old": "pfsrd://Ultimate Combat/Rules/Class Archetypes/Rogue/Advanced Rogue Talents/Hard to Fool"}
+  "old": "pfsrd://Ultimate Combat/Rules/Class Archetypes/Rogue/Advanced Rogue Talents/Hard to Fool"},
+
+{"new": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Bronze Age/Table Bronze Age Weapons",
+ "old": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Bronze Age/Rhomphaia/Table Bronze Age Weapons"},
+{"new": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Stone Age/Table Stone Age Weapons",
+ "old": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Stone Age/Wahaika/Table Stone Age Weapons"}
+
 ]

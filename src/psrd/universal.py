@@ -251,7 +251,7 @@ def stat_block_key_inner_parse(sb, detail, key, text):
 	if len(sb.keys) <= 1 and not stored:
 		store_key(sb, 'descriptor', text)
 		text = []
-		
+
 	return key, text
 
 def colon_pass(details):
@@ -379,7 +379,11 @@ def parse_universal(filename, output, book, title=False, max_title=5):
 		br_filter(soup)
 		divs = soup.findAll('div')
 		for div in divs:
-			if div.has_key('id') and div['id'] == 'body':
+			if div.has_key('class') and div['class'] == 'body':
+				children = div.findAll('div')
+				for child in children:
+					if child.has_key('class') and child['class'] == 'footer':
+						child.extract()
 				div = __derender_divs(div)
 				return parse_body(div, book, title, max_title)
 	finally:

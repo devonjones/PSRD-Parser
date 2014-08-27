@@ -99,7 +99,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 ./json_loader.py       -d $DATA_DIR/book-ma.db -p "Monsters" $DATA_DIR/mythic_adventures/creatures/*.json
 ./rules_loader.py      -d $DATA_DIR/book-ma.db               $DATA_DIR/mythic_adventures/structure.json
 ./index_loader.py      -d $DATA_DIR/book-ma.db
-#./url_ref_loader.py    -d $DATA_DIR/book-ma.db               $DATA_DIR/mythic_adventures/urlref.json
+./url_ref_loader.py    -d $DATA_DIR/book-ma.db               $DATA_DIR/mythic_adventures/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ma.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ma.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-ma.db >> $DATA_DIR/urllist.txt.tmp
@@ -143,7 +143,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 # Bestiary4 
 ./json_loader.py       -d $DATA_DIR/book-b4.db -p "Monsters" $DATA_DIR/bestiary_4/creatures/*.json
 ./index_loader.py      -d $DATA_DIR/book-b4.db
-#./url_ref_loader.py    -d $DATA_DIR/book-b4.db               $DATA_DIR/bestiary_4/urlref.json
+./url_ref_loader.py    -d $DATA_DIR/book-b4.db               $DATA_DIR/bestiary_4/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b4.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-b3.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-b4.db >> $DATA_DIR/urllist.txt.tmp

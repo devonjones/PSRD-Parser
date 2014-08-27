@@ -25,6 +25,30 @@
 {"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Monk/Monk Archetypes/Qinggong Monk/Ki Powers/Activation",
  "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Monk/Monk Archetypes/Qinggong Monk/Activation"},
 {"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Monk/Monk Archetypes/Qinggong Monk/Ki Powers/Requirements",
- "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Monk/Monk Archetypes/Qinggong Monk/Requirements"}
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Monk/Monk Archetypes/Qinggong Monk/Requirements"},
+
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Sorcerer/Sorcerer Archetypes/Wildblooded/Aerial",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Sorcerer/Sorcerer Archetypes/Wildblooded/Arial"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Sorcerer/Sorcerer Archetypes/Wildblooded/Aerial/Bloodline Powers/Windcaller",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Sorcerer/Sorcerer Archetypes/Wildblooded/Arial/Bloodline Powers/Windcaller"},
+
+{"new": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Cleric/Oracle Words/0-Level Cleric/Oracle Words",
+ "old": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Cleric/Oracle Words/0-Level Cleric/Oracle Words/Bleeding Wounds"},
+{"new": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Cleric/Oracle Words/1st-Level Cleric/Oracle Words",
+ "old": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Cleric/Oracle Words/1st-Level Cleric/Oracle Words/Alignment"},
+{"new": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Druid Words/4th-Level Druid Words",
+ "old": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Druid Words/4th-Level Druid Words/Altered Form"},
+{"new": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Inquisitor Words/1st-Level Inquisitor Words",
+ "old": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Inquisitor Words/1st-Level Inquisitor Words/Alignment"},
+{"new": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Paladin Words/1st-Level Paladin Words",
+ "old": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Paladin Words/1st-Level Paladin Words/Alignment"},
+{"new": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Sorcerer/Wizard Words/1st-Level Sorcerer/Wizard Words",
+ "old": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Sorcerer/Wizard Words/1st-Level Sorcerer/Wizard Words/Alignment"},
+{"new": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Witch Words/0-Level Witch Words",
+ "old": "pfsrd://Ultimate Magic/Rules/Words of Power/Class Word Lists/Witch Words/0-Level Witch Words/Bleeding Wounds"},
+{"new": "pfsrd://Ultimate Magic/Spells/Interrogation",
+ "old": "pfsrd://Ultimate Magic/Spells/Interrogation/School"},
+{"new": "pfsrd://Ultimate Magic/Spells/Vermin Shape I",
+ "old": "pfsrd://Ultimate Magic/Spells/Vermin Shape I/School"}
 ]
 

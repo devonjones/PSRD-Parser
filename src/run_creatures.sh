@@ -601,6 +601,7 @@ source dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/gargoyle.html
 ./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/giants.html
 ./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/griffon.html
+./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/golem.html
 ./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/hellHound.html
 ./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/hydra.html
 ./creature_parse.py -o $DATA_DIR -b "Mythic Adventures"  $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicMonsters/lamia.html
@@ -644,6 +645,7 @@ source dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/changeling.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/clockwork.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/colossus.html
+./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/colourOutOfSpace.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/comozantWyrd.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/contemplative.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/darkCaller.html
@@ -795,6 +797,7 @@ source dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/wickerman.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/wikkawak.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/winterHag.html
+./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/wyrwood.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/wyvaran.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/xanthos.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/xenopterid.html
@@ -802,3 +805,4 @@ source dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/ypotryll.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/zombieLord.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/zomok.html
+

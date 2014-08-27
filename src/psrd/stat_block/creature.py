@@ -1,19 +1,22 @@
 from psrd.sections import cap_words
-from psrd.stat_block.utils import colon_filter, default_closure, noop, parse_stat_block, collapse_text, has_heading, sections_pass
-from psrd.universal import StatBlockSection, Heading, filter_name, title_collapse_pass
+from psrd.stat_block.utils import colon_filter, default_closure, noop
+from psrd.stat_block.utils import parse_stat_block, collapse_text, has_heading
+from psrd.stat_block.utils import  sections_pass
+from psrd.universal import StatBlockSection, Heading, filter_name
+from psrd.universal import title_collapse_pass
 
 def is_npc(sb, book):
 	if is_creature(sb, book):
-		fields = dict(sb.keys)
 		for detail in sb.details:
-			if detail.__class__ == StatBlockSection and detail.name.lower().strip() in ['boon']:
+			if detail.__class__ == StatBlockSection and detail.name.lower(
+					).strip() in ['boon']:
 				return True
 	return False
 
 def is_creature(sb, book):
-	fields = dict(sb.keys)
 	for detail in sb.details:
-		if detail.__class__ == StatBlockSection and detail.name.lower().strip() in ['ecology', 'statistics']:
+		if detail.__class__ == StatBlockSection and detail.name.lower(
+				).strip() in ['ecology', 'statistics']:
 			return True
 	return False
 
@@ -48,28 +51,46 @@ def parse_creature(sb, book):
 			detail.name = 'Statistics'
 		if detail.name.lower() == 'environment':
 			detail.name = 'Ecology'
-		if detail.__class__ == StatBlockSection and detail.name.lower() in ['defense', 'offense', 'statistics', 'ecology']:
+		if detail.__class__ == StatBlockSection and detail.name.lower() in [
+				'defense', 'offense', 'statistics', 'ecology']:
 			for key, value in detail.keys:
 				creature_parse_function(key)(creature, value)
 			for subd in detail.details:
 				if isinstance(subd, dict) or isinstance(subd, Heading):
 					sections.append(subd)
 				else:
-					newsec = {'type': 'section', 'source': book, 'text': unicode(subd)}
+					newsec = {
+						'type': 'section',
+						'source': book,
+						'text': unicode(subd)}
 					sections.append(newsec)
-		elif detail.__class__ == StatBlockSection and detail.name.lower() in ['special abilities']:
-			special_abilities = {'type': 'section', 'subtype': 'special_abilities', 'source': book, 'name': 'Special Abilities', 'sections': []}
+		elif detail.__class__ == StatBlockSection and detail.name.lower() in [
+				'special abilities']:
+			special_abilities = {
+					'type': 'section',
+					'subtype': 'special_abilities',
+					'source': book,
+					'name': 'Special Abilities',
+					'sections': []}
 			for key in detail.keys:
-				newsec = {'type': 'section', 'source': book, 'name': key[0], 'text': key[1]}
+				newsec = {
+						'type': 'section',
+						'source': book,
+						'name': key[0],
+						'text': key[1]}
 				special_abilities['sections'].append(newsec)
 			sections.append(special_abilities)
 			for subd in detail.details:
 				if isinstance(subd, dict) or isinstance(subd, Heading):
 					sections.append(subd)
 				else:
-					newsec = {'type': 'section', 'source': book, 'text': unicode(subd)}
+					newsec = {
+							'type': 'section',
+							'source': book,
+							'text': unicode(subd)}
 					sections.append(newsec)
-		elif detail.__class__ == StatBlockSection and detail.name.lower() in ['tactics']:
+		elif detail.__class__ == StatBlockSection and detail.name.lower() in [
+				'tactics']:
 			sections.append(parse_stat_block(detail, book, no_sb=True))
 		else:
 			if isinstance(detail, dict) or isinstance(detail, Heading):
@@ -128,51 +149,89 @@ def creature_parse_function(field):
 		'spell-like abilities': creature_spell_closure('spell-like abilities'),
 		'spell-lilke abilities': creature_spell_closure('spell-like abilities'),
 		'spell-like ability': creature_spell_closure('spell-like abilities'),
-		'bloodline spell-like ability': creature_spell_closure('bloodline spell-like ability'),
-		'bloodline spell-like abilities': creature_spell_closure('bloodline spell-like abilities'),
+		'bloodline spell-like ability': creature_spell_closure(
+			'bloodline spell-like ability'),
+		'bloodline spell-like abilities': creature_spell_closure(
+			'bloodline spell-like abilities'),
 		'bloodline': creature_spell_closure('bloodline'),
-		'arcane spell-like abilities': creature_spell_closure('arcane spell-like abilities'),
-		'arcane school spell-like abilities': creature_spell_closure('arcane school spell-like abilities'),
-		'domain spell-like abilities': creature_spell_closure('domain spell-like abilities'),
-		'ifrit spell-like abilities': creature_spell_closure('ifrit spell-like abilities'),
-		'gnome spell-like abilities': creature_spell_closure('gnome spell-like abilities'),
-		'sorcerer spell-like abilities': creature_spell_closure('sorcerer spell-like abilities'),
-		'paladin spell-like abilities': creature_spell_closure('paladin spell-like abilities'),
-		'rogue spell-like abilities': creature_spell_closure('rogue spell-like abilities'),
-		'conjurer spell-like abilities': creature_spell_closure('conjurer spell-like abilities'),
-		'transmuter spell-like abilities': creature_spell_closure('transmuter spell-like abilities'),
-		'enchanter spell-like abilities': creature_spell_closure('enchanter spell-like abilities'),
-		'evoker spell-like abilities': creature_spell_closure('evoker spell-like abilities'),
-		'dragon disciple spell-like abilities': creature_spell_closure('dragon disciple spell-like abilities'),
-		'shadowdancer spell-like abilities': creature_spell_closure('shadowdancer spell-like abilities'),
-		'devilbound spell-like abilities': creature_spell_closure('devilbound spell-like abilities'),
-		'gathlain spell-like abilities': creature_spell_closure('gathlain spell-like abilities'),
-		'kitsune spell-like abilities': creature_spell_closure('kitsune spell-like abilities'),
-		'wayang spell-like abilities': creature_spell_closure('wayang spell-like abilities'),
+		'arcane spell-like abilities': creature_spell_closure(
+			'arcane spell-like abilities'),
+		'arcane school spell-like abilities': creature_spell_closure(
+			'arcane school spell-like abilities'),
+		'domain spell-like abilities': creature_spell_closure(
+			'domain spell-like abilities'),
+		'ifrit spell-like abilities': creature_spell_closure(
+				'ifrit spell-like abilities'),
+		'gnome spell-like abilities': creature_spell_closure(
+				'gnome spell-like abilities'),
+		'sorcerer spell-like abilities': creature_spell_closure(
+				'sorcerer spell-like abilities'),
+		'paladin spell-like abilities': creature_spell_closure(
+				'paladin spell-like abilities'),
+		'rogue spell-like abilities': creature_spell_closure(
+				'rogue spell-like abilities'),
+		'conjurer spell-like abilities': creature_spell_closure(
+				'conjurer spell-like abilities'),
+		'transmuter spell-like abilities': creature_spell_closure(
+				'transmuter spell-like abilities'),
+		'enchanter spell-like abilities': creature_spell_closure(
+				'enchanter spell-like abilities'),
+		'evoker spell-like abilities': creature_spell_closure(
+				'evoker spell-like abilities'),
+		'dragon disciple spell-like abilities': creature_spell_closure(
+				'dragon disciple spell-like abilities'),
+		'shadowdancer spell-like abilities': creature_spell_closure(
+				'shadowdancer spell-like abilities'),
+		'devilbound spell-like abilities': creature_spell_closure(
+				'devilbound spell-like abilities'),
+		'gathlain spell-like abilities': creature_spell_closure(
+				'gathlain spell-like abilities'),
+		'kitsune spell-like abilities': creature_spell_closure(
+				'kitsune spell-like abilities'),
+		'wayang spell-like abilities': creature_spell_closure(
+				'wayang spell-like abilities'),
 
 		'spells prepared': creature_spell_closure('spells prepared'),
-		'adept spells prepared': creature_spell_closure('adept spells prepared'),
-		'bard spells prepared': creature_spell_closure('bard spells prepared'),
-		'cleric spells prepared': creature_spell_closure('cleric spells prepared'),
-		'conjurer spells prepared': creature_spell_closure('conjurer spells prepared'),
-		'druid spells prepared': creature_spell_closure('druid spells prepared'),
-		'paladin spells prepared': creature_spell_closure('paladin spells prepared'),
-		'ranger spells prepared': creature_spell_closure('ranger spells prepared'),
-		'witch spells prepared': creature_spell_closure('witch spells prepared'),
-		'wizard spells prepared': creature_spell_closure('wizard spells prepared'),
-		'necromancer spells prepared': creature_spell_closure('necromancer spells prepared'),
-		'enchanter spells prepared': creature_spell_closure('enchanter spells prepared'),
-		'diviner spells prepared': creature_spell_closure('diviner spells prepared'),
-		'transmuter spells prepared': creature_spell_closure('transmuter spells prepared'),
-		'evoker spells prepared': creature_spell_closure('evoker spells prepared'),
-		'illusionist spells prepared': creature_spell_closure('illusionist spells prepared'),
-		'abjurer spells prepared': creature_spell_closure('abjurer spells prepared'),
+		'adept spells prepared': creature_spell_closure(
+				'adept spells prepared'),
+		'bard spells prepared': creature_spell_closure(
+				'bard spells prepared'),
+		'cleric spells prepared': creature_spell_closure(
+				'cleric spells prepared'),
+		'conjurer spells prepared': creature_spell_closure(
+				'conjurer spells prepared'),
+		'druid spells prepared': creature_spell_closure(
+				'druid spells prepared'),
+		'paladin spells prepared': creature_spell_closure(
+				'paladin spells prepared'),
+		'ranger spells prepared': creature_spell_closure(
+				'ranger spells prepared'),
+		'witch spells prepared': creature_spell_closure(
+				'witch spells prepared'),
+		'wizard spells prepared': creature_spell_closure(
+				'wizard spells prepared'),
+		'necromancer spells prepared': creature_spell_closure(
+				'necromancer spells prepared'),
+		'enchanter spells prepared': creature_spell_closure(
+				'enchanter spells prepared'),
+		'diviner spells prepared': creature_spell_closure(
+				'diviner spells prepared'),
+		'transmuter spells prepared': creature_spell_closure(
+				'transmuter spells prepared'),
+		'evoker spells prepared': creature_spell_closure(
+				'evoker spells prepared'),
+		'illusionist spells prepared': creature_spell_closure(
+				'illusionist spells prepared'),
+		'abjurer spells prepared': creature_spell_closure(
+				'abjurer spells prepared'),
 
 		'spells known': creature_spell_closure('spells known'),
 		'bard spells known': creature_spell_closure('bard spells known'),
-		'inquisitor spells known': creature_spell_closure('inquisitor spells known'),
+		'inquisitor spells known': creature_spell_closure(
+				'inquisitor spells known'),
 		'oracle spells known': creature_spell_closure('oracle spells known'),
-		'sorcerer spells known': creature_spell_closure('sorcerer spells known'),
+		'sorcerer spells known': creature_spell_closure(
+				'sorcerer spells known'),
 
 		'opposition schools': creature_spell_closure('opposition schools'),
 		'prohibited schools': creature_spell_closure('prohibited schools'),
@@ -339,7 +398,8 @@ def parse_creature_descriptor(creature, value):
 		creature['creature_type'] = cap_words(values.pop(0))
 	if len(values) > 0:
 		if values[0] in ['beast', 'humanoid']:
-			creature['creature_type'] = creature['creature_type'] + " " + cap_words(values.pop(0))
+			creature['creature_type'] = creature['creature_type'] + \
+				" " + cap_words(values.pop(0))
 	if len(values) > 0:
 		raise Exception('well fuck: %s' %(values))
 

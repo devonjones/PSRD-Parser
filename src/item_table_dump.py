@@ -117,7 +117,7 @@ def option_parser(usage):
 	parser.add_option(
 		"-d", "--db", dest="db", help="Sqlite DB to load into (required)")
 	parser.add_option(
-		"-b", "--book", dest="book", help="Book races are from (required)")
+		"-b", "--book", dest="book", help="Book items are from (required)")
 	return parser
 
 def main():

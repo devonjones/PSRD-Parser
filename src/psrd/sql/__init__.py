@@ -348,31 +348,44 @@ def fetch_immediate_subordinantes(curs, parent_id, section_type=None):
 	# There may be many rows in the result set.
 	fetch_section_tree_depth(curs, parent_id, section_type, 1)
 
-def insert_section_left(curs, section_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
+def insert_section_left(curs, section_id, section_type, subtype, name, abbrev,
+		source, description, text, image, alt, url, create_index):
 	fetch_section(curs, section_id)
 	section = curs.fetchone()
-	insert_child_section(curs, section['lft'] - 1, section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, section['lft'] - 1, section['parent_id'],
+			section_type, subtype, name, abbrev, source, description, text,
+			image, alt, url, create_index)
 	return curs.lastrowid
 
-def insert_section_right(curs, section_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
+def insert_section_right(curs, section_id, section_type, subtype, name, abbrev,
+		source, description, text, image, alt, url, create_index):
 	fetch_section(curs, section_id)
 	section = curs.fetchone()
-	insert_child_section(curs, section['rgt'], section['parent_id'], section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, section['rgt'], section['parent_id'],
+			section_type, subtype, name, abbrev, source, description, text,
+			image, alt, url, create_index)
 	return curs.lastrowid
 
-def append_child_section(curs, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
+def append_child_section(curs, parent_id, section_type, subtype, name, abbrev,
+		source, description, text, image, alt, url, create_index):
 	fetch_section(curs, parent_id)
 	parent = curs.fetchone()
-	insert_child_section(curs, parent['rgt'] - 1, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, parent['rgt'] - 1, parent_id, section_type,
+			subtype, name, abbrev, source, description, text, image, alt, url,
+			create_index)
 	return curs.lastrowid
 
-def prepend_child_section(curs, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
+def prepend_child_section(curs, parent_id, section_type, subtype, name, abbrev,
+		source, description, text, image, alt, url, create_index):
 	fetch_section(curs, parent_id)
 	parent = curs.fetchone()
-	insert_child_section(curs, parent['lft'], parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index)
+	insert_child_section(curs, parent['lft'], parent_id, section_type, subtype,
+			name, abbrev, source, description, text, image, alt, url,
+			create_index)
 	return curs.lastrowid
 
-def insert_child_section(curs, update_above, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index):
+def insert_child_section(curs, update_above, parent_id, section_type, subtype,
+		name, abbrev, source, description, text, image, alt, url, create_index):
 	if text and text.find('\n') > -1:
 		text = text.replace('\n', '')
 	values = [update_above]
@@ -388,7 +401,9 @@ def insert_child_section(curs, update_above, parent_id, section_type, subtype, n
 	curs.execute(sql, values)
 	if name and name.strip() == '':
 		name = None
-	values = [update_above, update_above, parent_id, section_type, subtype, name, abbrev, source, description, text, image, alt, url, create_index]
+	values = [update_above, update_above, parent_id, section_type, subtype,
+			name, abbrev, source, description, text, image, alt, url,
+			create_index]
 	sql = '\n'.join([
 		"INSERT INTO sections",
 		" (lft, rgt, parent_id, type, subtype, name, abbrev, source, description, body, image, alt, url, create_index)",
@@ -396,15 +411,18 @@ def insert_child_section(curs, update_above, parent_id, section_type, subtype, n
 		"(? + 1, ? + 2, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
-def update_section(curs, section_id, description=None):
+def update_section(curs, section_id, **kwargs):
+	possible = ["type", "subtype", "name", "abbrev", "source", "description",
+			"body", "image", "alt", "create_index"]
 	values = []
 	sqla = ["UPDATE sections"]
 	sep = " SET"
-	if description:
-		sqla.append(sep)
-		sqla.append(" description = ?")
-		sep = ", "
-		values.append(description)
+	for field in possible:
+		if field in kwargs.keys():
+			sqla.append(sep)
+			sqla.append(" " + field + " = ?")
+			sep = ", "
+			values.append(kwargs[field])
 	sqla.append(" WHERE section_id = ?")
 	values.append(section_id)
 	sql = '\n'.join(sqla)

@@ -23,7 +23,7 @@ def write_output(output_dir, book, output):
 	if not os.path.exists(os.path.dirname(filename)):
 		os.makedirs(os.path.dirname(filename))
 	with open(filename, 'w') as jsonfile:
-		json.dump(output, jsonfile)
+		json.dump(output, jsonfile, indent=2)
 
 def reduce_misc(item):
 	misc_list = item.get('misc', [])

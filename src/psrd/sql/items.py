@@ -27,6 +27,22 @@ def insert_item_detail(curs, section_id, aura=None, slot=None, cl=None, price=No
 		" (?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
+def update_item_detail(curs, section_id, **kwargs):
+	possible = ["aura", "slot", "cl", "price", "weight"]
+	values = []
+	sqla = ["UPDATE item_details"]
+	sep = " SET"
+	for field in possible:
+		if field in kwargs.keys():
+			sqla.append(sep)
+			sqla.append(" " + field + " = ?")
+			sep = ", "
+			values.append(kwargs[field])
+	sqla.append(" WHERE section_id = ?")
+	values.append(section_id)
+	sql = '\n'.join(sqla)
+	curs.execute(sql, values)
+
 def delete_item_detail(curs, section_id):
 	values = [section_id]
 	sql = '\n'.join([
@@ -68,18 +84,25 @@ def insert_item_misc(curs, section_id, field=None, subsection=None, value=None, 
 		" (?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
-def delete_item_misc(curs, section_id):
-	values = [section_id]
+def delete_item_misc(curs, item_misc_id):
+	values = [item_misc_id]
 	sql = '\n'.join([
 		"DELETE FROM item_misc",
-		" WHERE section_id = ?"])
+		" WHERE item_misc_id = ?"])
 	curs.execute(sql, values)
 
-def fetch_item_misc(curs, section_id):
+def fetch_item_misc(curs, section_id, field=None, subsection=None):
 	values = [section_id]
-	sql = '\n'.join([
+	sqla = [
 		"SELECT *",
 		" FROM item_misc",
-		" WHERE section_id = ?"])
+		" WHERE section_id = ?"]
+	if field:
+		sqla.append("  AND field = ?")
+		values.append(field)
+	if subsection:
+		sqla.append("  AND subsection = ?")
+		values.append(subsection)
+	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
 

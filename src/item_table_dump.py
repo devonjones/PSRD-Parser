@@ -9,7 +9,6 @@ from psrd.table.gear import parse_gear_header, parse_gear_header2
 from psrd.table.gear import siege_engine_modifier_clear
 from psrd.table.io import load_extension_file, produce_output, write_output
 
-
 def find_section_subtree(curs, parent_id, **kwargs):
 	# There may be many rows in the result set.
 	values = [parent_id]

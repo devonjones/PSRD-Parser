@@ -156,6 +156,8 @@ echo 'select url from sections where url is not null order by url;' | sqlite3 $D
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-npc.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-npc.db >> $DATA_DIR/urllist.txt.tmp
 
+# Load extension data
+./run_extensions.sh
 
 # Central Index
 ./central_index_loader.py   -d $DATA_DIR/index.db   $DATA_DIR/book-*.db

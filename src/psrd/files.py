@@ -2,9 +2,10 @@ import os
 import glob
 
 def char_replace(instr):
-	instr = instr.replace(' ', '_')
 	for char in ['(', ')', '[', ']', ',', '/', "'", ":", ";", "&"]:
 		instr = instr.replace(char, '')
+	instr = instr.strip()
+	instr = instr.replace(' ', '_')
 	return instr.lower()
 
 def makedirs(output, book, localdir):

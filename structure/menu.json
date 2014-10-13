@@ -9,6 +9,10 @@
 		{"name": "NPC Classes", "type": "class", "subtype": "npc", "priority": 40}
 	]},
 	{"name": "Class Customizations", "priority": 20, "children": [
+
+		{"name": "Arcanist Archetypes", "type": "class_archetype", "subtype": "arcanist", "priority": 10},
+		{"name": "Arcanist Exploit", "subtype": "arcanist_exploit", "priority": 10},
+		{"name": "Arcanist Greater Exploit", "subtype": "arcanist_greater_exploit", "priority": 10},
 		{"name": "Alchemist Archetypes", "type": "class_archetype", "subtype": "alchemist", "priority": 10},
 		{"name": "Alchemist Discoveries", "subtype": "alchemist_discovery", "priority": 10},
 		{"name": "Barbarian Archetypes", "type": "class_archetype", "subtype": "barbarian", "priority": 10},
@@ -16,6 +20,9 @@
 		{"name": "Bard Archetypes", "type": "class_archetype", "subtype": "bard", "priority": 10},
 		{"name": "Bardic Masterpieces", "subtype": "bard_masterpiece", "priority": 10},
 		{"name": "Bardic Performances", "subtype": "bardic_performance", "priority": 10},
+		{"name": "Bloodrager Archetypes", "type": "class_archetype", "subtype": "bloodrager", "priority": 10},
+		{"name": "Bloodrager Bloodline", "subtype": "bloodrager_bloodline", "priority": 10},
+		{"name": "Brawler Archetypes", "type": "class_archetype", "subtype": "brawler", "priority": 10},
 		{"name": "Cavalier Archetypes", "type": "class_archetype", "subtype": "cavalier", "priority": 10},
 		{"name": "Cavalier Orders", "subtype": "warrior_order", "priority": 10},
 		{"name": "Cleric Archetypes", "type": "class_archetype", "subtype": "cleric", "priority": 10},
@@ -27,9 +34,13 @@
 		{"name": "Druid Domain", "subtype": "druid_domain", "priority": 10},
 		{"name": "Fighter Archetypes", "type": "class_archetype", "subtype": "fighter", "priority": 10},
 		{"name": "Gunslinger Archetypes", "type": "class_archetype", "subtype": "gunslinger", "priority": 10},
+		{"name": "Gunslinger Dare", "subtype": "gunslinger_dare", "priority": 10},
 		{"name": "Gunslinger Deeds", "subtype": "gunslinger_deed", "priority": 10},
+		{"name": "Hunter Archetypes", "type": "class_archetype", "subtype": "hunter", "priority": 10},
 		{"name": "Inquisitor Archetypes", "type": "class_archetype", "subtype": "inquisitor", "priority": 10},
 		{"name": "Inquisitor Inquisitions", "subtype": "inquisitor_inquisition", "priority": 10},
+		{"name": "Investigator Archetypes", "type": "class_archetype", "subtype": "investigator", "priority": 10},
+		{"name": "Investigator Talent", "subtype": "investigator_talent", "priority": 10},
 		{"name": "Magus Archetypes", "type": "class_archetype", "subtype": "magus", "priority": 10},
 		{"name": "Magus Arcana", "subtype": "magus_arcana", "priority": 10},
 		{"name": "Monk Archetypes", "type": "class_archetype", "subtype": "monk", "priority": 10},
@@ -44,6 +55,14 @@
 		{"name": "Rogue Archetypes", "type": "class_archetype", "subtype": "rogue", "priority": 10},
 		{"name": "Rogue Talents", "subtype": "rogue_talent", "priority": 10},
 		{"name": "Rogue Advanced Talents", "subtype": "rogue_advanced_talent", "priority": 10},
+		{"name": "Shaman Archetypes", "type": "class_archetype", "subtype": "shaman", "priority": 10},
+		{"name": "Shaman Hex", "subtype": "shaman_hex", "priority": 10},
+		{"name": "Shaman Spirit", "subtype": "shaman_spirit", "priority": 10},
+		{"name": "Skald Archetypes", "type": "class_archetype", "subtype": "skald", "priority": 10},
+		{"name": "Skald Raging Song", "subtype": "skald_raging_song", "priority": 10},
+		{"name": "Slayer Archetypes", "type": "class_archetype", "subtype": "slayer", "priority": 10},
+		{"name": "Slayer Talent", "subtype": "slayer_talent", "priority": 10},
+		{"name": "Slayer Advanced Talent", "subtype": "slayer_advanced_talent", "priority": 10},
 		{"name": "Sorcerer Archetypes", "type": "class_archetype", "subtype": "sorcerer", "priority": 10},
 		{"name": "Sorcerer Bloodlines", "subtype": "sorcerer_bloodline", "priority": 10},
 		{"name": "Summoner Archetypes", "type": "class_archetype", "subtype": "summoner", "priority": 10},
@@ -51,6 +70,10 @@
 		{"name": "Summoner 2 Point Evolutions", "subtype": "summoner_evolution_2", "priority": 10},
 		{"name": "Summoner 3 Point Evolutions", "subtype": "summoner_evolution_3", "priority": 10},
 		{"name": "Summoner 4 Point Evolutions", "subtype": "summoner_evolution_4", "priority": 10},
+		{"name": "Swashbuckler Archetypes", "type": "class_archetype", "subtype": "swashbuckler", "priority": 10},
+		{"name": "Swashbuckler Deed", "subtype": "swashbuckler_deed", "priority": 10},
+		{"name": "Warpriest Archetypes", "type": "class_archetype", "subtype": "warpriest", "priority": 10},
+		{"name": "Warpriest Bledding", "subtype": "warpriest_blessing", "priority": 10},
 		{"name": "Witch Archetypes", "type": "class_archetype", "subtype": "witch", "priority": 10},
 		{"name": "Witch Hexes", "subtype": "witch_hex", "priority": 10},
 		{"name": "Witch Major Hexes", "subtype": "witch_major_hex", "priority": 10},
@@ -106,6 +129,9 @@
 	]},
 	{"name": "Rules: Core Rulebook", "source": "Core Rulebook", "priority": 40, "children": [
 		{"group": "children", "source": "Core Rulebook", "db": "book-cr.db", "url": "pfsrd://Core Rulebook/Rules", "priority": 10}
+	]},
+	{"name": "Rules: Advanced Class Guide", "source": "Advanced Class Guide", "priority": 50, "children": [
+		{"group": "children", "source": "Advanced Class Guide", "db": "book-acg.db", "url": "pfsrd://Advanced Class Guide/Rules", "priority": 10}
 	]},
 	{"name": "Rules: Advanced Player's Guide", "source": "Advanced Player's Guide", "priority": 50, "children": [
 		{"group": "children", "source": "Advanced Player's Guide", "db": "book-apg.db", "url": "pfsrd://Advanced Players Guide/Rules", "priority": 10}

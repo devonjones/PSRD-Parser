@@ -149,6 +149,7 @@ def parse_level(spell, value):
 		value = value.replace(";", ",")
 	levels = value.split(', ')
 	finallevels = []
+	hunterlevels = None
 	for level in levels:
 		m = re.search('(.*) (\d*)', level)
 		c = m.group(1)
@@ -156,9 +157,26 @@ def parse_level(spell, value):
 		if c.lower().strip() == 'sorcerer/wizard':
 			finallevels.append({'class': 'sorcerer', 'level': l})
 			finallevels.append({'class': 'wizard', 'level': l})
+			finallevels.append({'class': 'arcanist', 'level': l})
+		elif c.lower().strip() == 'bard':
+			finallevels.append({'class': 'bard', 'level': l})
+			finallevels.append({'class': 'skald', 'level': l})
+		elif c.lower().strip() == 'alchemist':
+			finallevels.append({'class': 'alchemist', 'level': l})
+			finallevels.append({'class': 'investigator', 'level': l})
 		elif c.lower().strip() == 'cleric':
 			finallevels.append({'class': 'cleric', 'level': l})
 			finallevels.append({'class': 'oracle', 'level': l})
+			finallevels.append({'class': 'warpriest', 'level': l})
+		elif c.lower().strip() in ['druid', 'ranger']:
+			finallevels.append({'class': c, 'level': l})
+			if l <= 6:
+				if not hunterlevel:
+					hunterlevel = {'class': 'hunter', 'level': l}
+				elif hunterlevel['level'] > l:
+					hunterlevel['level'] = l
 		else:
 			finallevels.append({'class': c, 'level': l})
+		if hunterlevel:
+			finallevels.append(hunter)
 	spell['level'] = finallevels

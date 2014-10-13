@@ -1,0 +1,68 @@
+{
+  "name": "Advanced Class Guide",
+  "children": [
+    {
+      "name": "Rules",
+      "children": [
+        {"name": "Hybrid Classes", "file": "rules/hybrid_classes.json"},
+        {
+          "name": "Gear",
+          "children": [
+            {"name": "Class Options", "file": "rules/class_options.json"},
+            {"name": "Alchemist", "file": "rules/alchemist.json"},
+            {"name": "Arcanist", "file": "rules/arcanist.json"},
+            {"name": "Barbarian", "file": "rules/barbarian.json"},
+            {"name": "Bard", "file": "rules/bard.json"},
+            {"name": "Bloodrager", "file": "rules/bloodrager.json"},
+            {"name": "Brawler", "file": "rules/brawler.json"},
+            {"name": "Cavalier", "file": "rules/cavalier.json"},
+            {"name": "Cleric", "file": "rules/cleric.json"},
+            {"name": "Druid", "file": "rules/druid.json"},
+            {"name": "Fighter", "file": "rules/fighter.json"},
+            {"name": "gunslinger", "file": "rules/gunslinger.json"},
+            {"name": "Hunter", "file": "rules/hunter.json"},
+            {"name": "Inquisitor", "file": "rules/inquisitor.json"},
+            {"name": "Investigator", "file": "rules/investigator.json"},
+            {"name": "Magus", "file": "rules/magus.json"},
+            {"name": "Monk", "file": "rules/monk.json"},
+            {"name": "Oracle", "file": "rules/oracle.json"},
+            {"name": "Paladin", "file": "rules/paladin.json"},
+            {"name": "Ranger", "file": "rules/ranger.json"},
+            {"name": "Rogue", "file": "rules/rogue.json"},
+            {"name": "Shaman", "file": "rules/shaman.json"},
+            {"name": "Skald", "file": "rules/skald.json"},
+            {"name": "Slayer", "file": "rules/slayer.json"},
+            {"name": "Sorcerer", "file": "rules/sorcerer.json"},
+            {"name": "Summoner", "file": "rules/summoner.json"},
+            {"name": "Swashbuckler", "file": "rules/swashbuckler.json"},
+            {"name": "Warpriest", "file": "rules/warpriest.json"},
+            {"name": "Witch", "file": "rules/witch.json"},
+            {"name": "Wizard", "file": "rules/wizard.json"}
+          ]
+        },
+        {"name": "Feats", "file": "rules/feats.json"},
+        {"name": "Spell Lists", "file": "rules/spell_lists.json"},
+        {
+          "name": "Gear",
+          "children": [
+            {"name": "Gear", "file": "rules/gear.json"},
+            {"name": "Adventuring Gear", "file": "rules/adventuring_gear.json"},
+            {"name": "Alchemical Remedies", "file": "rules/alchemical_remedies.json"},
+            {"name": "Alchemical Tools", "file": "rules/alchemical_tools.json"},
+            {"name": "Alchemical Weapons", "file": "rules/alchemical_weapons.json"},
+            {"name": "Specific Armor and Shields", "file": "rules/specific_armors__shields.json"},
+            {"name": "Armor Special Abilities", "file": "rules/armor_special_abilities.json"},
+            {"name": "Specific Weapons", "file": "rules/specific_weapons.json"},
+            {"name": "Weapon Special Abilities", "file": "rules/weapon_special_abilities.json"},
+            {"name": "Rings", "file": "rules/rings.json"},
+            {"name": "Rods", "file": "rules/rods.json"},
+            {"name": "Staves", "file": "rules/staves.json"},
+            {"name": "Wondrous Items", "file": "rules/wondrous_items.json"}
+          ]
+        },
+        {"name": "Designing Classes", "file": "rules/designing_classes.json"}
+      ]
+    }
+  ]
+}
+

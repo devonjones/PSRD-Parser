@@ -103,6 +103,7 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Rods" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/rods.html
 ./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Specific Armors & Shields" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/specificArmorsShields.html
 ./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Specific Weapons" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/specificWeapons.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Weapon Special Abilities" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/weaponSpecialAbilities.html
 ./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Staves" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/staves.html
 ./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Wondrous Items" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/wondrousItems.html
 

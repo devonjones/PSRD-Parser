@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import pprint
 from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
@@ -21,6 +22,11 @@ def core_structure_pass(section, filename):
 	section['sections'] = sections
 	return section, spell_lists
 
+def advanced_class_guide_structure_pass(section, filename):
+	spell_lists = section['sections'][6:]
+	del section['sections'][6:]
+	return section, spell_lists
+
 def advanced_structure_pass(section, filename):
 	sections = []
 	spell_lists = []
@@ -39,6 +45,8 @@ def spell_list_structure_pass(section, filename):
 	spell_lists = []
 	if filename == 'spellLists.html' and len(section['sections']) == 18:
 		section, spell_lists = mythic_structure_pass(section, filename)
+	elif section['source'] == "Advanced Class Guide":
+		section, spell_lists = advanced_class_guide_structure_pass(section, filename)
 	elif filename in ('spellLists.html'):
 		section, spell_lists = core_structure_pass(section, filename)
 	elif filename in ('advancedSpellLists.html', 'ultimateCombatSpellLists.html'):

@@ -139,7 +139,7 @@ def stat_block_pass(details):
 				retdetails.append(sb)
 			else:
 				retdetails.append(StatBlockHeading(get_text(detail), detail))
-		elif has_name(detail, 'h3') and detail.get('id', "").find('companion') > -1:
+		elif has_name(detail, 'h3') and detail.get('id', "").find('companion') > -1 and detail.get('id', "") != "evolved-companion":
 			retdetails.append(StatBlockHeading(get_text(detail), detail))
 		else:
 			retdetails.append(detail)

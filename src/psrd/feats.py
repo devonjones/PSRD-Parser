@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import pprint
 from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
@@ -12,6 +13,7 @@ def adjust_core_pass(struct, filename):
 	second = 6
 	if filename in ('advancedFeats.html', 'ultimateMagicFeats.html'):
 		first = 2
+	pprint.pprint(struct)
 	fdesc = struct['sections'][first]
 	special = fdesc['sections'][second - 2]
 	table = special['sections'][0]
@@ -40,6 +42,11 @@ def adjust_ultimate_combat_pass(struct):
 	p['name'] = 'Prerequisite'
 	return struct, feats
 
+def adjust_advanced_class_guide_pass(struct):
+	feats = struct['sections'][1]['sections'][5:]
+	del struct['sections'][1]['sections'][5:]
+	return struct, feats
+
 def adjust_ultimate_campaign_pass(struct):
 	feats = struct['sections'][2]['sections']
 	del struct['sections'][2]
@@ -53,7 +60,10 @@ def adjust_mythic_adventures_pass(struct):
 def adjust_feat_structure_pass(struct, filename):
 	feats = []
 	if filename in ('feats.html', 'advancedFeats.html', 'ultimateMagicFeats.html'):
-		struct, feats = adjust_core_pass(struct, filename)
+		if struct['source'] == 'Advanced Class Guide':
+			struct, feats = adjust_advanced_class_guide_pass(struct)
+		else:
+			struct, feats = adjust_core_pass(struct, filename)
 	elif filename in ('monsterFeats.html'):
 		feats = struct['sections']
 		del struct['sections']

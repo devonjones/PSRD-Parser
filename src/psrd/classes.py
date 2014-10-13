@@ -42,7 +42,7 @@ def druid_structural_pass(section):
 				newsections.append(s)
 		section['sections'] = newsections
 	return section
-	
+
 def structural_pass(struct, filename):
 	if filename in ('druid.html'):
 		struct = druid_structural_pass(struct)
@@ -111,19 +111,23 @@ def mark_subtype_pass(struct, name, section_type, subtype):
 def core_class_pass(struct):
 	struct['subtype'] = 'core'
 	return struct
-	
+
 def npc_class_pass(struct):
 	struct['subtype'] = 'npc'
 	return struct
-	
+
 def base_class_pass(struct):
 	struct['subtype'] = 'base'
 	return struct
-	
+
+def hybrid_class_pass(struct):
+	struct['subtype'] = 'hybrid'
+	return struct
+
 def prestige_class_pass(struct):
 	struct['subtype'] = 'prestige'
 	return struct
-	
+
 def class_pass(struct):
 	struct['type'] = 'class'
 	align = find_section(struct, name="Alignment", section_type='section')
@@ -273,6 +277,13 @@ def parse_npc_classes(filename, output, book):
 		n_class = parse_class(n_class, book)
 		n_class = npc_class_pass(n_class)
 		write_class(filename, output, book, n_class)
+
+def parse_hybrid_classes(filename, output, book):
+	struct = first_pass(filename, output, book)
+	struct = anon_pass(struct)
+	b_class = parse_class(struct, book)
+	b_class = hybrid_class_pass(b_class)
+	write_class(filename, output, book, b_class)
 
 def parse_base_classes(filename, output, book):
 	struct = first_pass(filename, output, book)

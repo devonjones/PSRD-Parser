@@ -60,6 +60,52 @@ source dir.conf
 #./rules_parse.py -o $DATA_DIR -b "Bestiary 3" -t "Monster Cohorts"         $WEB_DIR/pathfinderRPG/prd/bestiary3/monsterCohorts.html
 #./rules_parse.py -o $DATA_DIR -b "Bestiary 3" -t "Universal Monster Rules" $WEB_DIR/pathfinderRPG/prd/bestiary3/universalMonsterRules.html
 
+# Advanced Class Guide
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Hybrid Classes"               $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/hybridClasses.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Designing Classes"            $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/designingClasses.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Class Options"                $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/index.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Alchemist"                    $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/alchemist.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Arcanist"                     $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/arcanist.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Barbarian"                    $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/barbarian.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Bard"                         $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/bard.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Bloodrager"                   $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/bloodrager.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Brawler"                      $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/brawler.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Cavalier"                     $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/cavalier.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Cleric"                       $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/cleric.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Druid"                        $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/druid.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Fighter"                      $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/fighter.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Gunslinger"                   $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/gunslinger.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Hunter"                       $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/hunter.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Inquisitor"                   $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/inquisitor.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Investigator"                 $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/investigator.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Magus"                        $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/magus.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Monk"                         $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/monk.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Oracle"                       $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/oracle.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Paladin"                      $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/paladin.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Ranger"                       $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/ranger.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Rogue"                        $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/rogue.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Shaman"                       $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/shaman.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Skald"                        $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/skald.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Slayer"                       $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/slayer.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Sorcerer"                     $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/sorcerer.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Summoner"                     $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/summoner.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Swashbuckler"                 $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/swashbuckler.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Warpriest"                    $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/warpriest.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Witch"                        $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/witch.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Wizard"                       $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/classOptions/wizard.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Adventuring Gear" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/adventuringGear.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Alchemical Remedies" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/alchemicalRemedies.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Alchemical Tools" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/alchemicalTools.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Alchemical Weapons" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/alchemicalWeapons.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Armor Special Abilities" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/armorSpecialAbilities.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Gear" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/index.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Rings" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/rings.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Rods" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/rods.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Specific Armors & Shields" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/specificArmorsShields.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Specific Weapons" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/specificWeapons.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Staves" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/staves.html
+./rules_parse.py -o $DATA_DIR -b "Advanced Class Guide" -t "Wondrous Items" $WEB_DIR/pathfinderRPG/prd/advancedClassGuide/gear/wondrousItems.html
+
 # Advanced Player's Guide
 ./rules_parse.py -o $DATA_DIR -b "Advanced Player's Guide" -t "Races"            $WEB_DIR/pathfinderRPG/prd/advanced/advancedRaces.html
 ./rules_parse.py -o $DATA_DIR -b "Advanced Player's Guide" -t "Base Classes"     $WEB_DIR/pathfinderRPG/prd/advanced/advancedBaseClasses.html

@@ -806,3 +806,6 @@ source dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/zombieLord.html
 ./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/zomok.html
 
+./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/leananSidhe.html
+./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/myrmecoleon.html
+./creature_parse.py -o $DATA_DIR -b "Bestiary 4"         $WEB_DIR/pathfinderRPG/prd/bestiary4/soulsliver.html

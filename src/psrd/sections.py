@@ -68,6 +68,8 @@ def filter_quotes(text):
 		text = unicode(text).replace(u'\u201d', '&rdquo;')
 	if unicode(text).find(u'\u00e2&euro;?') > -1:
 		text = unicode(text).replace(u'\u00e2&euro;?', '&rdquo;')
+	text = unicode(text).replace(u"\u2013", "-")
+	text = unicode(text).replace(u"\u2014", "-")
 	return text
 
 def quote_pass(section):

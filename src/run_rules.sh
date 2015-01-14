@@ -282,7 +282,7 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Fast Play Ship Combat" $WEB_DIR/pathfinderRPG/prd/mastery/fastPlayShipCombat.html
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Haunts"                $WEB_DIR/pathfinderRPG/prd/mastery/haunts.html
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Hazards"               $WEB_DIR/pathfinderRPG/prd/mastery/hazards.html
-./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "NPC Boons"             $WEB_DIR/pathfinderRPG/prd/mastery/nPCBoons.html
+./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "NPC Boons"             $WEB_DIR/pathfinderRPG/prd/mastery/npcBoons.html
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "NPC Gallery"           $WEB_DIR/pathfinderRPG/prd/mastery/npcGallery.html
 
 

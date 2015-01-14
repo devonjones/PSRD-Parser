@@ -1,7 +1,6 @@
 import os
 import json
 import re
-import pprint
 from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace

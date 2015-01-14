@@ -1,7 +1,6 @@
 import os
 import json
 import re
-import pprint
 from BeautifulSoup import BeautifulSoup
 from psrd.rules import write_rules
 from psrd.files import char_replace
@@ -13,7 +12,6 @@ def adjust_core_pass(struct, filename):
 	second = 6
 	if filename in ('advancedFeats.html', 'ultimateMagicFeats.html'):
 		first = 2
-	pprint.pprint(struct)
 	fdesc = struct['sections'][first]
 	special = fdesc['sections'][second - 2]
 	table = special['sections'][0]

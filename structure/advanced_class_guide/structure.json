@@ -6,7 +6,7 @@
       "children": [
         {"name": "Hybrid Classes", "file": "rules/hybrid_classes.json"},
         {
-          "name": "Gear",
+          "name": "Class Options",
           "children": [
             {"name": "Class Options", "file": "rules/class_options.json"},
             {"name": "Alchemist", "file": "rules/alchemist.json"},

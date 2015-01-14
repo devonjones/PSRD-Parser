@@ -1,0 +1,2 @@
+set noexpandtab
+let g:syntastic_python_pylint_args = '--rcfile=$HOME/.pylint.rc' 

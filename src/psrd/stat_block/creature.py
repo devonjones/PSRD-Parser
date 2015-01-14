@@ -153,7 +153,6 @@ def creature_parse_function(field):
 			'bloodline spell-like ability'),
 		'bloodline spell-like abilities': creature_spell_closure(
 			'bloodline spell-like abilities'),
-		'bloodline': creature_spell_closure('bloodline'),
 		'arcane spell-like abilities': creature_spell_closure(
 			'arcane spell-like abilities'),
 		'arcane school spell-like abilities': creature_spell_closure(
@@ -232,12 +231,6 @@ def creature_parse_function(field):
 		'oracle spells known': creature_spell_closure('oracle spells known'),
 		'sorcerer spells known': creature_spell_closure(
 				'sorcerer spells known'),
-
-		'opposition schools': creature_spell_closure('opposition schools'),
-		'prohibited schools': creature_spell_closure('prohibited schools'),
-		'd': creature_spell_closure('d'),
-		'domains': creature_spell_closure('domains'),
-		'm': creature_spell_closure('mythic'),
 
 		'str': default_closure('strength'),
 		'dex': default_closure('dexterity'),

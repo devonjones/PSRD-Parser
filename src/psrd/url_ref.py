@@ -12,7 +12,7 @@ def load_url_reference(conn, struct):
 			fetch_section_by_url(curs, item['new'])
 			section = curs.fetchone()
 			if not section:
-				raise Exception("%s" % item['new'])
+				raise Exception("'%s'" % item['new'])
 			section_id = section['section_id']
 			insert_url_reference(curs, section_id, item['old'])
 		conn.commit()

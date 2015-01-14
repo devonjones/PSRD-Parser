@@ -171,12 +171,12 @@ def parse_level(spell, value):
 		elif c.lower().strip() in ['druid', 'ranger']:
 			finallevels.append({'class': c, 'level': l})
 			if l <= 6:
-				if not hunterlevel:
-					hunterlevel = {'class': 'hunter', 'level': l}
-				elif hunterlevel['level'] > l:
-					hunterlevel['level'] = l
+				if not hunterlevels:
+					hunterlevels = {'class': 'hunter', 'level': l}
+				elif hunterlevels['level'] > l:
+					hunterlevels['level'] = l
 		else:
 			finallevels.append({'class': c, 'level': l})
-		if hunterlevel:
-			finallevels.append(hunter)
+		if hunterlevels:
+			finallevels.append(hunterlevels)
 	spell['level'] = finallevels

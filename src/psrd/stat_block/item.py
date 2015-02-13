@@ -13,6 +13,10 @@ def is_item(sb, book):
 		return True
 	if len(fields.keys()) == 1 and fields.has_key('Price'):
 		return True
+	if fields.has_key('Price') and fields.has_key('Type'):
+		return True
+	if len(fields.keys()) == 2 and fields.has_key('Common') and fields.has_key("Combat trained"):
+		return True
 	if fields.has_key('Slot') and fields.has_key('Weight'):
 		# Technology Guide: Artifacts
 		return True

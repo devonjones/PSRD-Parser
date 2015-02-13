@@ -3,7 +3,7 @@ from psrd.universal import StatBlockSection, filter_name
 
 def is_animal_companion(sb, book):
 	fields = dict(sb.keys)
-	if fields.has_key('AC'):
+	if fields.has_key('AC') or fields.has_key("Ability Scores"):
 		for detail in sb.details:
 			if detail.__class__ == StatBlockSection and detail.name.endswith('th-Level Advancement'):
 				return True
@@ -17,10 +17,13 @@ def animal_companion_parse_function(field):
 		'cmd': default_closure('cmd'),
 		'attack': default_closure('attack'),
 		'ability scores': default_closure('ability_scores'),
+		'special abilities': default_closure('special_abilities'),
 		'special qualities': default_closure('special_qualities'),
+		'sq': default_closure('special_qualities'),
 		'special attacks': default_closure('special_attacks'),
 		'size': default_closure('size'),
-		'speed': default_closure('speed')
+		'speed': default_closure('speed'),
+		'bonus feat': default_closure('bonus_feat')
 	}
 	return functions[field.lower()]
 

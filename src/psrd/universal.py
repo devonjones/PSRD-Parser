@@ -139,7 +139,7 @@ def stat_block_pass(details):
 				retdetails.append(sb)
 			else:
 				retdetails.append(StatBlockHeading(get_text(detail), detail))
-		elif has_name(detail, 'h3') and detail.get('id', "").find('companion') > -1 and detail.get('id', "") != "evolved-companion":
+		elif has_name(detail, 'h3') and detail.get('id', "").find('companion') > -1 and detail.get('id', "") not in ("evolved-companion", "vampiric-companion"):
 			retdetails.append(StatBlockHeading(get_text(detail), detail))
 		else:
 			retdetails.append(detail)
@@ -341,7 +341,8 @@ def section_text_pass(struct, book):
 	if len(newsections) > 0:
 		struct['sections'] = newsections
 	else:
-		del struct['sections']
+		if struct.has_key('sections'):
+			del struct['sections']
 	return struct
 
 def parse_body(div, book, title=False, max_title=5):

@@ -41,6 +41,7 @@ def generate_url(curs, parent_id, name, create_index=True, parent_url=None):
 	name = name.replace('&', 'and')
 	name = name.replace('?', '')
 	name = name.replace("'", "")
+	name = name.replace("/", "_")
 	if parent_id == None:
 		return "pfsrd://%s" % name
 	if parent_url == None:

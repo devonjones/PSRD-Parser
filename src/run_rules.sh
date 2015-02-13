@@ -421,3 +421,26 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Technomancer"    $WEB_DIR/pathfinderRPG/prd/technologyGuide/technomancer.html
 ./rules_parse.py -o $DATA_DIR -b "Technology Guide"  -t "Weapons"         $WEB_DIR/pathfinderRPG/prd/technologyGuide/weapons.html
 
+# Monster Codex
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Appendix"     $WEB_DIR/pathfinderRPG/prd/monsterCodex/appendix.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Boggards"     $WEB_DIR/pathfinderRPG/prd/monsterCodex/boggards.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Bugbears"     $WEB_DIR/pathfinderRPG/prd/monsterCodex/bugbears.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Drow"         $WEB_DIR/pathfinderRPG/prd/monsterCodex/drow.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Duergar"      $WEB_DIR/pathfinderRPG/prd/monsterCodex/duergar.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Fire Giants"  $WEB_DIR/pathfinderRPG/prd/monsterCodex/fireGiants.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Frost Giants" $WEB_DIR/pathfinderRPG/prd/monsterCodex/frostGiants.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Ghouls"       $WEB_DIR/pathfinderRPG/prd/monsterCodex/ghouls.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Gnolls"       $WEB_DIR/pathfinderRPG/prd/monsterCodex/gnolls.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Goblins"      $WEB_DIR/pathfinderRPG/prd/monsterCodex/goblins.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Hobgoblins"   $WEB_DIR/pathfinderRPG/prd/monsterCodex/hobgoblins.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Kobolds"      $WEB_DIR/pathfinderRPG/prd/monsterCodex/kobolds.html
+#./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Lizardfolk"   $WEB_DIR/pathfinderRPG/prd/monsterCodex/lizardfolk.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Ogres"        $WEB_DIR/pathfinderRPG/prd/monsterCodex/ogres.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Orcs"         $WEB_DIR/pathfinderRPG/prd/monsterCodex/orcs.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Ratfolk"      $WEB_DIR/pathfinderRPG/prd/monsterCodex/ratfolk.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Sahuagin"     $WEB_DIR/pathfinderRPG/prd/monsterCodex/sahuagin.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Serpentfolk"  $WEB_DIR/pathfinderRPG/prd/monsterCodex/serpentfolk.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Troglodytes"  $WEB_DIR/pathfinderRPG/prd/monsterCodex/troglodytes.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Trolls"       $WEB_DIR/pathfinderRPG/prd/monsterCodex/trolls.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Vampires"     $WEB_DIR/pathfinderRPG/prd/monsterCodex/vampires.html
+

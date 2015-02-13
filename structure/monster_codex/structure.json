@@ -15,6 +15,7 @@
         {"name": "Goblins", "file": "rules/goblins.json"},
         {"name": "Hobgoblins", "file": "rules/hobgoblins.json"},
         {"name": "Kobolds", "file": "rules/kobolds.json"},
+        {"name": "Lizardfolk", "file": "rules/lizardfolk.json"},
         {"name": "Ogres", "file": "rules/ogres.json"},
         {"name": "Orcs", "file": "rules/orcs.json"},
         {"name": "Ratfolk", "file": "rules/ratfolk.json"},

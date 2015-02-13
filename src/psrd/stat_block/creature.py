@@ -165,6 +165,8 @@ def creature_parse_function(field):
 				'gnome spell-like abilities'),
 		'sorcerer spell-like abilities': creature_spell_closure(
 				'sorcerer spell-like abilities'),
+		'antipaladin spell-like abilities': creature_spell_closure(
+				'antipaladin spell-like abilities'),
 		'paladin spell-like abilities': creature_spell_closure(
 				'paladin spell-like abilities'),
 		'rogue spell-like abilities': creature_spell_closure(
@@ -191,6 +193,8 @@ def creature_parse_function(field):
 				'wayang spell-like abilities'),
 
 		'spells prepared': creature_spell_closure('spells prepared'),
+		'alchemist extracts prepared': creature_spell_closure(
+				'alchemist extracts prepared'),
 		'adept spells prepared': creature_spell_closure(
 				'adept spells prepared'),
 		'bard spells prepared': creature_spell_closure(
@@ -201,6 +205,10 @@ def creature_parse_function(field):
 				'conjurer spells prepared'),
 		'druid spells prepared': creature_spell_closure(
 				'druid spells prepared'),
+		'magus spells prepared': creature_spell_closure(
+				'magus spells prepared'),
+		'antipaladin spells prepared': creature_spell_closure(
+				'antipaladin spells prepared'),
 		'paladin spells prepared': creature_spell_closure(
 				'paladin spells prepared'),
 		'ranger spells prepared': creature_spell_closure(
@@ -321,7 +329,10 @@ def parse_creature_classes(creature, value):
 				int(parts[-1])
 				creature['level'] = second
 			except ValueError:
-				raise Exception("Not a level, not sure what to do: %s" % second)
+				if second == "animal companion":
+					creature['super_race'] = second
+				else:
+					raise Exception("Not a level, not sure what to do: %s" % second)
 	elif len(values) == 1:
 		parse_super_race(creature, values[0])
 	else:

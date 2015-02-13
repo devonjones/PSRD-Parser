@@ -166,5 +166,8 @@
 	]},
 	{"name": "Rules: NPC Codex", "source": "NPC Codex", "priority": 60, "children": [
 		{"group": "children", "source": "NPC Codex", "db": "book-npc.db", "url": "pfsrd://NPC Codex/Rules", "priority": 10}
+	]},
+	{"name": "Rules: Monster Codex", "source": "Monster Codex", "priority": 60, "children": [
+		{"group": "children", "source": "Monster Codex", "db": "book-npc.db", "url": "pfsrd://Monster Codex/Rules", "priority": 10}
 	]}
 ]

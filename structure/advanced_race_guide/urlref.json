@@ -223,6 +223,15 @@
 {"new": "pfsrd://Advanced Race Guide/Races/Vishkanyas/New Racial Rules/Vishkanya Equipment/Vishkanya Equipment",
  "old": "pfsrd://Advanced Race Guide/Races/Vishkanyas/New Racial Rules/Vishkanya Equipment/Poison Tattoo/Vishkanya Equipment"},
 {"new": "pfsrd://Advanced Race Guide/Races/Wayangs/New Racial Rules/Wayang Equipment/Wayang Equipment",
- "old": "pfsrd://Advanced Race Guide/Races/Wayangs/New Racial Rules/Wayang Equipment/Shadow Stencils/Wayang Equipment"}
+ "old": "pfsrd://Advanced Race Guide/Races/Wayangs/New Racial Rules/Wayang Equipment/Shadow Stencils/Wayang Equipment"},
+
+{"new": "pfsrd://Advanced Race Guide/Rules/Age/Height and Weight/Appendix 2 Height and Weight",
+ "old": "pfsrd://Advanced Race Guide/Rules/Age/Height and Weight/Height and Weight"},
+{"new": "pfsrd://Advanced Race Guide/Rules/Age/Height and Weight/Appendix 2 Height and Weight/Core Race Random Height and Weight",
+ "old": "pfsrd://Advanced Race Guide/Rules/Age/Height and Weight/Height and Weight/Core Race Random Height and Weight"},
+{"new": "pfsrd://Advanced Race Guide/Rules/Age/Height and Weight/Appendix 2 Height and Weight/Featured Race Random Height and Weight",
+ "old": "pfsrd://Advanced Race Guide/Rules/Age/Height and Weight/Height and Weight/Featured Race Random Height and Weight"},
+{"new": "pfsrd://Advanced Race Guide/Rules/Age/Height and Weight/Appendix 2 Height and Weight/Uncommon Race Random Height and Weight",
+ "old": "pfsrd://Advanced Race Guide/Rules/Age/Height and Weight/Height and Weight/Uncommon Race Random Height and Weight"}
 
 ]

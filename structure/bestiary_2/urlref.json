@@ -49,14 +49,18 @@
 {"new": "pfsrd://Bestiary 2/Monsters/Ravener/Creating a Ravener/Ravener/Type",
  "old": "pfsrd://Bestiary 2/Monsters/Ravener/Creating a Ravener/Type"},
 
-{"new": "pfsrd://Bestiary 2/Monsters/Ray/Manta/Manta Ray",
- "old": "pfsrd://Bestiary 2/Monsters/Ray/Manta/Manta Ray Companion"},
-{"new": "pfsrd://Bestiary 2/Monsters/Ray/Manta/Manta Ray/4th-Level Advancement",
+{"new": "pfsrd://Bestiary 2/Monsters/Ray/Manta",
+ "old": "pfsrd://Bestiary 2/Monsters/Ray/Manta/Manta Ray"},
+{"new": "pfsrd://Bestiary 2/Monsters/Ray/Manta/Manta Ray Companion/4th-Level Advancement",
+ "old": "pfsrd://Bestiary 2/Monsters/Ray/Manta/Manta Ray/4th-Level Advancement"},
+{"new": "pfsrd://Bestiary 2/Monsters/Ray/Manta/Manta Ray Companion/4th-Level Advancement",
  "old": "pfsrd://Bestiary 2/Monsters/Ray/Manta/Manta Ray Companion/4th-Level Advancement Size"},
 
-{"new": "pfsrd://Bestiary 2/Monsters/Ray/Stingray/Stingray",
- "old": "pfsrd://Bestiary 2/Monsters/Ray/Stingray/Stingray Companion"},
-{"new": "pfsrd://Bestiary 2/Monsters/Ray/Stingray/Stingray/4th-Level Advancement",
+{"new": "pfsrd://Bestiary 2/Monsters/Ray/Stingray",
+ "old": "pfsrd://Bestiary 2/Monsters/Ray/Stingray/Stingray"},
+{"new": "pfsrd://Bestiary 2/Monsters/Ray/Stingray/Stingray Companion/4th-Level Advancement",
+ "old": "pfsrd://Bestiary 2/Monsters/Ray/Stingray/Stingray/4th-Level Advancement"},
+{"new": "pfsrd://Bestiary 2/Monsters/Ray/Stingray/Stingray Companion/4th-Level Advancement",
  "old": "pfsrd://Bestiary 2/Monsters/Ray/Stingray/Stingray Companion/4th-Level Advancement Size"},
 
 {"new": "pfsrd://Bestiary 2/Monsters/Worm That Walks/Creating a Worm That Walks/Worm That Walks/Abilities",
@@ -145,6 +149,18 @@
 {"new": "pfsrd://Bestiary 2/Monsters/Quickwood/Special Abilities/Roots",
  "old": "pfsrd://Bestiary 2/Monsters/quickwood/Special Abilities/Roots"},
 {"new": "pfsrd://Bestiary 2/Monsters/Quickwood/Special Abilities/Spell Absorption",
- "old": "pfsrd://Bestiary 2/Monsters/quickwood/Special Abilities/Spell Absorption"}
+ "old": "pfsrd://Bestiary 2/Monsters/quickwood/Special Abilities/Spell Absorption"},
+
+{"new": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Agathion/Draconal",
+ "old": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Draconal"},
+{"new": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Agathion/Draconal/Special Abilities",
+ "old": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Draconal/Special Abilities"},
+{"new": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Agathion/Draconal/Special Abilities/Celestial Focus",
+ "old": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Draconal/Special Abilities/Celestial Focus"},
+{"new": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Agathion/Draconal/Special Abilities/Divine Insight",
+ "old": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Draconal/Special Abilities/Divine Insight"},
+{"new": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Agathion/Draconal/Special Abilities/Protective Aura",
+ "old": "pfsrd://Bestiary 2/Monsters/Agathion/Draconal/Draconal/Special Abilities/Protective Aura"}
+
 ]
 

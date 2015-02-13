@@ -1,0 +1,32 @@
+{
+  "name": "Monster Codex",
+  "children": [
+    {
+      "name": "Rules",
+      "children": [
+        {"name": "Boggards", "file": "rules/boggards.json"},
+        {"name": "Bugbears", "file": "rules/bugbears.json"},
+        {"name": "Drow", "file": "rules/drow.json"},
+        {"name": "Duergar", "file": "rules/duergar.json"},
+        {"name": "Fire Giants", "file": "rules/fire_giants.json"},
+        {"name": "Frost Giants", "file": "rules/frost_giants.json"},
+        {"name": "Ghouls", "file": "rules/ghouls.json"},
+        {"name": "Gnolls", "file": "rules/gnolls.json"},
+        {"name": "Goblins", "file": "rules/goblins.json"},
+        {"name": "Hobgoblins", "file": "rules/hobgoblins.json"},
+        {"name": "Kobolds", "file": "rules/kobolds.json"},
+        {"name": "Ogres", "file": "rules/ogres.json"},
+        {"name": "Orcs", "file": "rules/orcs.json"},
+        {"name": "Ratfolk", "file": "rules/ratfolk.json"},
+        {"name": "Sahuagin", "file": "rules/sahuagin.json"},
+        {"name": "Serpentfolk", "file": "rules/serpentfolk.json"},
+        {"name": "Troglodytes", "file": "rules/troglodytes.json"},
+        {"name": "Trolls", "file": "rules/trolls.json"},
+        {"name": "Vampires", "file": "rules/vampires.json"},
+        {"name": "Appendix", "file": "rules/appendix.json"}
+      ]
+    }
+  ]
+}
+
+

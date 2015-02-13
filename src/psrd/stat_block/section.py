@@ -4,6 +4,11 @@ from psrd.universal import StatBlockHeading, StatBlockSection, Heading, filter_n
 def is_section(sb, book):
 	if len(sb.keys) == 0:
 		return True
+	else:
+		for key in sb.keys:
+			if key[0] not in ["CR", "XP", "hp", "descriptor"]:
+				return False
+		return True
 	return False
 
 def parse_section(sb, book, no_sb=False, keys=True):

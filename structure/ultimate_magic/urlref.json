@@ -55,6 +55,27 @@
 {"new": "pfsrd://Ultimate Magic/Spells/Interrogation",
  "old": "pfsrd://Ultimate Magic/Spells/Interrogation/School"},
 {"new": "pfsrd://Ultimate Magic/Spells/Vermin Shape I",
- "old": "pfsrd://Ultimate Magic/Spells/Vermin Shape I/School"}
+ "old": "pfsrd://Ultimate Magic/Spells/Vermin Shape I/School"},
+
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Ant/Giant/4th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Ant/Giant/Ant/Giant"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Beetle/Giant/4th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Beetle/Giant/Beetle/Giant"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Centipede/Giant/4th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Centipede/Giant/Centipede/Giant"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Crab/Giant/4th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Crab/Giant/Crab/Giant"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Leech/Giant/7th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Leech/Giant/Leech/Giant"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Mantis/Giant/7th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Mantis/Giant/Mantis/Giant"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Scorpion/Giant/7th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Scorpion/Giant/Scorpion/Giant"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Slug/Giant/7th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Slug/Giant/Slug/Giant"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Spider/Giant/4th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Spider/Giant/Spider/Giant"},
+{"new": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Wasp/Giant/7th-Level Advancement",
+ "old": "pfsrd://Ultimate Magic/Rules/Spellcasting Class Options/Druid/Vermin Companions/Wasp/Giant/Wasp/Giant"}
 ]
 

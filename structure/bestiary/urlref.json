@@ -131,6 +131,9 @@
 {"new": "pfsrd://Bestiary/Monsters/Army Ant Swarm/Ant/Giant/Worker (-1 CR)",
  "old": "pfsrd://Bestiary/Monsters/Army Ant Swarm/Ant/Giant/Worker (andndash;1 CR)"},
 {"new": "pfsrd://Bestiary/Monsters/Dragon/Age Categories",
- "old": "pfsrd://Bestiary/Monsters/Dragon/Age Categories/Age Category"}
+ "old": "pfsrd://Bestiary/Monsters/Dragon/Age Categories/Age Category"},
+
+{"new": "pfsrd://Bestiary/Monsters/Frog/Giant/Frog/4th-Level Advancement",
+ "old": "pfsrd://Bestiary/Monsters/Frog/Giant/Frog/4th-Level Adv."}
 ]
 

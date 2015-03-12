@@ -85,6 +85,7 @@ def has_heading(sections):
 	level = None
 	for section in sections:
 		if isinstance(section, Heading):
-			if not level or level < section.level:
-				level = section.level
+			if hasattr(section, "level"):
+				if not level or level < section.level:
+					level = section.level
 	return level

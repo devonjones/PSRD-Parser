@@ -8,34 +8,34 @@ from psrd.universal import parse_universal, print_struct, StatBlockHeading, Stat
 from psrd.sections import ability_pass, entity_pass, find_section, find_all_sections, add_section, remove_section, cap_words, quote_pass
 from psrd.stat_block import stat_block_pass
 
-def druid_animal_companion_fix(section):
+def druid_animal_companion_fix(section, prev):
 	tuples = section.keys
 	keys = []
 	details = []
 	s = section
+	ret = True
+	if s.name == 'Starting Statistics':
+		s = prev
+		ret = False
+	elif s.name in ('4th-Level Advancement', '7th-Level Advancement'):
+		prev.details.append(s)
+		ret = False
 	for tup in tuples:
-		if tup[0] == 'Starting Statistics':
-			pass
-		elif tup[0] in ('4th-Level Advancement', '7th-Level Advancement'):
-			s.keys = keys
-			keys = []
-			if s != section:
-				details.append(s)
-			s = StatBlockSection(tup[0], '<p><b>%s</b></p>' % tup[0])
-		else:
-			keys.append(tup)
+		keys.append(tup)
 	s.keys = keys
-	if s != section:
-		details.append(s)
-	section.details = details
-	return section
+	if ret:
+		return s
 
 def druid_structural_pass(section):
 	if section.has_key('sections'):
 		newsections = []
+		prev = None
 		for s in section['sections']:
 			if s.__class__ == StatBlockHeading:
-				newsections.append(druid_animal_companion_fix(s))
+				newsection = druid_animal_companion_fix(s, prev)
+				if newsection:
+					newsections.append(newsection)
+					prev = newsection
 			elif s.__class__ == dict:
 				newsections.append(druid_structural_pass(s))
 			else:

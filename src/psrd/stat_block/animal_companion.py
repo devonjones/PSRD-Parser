@@ -1,5 +1,5 @@
 from psrd.stat_block.utils import colon_filter, default_closure, collapse_text
-from psrd.universal import StatBlockSection, filter_name
+from psrd.universal import StatBlockSection, StatBlockHeading, filter_name
 
 def is_animal_companion(sb, book):
 	fields = dict(sb.keys)
@@ -33,7 +33,7 @@ def parse_animal_companion(sb, book):
 	for key, value in sb.keys:
 		animal_companion_parse_function(key)(ac, value)
 	for detail in sb.details:
-		if detail.__class__ == StatBlockSection and detail.name.endswith('th-Level Advancement'):
+		if detail.__class__ in (StatBlockSection, StatBlockHeading) and detail.name.endswith('th-Level Advancement'):
 			advancement = {'level': detail.name[:3], 'source': book, 'type': 'animal_companion', 'name': filter_name(ac['name'])}
 			for key, value in detail.keys:
 				animal_companion_parse_function(key)(advancement, value)

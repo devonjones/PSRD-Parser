@@ -434,7 +434,7 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Goblins"      $WEB_DIR/pathfinderRPG/prd/monsterCodex/goblins.html
 ./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Hobgoblins"   $WEB_DIR/pathfinderRPG/prd/monsterCodex/hobgoblins.html
 ./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Kobolds"      $WEB_DIR/pathfinderRPG/prd/monsterCodex/kobolds.html
-#./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Lizardfolk"   $WEB_DIR/pathfinderRPG/prd/monsterCodex/lizardfolk.html
+./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Lizardfolk"   $WEB_DIR/pathfinderRPG/prd/monsterCodex/lizardfolk.html
 ./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Ogres"        $WEB_DIR/pathfinderRPG/prd/monsterCodex/ogres.html
 ./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Orcs"         $WEB_DIR/pathfinderRPG/prd/monsterCodex/orcs.html
 ./rules_parse.py -o $DATA_DIR -b "Monster Codex" -t "Ratfolk"      $WEB_DIR/pathfinderRPG/prd/monsterCodex/ratfolk.html

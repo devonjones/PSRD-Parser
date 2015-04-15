@@ -1,0 +1,14 @@
+{
+	"tables": [
+		{
+			"url": "pfsrd://Monster Codex/Rules/Gnolls/New Rules/Gnoll Equipment/Flindbar/"
+			"parser": "weapons",
+			"default_subtype": "weapon",
+			"alternate_names": {
+			},
+			"distinct_section": {
+			}
+		}
+	]
+}
+

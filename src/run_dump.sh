@@ -19,4 +19,5 @@ rm -rf $DUMP_DIR/*
 ./data_unload.py -d $DATA_DIR/book-ue.db -o $DUMP_DIR -b "Ultimate Equipment"
 ./data_unload.py -d $DATA_DIR/book-um.db -o $DUMP_DIR -b "Ultimate Magic"
 ./data_unload.py -d $DATA_DIR/book-npc.db -o $DUMP_DIR -b "NPC Codex"
+./data_unload.py -d $DATA_DIR/book-mc.db -o $DUMP_DIR -b "Monster Codex"
 ./data_unload.py -d $DATA_DIR/book-tech.db -o $DUMP_DIR -b "Technology Guide"

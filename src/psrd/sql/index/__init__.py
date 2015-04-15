@@ -16,6 +16,8 @@ from psrd.sql.index.spell_component_index import create_spell_component_index_ta
 from psrd.sql.index.spell_component_index import create_spell_component_index_indexes
 from psrd.sql.index.section_sort import create_section_sort_table
 from psrd.sql.index.section_sort import create_section_sort_index
+from psrd.sql.index.search_alternatives import create_search_alternatives_table
+from psrd.sql.index.search_alternatives import create_search_alternatives_index
 from psrd.sql.index.menu import create_menu_table
 from psrd.sql.index.menu import create_menu_index
 from psrd.sql.index.books import create_books_table
@@ -68,6 +70,8 @@ def create_db_v_2(conn, curs, ver):
 	create_spell_component_index_indexes(curs)
 	create_section_sort_table(curs)
 	create_section_sort_index(curs)
+	create_search_alternatives_table(curs)
+	create_search_alternatives_index(curs)
 	create_menu_table(curs)
 	create_menu_index(curs)
 	create_books_table(curs)

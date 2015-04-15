@@ -12,6 +12,7 @@ from psrd.sql.index.spell_list_index import insert_spell_list_index
 from psrd.sql.index.spell_subschool_index import insert_spell_subschool_index
 from psrd.sql.index.spell_descriptor_index import insert_spell_descriptor_index
 from psrd.sql.index.spell_component_index import insert_spell_component_index
+from psrd.sql.index.search_alternatives import create_alternatives
 from psrd.sql.index.books import insert_book
 from psrd.sql.feats import fetch_feat_types
 from psrd.sql.spells import fetch_spell_lists, fetch_spell_descriptors, fetch_spell_components, fetch_spell_subschools
@@ -30,6 +31,7 @@ def build_central_index(db, conn, source_conn, db_name):
 				book = True
 			item['database'] = db_name
 			index_id = insert_central_index(curs, **item)
+			create_alternatives(curs, index_id, item['search_name'])
 			if item['type'] == 'feat':
 				handle_feat(curs, source_curs, index_id, item['section_id'])
 			elif item['type'] == 'spell':

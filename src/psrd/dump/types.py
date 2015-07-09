@@ -22,6 +22,8 @@ def handle_abilities(conn, section):
 		fetch_ability_type(curs, section['section_id'])
 		ability_types = []
 		for ability_type in curs.fetchall():
+			del ability_type['ability_type_id']
+			del ability_type['section_id']
 			ability_types.append(ability_type['ability_type'])
 		if len(ability_types) > 0:
 			section['ability_types'] = ability_type
@@ -100,6 +102,8 @@ def handle_feat(conn, section):
 		fetch_feat_types(curs, section['section_id'])
 		feat_types = []
 		for feat_type in curs.fetchall():
+			del feat_type['feat_type_id']
+			del feat_type['section_id']
 			feat_types.append(feat_type['feat_type'])
 		if len(feat_types) > 0:
 			section['feat_types'] = feat_type

@@ -7,7 +7,6 @@ from optparse import OptionParser
 from psrd.sql import get_db_connection, find_section
 from psrd.files import makedirs, char_replace
 from psrd.dump.types import fetch_subrecords
-from psrd.sql import find_section
 
 def find_types(curs):
 	# There may be many rows in the result set.
@@ -101,6 +100,7 @@ def dump_section(conn, section):
 		del section['lft']
 		del section['rgt']
 		del section['parent_id']
+		del section['section_id']
 		del section['create_index']
 	finally:
 		curs.close()

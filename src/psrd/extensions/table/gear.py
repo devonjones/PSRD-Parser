@@ -1,5 +1,5 @@
 from BeautifulSoup import BeautifulSoup
-from psrd.table.general import add_additional_fields, fix_cost, set_subtype, clear_nbsp
+from psrd.extensions.table.general import add_additional_fields, fix_cost, set_subtype, clear_nbsp
 
 def process_gear(table_data, gear_list):
 	remap = {

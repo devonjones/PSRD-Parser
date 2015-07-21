@@ -2,12 +2,13 @@
 import sys
 from optparse import OptionParser
 from psrd.sql import get_db_connection, find_section
-from psrd.table.weapon import parse_weapon_table
-from psrd.table.armor import parse_armor_table
-from psrd.table.gear import parse_gear_table_closure
-from psrd.table.gear import parse_gear_header, parse_gear_header2
-from psrd.table.gear import siege_engine_modifier_clear
-from psrd.table.io import load_extension_file, produce_output, write_output
+from psrd.extensions.table.weapon import parse_weapon_table
+from psrd.extensions.table.armor import parse_armor_table
+from psrd.extensions.table.gear import parse_gear_table_closure
+from psrd.extensions.table.gear import parse_gear_header, parse_gear_header2
+from psrd.extensions.table.gear import siege_engine_modifier_clear
+from psrd.extensions.table.io import produce_output
+from psrd.extensions.io import load_extension_file, write_output
 
 def find_section_subtree(curs, parent_id, **kwargs):
 	# There may be many rows in the result set.
@@ -106,7 +107,7 @@ def dump_table(output_dir, db, book):
 	urls = section_cache.keys()
 	urls.sort()
 	output = produce_output([section_cache[url] for url in urls])
-	write_output(output_dir, book, output)
+	write_output(output_dir, book, output, "items.json")
 
 def option_parser(usage):
 	parser = OptionParser(usage=usage)

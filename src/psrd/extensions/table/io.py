@@ -1,29 +1,28 @@
-import os.path
-import json
-from psrd.files import char_replace
 
-def generate_extension_file_name(output_dir, book):
-	return os.path.join(
-			os.path.abspath(output_dir), char_replace(book), 'extension.json')
+def produce_output(sections):
+	output = []
+	for section in sections:
+		print section['section']['url']
+		delta = {'url': section['section']['url']}
+		changes = section['changes']
+		for change in changes:
+			item = change['item']
+			if item.has_key('price'):
+				delta['price'] = item['price']
+			if item.has_key('weight'):
+				delta['weight'] = item['weight']
+			if item.has_key('misc'):
+				misc = item['misc']
+				merge_misc(delta, misc)
+		reduce_misc(delta)
+		output.append(delta)
+	return output
 
-def generate_extension_output_file_name(output_dir, book):
-	return os.path.join(
-		os.path.abspath(output_dir),
-		char_replace(book),
-		'extensions',
-		'items.json')
-
-def load_extension_file(output_dir, book):
-	filename = generate_extension_file_name(output_dir, book)
-	with open(filename) as jsonfile:
-		return json.load(jsonfile)
-
-def write_output(output_dir, book, output):
-	filename = generate_extension_output_file_name(output_dir, book)
-	if not os.path.exists(os.path.dirname(filename)):
-		os.makedirs(os.path.dirname(filename))
-	with open(filename, 'w') as jsonfile:
-		json.dump(output, jsonfile, indent=2)
+def merge_misc(delta, misc):
+	delta_misc = delta.setdefault('misc', [])
+	for value in misc:
+		if not value in delta_misc:
+			delta_misc.append(value)
 
 def reduce_misc(item):
 	misc_list = item.get('misc', [])
@@ -87,28 +86,3 @@ def in_all(rewrite, field, value):
 			else:
 				return False
 	return True
-
-def produce_output(sections):
-	output = []
-	for section in sections:
-		print section['section']['url']
-		delta = {'url': section['section']['url']}
-		changes = section['changes']
-		for change in changes:
-			item = change['item']
-			if item.has_key('price'):
-				delta['price'] = item['price']
-			if item.has_key('weight'):
-				delta['weight'] = item['weight']
-			if item.has_key('misc'):
-				misc = item['misc']
-				merge_misc(delta, misc)
-		reduce_misc(delta)
-		output.append(delta)
-	return output
-
-def merge_misc(delta, misc):
-	delta_misc = delta.setdefault('misc', [])
-	for value in misc:
-		if not value in delta_misc:
-			delta_misc.append(value)

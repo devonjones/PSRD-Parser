@@ -1,6 +1,6 @@
 #import pprint
 from BeautifulSoup import BeautifulSoup
-from psrd.table.general import add_additional_fields, fix_cost, set_subtype, clear_nbsp
+from psrd.extensions.table.general import add_additional_fields, fix_cost, set_subtype, clear_nbsp
 
 def set_damage(weapon):
 	damage = {

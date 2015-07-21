@@ -1,6 +1,6 @@
 #import pprint
 from BeautifulSoup import BeautifulSoup
-from psrd.table.general import add_additional_fields, set_subtype, clear_nbsp
+from psrd.extensions.table.general import add_additional_fields, set_subtype, clear_nbsp
 
 
 def process_armor(table_data, armor_list):

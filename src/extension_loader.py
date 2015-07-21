@@ -4,7 +4,7 @@ import json
 from optparse import OptionParser
 from psrd.sql import get_db_connection, find_section, update_section
 from psrd.sql.items import update_item_detail, fetch_item_misc, delete_item_misc, insert_item_misc
-from psrd.table.loader import filter_section_fields, filter_item_details_fields
+from psrd.extensions.loader import filter_section_fields, filter_item_details_fields
 
 def process_item(conn, curs, section, update):
 	fields = filter_item_details_fields(update)

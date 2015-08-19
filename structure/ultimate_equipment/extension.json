@@ -43,7 +43,6 @@
 				"Tower": "shield"
 			}
 		},
-
 		{
 			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Weapon Descriptions/Simple Weapons",
 			"parser": "weapons",
@@ -68,7 +67,6 @@
 			},
 			"default_subtype": "ammunition"
 		},
-
 		{
 			"url": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Firearms/Firearm Ammunition",
 			"parser": "weapons",

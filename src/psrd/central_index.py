@@ -15,7 +15,8 @@ from psrd.sql.index.spell_component_index import insert_spell_component_index
 from psrd.sql.index.search_alternatives import create_alternatives
 from psrd.sql.index.books import insert_book
 from psrd.sql.feats import fetch_feat_types
-from psrd.sql.spells import fetch_spell_lists, fetch_spell_descriptors, fetch_spell_components, fetch_spell_subschools
+from psrd.sql.spells import fetch_spell_lists, fetch_spell_descriptors
+from psrd.sql.spells import fetch_spell_components, fetch_spell_subschools
 from psrd.sql.url_ref import fetch_url_references
 
 def build_central_index(db, conn, source_conn, db_name):
@@ -36,7 +37,8 @@ def build_central_index(db, conn, source_conn, db_name):
 				handle_feat(curs, source_curs, index_id, item['section_id'])
 			elif item['type'] == 'spell':
 				handle_spell(curs, source_curs, index_id, item['section_id'])
-			handle_url_references(curs, source_curs, index_id, item['section_id'])
+			handle_url_references(
+					curs, source_curs, index_id, item['section_id'])
 		conn.commit()
 	finally:
 		curs.close()
@@ -52,16 +54,20 @@ def handle_spell(curs, source_curs, index_id, section_id):
 	fetch_spell_lists(source_curs, section_id)
 	for spell_list in source_curs.fetchall():
 		insert_spell_list_index(curs, index_id,
-			spell_list['level'], spell_list['class'], spell_list['magic_type'])
+			spell_list['level'], spell_list['type'], spell_list['name'],
+			spell_list['notes'], spell_list['magic_type'])
 	fetch_spell_descriptors(source_curs, section_id)
 	for spell_descriptor in source_curs.fetchall():
-		insert_spell_descriptor_index(curs, index_id, spell_descriptor['descriptor'])
+		insert_spell_descriptor_index(
+				curs, index_id, spell_descriptor['descriptor'])
 	fetch_spell_components(source_curs, section_id)
 	for spell_component in source_curs.fetchall():
-		insert_spell_component_index(curs, index_id, spell_component['component_type'])
+		insert_spell_component_index(
+				curs, index_id, spell_component['component_type'])
 	fetch_spell_subschools(source_curs, section_id)
 	for spell_subschool in source_curs.fetchall():
-		insert_spell_subschool_index(curs, index_id, spell_subschool['subschool'])
+		insert_spell_subschool_index(
+				curs, index_id, spell_subschool['subschool'])
 
 def handle_url_references(curs, source_curs, index_id, section_id):
 	fetch_url_references(source_curs, section_id)

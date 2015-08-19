@@ -59,27 +59,3 @@ def fetch_mythic_spell_detail(curs, section_id):
 		" WHERE section_id = ?"])
 	curs.execute(sql, values)
 
-def create_mythic_spell_lists_table(curs):
-	sql = '\n'.join([
-		"CREATE TABLE mythic_spell_lists (",
-		"  spell_list_id INTEGER PRIMARY KEY,",
-		"  section_id INTEGER NO NULL,",
-		"  level INTEGER NOT NULL,",
-		"  class TEXT,"
-		")"])
-	curs.execute(sql)
-
-def create_spell_lists_index(curs):
-	sql = '\n'.join([
-		"CREATE INDEX mythic_spell_lists_section_id",
-		" ON mythic_spell_lists (section_id)"])
-	curs.execute(sql)
-	sql = '\n'.join([
-		"CREATE INDEX mythic_spell_lists_level",
-		" ON mythic_spell_lists (level)"])
-	curs.execute(sql)
-	sql = '\n'.join([
-		"CREATE INDEX mythic_spell_lists_class",
-		" ON mythic_spell_lists (class)"])
-	curs.execute(sql)
-

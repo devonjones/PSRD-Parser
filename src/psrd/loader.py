@@ -183,6 +183,9 @@ def _spell_insert(curs, curs_list, section, section_id):
 		section['spell_source'] = section['name']
 		insert_mythic_spell_detail(curs, section_id, section['spell_source'])
 
+def _granted_spells_insert(curs, curs_list, section, section_id):
+	insert_granted_spell_records(curs, curs_list, section, section_id)
+
 def _class_insert(curs, section, section_id):
 	insert_class_detail(curs, section_id, section.get('alignment'), section.get('hit_dice'))
 
@@ -260,6 +263,7 @@ def insert_subrecords(curs, curs_list, section, section_id):
 	}
 	cl_fxns = {
 		"mythic_spell": _mythic_spell_insert,
+		"domain": _granted_spells_insert,
 		"spell": _spell_insert
 	}
 	if section['type'] in fxns:
@@ -312,7 +316,7 @@ def insert_spell_records(curs, curs_list, section_id, spell):
 		insert_spell_descriptor(curs, section_id, descriptor)
 	for level in spell.get('level', []):
 		magic_type = find_magic_type(level['class'])
-		insert_spell_list(curs, section_id, level['level'], cap_words(level['class']), magic_type)
+		insert_spell_list(curs, section_id, level['level'], "class", cap_words(level['class']), None, magic_type)
 	component_text = []
 	for component in spell.get('components', []):
 		insert_spell_component(curs, section_id, component.get('type'), component.get('text'), 0)
@@ -343,6 +347,12 @@ def find_magic_type(class_name):
 		magic_type = 'divine'
 	return magic_type
 
+def insert_granted_spell_records(curs, curs_list, section, section_id):
+	for sp in section['granted_spells']:
+		spell, use_curs = find_spell_in_books(sp['spell'], curs, curs_list)
+		do_add_spell_list(use_curs, spell, None, section['type'], section['name'], sp['level'], sp.get('notes'))
+	pass
+
 def load_spell_list_documents(db, args, parent):
 	fp = open(args[0], 'r')
 	struct = json.load(fp)
@@ -370,6 +380,23 @@ def load_spell_list_document(db, conn, conn_list, filename, struct, parent):
 		curs_close(curs, curs_list)
 	print_struct(struct)
 
+def find_spell_in_books(spell_name, curs, curs_list):
+	name = cap_words(spell_name.strip())
+	find_section(curs, name=name, type='spell')
+	spell = curs.fetchone()
+	use_curs = curs
+	if spell:
+		return spell, use_curs
+	else:
+		for c in curs_list:
+			find_section(c, name=name, type='spell')
+			spell = c.fetchone()
+			use_curs = c
+			if spell:
+				return spell, use_curs
+	if not spell:
+		raise Exception("Cannot find spell %s" % name)
+
 def add_spell_list(curs, curs_list, struct):
 	if not struct['type'] == 'spell_list':
 		raise Exception("This should only be run on spell list files")
@@ -383,38 +410,31 @@ def add_spell_list(curs, curs_list, struct):
 	level = struct['level']
 	class_name = cap_words(struct['class'])
 	for sp in struct['spells']:
-		name = cap_words(sp['name'].strip())
-		find_section(curs, name=name, type='spell')
-		spell = curs.fetchone()
-		use_curs = curs
-		if not spell:
-			for c in curs_list:
-				find_section(c, name=name, type='spell')
-				spell = c.fetchone()
-				use_curs = c
-				if spell:
-					break
-		if not spell:
-			raise Exception("Cannot find spell %s" % name)
-		do_add_spell_list(use_curs, spell, sp, class_name, level)
+		spell, use_curs = find_spell_in_books(sp['name'], curs, curs_list)
+		do_add_spell_list(use_curs, spell, sp.get('description'), "class", class_name, level, None)
 
-def do_add_spell_list(curs, spell, sp, class_name, level):
-	fetch_spell_lists(curs, spell['section_id'], class_name=class_name)
+def do_add_spell_list(curs, spell, description, type, name, level, notes):
+	fetch_spell_lists(curs, spell['section_id'], type=type, name=name)
 	if not curs.fetchone():
-		magic_type = find_magic_type(class_name.lower())
-		insert_spell_list(curs, spell['section_id'], level, class_name, magic_type)
-		fix_spell_level_text(curs, spell['section_id'])
-	if sp.has_key('description') and sp['description'] != '':
-		update_section(curs, spell['section_id'], description=sp['description'])
+		magic_type = "divine"
+		if type == "class":
+			magic_type = find_magic_type(name.lower())
+		insert_spell_list(curs, spell['section_id'], level, type, name, notes, magic_type)
+		fix_spell_list_text(curs, spell['section_id'], type)
+	if description:
+		update_section(curs, spell['section_id'], description=description)
 
-def fix_spell_level_text(curs, section_id):
-	fetch_spell_lists(curs, section_id)
+def fix_spell_list_text(curs, section_id, type):
+	fetch_spell_lists(curs, section_id, type=type)
 	sl = []
 	objs = curs.fetchall()
 	for obj in objs:
-		sl.append(obj['class'] + ": " + str(obj['level']))
-	level_text = "; ".join(sl)
-	update_spell_detail(curs, section_id, level_text=level_text)
+		sl.append(obj['name'] + ": " + str(obj['level']))
+	list_text = "; ".join(sl)
+	if type == "class":
+		update_spell_detail(curs, section_id, level_text=list_text)
+	elif type == "domain":
+		update_spell_detail(curs, section_id, domain_text=list_text)
 
 def fix_spell_list(struct):
 	spells = struct['spells']

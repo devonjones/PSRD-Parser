@@ -221,7 +221,7 @@ def handle_spell(conn, section):
 		fetch_spell_lists(curs, section['section_id'])
 		levels = []
 		for level in curs.fetchall():
-			levels.append({"class": level['class'], "level": level['level']})
+			levels.append({"type": level["type"], "name": level['name'], "notes": level['notes'], "level": level['level']})
 		if len(levels) > 0:
 			section['levels'] = levels
 		fetch_spell_subschools(curs, section['section_id'])

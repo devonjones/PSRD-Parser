@@ -13,6 +13,7 @@ def create_spell_details_table(curs):
 		"  subschool_text TEXT,",
 		"  descriptor_text TEXT,",
 		"  level_text TEXT,",
+		"  domain_text TEXT,",
 		"  component_text TEXT,",
 		"  casting_time TEXT,",
 		"  preparation_time TEXT,",
@@ -35,12 +36,13 @@ def create_spell_details_index(curs):
 	curs.execute(sql)
 
 def insert_spell_detail(curs, section_id, school=None, subschool_text=None,
-		descriptor_text=None, level_text=None, component_text=None,
-		casting_time=None, preparation_time=None, range=None, duration=None,
-		saving_throw=None, spell_resistance=None, as_spell_id=None, **kwargs):
+		descriptor_text=None, level_text=None, domain_text=None,
+		component_text=None, casting_time=None, preparation_time=None,
+		range=None, duration=None, saving_throw=None, spell_resistance=None,
+		as_spell_id=None, **kwargs):
 	values = [section_id, school, subschool_text, descriptor_text, level_text,
-		component_text, casting_time, preparation_time, range, duration,
-		saving_throw, spell_resistance, as_spell_id]
+		domain_text, component_text, casting_time, preparation_time, range,
+		duration, saving_throw, spell_resistance, as_spell_id]
 	testa = kwargs.copy()
 	if testa.has_key('spell_detail_id'):
 		del testa['spell_detail_id']
@@ -60,10 +62,10 @@ def insert_spell_detail(curs, section_id, school=None, subschool_text=None,
 	sql = '\n'.join([
 		"INSERT INTO spell_details",
 		" (section_id, school, subschool_text, descriptor_text, level_text,",
-		"  component_text, casting_time, preparation_time, range, duration,"
-		"  saving_throw, spell_resistance, as_spell_id)",
+		"  domain_text, component_text, casting_time, preparation_time, range,"
+		"  duration, saving_throw, spell_resistance, as_spell_id)",
 		" VALUES",
-		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
 def update_spell_detail(curs, section_id, **kwargs):
@@ -106,7 +108,9 @@ def create_spell_lists_table(curs):
 		"  spell_list_id INTEGER PRIMARY KEY,",
 		"  section_id INTEGER NO NULL,",
 		"  level INTEGER NOT NULL,",
-		"  class TEXT,",
+		"  type TEXT NOT NULL,",
+		"  name TEXT,",
+		"  notes TEXT,",
 		"  magic_type TEXT",
 		")"])
 	curs.execute(sql)
@@ -121,40 +125,47 @@ def create_spell_lists_index(curs):
 		" ON spell_lists (level)"])
 	curs.execute(sql)
 	sql = '\n'.join([
-		"CREATE INDEX spell_lists_class",
-		" ON spell_lists (class)"])
+		"CREATE INDEX spell_lists_type",
+		" ON spell_lists (type)"])
+	curs.execute(sql)
+	sql = '\n'.join([
+		"CREATE INDEX spell_lists_name",
+		" ON spell_lists (name)"])
 	curs.execute(sql)
 
-def insert_spell_list(curs, section_id, level, class_name, magic_type):
-	values = [section_id, level, class_name, magic_type]
+def insert_spell_list(curs, section_id, level, type, name, notes, magic_type):
+	values = [section_id, level, type, name, notes, magic_type]
 	sql = '\n'.join([
 		"INSERT INTO spell_lists",
-		" (section_id, level, class, magic_type)",
+		" (section_id, level, type, name, notes, magic_type)",
 		" VALUES",
-		" (?, ?, ?, ?)"])
+		" (?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
-def delete_spell_list(curs, section_id, class_name=None):
+def delete_spell_list(curs, section_id, name=None):
 	values = [section_id]
 	sqla = [
 		"DELETE FROM spell_lists",
 		" WHERE section_id = ?"]
-	if class_name:
-		sqla.append("  AND class = ?")
-		values.append(class_name)
+	if name:
+		sqla.append("  AND name = ?")
+		values.append(name)
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
 
-def fetch_spell_lists(curs, section_id, class_name=None):
+def fetch_spell_lists(curs, section_id, type=None, name=None):
 	values = [section_id]
 	sqla = [
 		"SELECT *",
 		" FROM spell_lists",
 		" WHERE section_id = ?"]
-	if class_name:
-		sqla.append("  AND class = ?")
-		values.append(class_name)
-	sqla.append(" ORDER BY class")
+	if type:
+		sqla.append("  AND type = ?")
+		values.append(type)
+	if name:
+		sqla.append("  AND name = ?")
+		values.append(name)
+	sqla.append(" ORDER BY type, name")
 	sql = '\n'.join(sqla)
 	curs.execute(sql, values)
 

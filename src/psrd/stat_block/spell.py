@@ -177,6 +177,8 @@ def parse_level(spell, value):
 					hunterlevels['level'] = l
 		else:
 			finallevels.append({'class': c, 'level': l})
-		if hunterlevels:
-			finallevels.append(hunterlevels)
+
+	if hunterlevels:
+		finallevels.append(hunterlevels)
+
 	spell['level'] = finallevels

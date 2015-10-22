@@ -114,6 +114,10 @@ def create_spell(name, soup, school=None, descriptor=None):
 		sup = soup.find('sup')
 		comps = sup.renderContents()
 		sup.replaceWith('')
+		if comps.find(",") > -1:
+			comps = [c.strip() for c in comps.split(",")]
+		else:
+			comps = list(comps)
 	desc = ''.join(soup.findAll(text=True))
 	if desc.startswith(":"):
 		desc = desc[1:].strip()
@@ -125,7 +129,7 @@ def create_spell(name, soup, school=None, descriptor=None):
 		desc = desc.replace("&ndash;", '-')
 		spell['description'] = desc
 	if len(comps) > 0:
-		spell['material'] = list(comps)
+		spell['material'] = comps
 	if school:
 		spell['school'] = school
 	if descriptor:

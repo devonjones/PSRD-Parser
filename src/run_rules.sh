@@ -321,7 +321,7 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Poisons"                            $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/gear/poisons.html
 
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Magic Arms and Armor"               $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/index.html
-./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Armor Special Abilities" -n         $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/armorSpecialAbilities.html
+./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Armor Special Abilities"            $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/armorSpecialAbilities.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Specific Magic Armor and Shields"   $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/specificMagicArmorShields.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Weapon Special Abilities"           $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/weaponSpecialAbilities.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Equipment" -t "Specific Magic Weapons"             $WEB_DIR/pathfinderRPG/prd/ultimateEquipment/magicArmsAndArmor/specificMagicWeapons.html

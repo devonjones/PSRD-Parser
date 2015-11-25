@@ -581,6 +581,10 @@
 {"new": "pfsrd://Ultimate Equipment/Rules/Gear/Food and Drink/Tea",
  "old": "pfsrd://Ultimate Equipment/Rules/Gear/Food and Drink/tea"},
 {"new": "pfsrd://Ultimate Equipment/Rules/Gear/Tools and Skill Kits/Portable Alchemists Lab",
- "old": "pfsrd://Ultimate Equipment/Rules/Gear/Tools and Skill Kits/Portable alchemists lab"}
+ "old": "pfsrd://Ultimate Equipment/Rules/Gear/Tools and Skill Kits/Portable alchemists lab"},
 
+{"new": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Weapon Descriptions/Madu/Leather",
+ "old": "pfsrd://Ultimate Equipment/Rules/Arms And Armor/Weapons/Weapon Descriptions/Madu"},
+{"new": "pfsrd://Ultimate Equipment/Rules/Rings/Rods and Staves/Rings/Ring of Wizardry",
+ "old": "pfsrd://Ultimate Equipment/Rules/Rings/Rods and Staves/Rings/Ring of Wizardry/Type I"}
 ]

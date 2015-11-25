@@ -129,7 +129,11 @@
 {"new": "pfsrd://Bestiary 4/Monsters/Dragon/Outer/Vortex/Dragon/Outer/Vortex/Special Abilities/Galactic Emissary",
  "old": "pfsrd://Bestiary 4/Monsters/Dragon/Outer Dragon/Vortex/Vortex Dragon/Special Abilities/Galactic Emissary"},
 {"new": "pfsrd://Bestiary 4/Monsters/Dragon/Outer/Vortex/Young",
- "old": "pfsrd://Bestiary 4/Monsters/Dragon/Outer Dragon/Vortex/Young Vortex Dragon"}
+ "old": "pfsrd://Bestiary 4/Monsters/Dragon/Outer Dragon/Vortex/Young Vortex Dragon"},
 
+{"new": "pfsrd://Bestiary 4/Monsters/Kitsune/Kitsune/Kitsune Magic",
+ "old": "pfsrd://Bestiary 4/Monsters/Kitsune/Kitsune/Kitsune Magic (Ex_Sp)"},
+{"new": "pfsrd://Bestiary 4/Monsters/Kitsune/Special Abilities/Kitsune Magic",
+ "old": "pfsrd://Bestiary 4/Monsters/Kitsune/Special Abilities/Kitsune Magic (Ex_Sp)"}
 ]
 

@@ -144,6 +144,23 @@
 {"new": "pfsrd://Bestiary 3/Monsters/Div/Akvan/Div/Akvan/Akvan Princes/Thirsty Sea",
  "old": "pfsrd://Bestiary 3/Monsters/Div/Akvan/Akvan Princes/Thirsty Sea"},
 {"new": "pfsrd://Bestiary 3/Monsters/Div/Akvan/Div/Akvan/Akvan Princes/Unbalanced Soul",
- "old": "pfsrd://Bestiary 3/Monsters/Div/Akvan/Akvan Princes/Unbalanced Soul"}
+ "old": "pfsrd://Bestiary 3/Monsters/Div/Akvan/Akvan Princes/Unbalanced Soul"},
+
+{"new": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Leviathan/Construction/Clockwork Leviathan",
+ "old": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Leviathan/Construction/CLOCKWORK LEVIATHAN"},
+{"new": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Leviathan/Construction/Clockwork Leviathan",
+ "old": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Leviathan/Construction/CLOCKWORK LEVIATHAN/CONSTRUCTION"},
+{"new": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Servant/Construction/Clockwork Servant",
+ "old": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Servant/Construction/CLOCKWORK SERVANT"},
+{"new": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Servant/Construction/Clockwork Servant",
+ "old": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Servant/Construction/CLOCKWORK SERVANT/CONSTRUCTION"},
+{"new": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Soldier/Construction/Clockwork Soldier",
+ "old": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Soldier/Construction/CLOCKWORK SOLDIER"},
+{"new": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Soldier/Construction/Clockwork Soldier",
+ "old": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Soldier/Construction/CLOCKWORK SOLDIER/CONSTRUCTION"},
+{"new": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Spy/Construction/Clockwork Spy",
+ "old": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Spy/Construction/CLOCKWORK SPY"},
+{"new": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Spy/Construction/Clockwork Spy",
+ "old": "pfsrd://Bestiary 3/Monsters/Clockwork/Clockwork Spy/Construction/CLOCKWORK SPY/CONSTRUCTION"}
 ]
 

@@ -268,6 +268,9 @@
 {"new": "pfsrd://Bestiary 2/Monsters/Megafauna/Megaloceros/Megaloceros/7th-Level Advancement",
  "old": "pfsrd://Bestiary 2/Monsters/Megafauna/Megaloceros/Megaloceros/7th-Level Adv."},
 {"new": "pfsrd://Bestiary 2/Monsters/Megafauna/Megatherium/Megatherium/7th-Level Advancement",
- "old": "pfsrd://Bestiary 2/Monsters/Megafauna/Megatherium/Megatherium/7th-Level Adv."}
+ "old": "pfsrd://Bestiary 2/Monsters/Megafauna/Megatherium/Megatherium/7th-Level Adv."},
+
+{"new": "pfsrd://Bestiary 2/Monsters/Undine/Special Abilities/Water Affinity",
+ "old": "pfsrd://Bestiary 2/Monsters/Undine/Special Abilities/Elemental Affinity"}
 ]
 

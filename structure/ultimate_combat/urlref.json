@@ -7,5 +7,24 @@
 {"new": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Bronze Age/Table Bronze Age Weapons",
  "old": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Bronze Age/Rhomphaia/Table Bronze Age Weapons"},
 {"new": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Stone Age/Table Stone Age Weapons",
- "old": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Stone Age/Wahaika/Table Stone Age Weapons"}
+ "old": "pfsrd://Ultimate Combat/Rules/Mastering Combat/Primitive Armor and Weapons/The Stone Age/Wahaika/Table Stone Age Weapons"},
+
+{"new": "pfsrd://Ultimate Combat/Classes/Ninja/Class Features/Ninja Tricks/Bleeding Attack",
+ "old": "pfsrd://Ultimate Combat/Classes/Ninja/Class Features/Ninja Tricks/Bleeding Attack*"},
+{"new": "pfsrd://Ultimate Combat/Classes/Ninja/Class Features/Ninja Tricks/Ki Block",
+ "old": "pfsrd://Ultimate Combat/Classes/Ninja/Class Features/Ninja Tricks/Ki Block*"},
+{"new": "pfsrd://Ultimate Combat/Classes/Ninja/Class Features/Ninja Tricks/Pressure Points",
+ "old": "pfsrd://Ultimate Combat/Classes/Ninja/Class Features/Ninja Tricks/Pressure Points*"},
+{"new": "pfsrd://Ultimate Combat/Classes/Ninja/Class Features/Ninja Tricks/Slow Reactions",
+ "old": "pfsrd://Ultimate Combat/Classes/Ninja/Class Features/Ninja Tricks/Slow Reactions*"},
+{"new": "pfsrd://Ultimate Combat/Rules/Class Archetypes/Alchemist/Discoveries/Breath Weapon Bomb",
+ "old": "pfsrd://Ultimate Combat/Rules/Class Archetypes/Alchemist/Discoveries/Breath Weapon Bomb*"},
+{"new": "pfsrd://Ultimate Combat/Rules/Class Archetypes/Rogue/Rogue Talents/Underhanded",
+ "old": "pfsrd://Ultimate Combat/Rules/Class Archetypes/Rogue/Rogue Talents/Underhanded*"},
+{"new": "pfsrd://Ultimate Combat/Rules/Variant Rules/Armor as Damage Reduction/Armor as Damage Reduction/Defense",
+ "old": "pfsrd://Ultimate Combat/Rules/Variant Rules/Armor as Damage Reduction/Armor as Damage Reduction/Defense/Defense = 10 + shield bonus + Dexterity modifier + other modifiers"},
+{"new": "pfsrd://Ultimate Combat/Rules/Variant Rules/Armor as Damage Reduction/Critical Hits and Defense",
+ "old": "pfsrd://Ultimate Combat/Rules/Variant Rules/Armor as Damage Reduction/Critical Hits and Defense/Critical defense check bonus = creatures DR + Dexterity modifier + shield bonus to Defense + deflection bonus"},
+{"new": "pfsrd://Ultimate Combat/Rules/Variant Rules/Armor as Damage Reduction/Critical Hits and Defense",
+ "old": "pfsrd://Ultimate Combat/Rules/Variant Rules/Armor as Damage Reduction/Critical Hits and Defense/Critical defense DC = critical hit roll + 1_2 attackers base attack bonus + 1 for each critical feat + 1 for each size category larger attacker is than target"}
 ]

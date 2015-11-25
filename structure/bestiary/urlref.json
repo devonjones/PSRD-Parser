@@ -134,6 +134,15 @@
  "old": "pfsrd://Bestiary/Monsters/Dragon/Age Categories/Age Category"},
 
 {"new": "pfsrd://Bestiary/Monsters/Frog/Giant/Frog/4th-Level Advancement",
- "old": "pfsrd://Bestiary/Monsters/Frog/Giant/Frog/4th-Level Adv."}
+ "old": "pfsrd://Bestiary/Monsters/Frog/Giant/Frog/4th-Level Adv."},
+
+{"new": "pfsrd://Bestiary/Monsters/Centipede/Giant/Special Abilities/Poison",
+ "old": "pfsrd://Bestiary/Monsters/Centipede/Giant/Special Abilities/Poison (EX)"},
+{"new": "pfsrd://Bestiary/Monsters/Centipede/Giant/Special Abilities/Poison (EX)/Giant Centipede Venom",
+ "old": "pfsrd://Bestiary/Monsters/Centipede/Giant/Special Abilities/Poison/Giant Centipede Venom"},
+{"new": "pfsrd://Bestiary/Monsters/Demon/Balor/Demon/Balor/Special Abilities/Death Throes",
+ "old": "pfsrd://Bestiary/Monsters/Demon/Balor/Demon/Balor/Special Abilities/Death Throes (Su"},
+{"new": "pfsrd://Bestiary/Monsters/Merfolk/Merfolk/+2 Natural Armor",
+ "old": "pfsrd://Bestiary/Monsters/Merfolk/Merfolk/Armor"}
 ]
 

@@ -531,6 +531,22 @@
 {"new": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Descriptions/Shield/Light",
  "old": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Descriptions/Shield/Heavy or Light"},
 {"new": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Descriptions/Spiked Shield/Light",
- "old": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Descriptions/Spiked Shield/Heavy or Light"}
+ "old": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Descriptions/Spiked Shield/Heavy or Light"},
 
+{"new": "pfsrd://Core Rulebook/Classes/Rogue/Class Features/Advanced Talents/Crippling Strike",
+ "old": "pfsrd://Core Rulebook/Classes/Rogue/Class Features/Advanced Talents/Crippling Strike*"},
+{"new": "pfsrd://Core Rulebook/Classes/Rogue/Class Features/Advanced Talents/Dispelling Attack",
+ "old": "pfsrd://Core Rulebook/Classes/Rogue/Class Features/Advanced Talents/Dispelling Attack*"},
+{"new": "pfsrd://Core Rulebook/Classes/Rogue/Class Features/Rogue Talents/Bleeding Attack",
+ "old": "pfsrd://Core Rulebook/Classes/Rogue/Class Features/Rogue Talents/Bleeding Attack*"},
+{"new": "pfsrd://Core Rulebook/Classes/Rogue/Class Features/Rogue Talents/Slow Reactions",
+ "old": "pfsrd://Core Rulebook/Classes/Rogue/Class Features/Rogue Talents/Slow Reactions*"},
+{"new": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Qualities/Critical",
+ "old": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Qualities/Critical/18-20_"},
+{"new": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Qualities/Critical",
+ "old": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Qualities/Critical/19-20_"},
+{"new": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Qualities/Dmg/Table Tiny and Large Weapon Damage",
+ "old": "pfsrd://Core Rulebook/Rules/Equipment/Weapons/Weapon Qualities/Cost/Table Tiny and Large Weapon Damage"},
+{"new": "pfsrd://Core Rulebook/Rules/Magic Items/Magic Item Creation/Creating Wondrous Items",
+ "old": "pfsrd://Core Rulebook/Rules/Magic Items/Magic Item Creation/Creating Wondrous Items/Skill Used In Creation"}
 ]

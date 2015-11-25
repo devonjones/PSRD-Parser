@@ -170,7 +170,7 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 # Monster Codex
 ./rules_loader.py      -d $DATA_DIR/book-mc.db               $DATA_DIR/monster_codex/structure.json
 ./index_loader.py      -d $DATA_DIR/book-mc.db
-#./url_ref_loader.py    -d $DATA_DIR/book-mc.db               $DATA_DIR/monster_codex/urlref.json
+./url_ref_loader.py    -d $DATA_DIR/book-mc.db               $DATA_DIR/monster_codex/urlref.json
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-mc.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-mc.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-mc.db >> $DATA_DIR/urllist.txt.tmp

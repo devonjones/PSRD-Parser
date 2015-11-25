@@ -223,6 +223,8 @@ def _link_insert(curs, section, section_id):
 
 def _trap_insert(curs, section, section_id):
 	insert_trap_detail(curs, **section)
+	if section.has_key('ability_types'):
+		_ability_insert(curs, section, section_id)
 
 def _haunt_insert(curs, section, section_id):
 	insert_haunt_detail(curs, **section)

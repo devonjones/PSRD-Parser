@@ -12,6 +12,8 @@ def adjust_core_pass(struct, filename):
 	second = 6
 	if filename in ('advancedFeats.html', 'ultimateMagicFeats.html'):
 		first = 2
+	elif struct['source'] == 'Occult Adventures':
+		first = 1
 	fdesc = struct['sections'][first]
 	special = fdesc['sections'][second - 2]
 	table = special['sections'][0]

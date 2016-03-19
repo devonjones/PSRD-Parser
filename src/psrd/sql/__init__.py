@@ -10,6 +10,7 @@ from psrd.sql.vehicles import create_vehicle_details_table, create_vehicle_detai
 from psrd.sql.armies import create_army_details_table, create_army_details_index
 from psrd.sql.kingdom_resources import create_kingdom_resource_details_table, create_kingdom_resource_details_index
 from psrd.sql.resources import create_resource_details_table, create_resource_details_index
+from psrd.sql.talents import create_talent_details_table, create_talent_details_index
 from psrd.sql.traps import create_trap_details_table, create_trap_details_index
 from psrd.sql.haunts import create_haunt_details_table, create_haunt_details_index
 from psrd.sql.items import create_item_details_table, create_item_details_index, create_item_misc_table, create_item_misc_index
@@ -84,6 +85,8 @@ def create_db_v_2(conn, curs, ver, source=None):
 	create_creature_details_index(curs)
 	create_creature_spells_table(curs)
 	create_creature_spells_index(curs)
+	create_talent_details_table(curs)
+	create_talent_details_index(curs)
 	create_trap_details_table(curs)
 	create_trap_details_index(curs)
 	create_haunt_details_table(curs)

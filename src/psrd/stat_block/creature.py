@@ -191,6 +191,12 @@ def creature_parse_function(field):
 				'kitsune spell-like abilities'),
 		'wayang spell-like abilities': creature_spell_closure(
 				'wayang spell-like abilities'),
+		'utility spell-like abilities': creature_spell_closure(
+				'utility spell-like abilities'),
+		'defensive spell-like abilities': creature_spell_closure(
+				'defensive spell-like abilities'),
+		'attack spell-like abilities': creature_spell_closure(
+				'attack spell-like abilities'),
 
 		'spells prepared': creature_spell_closure('spells prepared'),
 		'alchemist extracts prepared': creature_spell_closure(
@@ -231,6 +237,14 @@ def creature_parse_function(field):
 				'illusionist spells prepared'),
 		'abjurer spells prepared': creature_spell_closure(
 				'abjurer spells prepared'),
+		'utility spells': creature_spell_closure(
+				'utility spells'),
+		'utility options': creature_spell_closure(
+				'utility options'),
+		'defensive spells': creature_spell_closure(
+				'defensive spells'),
+		'attack spells': creature_spell_closure(
+				'attack spells'),
 
 		'spells known': creature_spell_closure('spells known'),
 		'bard spells known': creature_spell_closure('bard spells known'),
@@ -250,6 +264,7 @@ def creature_parse_function(field):
 		'atk': default_closure('base_attack'),
 		'cmb': default_closure('cmb'),
 		'cmd': default_closure('cmd'),
+		'concentration': default_closure('concentration'),
 		'feats': default_closure('feats'),
 		'skills': default_closure('skills'),
 		'racial modifiers': default_closure('racial_modifiers'),
@@ -364,6 +379,7 @@ def parse_creature_descriptors(creature, value):
 		raise Exception("Too many descriptors: %s" % value)
 
 def parse_creature_descriptor(creature, value):
+	print "%s: %s" %(creature, value)
 	if value.startswith('AC'):
 		default_closure('ac')(creature, value[2:])
 		return

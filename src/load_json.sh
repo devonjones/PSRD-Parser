@@ -103,6 +103,18 @@ echo 'select url from sections where url is not null order by url;' | sqlite3 $D
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-ma.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-ma.db >> $DATA_DIR/urllist.txt.tmp
 
+# Occult Adventures
+./json_loader.py       -d $DATA_DIR/book-oa.db -p "Spells"   $DATA_DIR/occult_adventures/spells/*.json
+./spell_list_loader.py -d $DATA_DIR/book-um.db               $DATA_DIR/occult_adventures/spell_lists/*.json
+./json_loader.py       -d $DATA_DIR/book-um.db -p "Feats"    $DATA_DIR/occult_adventures/feats/*.json
+./json_loader.py       -d $DATA_DIR/book-um.db -p "Classes"  $DATA_DIR/occult_adventures/classes/*.json
+./rules_loader.py      -d $DATA_DIR/book-oa.db               $DATA_DIR/occult_adventures/structure.json
+./index_loader.py      -d $DATA_DIR/book-oa.db
+#./url_ref_loader.py    -d $DATA_DIR/book-oa.db               $DATA_DIR/occult_adventures/urlref.json
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-oa.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-oa.db >> $DATA_DIR/supportedurllist.txt.tmp
+echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-oa.db >> $DATA_DIR/urllist.txt.tmp
+
 # Advanced Class Guide
 ./json_loader.py       -d $DATA_DIR/book-acg.db -p "Spells"   $DATA_DIR/advanced_class_guide/spells/*.json
 ./spell_list_loader.py -d $DATA_DIR/book-acg.db               $DATA_DIR/advanced_class_guide/spell_lists/*.json
@@ -114,6 +126,14 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-acg.db >> $DATA_DIR/urllist.txt.tmp
 echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-acg.db >> $DATA_DIR/supportedurllist.txt.tmp
 echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-acg.db >> $DATA_DIR/urllist.txt.tmp
+
+# Pathfinder Unchained
+./rules_loader.py      -d $DATA_DIR/book-pfu.db               $DATA_DIR/pathfinder_unchained/structure.json
+./index_loader.py      -d $DATA_DIR/book-pfu.db
+#./url_ref_loader.py    -d $DATA_DIR/book-pfu.db               $DATA_DIR/pathfinder_unchained/urlref.json
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-pfu.db >> $DATA_DIR/urllist.txt.tmp
+echo 'select url from sections where url is not null order by url;' | sqlite3 $DATA_DIR/book-pfu.db >> $DATA_DIR/supportedurllist.txt.tmp
+echo 'select url from url_references where url is not null order by url;' | sqlite3 $DATA_DIR/book-pfu.db >> $DATA_DIR/urllist.txt.tmp
 
 # Game Mastery Guide
 ./json_loader.py       -d $DATA_DIR/book-gmg.db -p "Monsters" $DATA_DIR/game_mastery_guide/creatures/*.json

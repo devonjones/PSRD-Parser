@@ -11,4 +11,5 @@ source dir.conf
 ./feat_parse.py -o $DATA_DIR -b "Ultimate Combat"         $WEB_DIR/pathfinderRPG/prd/ultimateCombat/ultimateCombatFeats.html
 ./feat_parse.py -o $DATA_DIR -b "Ultimate Campaign"       $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/characterBackground/storyFeats.html
 ./feat_parse.py -o $DATA_DIR -b "Mythic Adventures"       $WEB_DIR/pathfinderRPG/prd/mythicAdventures/mythicFeats.html
+./feat_parse.py -o $DATA_DIR -b "Occult Adventures"       $WEB_DIR/pathfinderRPG/prd/occultAdventures/feats.html
 

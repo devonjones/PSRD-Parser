@@ -15,6 +15,7 @@ from psrd.sql.armies import insert_army_detail
 from psrd.sql.kingdom_resources import insert_kingdom_resource_detail
 from psrd.sql.resources import insert_resource_detail
 from psrd.sql.creatures import insert_creature_detail, insert_creature_spell
+from psrd.sql.talents import insert_talent_detail
 from psrd.sql.traps import insert_trap_detail
 from psrd.sql.haunts import insert_haunt_detail
 from psrd.sql.items import insert_item_detail, insert_item_misc
@@ -221,6 +222,9 @@ def _link_insert(curs, section, section_id):
 	insert_link_detail(curs, section_id, section['url'],
 		section.get('display', False))
 
+def _talent_insert(curs, section, section_id):
+	insert_talent_detail(curs, **section)
+
 def _trap_insert(curs, section, section_id):
 	insert_trap_detail(curs, **section)
 	if section.has_key('ability_types'):
@@ -252,6 +256,7 @@ def insert_subrecords(curs, curs_list, section, section_id):
 		"kingdom_resource": _kingdom_resource_insert,
 		"resource": _resource_insert,
 		"creature": _creature_insert,
+		"talent": _talent_insert,
 		"trap": _trap_insert,
 		"haunt": _haunt_insert,
 		"item": _item_insert,

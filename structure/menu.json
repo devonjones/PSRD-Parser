@@ -155,6 +155,9 @@
 	{"name": "Rules: Mythic Adventures", "source": "Mythic Adventures", "priority": 55, "children": [
 		{"group": "children", "source": "Mythic Adventures", "db": "book-ma.db", "url": "pfsrd://Mythic Adventures/Rules", "priority": 10}
 	]},
+	{"name": "Rules: Mythic Adventures", "source": "Occult Adventures", "priority": 55, "children": [
+		{"group": "children", "source": "Occult Adventures", "db": "book-oa.db", "url": "pfsrd://Occult Adventures/Rules", "priority": 10}
+	]},
 	{"name": "Rules: Technology Guide", "source": "Technology Guide", "priority": 55, "children": [
 		{"group": "children", "source": "Technology Guide", "db": "book-tech.db", "url": "pfsrd://Technology Guide/Rules", "priority": 10}
 	]},
@@ -164,10 +167,13 @@
 	{"name": "Rules: Game Mastery Guide", "source": "Game Mastery Guide", "priority": 60, "children": [
 		{"group": "children", "source": "Game Mastery Guide", "db": "book-gmg.db", "url": "pfsrd://Game Mastery Guide/Rules", "priority": 10}
 	]},
-	{"name": "Rules: NPC Codex", "source": "NPC Codex", "priority": 60, "children": [
+	{"name": "Rules: Pathfinder Unchained", "source": "Pathfinder Unchained", "priority": 60, "children": [
+		{"group": "children", "source": "Pathfinder Unchained", "db": "book-pfa.db", "url": "pfsrd://Pathfinder Unchained/Rules", "priority": 10}
+	]},
+	{"name": "Rules: NPC Codex", "source": "NPC Codex", "priority": 65, "children": [
 		{"group": "children", "source": "NPC Codex", "db": "book-npc.db", "url": "pfsrd://NPC Codex/Rules", "priority": 10}
 	]},
-	{"name": "Rules: Monster Codex", "source": "Monster Codex", "priority": 60, "children": [
+	{"name": "Rules: Monster Codex", "source": "Monster Codex", "priority": 65, "children": [
 		{"group": "children", "source": "Monster Codex", "db": "book-mc.db", "url": "pfsrd://Monster Codex/Rules", "priority": 10}
 	]}
 ]

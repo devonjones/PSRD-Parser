@@ -24,6 +24,7 @@ def create_creature_details_table(curs):
 		"  reflex TEXT,"
 		"  will TEXT,"
 		"  defensive_abilities TEXT,"
+		"  concentration TEXT,"
 		"  dr TEXT,"
 		"  resist TEXT,"
 		"  immune TEXT,"
@@ -76,7 +77,7 @@ def insert_creature_detail(curs, section_id,
 		sex=None, super_race=None, level=None, cr=None, mr=None, xp=None, alignment=None, size=None, creature_type=None,
 		creature_subtype=None, init=None, senses=None, aura=None,
 		ac=None, hp=None, fortitude=None, reflex=None, will=None, resist=None, defensive_abilities=None,
-		dr=None, immune=None, sr=None, weaknesses=None,
+		concentration=None, dr=None, immune=None, sr=None, weaknesses=None,
 		speed=None, melee=None, ranged=None, space=None, reach=None, special_attacks=None,
 		strength=None, dexterity=None, constitution=None, intelligence=None, wisdom=None, charisma=None,
 		base_attack=None, cmb=None, cmd=None, feats=None, skills=None, racial_modifiers=None, languages=None,
@@ -85,7 +86,7 @@ def insert_creature_detail(curs, section_id,
 		hit_dice=None, natural_armor=None, breath_weapon=None, **kwargs):
 	values = [section_id,
 		sex, super_race, level, cr, mr, xp, alignment, size, creature_type, creature_subtype, init, senses, aura,
-		ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, sr, weaknesses,
+		ac, hp, fortitude, reflex, will, resist, defensive_abilities, concentration, dr, immune, sr, weaknesses,
 		speed, melee, ranged, space, reach, special_attacks,
 		strength, dexterity, constitution, intelligence, wisdom, charisma, base_attack, cmb, cmd,
 		feats, skills, racial_modifiers, languages,
@@ -101,7 +102,7 @@ def insert_creature_detail(curs, section_id,
 		"INSERT INTO creature_details",
 		" (section_id,",
 		"  sex, super_race, level, cr, mr, xp, alignment, size, creature_type, creature_subtype, init, senses, aura,",
-		"  ac, hp, fortitude, reflex, will, resist, defensive_abilities, dr, immune, sr, weaknesses,",
+		"  ac, hp, fortitude, reflex, will, resist, defensive_abilities, concentration, dr, immune, sr, weaknesses,",
 		"  speed, melee, ranged, space, reach, special_attacks,",
 		"  strength, dexterity, constitution, intelligence, wisdom, charisma,",
 		"  base_attack, cmb, cmd, feats, skills, racial_modifiers, languages,",
@@ -113,7 +114,7 @@ def insert_creature_detail(curs, section_id,
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
 		"  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,",
-		"  ?, ?, ?, ?, ?, ?, ?)"])
+		"  ?, ?, ?, ?, ?, ?, ?, ?)"])
 	curs.execute(sql, values)
 
 def delete_creature_detail(curs, section_id):

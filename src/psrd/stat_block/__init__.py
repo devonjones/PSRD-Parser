@@ -13,6 +13,7 @@ from haunt import is_haunt, parse_haunt
 from kingdom_resource import is_kingdom_resource, parse_kingdom_resource
 from army import is_army, parse_army
 from resource import is_resource, parse_resource
+from talent import is_talent, parse_talent
 from section import is_section, parse_section
 from utils import StatBlockFunctions, parse_stat_block
 from psrd.universal import StatBlockHeading
@@ -20,6 +21,7 @@ from psrd.universal import StatBlockHeading
 StatBlockFunctions().add_function(is_animal_companion, parse_animal_companion)
 StatBlockFunctions().add_function(is_npc, parse_npc)
 StatBlockFunctions().add_function(is_creature, parse_creature)
+StatBlockFunctions().add_function(is_talent, parse_talent)
 StatBlockFunctions().add_function(is_mythic_spell, parse_mythic_spell)
 StatBlockFunctions().add_function(is_spell, parse_spell)
 StatBlockFunctions().add_function(is_trap, parse_trap)

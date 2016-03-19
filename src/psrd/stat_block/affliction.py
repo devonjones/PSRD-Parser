@@ -14,18 +14,22 @@ def affliction_parse_function(field):
 	functions = {
 		'type': parse_affliction_type,
 		'addiction': parse_addiction,
-		'price': default_closure('price'),
+		'price': default_closure('cost'),
 		'damage': default_closure('damage'),
 		'save': default_closure('save'),
 		'frequency': default_closure('frequency'),
-		'effect': default_closure('effect'),
-		'effects': default_closure('effect'),
+		'effect': parse_effect,
+		'effects': parse_effect,
 		'cure': default_closure('cure'),
 		'onset': default_closure('onset'),
 		'initial effect': default_closure('initial_effect'),
 		'secondary effect': default_closure('secondary_effect'),
 	}
 	return functions[field.lower()]
+
+def parse_effect(affliction, value):
+	effects = affliction.setdefault('effects', [])
+	effects.append(value)
 
 def parse_addiction(affliction, value):
 	affliction['contracted'] = affliction['subtype']
@@ -43,4 +47,11 @@ def parse_affliction(sb, book):
 	affliction['type'] = 'affliction'
 	for key, value in sb.keys:
 		affliction_parse_function(key)(affliction, value)
-	return affliction 
+	if affliction.has_key('effects'):
+		effects = affliction['effects']
+		if len(effects) == 1:
+			affliction['effect'] = effects[0]
+		else:
+			affliction['effect'] = "; ".join(["[%s]" % e for e in effects])
+		del affliction['effects']
+	return affliction

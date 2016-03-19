@@ -274,6 +274,73 @@ source dir.conf
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Optional Kingdom Rules"      $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/kingdomsAndWar/optionalKingdomRules.html
 ./rules_parse.py -o $DATA_DIR -b "Ultimate Campaign" -t "Mass Combat"                 $WEB_DIR/pathfinderRPG/prd/ultimateCampaign/kingdomsAndWar/massCombat.html
 
+# Occult Adventures
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Occult Classes"            $WEB_DIR/pathfinderRPG/prd/occultAdventures/classes/index.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Archetypes"                $WEB_DIR/pathfinderRPG/prd/occultAdventures/archetypes/index.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Kineticist"                $WEB_DIR/pathfinderRPG/prd/occultAdventures/archetypes/kineticist.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Medium"                    $WEB_DIR/pathfinderRPG/prd/occultAdventures/archetypes/medium.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Mesmerist"                 $WEB_DIR/pathfinderRPG/prd/occultAdventures/archetypes/mesmerist.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Occultist"                 $WEB_DIR/pathfinderRPG/prd/occultAdventures/archetypes/occultist.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Other"                     $WEB_DIR/pathfinderRPG/prd/occultAdventures/archetypes/other.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Psychic"                   $WEB_DIR/pathfinderRPG/prd/occultAdventures/archetypes/psychic.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Spiritualist"              $WEB_DIR/pathfinderRPG/prd/occultAdventures/archetypes/spiritualist.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Occult Game"               $WEB_DIR/pathfinderRPG/prd/occultAdventures/occultGame.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Occult Rewards"            $WEB_DIR/pathfinderRPG/prd/occultAdventures/occultRewards.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Occult Rules"              $WEB_DIR/pathfinderRPG/prd/occultAdventures/occultRules.html
+./rules_parse.py -o $DATA_DIR -b "Occult Adventures" -t "Psychic Magic"             $WEB_DIR/pathfinderRPG/prd/occultAdventures/psychicMagic.html
+
+# Pathfinder Unchained
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Classes"                       $WEB_DIR/pathfinderRPG/prd/unchained/classes/index.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Barbarian"                     $WEB_DIR/pathfinderRPG/prd/unchained/classes/barbarian.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Monk"                          $WEB_DIR/pathfinderRPG/prd/unchained/classes/monk.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Rogue"                         $WEB_DIR/pathfinderRPG/prd/unchained/classes/rogue.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Summoner"                      $WEB_DIR/pathfinderRPG/prd/unchained/classes/summoner.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Gameplay"                      $WEB_DIR/pathfinderRPG/prd/unchained/gameplay/index.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Alignment"                     $WEB_DIR/pathfinderRPG/prd/unchained/gameplay/alignment.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Combat Tactics"                $WEB_DIR/pathfinderRPG/prd/unchained/gameplay/combatTactics.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Disease And Poison"            $WEB_DIR/pathfinderRPG/prd/unchained/gameplay/diseaseAndPoison.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Removing Alignment"            $WEB_DIR/pathfinderRPG/prd/unchained/gameplay/removingAlignment.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Replacing Iterative Attacks"   $WEB_DIR/pathfinderRPG/prd/unchained/gameplay/replacingIterativeAttacks.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Revised Action Economy"        $WEB_DIR/pathfinderRPG/prd/unchained/gameplay/revisedActionEconomy.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "WoundLevels"                   $WEB_DIR/pathfinderRPG/prd/unchained/gameplay/woundLevels.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Magic"                         $WEB_DIR/pathfinderRPG/prd/unchained/magic/index.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Automatic Bonus Progression"   $WEB_DIR/pathfinderRPG/prd/unchained/magic/automaticBonusProgression.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Dynamic Magic Item Creation"   $WEB_DIR/pathfinderRPG/prd/unchained/magic/dynamicMagicItemCreation.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Esoteric Material Components"  $WEB_DIR/pathfinderRPG/prd/unchained/magic/esotericMaterialComponents.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Innate Item Bonuses"           $WEB_DIR/pathfinderRPG/prd/unchained/magic/innateItemBonuses.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Scaling Items"                 $WEB_DIR/pathfinderRPG/prd/unchained/magic/scalingItems.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Simplified Spellcasting"       $WEB_DIR/pathfinderRPG/prd/unchained/magic/simplifiedSpellcasting.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Spell Alterations"             $WEB_DIR/pathfinderRPG/prd/unchained/magic/spellAlterations.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Monsters"                      $WEB_DIR/pathfinderRPG/prd/unchained/monsters/index.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Monster Creation Examples"     $WEB_DIR/pathfinderRPG/prd/unchained/monsters/monsterCreationExamples.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Step 1"                        $WEB_DIR/pathfinderRPG/prd/unchained/monsters/step1.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Step 2"                        $WEB_DIR/pathfinderRPG/prd/unchained/monsters/step2.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Step 3"                        $WEB_DIR/pathfinderRPG/prd/unchained/monsters/step3.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Step 4"                        $WEB_DIR/pathfinderRPG/prd/unchained/monsters/step4.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Step 5"                        $WEB_DIR/pathfinderRPG/prd/unchained/monsters/step5.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Step 6"                        $WEB_DIR/pathfinderRPG/prd/unchained/monsters/step6.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Step 7"                        $WEB_DIR/pathfinderRPG/prd/unchained/monsters/step7.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Step 8"                        $WEB_DIR/pathfinderRPG/prd/unchained/monsters/step8.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Step 9"                        $WEB_DIR/pathfinderRPG/prd/unchained/monsters/step9.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Skills And Options"            $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/index.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Background Skills"             $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/backgroundSkills.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Crafting And Profession"       $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/craftingAndProfession.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Grouped Skills"                $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/groupedSkills.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Skill Unlocks"                 $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/skillUnlocks.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Variant Multiclassing"         $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/variantMulticlassing.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Consolidated Skills"           $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/index.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Acrobatics"                    $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/acrobatics.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Athletics"                     $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/athletics.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Finesse"                       $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/finesse.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Influence"                     $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/influence.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Nature"                        $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/nature.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Perception"                    $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/perception.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Performance"                   $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/performance.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Religion"                      $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/religion.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Society"                       $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/society.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Spellcraft"                    $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/spellcraft.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Stealth"                       $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/stealth.html
+./rules_parse.py -o $DATA_DIR -b "Pathfinder Unchained" -t "Survival"                      $WEB_DIR/pathfinderRPG/prd/unchained/skillsAndOptions/consolidatedSkills/survival.html
 
 # Game Mastery Guide
 ./rules_parse.py -o $DATA_DIR -b "Game Mastery Guide" -t "Chases"                $WEB_DIR/pathfinderRPG/prd/mastery/chases.html

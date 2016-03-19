@@ -1,0 +1,92 @@
+{
+  "name": "Pathfinder Unchained",
+  "children": [
+    {
+      "name": "Rules",
+      "children": [
+        {
+          "name": "Classes",
+          "children": [
+            {"name": "Classes", "file": "rules/classes.json"},
+            {"name": "Barbarian", "file": "rules/barbarian.json"},
+            {"name": "Monk", "file": "rules/monk.json"},
+            {"name": "Rogue", "file": "rules/rogue.json"},
+            {"name": "Summoner", "file": "rules/summoner.json"}
+          ]
+        },
+        {
+          "name": "Skills and Options",
+          "children": [
+            {"name": "Skills and Options", "file": "rules/skills_and_options.json"},
+            {"name": "Background Skills", "file": "rules/background_skills.json"},
+            {
+              "name": "Consolidated Skills",
+              "children": [
+                {"name": "Consolidated Skills", "file": "rules/consolidated_skills.json"},
+                {"name": "Acrobatics", "file": "rules/acrobatics.json"},
+                {"name": "Athletics", "file": "rules/athletics.json"},
+                {"name": "Finesse", "file": "rules/finesse.json"},
+                {"name": "Influence", "file": "rules/influence.json"},
+                {"name": "Nature", "file": "rules/nature.json"},
+                {"name": "Perception", "file": "rules/perception.json"},
+                {"name": "Performance", "file": "rules/performance.json"},
+                {"name": "Religion", "file": "rules/religion.json"},
+                {"name": "Society", "file": "rules/society.json"},
+                {"name": "Spellcraft", "file": "rules/spellcraft.json"},
+                {"name": "Stealth", "file": "rules/stealth.json"},
+                {"name": "Survival", "file": "rules/survival.json"}
+              ]
+            },
+            {"name": "Grouped Skills", "file": "rules/grouped_skills.json"},
+            {"name": "Crafting and Profession", "file": "rules/crafting_and_profession.json"},
+            {"name": "Skill Unlocks", "file": "rules/skill_unlocks.json"},
+            {"name": "Variant Multiclassing", "file": "rules/variant_multiclassing.json"}
+          ]
+        },
+        {
+          "name": "Gameplay",
+          "children": [
+            {"name": "Gameplay", "file": "rules/gameplay.json"},
+            {"name": "Alignment", "file": "rules/alignment.json"},
+            {"name": "Removing Alignment", "file": "rules/removing_alignment.json"},
+            {"name": "Revised Action Economy", "file": "rules/revised_action_economy.json"},
+            {"name": "Replacing Iterative Attacks", "file": "rules/replacing_iterative_attacks.json"},
+            {"name": "Combat Tactics", "file": "rules/combat_tactics.json"},
+            {"name": "Wound Levels", "file": "rules/woundlevels.json"},
+            {"name": "Disease and Poison", "file": "rules/disease_and_poison.json"}
+          ]
+        },
+        {
+          "name": "Magic",
+          "children": [
+            {"name": "Magic", "file": "rules/magic.json"},
+            {"name": "Simplified Spellcasting", "file": "rules/simplified_spellcasting.json"},
+            {"name": "Spell Alterations", "file": "rules/spell_alterations.json"},
+            {"name": "Esoteric Material Components", "file": "rules/esoteric_material_components.json"},
+            {"name": "Automatic Bonus Progression", "file": "rules/automatic_bonus_progression.json"},
+            {"name": "Innate Item Bonuses", "file": "rules/innate_item_bonuses.json"},
+            {"name": "Scaling Items", "file": "rules/scaling_items.json"},
+            {"name": "Dynamic Magic Item Creation", "file": "rules/dynamic_magic_item_creation.json"}
+          ]
+        },
+        {
+          "name": "Simple Monster Creation",
+          "children": [
+            {"name": "Simple Monster Creation", "file": "rules/monsters.json"},
+            {"name": "Simple Monster Creation Examples", "file": "rules/monster_creation_examples.json"},
+            {"name": "Step 1", "file": "rules/step_1.json"},
+            {"name": "Step 2", "file": "rules/step_2.json"},
+            {"name": "Step 3", "file": "rules/step_3.json"},
+            {"name": "Step 4", "file": "rules/step_4.json"},
+            {"name": "Step 5", "file": "rules/step_5.json"},
+            {"name": "Step 6", "file": "rules/step_6.json"},
+            {"name": "Step 7", "file": "rules/step_7.json"},
+            {"name": "Step 8", "file": "rules/step_8.json"},
+            {"name": "Step 9", "file": "rules/step_9.json"}
+          ]
+        }
+      ]
+    }
+  ]
+}
+

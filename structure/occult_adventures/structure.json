@@ -1,0 +1,31 @@
+{
+  "name": "Occult Adventures",
+  "children": [
+    {
+      "name": "Rules",
+      "children": [
+        {"name": "Occult Classes", "file": "rules/occult_classes.json"},
+        {
+          "name": "Occult Archetypes",
+          "children": [
+            {"name": "Archetypes", "file": "rules/archetypes.json"},
+            {"name": "Kineticist", "file": "rules/kineticist.json"},
+            {"name": "Medium", "file": "rules/medium.json"},
+            {"name": "Mesmerist", "file": "rules/mesmerist.json"},
+            {"name": "Occultist", "file": "rules/occultist.json"},
+            {"name": "Psychic", "file": "rules/psychic.json"},
+            {"name": "Spiritualist", "file": "rules/spiritualist.json"},
+            {"name": "Other Class Archetypes", "file": "rules/other.json"}
+          ]
+        },
+        {"name": "Feats", "file": "rules/feats.json"},
+        {"name": "Psychic Magic", "file": "rules/psychic_magic.json"},
+        {"name": "Spell Lists", "file": "rules/spell_lists.json"},
+        {"name": "Occult Rules", "file": "rules/occult_rules.json"},
+        {"name": "Running an Occult Game", "file": "rules/occult_game.json"},
+        {"name": "Occult Rewards", "file": "rules/occult_rewards.json"}
+      ]
+    }
+  ]
+}
+

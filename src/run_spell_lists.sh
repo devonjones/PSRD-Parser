@@ -9,4 +9,5 @@ source dir.conf
 ./spell_list_parse.py -o $DATA_DIR -b "Ultimate Combat"         $WEB_DIR/pathfinderRPG/prd/ultimateCombat/ultimateCombatSpellLists.html
 ./spell_list_parse.py -o $DATA_DIR -b "Advanced Race Guide"     $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/spellLists.html
 ./spell_list_parse.py -o $DATA_DIR -b "Mythic Adventures"       $WEB_DIR/pathfinderRPG/prd/mythicAdventures/spellLists.html
+./spell_list_parse.py -o $DATA_DIR -b "Occult Adventures"       $WEB_DIR/pathfinderRPG/prd/occultAdventures/spellLists.html
 

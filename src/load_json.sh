@@ -105,9 +105,9 @@ echo 'select url from url_references where url is not null order by url;' | sqli
 
 # Occult Adventures
 ./json_loader.py       -d $DATA_DIR/book-oa.db -p "Spells"   $DATA_DIR/occult_adventures/spells/*.json
-./spell_list_loader.py -d $DATA_DIR/book-um.db               $DATA_DIR/occult_adventures/spell_lists/*.json
-./json_loader.py       -d $DATA_DIR/book-um.db -p "Feats"    $DATA_DIR/occult_adventures/feats/*.json
-./json_loader.py       -d $DATA_DIR/book-um.db -p "Classes"  $DATA_DIR/occult_adventures/classes/*.json
+./spell_list_loader.py -d $DATA_DIR/book-oa.db               $DATA_DIR/occult_adventures/spell_lists/*.json
+./json_loader.py       -d $DATA_DIR/book-oa.db -p "Feats"    $DATA_DIR/occult_adventures/feats/*.json
+./json_loader.py       -d $DATA_DIR/book-oa.db -p "Classes"  $DATA_DIR/occult_adventures/classes/*.json
 ./rules_loader.py      -d $DATA_DIR/book-oa.db               $DATA_DIR/occult_adventures/structure.json
 ./index_loader.py      -d $DATA_DIR/book-oa.db
 #./url_ref_loader.py    -d $DATA_DIR/book-oa.db               $DATA_DIR/occult_adventures/urlref.json

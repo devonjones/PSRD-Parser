@@ -16,7 +16,7 @@ def talent_parse_function(field):
 	functions = {
 		'element': default_closure('element'),
 		'elements': default_closure('elements'),
-		'type': default_closure('type'),
+		'type': default_closure('talent_type'),
 		'level': default_closure('level'),
 		'burn': default_closure('burn'),
 		'blast type': default_closure('blast_type'),

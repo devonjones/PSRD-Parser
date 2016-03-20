@@ -6,6 +6,7 @@
 		{"name": "Core Classes", "type": "class", "subtype": "core", "priority": 10},
 		{"name": "Base Classes", "type": "class", "subtype": "base", "priority": 20},
 		{"name": "Hybrid Classes", "type": "class", "subtype": "hybrid", "priority": 20},
+		{"name": "Occult Classes", "type": "class", "subtype": "occult", "priority": 20},
 		{"name": "Prestige Classes", "type": "class", "subtype": "prestige", "priority": 30},
 		{"name": "NPC Classes", "type": "class", "subtype": "npc", "priority": 40}
 	]},
@@ -155,7 +156,7 @@
 	{"name": "Rules: Mythic Adventures", "source": "Mythic Adventures", "priority": 55, "children": [
 		{"group": "children", "source": "Mythic Adventures", "db": "book-ma.db", "url": "pfsrd://Mythic Adventures/Rules", "priority": 10}
 	]},
-	{"name": "Rules: Mythic Adventures", "source": "Occult Adventures", "priority": 55, "children": [
+	{"name": "Rules: Occult Adventures", "source": "Occult Adventures", "priority": 55, "children": [
 		{"group": "children", "source": "Occult Adventures", "db": "book-oa.db", "url": "pfsrd://Occult Adventures/Rules", "priority": 10}
 	]},
 	{"name": "Rules: Technology Guide", "source": "Technology Guide", "priority": 55, "children": [
@@ -168,7 +169,7 @@
 		{"group": "children", "source": "Game Mastery Guide", "db": "book-gmg.db", "url": "pfsrd://Game Mastery Guide/Rules", "priority": 10}
 	]},
 	{"name": "Rules: Pathfinder Unchained", "source": "Pathfinder Unchained", "priority": 60, "children": [
-		{"group": "children", "source": "Pathfinder Unchained", "db": "book-pfa.db", "url": "pfsrd://Pathfinder Unchained/Rules", "priority": 10}
+		{"group": "children", "source": "Pathfinder Unchained", "db": "book-pfu.db", "url": "pfsrd://Pathfinder Unchained/Rules", "priority": 10}
 	]},
 	{"name": "Rules: NPC Codex", "source": "NPC Codex", "priority": 65, "children": [
 		{"group": "children", "source": "NPC Codex", "db": "book-npc.db", "url": "pfsrd://NPC Codex/Rules", "priority": 10}

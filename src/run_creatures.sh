@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-source dir.conf
+source ./dir.conf
 ./creature_parse.py -o $DATA_DIR -b "Ultimate Magic"  $WEB_DIR/pathfinderRPG/prd/ultimateMagic/magic/newFamiliars.html
 
 ./creature_parse.py -o $DATA_DIR -b "Bestiary" $WEB_DIR/pathfinderRPG/prd/monsters/aasimar.html

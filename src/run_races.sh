@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-source dir.conf
+source ./dir.conf
 ./race_parse.py -o $DATA_DIR -b "Core Rulebook" $WEB_DIR/pathfinderRPG/prd/races.html 
 
 ./arg_race_parse.py -o $DATA_DIR -b "Advanced Race Guide" -t "core"     $WEB_DIR/pathfinderRPG/prd/advancedRaceGuide/coreRaces/*.html

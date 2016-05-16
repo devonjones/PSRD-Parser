@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-source dir.conf
+source ./dir.conf
 ./item_table_dump.py -o $DATA_DIR -d $DATA_DIR/book-cr.db -b "Core Rulebook" 
 ./extension_loader.py -d ../../pfsrd-data/book-cr.db ../../pfsrd-data/core_rulebook/extensions/items.json
 

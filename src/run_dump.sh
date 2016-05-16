@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-source dir.conf
+source ./dir.conf
 
 rm -rf $DUMP_DIR/*
 
